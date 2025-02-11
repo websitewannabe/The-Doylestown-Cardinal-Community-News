@@ -161,13 +161,24 @@ const HomePage = () => {
           <div className="absolute inset-0 bg-charcoal-gray/40"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-          <div className="max-w-3xl">
-            <h1 className="font-playfair text-7xl md:text-[8.75rem] font-bold text-off-white mb-4">
-              Doylestown
-            </h1>
-            <p className="text-2xl text-off-white mb-8 font-playfair italic">
-              Experience the heart of Bucks County
-            </p>
+          <div className="flex items-center gap-8 max-w-7xl">
+            <div className="flex-1">
+              <h1 className="font-playfair text-7xl md:text-[8.75rem] font-bold text-off-white mb-4">
+                Doylestown
+              </h1>
+              <p className="text-2xl text-off-white mb-8 font-playfair italic">
+                Experience the heart of Bucks County
+              </p>
+            </div>
+            <div className="w-px h-48 bg-white opacity-50"></div>
+            <div className="w-48 h-48">
+              <img
+                src="/images/Favicon_Cardinal-Icon_512.png"
+                alt="The Cardinal Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/articles"
