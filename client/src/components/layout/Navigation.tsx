@@ -93,7 +93,28 @@ const Navigation = () => {
         { name: "Things to Do", path: "/community/directory/things-to-do" }
       ]
     },
-    
+    { 
+      name: 'Support Us', 
+      path: '/support', 
+      hasDropdown: true, 
+      dropdownItems: [
+        {
+          name: "Advertise with Us",
+          path: "/advertise",
+          subItems: [
+            { name: "Pricing", path: "/advertise#pricing" },
+            { name: "Benefits", path: "/advertise#benefits" },
+            { name: "Digital Ads", path: "/advertise#digital-ads" },
+            { name: "Print Ads", path: "/advertise#print-ads" }
+          ]
+        },
+        { name: "Print Subscriptions", path: "/print-subscriptions" },
+        { name: "Digital Subscriptions", path: "/digital-subscriptions" },
+        { name: "Donate", path: "/donate" },
+        { name: "Annual Fundraiser", path: "/annual-fundraiser" },
+        { name: "Find The Cardinal", path: "/locations" }
+      ]
+    },
     { 
       name: 'More', 
       path: '/about',
