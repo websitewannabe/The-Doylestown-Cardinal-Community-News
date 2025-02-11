@@ -172,9 +172,11 @@ const Navigation = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center space-x-2">
-                <span className="text-2xl font-serif italic font-bold text-[#8B0000]">
-                  The Cardinal
-                </span>
+                <img 
+                  src="/images/Cardinal-Logo-Header.png" 
+                  alt="The Cardinal"
+                  className="h-10 w-auto"
+                />
               </Link>
             </div>
 
