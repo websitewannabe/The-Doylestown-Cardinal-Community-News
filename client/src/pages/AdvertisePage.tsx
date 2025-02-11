@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { 
-  Users, 
-  BarChart, 
+import React, { useState } from "react";
+import {
+  Users,
+  BarChart,
   Target,
   Mail,
   Phone,
@@ -19,23 +19,24 @@ import {
   Rocket,
   Award,
   Zap,
-  Star
-} from 'lucide-react';
+  Star,
+} from "lucide-react";
 
 // Mock data for pricing packages
 const pricingPackages = [
   {
     name: "Starter",
     price: "$499",
-    description: "Perfect for small businesses looking to establish their presence",
+    description:
+      "Perfect for small businesses looking to establish their presence",
     features: [
       "Quarter-page print ad",
       "Basic digital display ads",
       "1 sponsored article",
-      "Social media mention"
+      "Social media mention",
     ],
     icon: Rocket,
-    popular: false
+    popular: false,
   },
   {
     name: "Growth",
@@ -46,10 +47,10 @@ const pricingPackages = [
       "Premium digital display ads",
       "2 sponsored articles",
       "Social media campaign",
-      "Newsletter feature"
+      "Newsletter feature",
     ],
     icon: Sparkles,
-    popular: true
+    popular: true,
   },
   {
     name: "Enterprise",
@@ -61,11 +62,11 @@ const pricingPackages = [
       "Custom content series",
       "Integrated social campaign",
       "Event sponsorship",
-      "Dedicated account manager"
+      "Dedicated account manager",
     ],
     icon: Award,
-    popular: false
-  }
+    popular: false,
+  },
 ];
 
 // Mock data for benefits
@@ -75,22 +76,22 @@ const benefits = [
     description: "Connect with Doylestown's most engaged readers",
     stat: "25,000+",
     subtext: "Monthly Readers",
-    icon: Target
+    icon: Target,
   },
   {
     title: "High Engagement",
     description: "Industry-leading engagement rates",
     stat: "4.5x",
     subtext: "Above Average",
-    icon: Zap
+    icon: Zap,
   },
   {
     title: "Brand Trust",
     description: "Leverage our trusted community presence",
     stat: "50+",
     subtext: "Years of Service",
-    icon: Star
-  }
+    icon: Star,
+  },
 ];
 
 // Mock data for metrics
@@ -98,43 +99,81 @@ const metrics = {
   readership: {
     print: 15000,
     digital: 10000,
-    newsletter: 5000
+    newsletter: 5000,
   },
   engagement: {
     averageTimeOnSite: "4:30",
     clickThroughRate: "2.8%",
-    socialFollowers: 12000
+    socialFollowers: 12000,
   },
   demographics: {
     age: {
       "18-34": 35,
       "35-54": 45,
-      "55+": 20
+      "55+": 20,
     },
     income: {
       "Under $75k": 30,
       "$75k-$150k": 45,
-      "$150k+": 25
-    }
-  }
+      "$150k+": 25,
+    },
+  },
 };
+
+const advertisingOptions = [
+  {
+    title: "Digital Display Ads",
+    description: "High-visibility banner and sidebar advertisements",
+    icon: "🖥️",
+    specs: [
+      "Premium website placement",
+      "Mobile-responsive design",
+      "Click tracking analytics",
+      "Flexible duration options",
+    ],
+  },
+  {
+    title: "Print Advertising",
+    description: "Traditional print advertisements in our weekly edition",
+    icon: "📰",
+    specs: [
+      "Full color options",
+      "Multiple size choices",
+      "Premium positioning",
+      "Design assistance",
+    ],
+  },
+  {
+    title: "Sponsored Content",
+    description: "Native advertising that tells your brand's story",
+    icon: "✏️",
+    specs: [
+      "Professional writing",
+      "SEO optimization",
+      "Social promotion",
+      "Permanent archive",
+    ],
+  },
+];
 
 const AdvertisePage = () => {
   const [showContactForm, setShowContactForm] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    package: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    package: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setShowContactForm(false);
-    alert("Thank you for your interest! Our advertising team will contact you shortly.");
+    alert(
+      "Thank you for your interest! Our advertising team will contact you shortly.",
+    );
   };
 
   return (
@@ -142,7 +181,7 @@ const AdvertisePage = () => {
       {/* Hero Section */}
       <div className="relative min-h-[70vh] flex flex-col">
         <div className="absolute inset-0">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80"
             alt="Advertising background"
             className="w-full h-full object-cover"
@@ -155,8 +194,9 @@ const AdvertisePage = () => {
               Grow Your Business with The Cardinal
             </h1>
             <p className="text-xl text-white/90 max-w-2xl mb-8">
-              Connect with Doylestown's most engaged audience through our trusted platform. 
-              Our multi-channel advertising solutions deliver real results for local businesses.
+              Connect with Doylestown's most engaged audience through our
+              trusted platform. Our multi-channel advertising solutions deliver
+              real results for local businesses.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
@@ -166,7 +206,7 @@ const AdvertisePage = () => {
                 Get Started
                 <ChevronRight size={20} />
               </button>
-              <a 
+              <a
                 href="#pricing"
                 className="bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors inline-flex items-center gap-2"
               >
@@ -177,12 +217,12 @@ const AdvertisePage = () => {
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            viewBox="0 0 1440 120" 
+          <svg
+            viewBox="0 0 1440 120"
             className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
             preserveAspectRatio="none"
           >
-            <path 
+            <path
               fill="currentColor"
               d="M0,120 C240,100 480,20 720,40 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
             />
@@ -191,18 +231,23 @@ const AdvertisePage = () => {
       </div>
 
       {/* Benefits Section */}
-      <section className="py-20 -mt-20 relative z-10">
+      <section id="benefits" className="py-20 -mt-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white rounded-lg p-8 shadow-lg transform hover:-translate-y-1 transition-transform">
+              <div
+                key={index}
+                className="bg-white rounded-lg p-8 shadow-lg transform hover:-translate-y-1 transition-transform"
+              >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-cardinal-red/10 rounded-lg">
                     <benefit.icon className="w-6 h-6 text-cardinal-red" />
                   </div>
                   <div>
                     <h3 className="font-bold text-xl">{benefit.title}</h3>
-                    <p className="text-charcoal-gray/70">{benefit.description}</p>
+                    <p className="text-charcoal-gray/70">
+                      {benefit.description}
+                    </p>
                   </div>
                 </div>
                 <div className="mt-4">
@@ -217,6 +262,298 @@ const AdvertisePage = () => {
         </div>
       </section>
 
+      {/* Advertising Solutions Section */}
+      <section id="options" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center font-playfair text-4xl font-bold text-charcoal-gray mb-16">
+            Advertising Solutions
+          </h2>
+
+          {/* Digital Display Ads - Left to Right */}
+          <div className="flex flex-col md:flex-row items-center mb-24">
+            <div className="w-full md:w-1/2 pr-0 md:pr-12">
+              <div className="bg-[#F2F0EF] p-8 rounded-lg">
+                <h3 className="font-bold text-2xl mb-4">Digital Display Ads</h3>
+                <p className="text-charcoal-gray/70 mb-4">
+                  High-visibility banner and sidebar advertisements
+                </p>
+                <ul className="space-y-2">
+                  {advertisingOptions[0].specs.map((spec, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
+                      <span>{spec}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="w-full md:w-1/2 mt-8 md:mt-0">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
+                alt="Digital Marketing"
+                className="rounded-lg shadow-xl w-full h-[300px] object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Print Advertising - Right to Left */}
+          <div className="flex flex-col-reverse md:flex-row items-center mb-24">
+            <div className="w-full md:w-1/2 mt-8 md:mt-0">
+              <img
+                src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
+                alt="Print Advertising"
+                className="rounded-lg shadow-xl w-full h-[300px] object-cover"
+              />
+            </div>
+            <div className="w-full md:w-1/2 pl-0 md:pl-12">
+              <div className="bg-[#F2F0EF] p-8 rounded-lg">
+                <h3 className="font-bold text-2xl mb-4">Print Advertising</h3>
+                <p className="text-charcoal-gray/70 mb-4">
+                  Traditional print advertisements in our weekly edition
+                </p>
+                <ul className="space-y-2">
+                  {advertisingOptions[1].specs.map((spec, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
+                      <span>{spec}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Sponsored Content - Left to Right */}
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="w-full md:w-1/2 pr-0 md:pr-12">
+              <div className="bg-[#F2F0EF] p-8 rounded-lg">
+                <h3 className="font-bold text-2xl mb-4">Sponsored Content</h3>
+                <p className="text-charcoal-gray/70 mb-4">
+                  Native advertising that tells your brand's story
+                </p>
+                <ul className="space-y-2">
+                  {advertisingOptions[2].specs.map((spec, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
+                      <span>{spec}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="w-full md:w-1/2 mt-8 md:mt-0">
+              <img
+                src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80"
+                alt="Content Marketing"
+                className="rounded-lg shadow-xl w-full h-[300px] object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Digital Advertising Section */}
+      <section
+        id="digital-ads"
+        className="py-20 bg-gradient-to-br from-white via-[#FFF8F6] to-[#F8F5F4] relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] opacity-5"></div>
+        <div className="absolute top-0 left-0 w-64 h-64 bg-cardinal-red/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-forest-green/5 rounded-full filter blur-3xl"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-16">
+            <div className="inline-block">
+              <span className="bg-cardinal-red/10 text-cardinal-red text-sm font-semibold px-4 py-1 rounded-full mb-4 block">
+                Digital Solutions
+              </span>
+            </div>
+            <h2 className="font-playfair text-5xl font-bold text-charcoal-gray mb-6 leading-tight bg-gradient-to-r from-cardinal-red to-forest-green bg-clip-text text-transparent">
+              Digital Advertising Solutions
+            </h2>
+            <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
+              Reach our engaged online audience through strategic digital
+              placements
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Display Ads",
+                icon: Globe,
+                description: "Premium banner positions across our website",
+                features: [
+                  "High-visibility placements",
+                  "Mobile-responsive",
+                  "Targeted campaigns",
+                ],
+                gradient: "from-blue-500/20 via-purple-500/20 to-pink-500/20",
+              },
+              {
+                title: "Newsletter Ads",
+                icon: Mail,
+                description: "Reach our dedicated email subscribers",
+                features: [
+                  "5,000+ subscribers",
+                  "High open rates",
+                  "Premium positioning",
+                ],
+                gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
+              },
+              {
+                title: "Native Content",
+                icon: Megaphone,
+                description: "Engaging sponsored content that resonates",
+                features: [
+                  "Professional writing",
+                  "Social promotion",
+                  "SEO optimization",
+                ],
+                gradient: "from-orange-500/20 via-red-500/20 to-rose-500/20",
+              },
+            ].map((option, index) => (
+              <div
+                key={index}
+                className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
+                ></div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-gradient-to-br from-cardinal-red/20 to-forest-green/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                    <option.icon className="w-7 h-7 text-cardinal-red" />
+                  </div>
+                  <h3 className="font-playfair text-2xl font-bold bg-gradient-to-r from-charcoal-gray to-charcoal-gray/80 bg-clip-text text-transparent">
+                    {option.title}
+                  </h3>
+                </div>
+                <p className="text-charcoal-gray/70 mb-8 text-lg">
+                  {option.description}
+                </p>
+                <ul className="space-y-4">
+                  {option.features.map((feature, featureIndex) => (
+                    <li
+                      key={featureIndex}
+                      className="flex items-center gap-3 group/item"
+                    >
+                      <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
+                        <CheckCircle2 className="w-5 h-5 text-forest-green" />
+                      </div>
+                      <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Print Ads Section */}
+      <section
+        id="print-ads"
+        className="py-20 bg-gradient-to-br from-[#F8F5F4] via-white to-[#F8F5F4] relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] opacity-5"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-forest-green/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cardinal-red/5 rounded-full filter blur-3xl"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-16">
+            <div className="inline-block">
+              <span className="bg-forest-green/10 text-forest-green text-sm font-semibold px-4 py-1 rounded-full mb-4 block">
+                Print Solutions
+              </span>
+            </div>
+            <h2 className="font-playfair text-5xl font-bold text-charcoal-gray mb-6 leading-tight bg-gradient-to-r from-forest-green to-cardinal-red bg-clip-text text-transparent">
+              Print Advertising Solutions
+            </h2>
+            <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
+              Make a lasting impression with our premium print advertising
+              options
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Full Page Ads",
+                icon: PieChart,
+                description: "Maximum visibility in our print edition",
+                features: [
+                  "Premium positioning",
+                  "High-quality print",
+                  "Design assistance",
+                ],
+                gradient:
+                  "from-emerald-500/20 via-green-500/20 to-forest-green/20",
+              },
+              {
+                title: "Section Sponsorship",
+                icon: Building2,
+                description: "Own a dedicated section of the paper",
+                features: [
+                  "Category exclusivity",
+                  "Regular presence",
+                  "Branded content",
+                ],
+                gradient: "from-red-500/20 via-rose-500/20 to-cardinal-red/20",
+              },
+              {
+                title: "Classified Ads",
+                icon: TrendingUp,
+                description: "Targeted local reach at affordable rates",
+                features: [
+                  "Flexible sizes",
+                  "Weekly placement",
+                  "Quick turnaround",
+                ],
+                gradient:
+                  "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
+              },
+            ].map((option, index) => (
+              <div
+                key={index}
+                className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
+                ></div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-gradient-to-br from-forest-green/20 to-cardinal-red/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                    <option.icon className="w-7 h-7 text-forest-green" />
+                  </div>
+                  <h3 className="font-playfair text-2xl font-bold bg-gradient-to-r from-charcoal-gray to-charcoal-gray/80 bg-clip-text text-transparent">
+                    {option.title}
+                  </h3>
+                </div>
+                <p className="text-charcoal-gray/70 mb-8 text-lg">
+                  {option.description}
+                </p>
+                <ul className="space-y-4">
+                  {option.features.map((feature, featureIndex) => (
+                    <li
+                      key={featureIndex}
+                      className="flex items-center gap-3 group/item"
+                    >
+                      <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
+                        <CheckCircle2 className="w-5 h-5 text-forest-green" />
+                      </div>
+                      <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Success Metrics */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -225,7 +562,8 @@ const AdvertisePage = () => {
               Our Reach & Impact
             </h2>
             <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
-              Connect with a highly engaged local audience through our trusted platform.
+              Connect with a highly engaged local audience through our trusted
+              platform.
             </p>
           </div>
 
@@ -241,36 +579,42 @@ const AdvertisePage = () => {
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span>Print Edition</span>
-                    <span className="font-medium">{metrics.readership.print.toLocaleString()}</span>
+                    <span className="font-medium">
+                      {metrics.readership.print.toLocaleString()}
+                    </span>
                   </div>
                   <div className="h-2 bg-cardinal-red/10 rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className="h-full bg-cardinal-red rounded-full"
-                      style={{ width: '50%' }}
+                      style={{ width: "50%" }}
                     />
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span>Digital Readers</span>
-                    <span className="font-medium">{metrics.readership.digital.toLocaleString()}</span>
+                    <span className="font-medium">
+                      {metrics.readership.digital.toLocaleString()}
+                    </span>
                   </div>
                   <div className="h-2 bg-cardinal-red/10 rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className="h-full bg-cardinal-red rounded-full"
-                      style={{ width: '35%' }}
+                      style={{ width: "35%" }}
                     />
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span>Newsletter Subscribers</span>
-                    <span className="font-medium">{metrics.readership.newsletter.toLocaleString()}</span>
+                    <span className="font-medium">
+                      {metrics.readership.newsletter.toLocaleString()}
+                    </span>
                   </div>
                   <div className="h-2 bg-cardinal-red/10 rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className="h-full bg-cardinal-red rounded-full"
-                      style={{ width: '15%' }}
+                      style={{ width: "15%" }}
                     />
                   </div>
                 </div>
@@ -286,19 +630,25 @@ const AdvertisePage = () => {
               </div>
               <div className="space-y-6">
                 <div>
-                  <div className="text-sm text-charcoal-gray/70">Average Time on Site</div>
+                  <div className="text-sm text-charcoal-gray/70">
+                    Average Time on Site
+                  </div>
                   <div className="font-playfair text-2xl font-bold text-cardinal-red">
                     {metrics.engagement.averageTimeOnSite}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-charcoal-gray/70">Click-Through Rate</div>
+                  <div className="text-sm text-charcoal-gray/70">
+                    Click-Through Rate
+                  </div>
                   <div className="font-playfair text-2xl font-bold text-cardinal-red">
                     {metrics.engagement.clickThroughRate}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-charcoal-gray/70">Social Media Following</div>
+                  <div className="text-sm text-charcoal-gray/70">
+                    Social Media Following
+                  </div>
                   <div className="font-playfair text-2xl font-bold text-cardinal-red">
                     {metrics.engagement.socialFollowers.toLocaleString()}
                   </div>
@@ -311,45 +661,51 @@ const AdvertisePage = () => {
                 <div className="p-2 bg-cardinal-red/10 rounded-lg">
                   <Target className="w-6 h-6 text-cardinal-red" />
                 </div>
-                <h3 className="font-playfair text-xl font-bold">Demographics</h3>
+                <h3 className="font-playfair text-xl font-bold">
+                  Demographics
+                </h3>
               </div>
               <div className="space-y-6">
                 <div>
                   <h4 className="font-medium mb-3">Age Distribution</h4>
                   <div className="space-y-2">
-                    {Object.entries(metrics.demographics.age).map(([range, percentage]) => (
-                      <div key={range}>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span>{range}</span>
-                          <span>{percentage}%</span>
+                    {Object.entries(metrics.demographics.age).map(
+                      ([range, percentage]) => (
+                        <div key={range}>
+                          <div className="flex justify-between text-sm mb-1">
+                            <span>{range}</span>
+                            <span>{percentage}%</span>
+                          </div>
+                          <div className="h-2 bg-cardinal-red/10 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-cardinal-red rounded-full"
+                              style={{ width: `${percentage}%` }}
+                            />
+                          </div>
                         </div>
-                        <div className="h-2 bg-cardinal-red/10 rounded-full overflow-hidden">
-                          <div 
-                            className="h-full bg-cardinal-red rounded-full"
-                            style={{ width: `${percentage}%` }}
-                          />
-                        </div>
-                      </div>
-                    ))}
+                      ),
+                    )}
                   </div>
                 </div>
                 <div>
                   <h4 className="font-medium mb-3">Household Income</h4>
                   <div className="space-y-2">
-                    {Object.entries(metrics.demographics.income).map(([range, percentage]) => (
-                      <div key={range}>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span>{range}</span>
-                          <span>{percentage}%</span>
+                    {Object.entries(metrics.demographics.income).map(
+                      ([range, percentage]) => (
+                        <div key={range}>
+                          <div className="flex justify-between text-sm mb-1">
+                            <span>{range}</span>
+                            <span>{percentage}%</span>
+                          </div>
+                          <div className="h-2 bg-cardinal-red/10 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-cardinal-red rounded-full"
+                              style={{ width: `${percentage}%` }}
+                            />
+                          </div>
                         </div>
-                        <div className="h-2 bg-cardinal-red/10 rounded-full overflow-hidden">
-                          <div 
-                            className="h-full bg-cardinal-red rounded-full"
-                            style={{ width: `${percentage}%` }}
-                          />
-                        </div>
-                      </div>
-                    ))}
+                      ),
+                    )}
                   </div>
                 </div>
               </div>
@@ -366,18 +722,19 @@ const AdvertisePage = () => {
               Advertising Packages
             </h2>
             <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
-              Choose the perfect package to reach your target audience and achieve your marketing goals.
+              Choose the perfect package to reach your target audience and
+              achieve your marketing goals.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pricingPackages.map((pkg, index) => (
-              <div 
+              <div
                 key={index}
                 className={`relative bg-white rounded-lg ${
-                  pkg.popular 
-                    ? 'ring-2 ring-cardinal-red shadow-xl' 
-                    : 'border border-[#333333]'
+                  pkg.popular
+                    ? "ring-2 ring-cardinal-red shadow-xl"
+                    : "border border-[#333333]"
                 }`}
               >
                 {pkg.popular && (
@@ -392,15 +749,21 @@ const AdvertisePage = () => {
                     <div className="p-2 bg-cardinal-red/10 rounded-lg">
                       <pkg.icon className="w-6 h-6 text-cardinal-red" />
                     </div>
-                    <h3 className="font-playfair text-xl font-bold">{pkg.name}</h3>
+                    <h3 className="font-playfair text-xl font-bold">
+                      {pkg.name}
+                    </h3>
                   </div>
-                  
+
                   <div className="mb-4">
                     <div className="font-playfair text-3xl font-bold text-cardinal-red">
                       {pkg.price}
-                      {pkg.price !== "Custom" && <span className="text-lg font-normal">/month</span>}
+                      {pkg.price !== "Custom" && (
+                        <span className="text-lg font-normal">/month</span>
+                      )}
                     </div>
-                    <p className="text-charcoal-gray/70 mt-2">{pkg.description}</p>
+                    <p className="text-charcoal-gray/70 mt-2">
+                      {pkg.description}
+                    </p>
                   </div>
 
                   <ul className="space-y-3 mb-8">
@@ -419,8 +782,8 @@ const AdvertisePage = () => {
                     }}
                     className={`w-full px-6 py-3 rounded-lg font-semibold transition-colors ${
                       pkg.popular
-                        ? 'bg-cardinal-red text-white hover:bg-cardinal-red/90'
-                        : 'border border-[#333333] hover:bg-cardinal-red hover:text-white hover:border-cardinal-red'
+                        ? "bg-cardinal-red text-white hover:bg-cardinal-red/90"
+                        : "border border-[#333333] hover:bg-cardinal-red hover:text-white hover:border-cardinal-red"
                     }`}
                   >
                     Get Started
@@ -438,7 +801,9 @@ const AdvertisePage = () => {
           <div className="bg-white rounded-lg max-w-2xl w-full">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="font-playfair text-2xl font-bold">Contact Our Advertising Team</h2>
+                <h2 className="font-playfair text-2xl font-bold">
+                  Contact Our Advertising Team
+                </h2>
                 <button
                   onClick={() => setShowContactForm(false)}
                   className="text-gray-500 hover:text-cardinal-red transition-colors"
@@ -458,7 +823,12 @@ const AdvertisePage = () => {
                       required
                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                       value={formData.name}
-                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          name: e.target.value,
+                        }))
+                      }
                     />
                   </div>
                   <div>
@@ -470,7 +840,12 @@ const AdvertisePage = () => {
                       required
                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                       value={formData.company}
-                      onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          company: e.target.value,
+                        }))
+                      }
                     />
                   </div>
                 </div>
@@ -485,7 +860,12 @@ const AdvertisePage = () => {
                       required
                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                       value={formData.email}
-                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          email: e.target.value,
+                        }))
+                      }
                     />
                   </div>
                   <div>
@@ -496,7 +876,12 @@ const AdvertisePage = () => {
                       type="tel"
                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                       value={formData.phone}
-                      onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          phone: e.target.value,
+                        }))
+                      }
                     />
                   </div>
                 </div>
@@ -509,14 +894,16 @@ const AdvertisePage = () => {
                     required
                     className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                     value={formData.package}
-                    onChange={(e) => setFormData(prev => ({ ...prev, package: e.target.value }))}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        package: e.target.value,
+                      }))
+                    }
                   >
                     <option value="">Select a package</option>
-                    {pricingPackages.map(pkg => (
-                      <option 
-                        key={pkg.name} 
-                        value={pkg.name}
-                      >
+                    {pricingPackages.map((pkg) => (
+                      <option key={pkg.name} value={pkg.name}>
                         {pkg.name}
                       </option>
                     ))}
@@ -532,7 +919,12 @@ const AdvertisePage = () => {
                     rows={4}
                     className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                     value={formData.message}
-                    onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        message: e.target.value,
+                      }))
+                    }
                     placeholder="Tell us about your advertising goals..."
                   />
                 </div>
