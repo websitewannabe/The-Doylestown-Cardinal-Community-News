@@ -264,13 +264,15 @@ const HomePage = () => {
                   </h3>
                 </div>
 
-                <Link
-                  to="/current-issue"
+                <a
+                  href="https://online.fliphtml5.com/onuot/wqtv/#p=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors flex items-center justify-center gap-2"
                 >
                   View Full Screen
                   <ChevronRight size={16} />
-                </Link>
+                </a>
               </div>
             </div>
           </div>
