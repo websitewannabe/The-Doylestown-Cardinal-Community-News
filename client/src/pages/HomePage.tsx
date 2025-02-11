@@ -297,11 +297,11 @@ const HomePage = () => {
                 </div>
 
                 {/* Current Issue Preview */}
-                <div className="h-[calc(100%-12rem)] bg-[#F2F0EF] rounded-lg overflow-hidden mb-6">
+                <div className="h-[calc(100%-8rem)] bg-[#F2F0EF] rounded-lg overflow-hidden mb-6">
                   <img
                     src="/images/The_Cardinal_Paper.png"
                     alt="Current Issue - The Cardinal"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 
