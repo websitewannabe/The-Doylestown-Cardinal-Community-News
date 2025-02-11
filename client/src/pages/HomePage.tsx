@@ -591,7 +591,11 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
+      </section>
+
+      {/* Featured Stories Section */}
+      <section className="py-20 bg-[#F2F0EF]">
   );
 };
 
