@@ -220,7 +220,7 @@ const HomePage = () => {
           <div className="flex gap-8">
             {/* Featured Stories Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
-              <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
+              <Link to="/article/1" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg"
@@ -228,16 +228,16 @@ const HomePage = () => {
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
+                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2 group-hover:text-cardinal-red">
                   How Our Emotions Contribute to Heart Disease
                 </h3>
                 <p className="text-charcoal-gray/80">
                   Did you know that our emotions can also contribute to risks of
                   heart attack and stroke?
                 </p>
-              </div>
+              </Link>
 
-              <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
+              <Link to="/article/2" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg"
@@ -245,16 +245,16 @@ const HomePage = () => {
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                  Cozy Cupid: Valentine’s Day Dates
+                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2 group-hover:text-cardinal-red">
+                  Cozy Cupid: Valentine's Day Dates
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  Are you looking for a cozy night with your love? Here’s your
+                  Are you looking for a cozy night with your love? Here's your
                   guide.
                 </p>
-              </div>
+              </Link>
 
-              <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
+              <Link to="/article/3" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png"
@@ -262,17 +262,17 @@ const HomePage = () => {
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                  “Life is for Living:” Organizational Wisdoms from Wingmoms
+                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2 group-hover:text-cardinal-red">
+                  "Life is for Living:" Organizational Wisdoms from Wingmoms
                 </h3>
                 <p className="text-charcoal-gray/80">
                   Nothing is for certain except death and taxes. And laundry. A
-                  loyal friend through life’s trials, Laundry will always be
+                  loyal friend through life's trials, Laundry will always be
                   there for us.
                 </p>
-              </div>
+              </Link>
 
-              <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
+              <Link to="/article/4" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.07.35-PM-888x1024.png"
@@ -280,7 +280,7 @@ const HomePage = () => {
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
+                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2 group-hover:text-cardinal-red">
                   Stage United Hosts A Night of Song at Tile Works
                 </h3>
                 <p className="text-charcoal-gray/80">
@@ -288,7 +288,7 @@ const HomePage = () => {
                   Night of Song, a monthly songwriter showcase hosted by Joe
                   Montone, a Bucks County music producer.
                 </p>
-              </div>
+              </Link>
             </div>
 
             {/* Current Edition Box */}
