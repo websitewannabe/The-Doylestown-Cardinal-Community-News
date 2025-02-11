@@ -309,7 +309,7 @@ const HomePage = () => {
                   <img
                     src="/images/The_Cardinal_Paper.png"
                     alt="Current Issue - The Cardinal"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
 
