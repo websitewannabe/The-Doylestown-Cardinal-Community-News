@@ -285,7 +285,7 @@ const HomePage = () => {
 
             {/* Current Edition Box */}
             <div className="hidden lg:block w-1/3">
-              <div className="border border-[#333333] rounded-lg p-8 sticky top-24 h-[calc(100vh-6rem)] max-h-[800px]">
+              <div className="border border-[#333333] rounded-lg p-8 sticky top-24 h-[calc(100vh-8rem)] max-h-[600px]">
                 <div className="mb-6">
                   <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-2">
                     Current Edition
