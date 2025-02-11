@@ -436,7 +436,7 @@ const DonatePage = () => {
           {/* Sponsorship Tiers */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {sponsorshipTiers.map((tier, index) => (
-              <div key={index} className="bg-white rounded-lg p-8">
+              <div key={index} className="bg-white rounded-lg p-8 flex flex-col">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-cardinal-red/10 rounded-lg">
                     <tier.icon className="w-6 h-6 text-cardinal-red" />
@@ -449,7 +449,7 @@ const DonatePage = () => {
                   </div>
                   <div className="text-charcoal-gray/60">{tier.period}</div>
                 </div>
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 flex-grow">
                   {tier.benefits.map((benefit, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-forest-green flex-shrink-0 mt-0.5" />
@@ -457,7 +457,7 @@ const DonatePage = () => {
                     </li>
                   ))}
                 </ul>
-                <button className="w-full px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors">
+                <button className="w-full mt-8 px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors">
                   Learn More
                 </button>
               </div>
