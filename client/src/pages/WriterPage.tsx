@@ -5,13 +5,13 @@ import { Mail, Twitter, Linkedin, Calendar, ChevronRight } from 'lucide-react';
 // Mock writer data
 const writers = {
   "sarah-mitchell": {
-    name: "Sarah Mitchell",
-    role: "Senior Reporter",
-    bio: `Sarah Mitchell has been covering local news in Doylestown for over a decade. With a background in investigative journalism and a deep connection to the community, she specializes in covering arts, culture, and local government.
+    name: "Jill Sonlin",
+    role: "Featured Writer",
+    bio: `Jill Sonlin has been covering local news in Doylestown for over a decade. With a background in investigative journalism and a deep connection to the community, she specializes in covering arts, culture, and local government.
 
 Her work has earned multiple Pennsylvania Press Association awards, and she's known for her in-depth coverage of issues that matter most to Doylestown residents.
 
-Sarah holds a degree in Journalism from Temple University and has previously worked with several major publications in Philadelphia before finding her home at The Cardinal.`,
+Jill holds a degree in Journalism from Temple University and has previously worked with several major publications in Philadelphia before finding her home at The Cardinal.`,
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
     email: "sarah@thecardinal.com",
     twitter: "https://twitter.com/sarahmitchell",
