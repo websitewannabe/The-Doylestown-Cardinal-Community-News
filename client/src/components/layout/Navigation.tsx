@@ -134,6 +134,7 @@ const Navigation = () => {
     if (path.includes('#')) {
       const [basePath, hash] = path.split('#');
       if (location.pathname !== basePath) {
+        localStorage.setItem('scrollToSection', hash);
         window.location.href = path;
       } else {
         const element = document.getElementById(hash);
@@ -143,6 +144,17 @@ const Navigation = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const scrollToSection = localStorage.getItem('scrollToSection');
+    if (scrollToSection) {
+      const element = document.getElementById(scrollToSection);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        localStorage.removeItem('scrollToSection');
+      }
+    }
+  }, [location]);
 
   return (
     <div className="fixed w-full z-50">
