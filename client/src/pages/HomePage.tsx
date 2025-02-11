@@ -179,21 +179,20 @@ const HomePage = () => {
               />
             </div>
           </div>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                to="/articles"
-                className="inline-flex items-center bg-cardinal-red text-off-white px-8 py-3 rounded-lg font-semibold hover:bg-forest-green transition-colors"
-              >
-                Read Latest Stories
-              </Link>
-              <Link
-                to="/current-issue"
-                className="inline-flex items-center gap-2 bg-off-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-off-white transition-colors"
-              >
-                Latest Issue
-                <ChevronRight size={20} />
-              </Link>
-            </div>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              to="/articles"
+              className="inline-flex items-center bg-cardinal-red text-off-white px-8 py-3 rounded-lg font-semibold hover:bg-forest-green transition-colors"
+            >
+              Read Latest Stories
+            </Link>
+            <Link
+              to="/current-issue"
+              className="inline-flex items-center gap-2 bg-off-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-off-white transition-colors"
+            >
+              Latest Issue
+              <ChevronRight size={20} />
+            </Link>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
