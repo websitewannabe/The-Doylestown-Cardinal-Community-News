@@ -213,72 +213,70 @@ const HomePage = () => {
               <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
-                    src="/images/the-county-theater.jpg"
+                    src="https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg"
                     alt="County Theater"
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                  County Theater Celebrates 100 Years
+                  How Our Emotions Contribute to Heart Disease
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  Doylestown's historic movie house marks a century of bringing
-                  cinema and culture to Bucks County with special anniversary
-                  events planned throughout 2024.
+                  Did you know that our emotions can also contribute to risks of
+                  heart attack and stroke?
                 </p>
               </div>
 
               <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
-                    src="/images/mercer-museum.jpg"
+                    src="https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg"
                     alt="Mercer Museum"
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                  New Exhibit Opens at Mercer Museum
+                  Cozy Cupid: Valentine’s Day Dates
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  "Tools of the Trade" exhibition showcases rare artifacts from
-                  early American craftsmen, offering visitors a glimpse into the
-                  region's rich industrial heritage.
+                  Are you looking for a cozy night with your love? Here’s your
+                  guide.
                 </p>
               </div>
 
               <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
-                    src="/images/farmers-market.jpg"
+                    src="https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png"
                     alt="Farmers Market"
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                  Farmers Market Expands Local Offerings
+                  “Life is for Living:” Organizational Wisdoms from Wingmoms
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  The Doylestown Farmers Market adds new vendors and extends its
-                  season, bringing more fresh, local produce and artisanal
-                  products to the community.
+                  Nothing is for certain except death and taxes. And laundry. A
+                  loyal friend through life’s trials, Laundry will always be
+                  there for us.
                 </p>
               </div>
 
               <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
-                    src="/images/local-business.jpg"
+                    src="https://doylestowncardinal.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.07.35-PM-888x1024.png"
                     alt="Local Business"
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                  Small Business Saturday Sets Records
+                  Stage United Hosts A Night of Song at Tile Works
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  Downtown Doylestown merchants report record-breaking sales
-                  during annual Small Business Saturday event, highlighting
-                  community support for local businesses.
+                  Join in the history of the Tile Works in Doylestown for A
+                  Night of Song, a monthly songwriter showcase hosted by Joe
+                  Montone, a Bucks County music producer.
                 </p>
               </div>
             </div>
