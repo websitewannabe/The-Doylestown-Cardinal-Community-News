@@ -116,20 +116,20 @@ const CommunitySpotlightPage = () => {
             {spotlights.map(spotlight => (
               <div
                 key={spotlight.id}
-                className="group relative overflow-hidden border border-[#333333] rounded-lg hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-lg hover:shadow-2xl transition-all duration-300 bg-white"
               >
                 <div className="relative h-64">
                   <img
                     src={spotlight.featured.image}
                     alt={spotlight.featured.name}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <span className="text-sm font-medium text-white/90 bg-cardinal-red px-3 py-1 rounded-full">
+                  <div className="absolute inset-0 bg-gradient-to-t from-cardinal-red/90 via-charcoal-gray/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+                  <div className="absolute bottom-6 left-6 right-6 transform group-hover:translate-y-[-4px] transition-transform duration-300">
+                    <span className="text-sm font-medium text-white bg-cardinal-red/90 px-4 py-1.5 rounded-full shadow-lg backdrop-blur-sm">
                       {spotlight.title}
                     </span>
-                    <h3 className="font-playfair text-2xl font-bold text-white mt-2 mb-2">
+                    <h3 className="font-playfair text-2xl font-bold text-white mt-3 mb-2 drop-shadow-lg">
                       {spotlight.featured.name}
                     </h3>
                     {spotlight.featured.address && (
@@ -152,16 +152,16 @@ const CommunitySpotlightPage = () => {
                     )}
                   </div>
                 </div>
-                <div className="p-6">
-                  <p className="text-charcoal-gray/80 mb-4">
+                <div className="p-6 bg-gradient-to-b from-white to-[#F8F5F4]">
+                  <p className="text-charcoal-gray/80 mb-4 line-clamp-3">
                     {spotlight.featured.description}
                   </p>
                   <Link
                     to={spotlight.link}
-                    className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
+                    className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors group/link"
                   >
                     View All {spotlight.title}s
-                    <ChevronRight size={16} className="ml-1" />
+                    <ChevronRight size={16} className="ml-1 transform group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
