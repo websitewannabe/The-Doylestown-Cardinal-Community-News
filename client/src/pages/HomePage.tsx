@@ -169,6 +169,21 @@ const HomePage = () => {
               <p className="text-2xl text-off-white mb-8 font-playfair italic">
                 Experience the heart of Bucks County
               </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  to="/articles"
+                  className="inline-flex items-center bg-cardinal-red text-off-white px-8 py-3 rounded-lg font-semibold hover:bg-forest-green transition-colors"
+                >
+                  Read Latest Stories
+                </Link>
+                <Link
+                  to="/current-issue"
+                  className="inline-flex items-center gap-2 bg-off-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-off-white transition-colors"
+                >
+                  Latest Issue
+                  <ChevronRight size={20} />
+                </Link>
+              </div>
             </div>
             <div className="w-px h-48 bg-white opacity-50"></div>
             <div className="w-48 h-48">
@@ -179,7 +194,6 @@ const HomePage = () => {
               />
             </div>
           </div>
-          <div className="flex flex-wrap gap-4">
             <Link
               to="/articles"
               className="inline-flex items-center bg-cardinal-red text-off-white px-8 py-3 rounded-lg font-semibold hover:bg-forest-green transition-colors"
