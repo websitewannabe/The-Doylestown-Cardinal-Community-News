@@ -144,7 +144,7 @@ const WriterPage = () => {
             {writer.articles.map((article) => (
               <Link
                 key={article.id}
-                to={`/news/${article.id}`}
+                to={`/articles/${article.id}`}
                 className="group"
               >
                 <div className="relative overflow-hidden rounded-lg mb-4">
