@@ -158,7 +158,7 @@ const HomePage = () => {
       <section className="relative h-screen">
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1524813686514-a57563d77965?auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1738360192565-756e9c7d71a5?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Historic Doylestown"
             className="w-full h-full object-cover blur-[3px] scale-105"
           />
