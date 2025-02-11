@@ -209,7 +209,8 @@ const HomePage = () => {
             </Link>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0">
+      </section>
+      <div className="absolute bottom-0 left-0 right-0">
           <div className="relative">
             <svg
               viewBox="0 0 1440 120"
