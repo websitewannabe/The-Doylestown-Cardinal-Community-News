@@ -73,7 +73,7 @@ const Navigation = () => {
     ]},
     { 
       name: 'Community', 
-      path: '/community', 
+      path: '#', 
       hasDropdown: true, 
       dropdownItems: [
         {
