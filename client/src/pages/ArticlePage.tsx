@@ -30,27 +30,27 @@ const article = {
     "https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg",
   content: `
     <h2 class="text-3xl mb-3">Persuasive emotions that harm</h2>
-    <p>Negative states of mind, including emotions of anger, bitterness, depression, loneliness, and anxiety, can each carry risks of doing a lot of damage to the heart and the body. To lower potential health risks, we must account for and nurish the mind-body connection. </p>
-    
-    <p>When we are upset, have a problem, or put unrealistic pressure on ourselves with perfectionism, these persuasive emotions can go on to cause powerful chemical responses in the body. They trigger stress hormones release, including cortisol and adrenaline, which are meant to protect us from immediate danger. Our body doesn’t know if we are in the wild being chased by a lion, or if we are arguing with our neighbor. But when stressful situations happen one after the other or are chronic and long-lasting, the body remains in a perpetual state of fight or flight. This leads to high levels of inflammation, elevated blood pressure, increased heart rate, and sleepless nights.</p>
+    <p class="mb-8">Negative states of mind, including emotions of anger, bitterness, depression, loneliness, and anxiety, can each carry risks of doing a lot of damage to the heart and the body. To lower potential health risks, we must account for and nurish the mind-body connection. </p>
 
-    <p>The chemical communication between the brain and the body puts extra stress on the heart muscle to work harder and faster. This added demand increases the risks of heart attack and stroke.</p>
+    <p class="mb-8">When we are upset, have a problem, or put unrealistic pressure on ourselves with perfectionism, these persuasive emotions can go on to cause powerful chemical responses in the body. They trigger stress hormones release, including cortisol and adrenaline, which are meant to protect us from immediate danger. Our body doesn’t know if we are in the wild being chased by a lion, or if we are arguing with our neighbor. But when stressful situations happen one after the other or are chronic and long-lasting, the body remains in a perpetual state of fight or flight. This leads to high levels of inflammation, elevated blood pressure, increased heart rate, and sleepless nights.</p>
 
-  <p>Chronic stress often leads to many unhealthy lifestyle habits too. This can be seen as withdrawal from others, emotional outbursts, lack of appetite, smoking, excessive alcohol use, poor diet, overeating, lack of energy, and a sedentary lifestyle.</p>
+    <p class="mb-8">The chemical communication between the brain and the body puts extra stress on the heart muscle to work harder and faster. This added demand increases the risks of heart attack and stroke.</p>
 
-  <p>The truth is, that life is stressful for all of us. It has a way of ebbing and flowing, in both amazing times and those really difficult ones. Adopting new ways of handling negative emotions is vital to our long-term heart health.</p>
+  <p class="mb-8">Chronic stress often leads to many unhealthy lifestyle habits too. This can be seen as withdrawal from others, emotional outbursts, lack of appetite, smoking, excessive alcohol use, poor diet, overeating, lack of energy, and a sedentary lifestyle.</p>
+
+  <p class="mb-8">The truth is, that life is stressful for all of us. It has a way of ebbing and flowing, in both amazing times and those really difficult ones. Adopting new ways of handling negative emotions is vital to our long-term heart health.</p>
 
   <h2 class="text-3xl mb-3">A Way Out</h2>
-  
-  <p>If you are experiencing emotional pain,  know that you are not alone.</p>
 
-    <p>Seek help to talk about your feelings with a trusted friend, family member, pastor, or therapist. Talking openly about negative feelings can be the start of dealing effectively with and healing emotional burdens of the heart that can affect physical heart health.</p>
+  <p class="mb-8">If you are experiencing emotional pain,  know that you are not alone.</p>
 
-    <p>Positive coping mechanisms can lower stress and ease emotional distress. Try taking a walk, bike riding, or getting outside for some fresh air in the sunshine. Take a yoga class, meditate, or learn deep breathing exercises that are calming. The 4-7-8 deep breathing technique is my go-to breathing exercise in times of stress. It  involves breathing in for 4 seconds, holding the breath for 7 seconds, and exhaling for 8 seconds.</p>
+    <p class="mb-8">Seek help to talk about your feelings with a trusted friend, family member, pastor, or therapist. Talking openly about negative feelings can be the start of dealing effectively with and healing emotional burdens of the heart that can affect physical heart health.</p>
 
-    <p>Get connected in your community. Volunteer or help someone in need. Giving to others is emotionally uplifting. Also, keep close to your faith. Having a spiritual belief system gives comfort, hope, and spiritual guidance through troubling times.</p>
+    <p class="mb-8">Positive coping mechanisms can lower stress and ease emotional distress. Try taking a walk, bike riding, or getting outside for some fresh air in the sunshine. Take a yoga class, meditate, or learn deep breathing exercises that are calming. The 4-7-8 deep breathing technique is my go-to breathing exercise in times of stress. It  involves breathing in for 4 seconds, holding the breath for 7 seconds, and exhaling for 8 seconds.</p>
 
-    <p>Lastly, start a gratitude journal even – and especially so –  in the face of a present struggle. According to research, those who practice daily gratitude show improvements in their health – lower inflammation and better health outcomes with physical diseases. Gratitude is a powerful medicine for the heart and is linked to a longer healthier life.</p>
+    <p class="mb-8">Get connected in your community. Volunteer or help someone in need. Giving to others is emotionally uplifting. Also, keep close to your faith. Having a spiritual belief system gives comfort, hope, and spiritual guidance through troubling times.</p>
+
+    <p class="mb-8">Lastly, start a gratitude journal even – and especially so –  in the face of a present struggle. According to research, those who practice daily gratitude show improvements in their health – lower inflammation and better health outcomes with physical diseases. Gratitude is a powerful medicine for the heart and is linked to a longer healthier life.</p>
   `,
   tags: ["Live"],
 };
