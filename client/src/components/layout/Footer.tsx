@@ -49,9 +49,11 @@ const Footer = () => {
           {/* About Section */}
           <div>
             <Link to="/" className="inline-block mb-6">
-              <span className="text-3xl font-serif italic font-bold text-cardinal-red">
-                The Cardinal
-              </span>
+              <img 
+                src="/images/Cardinal-Logo-Header.png" 
+                alt="The Cardinal"
+                className="h-14 w-auto"
+              />
             </Link>
             <p className="text-charcoal-gray/80 mb-6">
               Your trusted source for local news and stories in Doylestown, PA. 
