@@ -32,7 +32,11 @@ const Footer = () => {
             </div>
             <div className="flex-shrink-0">
               <button 
-                onClick={() => window.dispatchEvent(new CustomEvent('show-newsletter'))}
+                onClick={() => {
+                  const context = require('../../context/NewsletterContext');
+                  const { forceShowPopup } = context.useNewsletterContext();
+                  forceShowPopup();
+                }}
                 className="px-8 py-3 bg-white text-cardinal-red rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors inline-flex items-center gap-2"
               >
                 Subscribe to Newsletter
