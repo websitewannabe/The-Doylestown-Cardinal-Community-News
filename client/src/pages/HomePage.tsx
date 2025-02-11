@@ -161,42 +161,31 @@ const HomePage = () => {
           <div className="absolute inset-0 bg-charcoal-gray/40"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-          <div className="flex items-center gap-8 max-w-7xl">
-            <div className="flex-1">
-              <h1 className="font-playfair text-7xl md:text-[8.75rem] font-bold text-off-white mb-4">
-                Doylestown
-              </h1>
-              <p className="text-2xl text-off-white mb-8 font-playfair italic">
-                Experience the heart of Bucks County
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  to="/articles"
-                  className="inline-flex items-center bg-cardinal-red text-off-white px-8 py-3 rounded-lg font-semibold hover:bg-forest-green transition-colors"
-                >
-                  Read Latest Stories
-                </Link>
-                <Link
-                  to="/current-issue"
-                  className="inline-flex items-center gap-2 bg-off-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-off-white transition-colors"
-                >
-                  Latest Issue
-                  <ChevronRight size={20} />
-                </Link>
-              </div>
-            </div>
-            <div className="w-px h-48 bg-white opacity-50"></div>
-            <div className="w-48 h-48">
-              <img
-                src="/images/Favicon_Cardinal-Icon_512.png"
-                alt="The Cardinal Logo"
-                className="w-full h-full object-contain"
-              />
+          <div className="max-w-3xl">
+            <h1 className="font-playfair text-7xl md:text-[8.75rem] font-bold text-off-white mb-4">
+              Doylestown
+            </h1>
+            <p className="text-2xl text-off-white mb-8 font-playfair italic">
+              Experience the heart of Bucks County
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                to="/articles"
+                className="inline-flex items-center bg-cardinal-red text-off-white px-8 py-3 rounded-lg font-semibold hover:bg-forest-green transition-colors"
+              >
+                Read Latest Stories
+              </Link>
+              <Link
+                to="/current-issue"
+                className="inline-flex items-center gap-2 bg-off-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-off-white transition-colors"
+              >
+                Latest Issue
+                <ChevronRight size={20} />
+              </Link>
             </div>
           </div>
         </div>
-      </section>
-      <div className="absolute bottom-0 left-0 right-0">
+        <div className="absolute bottom-0 left-0 right-0">
           <div className="relative">
             <svg
               viewBox="0 0 1440 120"
@@ -224,70 +213,72 @@ const HomePage = () => {
               <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
-                    src="https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg"
+                    src="/images/the-county-theater.jpg"
                     alt="County Theater"
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                  How Our Emotions Contribute to Heart Disease
+                  County Theater Celebrates 100 Years
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  Did you know that our emotions can also contribute to risks of
-                  heart attack and stroke?
+                  Doylestown's historic movie house marks a century of bringing
+                  cinema and culture to Bucks County with special anniversary
+                  events planned throughout 2024.
                 </p>
               </div>
 
               <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
-                    src="https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg"
+                    src="/images/mercer-museum.jpg"
                     alt="Mercer Museum"
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                  Cozy Cupid: Valentine’s Day Dates
+                  New Exhibit Opens at Mercer Museum
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  Are you looking for a cozy night with your love? Here’s your
-                  guide.
+                  "Tools of the Trade" exhibition showcases rare artifacts from
+                  early American craftsmen, offering visitors a glimpse into the
+                  region's rich industrial heritage.
                 </p>
               </div>
 
               <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
-                    src="https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png"
+                    src="/images/farmers-market.jpg"
                     alt="Farmers Market"
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                  “Life is for Living:” Organizational Wisdoms from Wingmoms
+                  Farmers Market Expands Local Offerings
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  Nothing is for certain except death and taxes. And laundry. A
-                  loyal friend through life’s trials, Laundry will always be
-                  there for us.
+                  The Doylestown Farmers Market adds new vendors and extends its
+                  season, bringing more fresh, local produce and artisanal
+                  products to the community.
                 </p>
               </div>
 
               <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
-                    src="https://doylestowncardinal.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.07.35-PM-888x1024.png"
+                    src="/images/local-business.jpg"
                     alt="Local Business"
                     className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                  Stage United Hosts A Night of Song at Tile Works
+                  Small Business Saturday Sets Records
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  Join in the history of the Tile Works in Doylestown for A
-                  Night of Song, a monthly songwriter showcase hosted by Joe
-                  Montone, a Bucks County music producer.
+                  Downtown Doylestown merchants report record-breaking sales
+                  during annual Small Business Saturday event, highlighting
+                  community support for local businesses.
                 </p>
               </div>
             </div>
@@ -306,11 +297,11 @@ const HomePage = () => {
                 </div>
 
                 {/* Current Issue Preview */}
-                <div className="h-[calc(100%-12rem)] bg-[#F2F0EF] rounded-lg overflow-hidden mb-6">
+                <div className="h-[calc(100%-8rem)] bg-[#F2F0EF] rounded-lg overflow-hidden mb-6">
                   <img
                     src="/images/The_Cardinal_Paper.png"
                     alt="Current Issue - The Cardinal"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 
@@ -591,11 +582,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-    </div>
-      </section>
-
-      {/* Featured Stories Section */}
-      <section className="py-20 bg-[#F2F0EF]">
+    </>
   );
 };
 
