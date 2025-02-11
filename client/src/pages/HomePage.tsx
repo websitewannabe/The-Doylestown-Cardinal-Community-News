@@ -185,7 +185,7 @@ const HomePage = () => {
               </Link>
             </div>
           </div>
-          <div className="w-px h-48 bg-white/50 mx-12"></div>
+          <div className="w-[1.25px] h-48 bg-white/50 mx-12"></div>
           <div className="w-48 h-48">
             <img
               src="/images/Favicon_Cardinal-Icon_512.png"
