@@ -10,6 +10,9 @@ import {
   Info,
   Instagram,
   ExternalLink,
+  X,
+  Share2,
+  CalendarCheck,
 } from "lucide-react";
 import { useNewsletterContext } from "../context/NewsletterContext";
 
