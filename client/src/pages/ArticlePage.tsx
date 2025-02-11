@@ -1,46 +1,58 @@
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Calendar, Clock, User2, Share2, Facebook, Twitter, Linkedin, ChevronRight, ArrowLeft, Mail } from 'lucide-react';
+import React from "react";
+import { useParams, Link } from "react-router-dom";
+import {
+  Calendar,
+  Clock,
+  User2,
+  Share2,
+  Facebook,
+  Twitter,
+  Linkedin,
+  ChevronRight,
+  ArrowLeft,
+  Mail,
+} from "lucide-react";
 
 // Mock article data
 const article = {
   id: 1,
-  title: "Historic Doylestown Theater Announces Major Renovation Plans",
-  subtitle: "The beloved County Theater reveals ambitious restoration project aimed at preserving its art deco charm while modernizing facilities",
-  author: "Sarah Mitchell",
+  title: "How Our Emotions Contribute to Heart Disease",
+  subtitle:
+    "We all are familiar with the common risk factors of heart disease – high blood pressure, high cholesterol, being overweight, smoking, poor diet, and of course, not keeping up with with daily exercise.But did you know that our emotions can also contribute to risks of heart attack and stroke?",
+  author: "Jill Sonlin",
   authorRole: "Senior Reporter",
-  authorImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
-  date: "March 15, 2024",
+  authorImage:
+    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
+  date: "February 1, 2025",
   readingTime: "6 min read",
-  category: "Local News",
-  mainImage: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80",
+  category: "Live",
+  mainImage:
+    "https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg",
   content: `
-    <h2>A New Chapter for a Historic Landmark</h2>
-    <p>The County Theater, a cornerstone of Doylestown's cultural landscape since 1938, is embarking on an ambitious $3.5 million renovation project that promises to preserve its iconic art deco architecture while introducing modern amenities for today's moviegoers.</p>
+    <h2>Persuasive emotions that harm</h2>
+    <p>Negative states of mind, including emotions of anger, bitterness, depression, loneliness, and anxiety, can each carry risks of doing a lot of damage to the heart and the body. To lower potential health risks, we must account for and nurish the mind-body connection. </p>
     
-    <p>The renovation, scheduled to begin in June 2024, will expand the theater's lobby, upgrade its projection and sound systems, and add a third screening room while carefully maintaining the building's historic character.</p>
+    <p>When we are upset, have a problem, or put unrealistic pressure on ourselves with perfectionism, these persuasive emotions can go on to cause powerful chemical responses in the body. They trigger stress hormones release, including cortisol and adrenaline, which are meant to protect us from immediate danger. Our body doesn’t know if we are in the wild being chased by a lion, or if we are arguing with our neighbor. But when stressful situations happen one after the other or are chronic and long-lasting, the body remains in a perpetual state of fight or flight. This leads to high levels of inflammation, elevated blood pressure, increased heart rate, and sleepless nights.</p>
 
-    <h2>Community Support and Fundraising</h2>
-    <p>Local preservation groups and community members have rallied behind the project, with the "Save Our Theater" campaign already raising $2.1 million through private donations and community events.</p>
+    <p>The chemical communication between the brain and the body puts extra stress on the heart muscle to work harder and faster. This added demand increases the risks of heart attack and stroke.</p>
 
-    <blockquote>
-      "This renovation isn't just about updating a building—it's about preserving a piece of Doylestown's soul while ensuring it continues to serve future generations," says John Anderson, the theater's executive director.
-    </blockquote>
+  <p>Chronic stress often leads to many unhealthy lifestyle habits too. This can be seen as withdrawal from others, emotional outbursts, lack of appetite, smoking, excessive alcohol use, poor diet, overeating, lack of energy, and a sedentary lifestyle.</p>
 
-    <h2>Modern Amenities, Historic Charm</h2>
-    <p>Key features of the renovation include:</p>
-    <ul>
-      <li>State-of-the-art digital projection systems</li>
-      <li>Enhanced sound equipment</li>
-      <li>Expanded concession area</li>
-      <li>Improved accessibility features</li>
-      <li>Restored art deco architectural elements</li>
-    </ul>
+  <p>The truth is, that life is stressful for all of us. It has a way of ebbing and flowing, in both amazing times and those really difficult ones. Adopting new ways of handling negative emotions is vital to our long-term heart health.</p>
 
-    <h2>Looking to the Future</h2>
-    <p>The renovation project is expected to take approximately 8 months to complete, with the theater remaining partially open during specific phases of construction. A grand reopening celebration is planned for early 2025.</p>
+  <h2>A Way Out</h2>
+  
+  <p>If you are experiencing emotional pain,  know that you are not alone.</p>
+
+    <p>Seek help to talk about your feelings with a trusted friend, family member, pastor, or therapist. Talking openly about negative feelings can be the start of dealing effectively with and healing emotional burdens of the heart that can affect physical heart health.</p>
+
+    <p>Positive coping mechanisms can lower stress and ease emotional distress. Try taking a walk, bike riding, or getting outside for some fresh air in the sunshine. Take a yoga class, meditate, or learn deep breathing exercises that are calming. The 4-7-8 deep breathing technique is my go-to breathing exercise in times of stress. It  involves breathing in for 4 seconds, holding the breath for 7 seconds, and exhaling for 8 seconds.</p>
+
+    <p>Get connected in your community. Volunteer or help someone in need. Giving to others is emotionally uplifting. Also, keep close to your faith. Having a spiritual belief system gives comfort, hope, and spiritual guidance through troubling times.</p>
+
+    <p>Lastly, start a gratitude journal even – and especially so –  in the face of a present struggle. According to research, those who practice daily gratitude show improvements in their health – lower inflammation and better health outcomes with physical diseases. Gratitude is a powerful medicine for the heart and is linked to a longer healthier life.</p>
   `,
-  tags: ["Arts & Culture", "Community", "Development", "Historic Preservation"]
+  tags: ["Live"],
 };
 
 // Mock related articles
@@ -48,27 +60,33 @@ const relatedArticles = [
   {
     id: 2,
     title: "Local Artists to Create Murals for Theater's Construction Barriers",
-    excerpt: "Community artists will transform construction barriers into public art displays during renovation.",
-    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80",
+    excerpt:
+      "Community artists will transform construction barriers into public art displays during renovation.",
+    image:
+      "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80",
     date: "March 14, 2024",
-    readingTime: "4 min read"
+    readingTime: "4 min read",
   },
   {
     id: 3,
     title: "Remembering the County Theater: Community Shares Stories",
-    excerpt: "Residents share their cherished memories of the historic venue ahead of renovation.",
-    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80",
+    excerpt:
+      "Residents share their cherished memories of the historic venue ahead of renovation.",
+    image:
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80",
     date: "March 13, 2024",
-    readingTime: "5 min read"
+    readingTime: "5 min read",
   },
   {
     id: 4,
     title: "The Architecture of Memory: Preserving Art Deco in Doylestown",
-    excerpt: "A look at the town's efforts to maintain its architectural heritage.",
-    image: "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80",
+    excerpt:
+      "A look at the town's efforts to maintain its architectural heritage.",
+    image:
+      "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80",
     date: "March 12, 2024",
-    readingTime: "7 min read"
-  }
+    readingTime: "7 min read",
+  },
 ];
 
 const ArticlePage = () => {
@@ -79,9 +97,13 @@ const ArticlePage = () => {
     <div className="min-h-screen bg-[#F2F0EF] pt-32">
       <div className="container mx-auto px-4 max-w-5xl">
         <nav className="flex items-center space-x-2 text-gray-500 mb-8">
-          <Link to="/" className="hover:text-gray-700">Home</Link>
+          <Link to="/" className="hover:text-gray-700">
+            Home
+          </Link>
           <ChevronRight className="w-4 h-4" />
-          <Link to="/news" className="hover:text-gray-700">News</Link>
+          <Link to="/news" className="hover:text-gray-700">
+            News
+          </Link>
           <ChevronRight className="w-4 h-4" />
           <span className="text-gray-900">{article.category}</span>
         </nav>
@@ -97,12 +119,17 @@ const ArticlePage = () => {
                 <Clock className="w-4 h-4" />
                 {article.readingTime}
               </span>
-              <Link to={`/writer/${writerSlug}`} className="flex items-center gap-1 hover:text-gray-700">
+              <Link
+                to={`/writer/${writerSlug}`}
+                className="flex items-center gap-1 hover:text-gray-700"
+              >
                 <User2 className="w-4 h-4" />
                 {article.author}
               </Link>
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">{article.title}</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              {article.title}
+            </h1>
             <p className="text-xl text-gray-600">{article.subtitle}</p>
           </header>
 
@@ -112,17 +139,17 @@ const ArticlePage = () => {
             className="w-full h-[400px] object-cover rounded-lg mb-8"
           />
 
-          <div 
+          <div
             className="prose prose-lg max-w-none"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
 
           <footer className="mt-8 pt-8 border-t border-gray-200">
             <div className="flex flex-wrap gap-4 mb-8">
-              {article.tags.map(tag => (
+              {article.tags.map((tag) => (
                 <Link
                   key={tag}
-                  to={`/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                  to={`/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}
                   className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 text-sm"
                 >
                   {tag}
@@ -138,7 +165,10 @@ const ArticlePage = () => {
                   className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <Link to={`/writer/${writerSlug}`} className="font-medium text-gray-900 hover:text-gray-700">
+                  <Link
+                    to={`/writer/${writerSlug}`}
+                    className="font-medium text-gray-900 hover:text-gray-700"
+                  >
                     {article.author}
                   </Link>
                   <p className="text-sm text-gray-500">{article.authorRole}</p>
@@ -170,9 +200,11 @@ const ArticlePage = () => {
         </article>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Articles</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Related Articles
+          </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {relatedArticles.map(article => (
+            {relatedArticles.map((article) => (
               <Link
                 key={article.id}
                 to={`/article/${article.id}`}
@@ -187,7 +219,9 @@ const ArticlePage = () => {
                   <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600">
                     {article.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4">{article.excerpt}</p>
+                  <p className="text-gray-600 text-sm mb-4">
+                    {article.excerpt}
+                  </p>
                   <div className="flex items-center text-sm text-gray-500">
                     <Calendar className="w-4 h-4 mr-2" />
                     {article.date}
