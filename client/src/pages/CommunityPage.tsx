@@ -51,7 +51,7 @@ const spotlights = [
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
     description: "Leading local food drive initiatives that have helped over 1,000 families this year.",
     category: "Individual",
-    link: "/community/heroes/sarah-thompson",
+    link: "/community/spotlight/person",
     affiliation: "Doylestown Food Pantry"
   },
   {
@@ -61,7 +61,7 @@ const spotlights = [
     image: "https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&q=80",
     description: "Community-led sustainability program transforming public spaces with native plants.",
     category: "Project",
-    link: "/initiatives/green-doylestown",
+    link: "/community/spotlight/building",
     progress: "75% complete"
   },
   {
@@ -71,7 +71,7 @@ const spotlights = [
     image: "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?auto=format&fit=crop&q=80",
     description: "Annual celebration of local artists featuring live performances and exhibitions.",
     category: "Event",
-    link: "/events/arts-festival-2024",
+    link: "/community/spotlight/event",
     date: "April 15-16, 2024"
   },
   {
@@ -81,7 +81,7 @@ const spotlights = [
     image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80",
     description: "Historic art deco movie theater preserving cinematic heritage while showcasing independent films.",
     category: "Business",
-    link: "/business/county-theater",
+    link: "/community/spotlight/business",
     contact: {
       address: "20 E State St, Doylestown, PA 18901",
       phone: "(215) 345-6789",
