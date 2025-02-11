@@ -95,7 +95,7 @@ const Navigation = () => {
     },
     { 
       name: 'Support Us', 
-      path: '/support', 
+      path: '#', 
       hasDropdown: true, 
       dropdownItems: [
         {
