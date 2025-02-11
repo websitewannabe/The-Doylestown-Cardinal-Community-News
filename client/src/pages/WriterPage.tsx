@@ -21,30 +21,30 @@ Jill holds a degree in Journalism from Temple University and has previously work
     articles: [
       {
         id: 1,
-        title: "Cozy Cupid: Valentine’s Day Dates",
+        title: "Historic Doylestown Theater Announces Major Renovation Plans",
         excerpt:
-          "Are you looking for a cozy night with your love? Here’s your guide. ",
-        date: "February 1, 2025",
+          "The beloved County Theater reveals ambitious restoration project aimed at preserving its art deco charm while modernizing facilities.",
+        date: "March 15, 2024",
         image:
-          "https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg",
+          "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80",
       },
       {
         id: 2,
-        title: "How Our Emotions Contribute to Heart Disease",
+        title: "Local Artists Transform Downtown Alleyways",
         excerpt:
-          "Did you know that our emotions can also contribute to risks of heart attack and stroke?",
-        date: "February 1, 2025",
+          "New mural project brings vibrant art to unexpected spaces in Doylestown's historic district.",
+        date: "March 10, 2024",
         image:
-          "https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg",
+          "https://images.unsplash.com/photo-1738762390183-c18525eb3f8e?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       },
       {
         id: 3,
-        title: "“Life is for Living:” Organizational Wisdoms from Wingmoms",
+        title: "Council Approves New Cultural District Plan",
         excerpt:
           "Five-year development plan aims to enhance Doylestown's position as a regional arts destination.",
-        date: "February 1, 2025",
+        date: "March 5, 2024",
         image:
-          "https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png",
+          "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80",
       },
     ],
   },

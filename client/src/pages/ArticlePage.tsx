@@ -59,31 +59,31 @@ const article = {
 const relatedArticles = [
   {
     id: 2,
-    title: "Cozy Cupid: Valentine’s Day Dates",
+    title: "Local Artists to Create Murals for Theater's Construction Barriers",
     excerpt:
-      "Are you looking for a cozy night with your love? Here’s your guide. ",
+      "Community artists will transform construction barriers into public art displays during renovation.",
     image:
-      "https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg",
+      "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80",
     date: "March 14, 2024",
     readingTime: "4 min read",
   },
   {
     id: 3,
-    title: "Stage United Hosts A Night of Song at Tile Works",
+    title: "Remembering the County Theater: Community Shares Stories",
     excerpt:
-      "Join in the history of the Tile Works in Doylestown for A Night of Song, a monthly songwriter showcase hosted by Joe Montone, a Bucks County music producer.",
+      "Residents share their cherished memories of the historic venue ahead of renovation.",
     image:
-      "https://doylestowncardinal.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.07.35-PM-888x1024.png",
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80",
     date: "March 13, 2024",
     readingTime: "5 min read",
   },
   {
     id: 4,
-    title: "“Life is for Living:” Organizational Wisdoms from Wingmoms",
+    title: "The Architecture of Memory: Preserving Art Deco in Doylestown",
     excerpt:
-      "Nothing is for certain except death and taxes. And laundry. A loyal friend through life’s trials, Laundry will always be there for us. ",
+      "A look at the town's efforts to maintain its architectural heritage.",
     image:
-      "https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png",
+      "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80",
     date: "March 12, 2024",
     readingTime: "7 min read",
   },
