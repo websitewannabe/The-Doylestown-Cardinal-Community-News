@@ -253,7 +253,7 @@ const AnnualFundraiserPage = () => {
             {fundraiserDetails.sponsorshipLevels.map((level, index) => (
               <div
                 key={index}
-                className="bg-[#F2F0EF] rounded-lg p-8"
+                className="bg-[#F2F0EF] rounded-lg p-8 flex flex-col h-full"
               >
                 <div className="text-center mb-8">
                   <h3 className="font-playfair text-2xl font-bold mb-2">{level.name}</h3>
@@ -261,7 +261,7 @@ const AnnualFundraiserPage = () => {
                     {level.price}
                   </div>
                 </div>
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-4 flex-grow">
                   {level.benefits.map((benefit, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <Star className="w-5 h-5 text-forest-green flex-shrink-0 mt-0.5" />
@@ -269,7 +269,7 @@ const AnnualFundraiserPage = () => {
                     </li>
                   ))}
                 </ul>
-                <button className="w-full px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors">
+                <button className="w-full mt-8 px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors">
                   Become a Sponsor
                 </button>
               </div>
