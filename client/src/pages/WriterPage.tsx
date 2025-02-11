@@ -1,6 +1,6 @@
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Mail, Twitter, Linkedin, Calendar, ChevronRight } from 'lucide-react';
+import React from "react";
+import { useParams, Link } from "react-router-dom";
+import { Mail, Twitter, Linkedin, Calendar, ChevronRight } from "lucide-react";
 
 // Mock writer data
 const writers = {
@@ -12,7 +12,8 @@ const writers = {
 Her work has earned multiple Pennsylvania Press Association awards, and she's known for her in-depth coverage of issues that matter most to Doylestown residents.
 
 Jill holds a degree in Journalism from Temple University and has previously worked with several major publications in Philadelphia before finding her home at The Cardinal.`,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
     email: "sarah@thecardinal.com",
     twitter: "https://twitter.com/sarahmitchell",
     linkedin: "https://linkedin.com/in/sarahmitchell",
@@ -21,26 +22,32 @@ Jill holds a degree in Journalism from Temple University and has previously work
       {
         id: 1,
         title: "Historic Doylestown Theater Announces Major Renovation Plans",
-        excerpt: "The beloved County Theater reveals ambitious restoration project aimed at preserving its art deco charm while modernizing facilities.",
+        excerpt:
+          "The beloved County Theater reveals ambitious restoration project aimed at preserving its art deco charm while modernizing facilities.",
         date: "March 15, 2024",
-        image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80"
+        image:
+          "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80",
       },
       {
         id: 2,
         title: "Local Artists Transform Downtown Alleyways",
-        excerpt: "New mural project brings vibrant art to unexpected spaces in Doylestown's historic district.",
+        excerpt:
+          "New mural project brings vibrant art to unexpected spaces in Doylestown's historic district.",
         date: "March 10, 2024",
-        image: "https://images.unsplash.com/photo-1571511303867-43481a0a6a0a?auto=format&fit=crop&q=80"
+        image:
+          "https://images.unsplash.com/photo-1738762390183-c18525eb3f8e?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       },
       {
         id: 3,
         title: "Council Approves New Cultural District Plan",
-        excerpt: "Five-year development plan aims to enhance Doylestown's position as a regional arts destination.",
+        excerpt:
+          "Five-year development plan aims to enhance Doylestown's position as a regional arts destination.",
         date: "March 5, 2024",
-        image: "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80"
-      }
-    ]
-  }
+        image:
+          "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80",
+      },
+    ],
+  },
   // Add more writers as needed
 };
 
@@ -78,7 +85,9 @@ const WriterPage = () => {
                 <h1 className="font-playfair text-3xl font-bold text-charcoal-gray mb-2">
                   {writer.name}
                 </h1>
-                <div className="text-cardinal-red font-medium mb-4">{writer.role}</div>
+                <div className="text-cardinal-red font-medium mb-4">
+                  {writer.role}
+                </div>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {writer.expertise.map((skill, index) => (
                     <span
@@ -119,7 +128,9 @@ const WriterPage = () => {
               </div>
             </div>
             <div className="mt-6 prose max-w-none">
-              <p className="whitespace-pre-line text-charcoal-gray/80">{writer.bio}</p>
+              <p className="whitespace-pre-line text-charcoal-gray/80">
+                {writer.bio}
+              </p>
             </div>
           </div>
         </div>
@@ -130,7 +141,7 @@ const WriterPage = () => {
             Recent Articles by {writer.name}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {writer.articles.map(article => (
+            {writer.articles.map((article) => (
               <Link
                 key={article.id}
                 to={`/news/${article.id}`}
