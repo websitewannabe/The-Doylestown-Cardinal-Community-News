@@ -163,7 +163,7 @@ const HomePage = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="flex items-center justify-between w-full">
             <div>
-              <h1 className="font-playfair text-7xl md:text-[8.75rem] font-bold text-off-white mb-4">
+              <h1 className="font-playfair text-6xl md:text-[7.45rem] font-bold text-off-white mb-4">
                 Doylestown
               </h1>
               <p className="text-2xl text-off-white mb-8 font-playfair italic">
