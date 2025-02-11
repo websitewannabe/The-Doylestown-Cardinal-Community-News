@@ -210,35 +210,69 @@ const HomePage = () => {
           <div className="flex gap-8">
             {/* Featured Stories Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
-              {[1, 2, 3, 4].map((item) => (
-                <div
-                  key={item}
-                  className="group cursor-pointer p-4 border border-[#333333] rounded-lg"
-                >
-                  <div className="relative overflow-hidden rounded-lg mb-4">
-                    <img
-                      src={`https://images.unsplash.com/photo-${
-                        item === 1
-                          ? "1523580846011-d3a5bc25702b"
-                          : item === 2
-                            ? "1531829039722-d3fb3e705a4b"
-                            : item === 3
-                              ? "1522158637959-30385a09e0da"
-                              : "1504711434969-e33886168f5c"
-                      }?auto=format&fit=crop&q=80`}
-                      alt="Story thumbnail"
-                      className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                    Local Story Title Here
-                  </h3>
-                  <p className="text-charcoal-gray/80">
-                    A brief preview of the story goes here, giving readers a
-                    glimpse into what they can expect...
-                  </p>
+              <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
+                <div className="relative overflow-hidden rounded-lg mb-4">
+                  <img
+                    src="/images/the-county-theater.jpg"
+                    alt="County Theater"
+                    className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-              ))}
+                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
+                  County Theater Celebrates 100 Years
+                </h3>
+                <p className="text-charcoal-gray/80">
+                  Doylestown's historic movie house marks a century of bringing cinema and culture to Bucks County with special anniversary events planned throughout 2024.
+                </p>
+              </div>
+
+              <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
+                <div className="relative overflow-hidden rounded-lg mb-4">
+                  <img
+                    src="/images/mercer-museum.jpg"
+                    alt="Mercer Museum"
+                    className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
+                  New Exhibit Opens at Mercer Museum
+                </h3>
+                <p className="text-charcoal-gray/80">
+                  "Tools of the Trade" exhibition showcases rare artifacts from early American craftsmen, offering visitors a glimpse into the region's rich industrial heritage.
+                </p>
+              </div>
+
+              <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
+                <div className="relative overflow-hidden rounded-lg mb-4">
+                  <img
+                    src="/images/farmers-market.jpg"
+                    alt="Farmers Market"
+                    className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
+                  Farmers Market Expands Local Offerings
+                </h3>
+                <p className="text-charcoal-gray/80">
+                  The Doylestown Farmers Market adds new vendors and extends its season, bringing more fresh, local produce and artisanal products to the community.
+                </p>
+              </div>
+
+              <div className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
+                <div className="relative overflow-hidden rounded-lg mb-4">
+                  <img
+                    src="/images/local-business.jpg"
+                    alt="Local Business"
+                    className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
+                  Small Business Saturday Sets Records
+                </h3>
+                <p className="text-charcoal-gray/80">
+                  Downtown Doylestown merchants report record-breaking sales during annual Small Business Saturday event, highlighting community support for local businesses.
+                </p>
+              </div>
             </div>
 
             {/* Current Edition Box */}
