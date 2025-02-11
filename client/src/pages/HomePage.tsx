@@ -156,7 +156,7 @@ const HomePage = () => {
           <img
             src="https://images.unsplash.com/photo-1524813686514-a57563d77965?auto=format&fit=crop&q=80"
             alt="Historic Doylestown"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover blur-[3px]"
           />
           <div className="absolute inset-0 bg-charcoal-gray/40"></div>
         </div>
