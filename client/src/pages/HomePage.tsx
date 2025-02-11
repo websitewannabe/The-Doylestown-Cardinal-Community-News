@@ -254,13 +254,14 @@ const HomePage = () => {
                   </div>
                 </div>
 
-                {/* Current Issue Preview */}
-                <div className="h-[calc(100%-12rem)] bg-[#F2F0EF] rounded-lg overflow-hidden mb-6">
-                  <img 
-                    src="/current-issue.jpg" 
-                    alt="Current Issue - The Cardinal" 
-                    className="w-full h-full object-contain"
-                  />
+                {/* Issuu API Placeholder */}
+                <div className="h-[calc(100%-12rem)] bg-[#F2F0EF] rounded-lg border-2 border-dashed border-[#333333]/20 flex flex-col items-center justify-center p-8 text-center mb-6">
+                  <div className="bg-cardinal-red/10 p-4 rounded-full mb-4">
+                    <Info size={32} className="text-cardinal-red" />
+                  </div>
+                  <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
+                    Digital Edition Coming Soon
+                  </h3>
                 </div>
 
                 <a
