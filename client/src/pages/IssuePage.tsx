@@ -65,18 +65,13 @@ const IssuePage = () => {
                 </button>
               </div>
 
-              {/* Issuu API Placeholder */}
-              <div className="aspect-[4/3] bg-[#F2F0EF] rounded-lg border-2 border-dashed border-[#333333]/20 flex flex-col items-center justify-center p-8 text-center">
-                <div className="bg-cardinal-red/10 p-4 rounded-full mb-4">
-                  <Info size={32} className="text-cardinal-red" />
-                </div>
-                <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
-                  Digital Edition Coming Soon
-                </h3>
-                <p className="text-charcoal-gray/70 max-w-md">
-                  Our digital edition viewer is being integrated. Soon you'll be able to flip through 
-                  The Cardinal just like the print edition, with enhanced digital features.
-                </p>
+              {/* Current Issue Preview */}
+              <div className="aspect-[4/3] bg-[#F2F0EF] rounded-lg overflow-hidden">
+                <img 
+                  src="/images/The_Cardinal_Paper.png" 
+                  alt="Current Issue - The Cardinal" 
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
           </div>
