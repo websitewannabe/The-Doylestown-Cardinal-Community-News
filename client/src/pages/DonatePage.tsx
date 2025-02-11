@@ -266,7 +266,7 @@ const DonatePage = () => {
             {donationLevels.map(level => (
               <div
                 key={level.id}
-                className={`relative bg-[#F2F0EF] rounded-lg p-8 ${
+                className={`relative bg-[#F2F0EF] rounded-lg p-8 flex flex-col h-full ${
                   level.popular ? 'ring-2 ring-cardinal-red shadow-xl' : ''
                 }`}
               >
@@ -285,7 +285,7 @@ const DonatePage = () => {
                   </div>
                   <p className="text-charcoal-gray/70 mt-2">{level.description}</p>
                 </div>
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-4 mb-8 flex-grow">
                   {level.benefits.map((benefit, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-forest-green flex-shrink-0 mt-0.5" />
