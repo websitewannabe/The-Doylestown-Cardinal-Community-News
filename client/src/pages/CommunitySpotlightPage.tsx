@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Building2, Users, Calendar, MapPin, ChevronRight, Star } from 'lucide-react';
+import NominationForm from '../components/ui/NominationForm';
 
 // Mock data for spotlights
 const spotlights = [
@@ -72,6 +73,7 @@ const spotlights = [
 ];
 
 const CommunitySpotlightPage = () => {
+  const [showNominationForm, setShowNominationForm] = useState(false);
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       {/* Hero Section */}
@@ -181,13 +183,16 @@ const CommunitySpotlightPage = () => {
               Help us celebrate the people, businesses, and places that make our community special. 
               Nominate them for a spotlight feature.
             </p>
-            <Link
-              to="/community/nominate"
+            <button
+              onClick={() => setShowNominationForm(true)}
               className="inline-flex items-center px-8 py-3 bg-white text-cardinal-red rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors"
             >
               Submit a Nomination
               <ChevronRight size={20} className="ml-2" />
-            </Link>
+            </button>
+            {showNominationForm && (
+              <NominationForm onClose={() => setShowNominationForm(false)} />
+            )}
           </div>
         </div>
       </section>
