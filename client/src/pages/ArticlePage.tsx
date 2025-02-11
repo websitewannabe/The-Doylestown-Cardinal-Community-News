@@ -29,7 +29,7 @@ const article = {
   mainImage:
     "https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg",
   content: `
-    <h2>Persuasive emotions that harm</h2>
+    <h1>Persuasive emotions that harm</h1>
     <p>Negative states of mind, including emotions of anger, bitterness, depression, loneliness, and anxiety, can each carry risks of doing a lot of damage to the heart and the body. To lower potential health risks, we must account for and nurish the mind-body connection. </p>
     
     <p>When we are upset, have a problem, or put unrealistic pressure on ourselves with perfectionism, these persuasive emotions can go on to cause powerful chemical responses in the body. They trigger stress hormones release, including cortisol and adrenaline, which are meant to protect us from immediate danger. Our body doesn’t know if we are in the wild being chased by a lion, or if we are arguing with our neighbor. But when stressful situations happen one after the other or are chronic and long-lasting, the body remains in a perpetual state of fight or flight. This leads to high levels of inflammation, elevated blood pressure, increased heart rate, and sleepless nights.</p>
@@ -40,7 +40,7 @@ const article = {
 
   <p>The truth is, that life is stressful for all of us. It has a way of ebbing and flowing, in both amazing times and those really difficult ones. Adopting new ways of handling negative emotions is vital to our long-term heart health.</p>
 
-  <h2>A Way Out</h2>
+  <h1>A Way Out</h1>
   
   <p>If you are experiencing emotional pain,  know that you are not alone.</p>
 
