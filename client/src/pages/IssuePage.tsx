@@ -59,10 +59,15 @@ const IssuePage = () => {
                     March 20, 2024
                   </div>
                 </div>
-                <button className="px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors flex items-center gap-2">
+                <a 
+                  href="https://online.fliphtml5.com/onuot/wqtv/#p=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors flex items-center gap-2"
+                >
                   View Full Screen
                   <ChevronRight size={16} />
-                </button>
+                </a>
               </div>
 
               {/* Current Issue Preview */}
