@@ -293,7 +293,7 @@ const HomePage = () => {
 
             {/* Current Edition Box */}
             <div className="hidden lg:block w-[45%]">
-              <div className="border border-[#333333] rounded-lg p-8 fixed w-[calc(45%-2rem)] h-[calc(100vh-8rem)] max-h-[500px] bg-white">
+              <div className="border border-[#333333] rounded-lg p-8 sticky top-32 bg-white">
                 <div className="mb-6">
                   <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-2">
                     Current Edition
@@ -305,7 +305,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Current Issue Preview */}
-                <div className="h-[calc(100%-8rem)] bg-[#F2F0EF] rounded-lg overflow-hidden mb-6">
+                <div className="h-[400px] bg-[#F2F0EF] rounded-lg overflow-hidden mb-6">
                   <img
                     src="/images/The_Cardinal_Paper.png"
                     alt="Current Issue - The Cardinal"
