@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNewsletterContext } from '../../context/NewsletterContext';
 import { 
   Facebook, 
   Twitter, 
@@ -17,6 +18,7 @@ import {
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { forceShowPopup } = useNewsletterContext();
 
   return (
     <footer className="bg-[#F2F0EF]">
@@ -32,11 +34,7 @@ const Footer = () => {
             </div>
             <div className="flex-shrink-0">
               <button 
-                onClick={() => {
-                  const context = require('../../context/NewsletterContext');
-                  const { forceShowPopup } = context.useNewsletterContext();
-                  forceShowPopup();
-                }}
+                onClick={() => forceShowPopup()}
                 className="px-8 py-3 bg-white text-cardinal-red rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors inline-flex items-center gap-2"
               >
                 Subscribe to Newsletter
