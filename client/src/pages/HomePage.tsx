@@ -161,15 +161,16 @@ const HomePage = () => {
           <div className="absolute inset-0 bg-charcoal-gray/40"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-          <div className="max-w-3xl">
-            <h1 className="font-playfair text-7xl md:text-[8.75rem] font-bold text-off-white mb-4">
-              Doylestown
-            </h1>
-            <p className="text-2xl text-off-white mb-8 font-playfair italic">
-              Experience the heart of Bucks County
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
+          <div className="flex items-center justify-between w-full">
+            <div>
+              <h1 className="font-playfair text-7xl md:text-[8.75rem] font-bold text-off-white mb-4">
+                Doylestown
+              </h1>
+              <p className="text-2xl text-off-white mb-8 font-playfair italic">
+                Experience the heart of Bucks County
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
                 to="/articles"
                 className="inline-flex items-center bg-cardinal-red text-off-white px-8 py-3 rounded-lg font-semibold hover:bg-forest-green transition-colors"
               >
@@ -184,6 +185,15 @@ const HomePage = () => {
               </Link>
             </div>
           </div>
+          <div className="w-px h-48 bg-white/50 mx-12"></div>
+          <div className="w-48 h-48">
+            <img
+              src="/images/Favicon_Cardinal-Icon_512.png"
+              alt="The Cardinal Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
           <div className="relative">
