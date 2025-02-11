@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  ChevronRight, 
-  ChevronLeft, 
-  Quote, 
-  Calendar, 
-  MapPin, 
-  Clock, 
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  ChevronRight,
+  ChevronLeft,
+  Quote,
+  Calendar,
+  MapPin,
+  Clock,
   Info,
   Instagram,
-  ExternalLink
-} from 'lucide-react';
-import { useNewsletterContext } from '../context/NewsletterContext';
+  ExternalLink,
+} from "lucide-react";
+import { useNewsletterContext } from "../context/NewsletterContext";
 
 // Mock data for upcoming events
 const upcomingEvents = [
@@ -21,8 +21,9 @@ const upcomingEvents = [
     date: "April 15, 2024",
     time: "10:00 AM - 6:00 PM",
     location: "Downtown Doylestown",
-    image: "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?auto=format&fit=crop&q=80",
-    category: "Arts & Culture"
+    image:
+      "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?auto=format&fit=crop&q=80",
+    category: "Arts & Culture",
   },
   {
     id: 2,
@@ -30,8 +31,9 @@ const upcomingEvents = [
     date: "April 22, 2024",
     time: "7:30 PM - 10:00 PM",
     location: "County Theater",
-    image: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&q=80",
-    category: "Music"
+    image:
+      "https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&q=80",
+    category: "Music",
   },
   {
     id: 3,
@@ -39,70 +41,84 @@ const upcomingEvents = [
     date: "April 20, 2024",
     time: "8:00 AM - 1:00 PM",
     location: "Buckingham Green",
-    image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80",
-    category: "Community"
-  }
+    image:
+      "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80",
+    category: "Community",
+  },
 ];
 
 // Existing testimonials data
 const testimonials = [
   {
     id: 1,
-    quote: "The Cardinal has been my trusted source for local news for over a decade. Their in-depth coverage of community issues is unmatched.",
+    quote:
+      "The Cardinal has been my trusted source for local news for over a decade. Their in-depth coverage of community issues is unmatched.",
     author: "Sarah Thompson",
     role: "Local Business Owner",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
   },
   {
     id: 2,
-    quote: "As a community leader, I appreciate The Cardinal's commitment to balanced reporting and their dedication to highlighting local voices.",
+    quote:
+      "As a community leader, I appreciate The Cardinal's commitment to balanced reporting and their dedication to highlighting local voices.",
     author: "Michael Chen",
     role: "City Council Member",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80"
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80",
   },
   {
     id: 3,
-    quote: "The Cardinal's coverage of our local arts scene has helped bring our community together and showcase the incredible talent in Doylestown.",
+    quote:
+      "The Cardinal's coverage of our local arts scene has helped bring our community together and showcase the incredible talent in Doylestown.",
     author: "Emily Rodriguez",
     role: "Arts Foundation Director",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80"
-  }
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80",
+  },
 ];
 
 // Mock data for Instagram feed
 const instagramPosts = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&q=80",
-    caption: "Downtown Doylestown looking beautiful this spring! 🌸 #DoylestownPA",
+    image:
+      "https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&q=80",
+    caption:
+      "Downtown Doylestown looking beautiful this spring! 🌸 #DoylestownPA",
     likes: 245,
     comments: 18,
-    date: "2 days ago"
+    date: "2 days ago",
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80",
-    caption: "Historic Fonthill Castle lit up for the evening tour. ✨ #BucksCounty",
+    image:
+      "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80",
+    caption:
+      "Historic Fonthill Castle lit up for the evening tour. ✨ #BucksCounty",
     likes: 189,
     comments: 12,
-    date: "3 days ago"
+    date: "3 days ago",
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?auto=format&fit=crop&q=80",
-    caption: "The Doylestown Arts Festival was a huge success! Thank you to all who attended. 🎨",
+    image:
+      "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?auto=format&fit=crop&q=80",
+    caption:
+      "The Doylestown Arts Festival was a huge success! Thank you to all who attended. 🎨",
     likes: 312,
     comments: 24,
-    date: "4 days ago"
+    date: "4 days ago",
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80",
     caption: "Movie night at the County Theater. 🎬 #DoylestownNights",
     likes: 278,
     comments: 15,
-    date: "5 days ago"
-  }
+    date: "5 days ago",
+  },
 ];
 
 const HomePage = () => {
@@ -121,7 +137,9 @@ const HomePage = () => {
   }, [isAutoPlaying]);
 
   const handlePrevious = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentTestimonial(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
+    );
     setIsAutoPlaying(false);
   };
 
@@ -135,7 +153,7 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="relative h-screen">
         <div className="absolute inset-0">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1524813686514-a57563d77965?auto=format&fit=crop&q=80"
             alt="Historic Doylestown"
             className="w-full h-full object-cover"
@@ -151,13 +169,13 @@ const HomePage = () => {
               Experience the heart of Bucks County
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link 
+              <Link
                 to="/articles"
                 className="inline-flex items-center bg-cardinal-red text-off-white px-8 py-3 rounded-lg font-semibold hover:bg-forest-green transition-colors"
               >
                 Read Latest Stories
               </Link>
-              <Link 
+              <Link
                 to="/current-issue"
                 className="inline-flex items-center gap-2 bg-off-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-off-white transition-colors"
               >
@@ -169,12 +187,12 @@ const HomePage = () => {
         </div>
         <div className="absolute bottom-0 left-0 right-0">
           <div className="relative">
-            <svg 
-              viewBox="0 0 1440 120" 
+            <svg
+              viewBox="0 0 1440 120"
               className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
               preserveAspectRatio="none"
             >
-              <path 
+              <path
                 fill="currentColor"
                 d="M0,120 C240,100 480,20 720,40 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
               />
@@ -193,13 +211,21 @@ const HomePage = () => {
             {/* Featured Stories Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
               {[1, 2, 3, 4].map((item) => (
-                <div key={item} className="group cursor-pointer p-4 border border-[#333333] rounded-lg">
+                <div
+                  key={item}
+                  className="group cursor-pointer p-4 border border-[#333333] rounded-lg"
+                >
                   <div className="relative overflow-hidden rounded-lg mb-4">
-                    <img 
-                      src={`https://images.unsplash.com/photo-${item === 1 ? '1523580846011-d3a5bc25702b' : 
-                           item === 2 ? '1531829039722-d3fb3e705a4b' : 
-                           item === 3 ? '1522158637959-30385a09e0da' :
-                           '1504711434969-e33886168f5c'}?auto=format&fit=crop&q=80`}
+                    <img
+                      src={`https://images.unsplash.com/photo-${
+                        item === 1
+                          ? "1523580846011-d3a5bc25702b"
+                          : item === 2
+                            ? "1531829039722-d3fb3e705a4b"
+                            : item === 3
+                              ? "1522158637959-30385a09e0da"
+                              : "1504711434969-e33886168f5c"
+                      }?auto=format&fit=crop&q=80`}
                       alt="Story thumbnail"
                       className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
                     />
@@ -208,7 +234,8 @@ const HomePage = () => {
                     Local Story Title Here
                   </h3>
                   <p className="text-charcoal-gray/80">
-                    A brief preview of the story goes here, giving readers a glimpse into what they can expect...
+                    A brief preview of the story goes here, giving readers a
+                    glimpse into what they can expect...
                   </p>
                 </div>
               ))}
@@ -235,10 +262,6 @@ const HomePage = () => {
                   <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2">
                     Digital Edition Coming Soon
                   </h3>
-                  <p className="text-charcoal-gray/70 max-w-md">
-                    Our digital edition viewer is being integrated. Soon you'll be able to flip through 
-                    The Cardinal just like the print edition, with enhanced digital features.
-                  </p>
                 </div>
 
                 <Link
@@ -269,14 +292,10 @@ const HomePage = () => {
               <ChevronRight size={20} className="ml-1" />
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {upcomingEvents.map(event => (
-              <Link
-                key={event.id}
-                to={`/events#${event.id}`}
-                className="group"
-              >
+            {upcomingEvents.map((event) => (
+              <Link key={event.id} to={`/events#${event.id}`} className="group">
                 <div className="border border-[#333333] rounded-lg overflow-hidden">
                   <div className="relative h-48">
                     <img
@@ -323,10 +342,11 @@ const HomePage = () => {
             Community Voices
           </h2>
           <p className="text-lg text-charcoal-gray/70 text-center mb-12 max-w-2xl mx-auto">
-            Hear from our readers about the impact of local journalism in Doylestown
+            Hear from our readers about the impact of local journalism in
+            Doylestown
           </p>
-          
-          <div 
+
+          <div
             className="relative bg-white rounded-lg p-8 md:p-12"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
@@ -364,7 +384,7 @@ const HomePage = () => {
                 <blockquote className="text-xl md:text-2xl text-charcoal-gray text-center mb-8 font-playfair">
                   "{testimonials[currentTestimonial].quote}"
                 </blockquote>
-                
+
                 <div className="flex items-center justify-center">
                   <img
                     src={testimonials[currentTestimonial].image}
@@ -393,8 +413,8 @@ const HomePage = () => {
                     }}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       currentTestimonial === index
-                        ? 'w-6 bg-cardinal-red'
-                        : 'bg-charcoal-gray/20 hover:bg-cardinal-red/50'
+                        ? "w-6 bg-cardinal-red"
+                        : "bg-charcoal-gray/20 hover:bg-cardinal-red/50"
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -414,7 +434,8 @@ const HomePage = () => {
                 Follow Us on Instagram
               </h2>
               <p className="text-lg text-charcoal-gray/70">
-                Stay connected with The Cardinal through our social media updates.
+                Stay connected with The Cardinal through our social media
+                updates.
               </p>
             </div>
             <a
@@ -430,7 +451,7 @@ const HomePage = () => {
 
           {/* Instagram Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {instagramPosts.map(post => (
+            {instagramPosts.map((post) => (
               <div
                 key={post.id}
                 className="group relative bg-white rounded-lg overflow-hidden"
@@ -465,10 +486,13 @@ const HomePage = () => {
                 <Info className="w-6 h-6 text-cardinal-red" />
               </div>
               <div>
-                <h3 className="font-medium text-lg mb-2">Instagram Integration Coming Soon</h3>
+                <h3 className="font-medium text-lg mb-2">
+                  Instagram Integration Coming Soon
+                </h3>
                 <p className="text-charcoal-gray/70">
-                  We're working on integrating our live Instagram feed. Soon you'll be able to see our 
-                  latest posts directly on this page. Follow us on Instagram to stay updated in the meantime.
+                  We're working on integrating our live Instagram feed. Soon
+                  you'll be able to see our latest posts directly on this page.
+                  Follow us on Instagram to stay updated in the meantime.
                 </p>
                 <a
                   href="https://instagram.com/thecardinal"
@@ -494,10 +518,11 @@ const HomePage = () => {
                 Our Community, Our Stories
               </h2>
               <p className="text-lg text-charcoal-gray/80 mb-8">
-                For over 50 years, The Cardinal has been at the heart of Doylestown's 
-                community, sharing the stories that shape our town and bringing people together.
+                For over 50 years, The Cardinal has been at the heart of
+                Doylestown's community, sharing the stories that shape our town
+                and bringing people together.
               </p>
-              <button 
+              <button
                 onClick={forceShowPopup}
                 className="bg-forest-green text-off-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors"
               >
@@ -505,7 +530,7 @@ const HomePage = () => {
               </button>
             </div>
             <div className="relative">
-              <img 
+              <img
                 src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80"
                 alt="Doylestown Community"
                 className="rounded-lg shadow-xl"

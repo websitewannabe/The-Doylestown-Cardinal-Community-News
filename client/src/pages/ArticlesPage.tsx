@@ -1,39 +1,45 @@
-import React, { useState } from 'react';
-import { Search, Share2, ChevronRight, Calendar, User2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Search, Share2, ChevronRight, Calendar, User2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Mock data for demonstration
 const mockArticles = [
   {
     id: 1,
-    title: "Historic Doylestown Theater Announces Major Renovation Plans",
-    excerpt: "The beloved County Theater reveals ambitious restoration project aimed at preserving its art deco charm while modernizing facilities.",
-    category: "Local News",
-    author: "Sarah Mitchell",
-    date: "2024-03-15",
-    image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80",
-    tags: ["Arts", "Community", "Development"]
+    title: "How Our Emotions Contribute to Heart Disease",
+    excerpt:
+      "Did you know that our emotions can also contribute to risks of heart attack and stroke?",
+    category: "Live",
+    author: "Jill Sonlin",
+    date: "2025-02-01",
+    image:
+      "https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg",
+    tags: ["Live"],
   },
   {
     id: 2,
-    title: "Farmers Market Expands with New Artisanal Vendors",
-    excerpt: "Local market welcomes five new vendors, bringing unique crafts and organic produce to the community.",
+    title: "Cozy Cupid: Valentine’s Day Dates",
+    excerpt:
+      "Are you looking for a cozy night with your love? Here’s your guide.",
     category: "Community",
-    author: "Michael Chen",
-    date: "2024-03-14",
-    image: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80",
-    tags: ["Food", "Local Business", "Events"]
+    author: "Lauren Heine",
+    date: "2025-02-01",
+    image:
+      "https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg",
+    tags: ["Uncategorized"],
   },
   {
     id: 3,
-    title: "Town Council Unveils New Green Initiative",
-    excerpt: "Comprehensive sustainability plan includes solar panel installations and expanded recycling programs.",
-    category: "Politics",
-    author: "James Wilson",
-    date: "2024-03-13",
-    image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&q=80",
-    tags: ["Environment", "Government", "Development"]
-  }
+    title: "“Life is for Living:” Organizational Wisdoms from Wingmoms",
+    excerpt:
+      "Nothing is for certain except death and taxes. And laundry. A loyal friend through life’s trials, Laundry will always be there for us. ",
+    category: "Live",
+    author: "Natalya Bucuy",
+    date: "2025-02-01",
+    image:
+      "https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png",
+    tags: ["Live"],
+  },
 ];
 
 const categories = [
@@ -47,7 +53,7 @@ const categories = [
   "Life",
   "Business",
   "Technology",
-  "Real Estate"
+  "Real Estate",
 ];
 
 const ArticlesPage = () => {
@@ -56,7 +62,7 @@ const ArticlesPage = () => {
   const [visibleArticles, setVisibleArticles] = useState(6);
 
   const handleLoadMore = () => {
-    setVisibleArticles(prev => prev + 3);
+    setVisibleArticles((prev) => prev + 3);
   };
 
   return (
@@ -64,7 +70,7 @@ const ArticlesPage = () => {
       {/* Hero Section */}
       <div className="relative min-h-[60vh] flex flex-col mb-24">
         <div className="absolute inset-0">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
             alt="Journalism background"
             className="w-full h-full object-cover"
@@ -77,17 +83,19 @@ const ArticlesPage = () => {
               Stories That Matter, Articles That Connect
             </h1>
             <p className="text-xl text-white/90 max-w-2xl mb-8">
-              Discover the latest articles and in-depth coverage of Doylestown and Bucks County. From local politics to community events, we bring you the stories that shape our community.
+              Discover the latest articles and in-depth coverage of Doylestown
+              and Bucks County. From local politics to community events, we
+              bring you the stories that shape our community.
             </p>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            viewBox="0 0 1440 120" 
+          <svg
+            viewBox="0 0 1440 120"
             className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
             preserveAspectRatio="none"
           >
-            <path 
+            <path
               fill="currentColor"
               d="M0,120 C240,100 480,20 720,40 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
               className="transition-all duration-300"
@@ -103,7 +111,10 @@ const ArticlesPage = () => {
             {/* Search and Filter Bar */}
             <div className="border border-[#333333] rounded-lg p-4 mb-8 flex flex-col sm:flex-row gap-4">
               <div className="relative flex-grow">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-charcoal-gray/60" size={20} />
+                <Search
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-charcoal-gray/60"
+                  size={20}
+                />
                 <input
                   type="text"
                   placeholder="Search articles..."
@@ -117,17 +128,19 @@ const ArticlesPage = () => {
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
               >
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
                 ))}
               </select>
             </div>
 
             {/* Articles Grid */}
             <div className="grid grid-cols-1 gap-8 mb-12">
-              {mockArticles.slice(0, visibleArticles).map(article => (
-                <article 
-                  key={article.id} 
+              {mockArticles.slice(0, visibleArticles).map((article) => (
+                <article
+                  key={article.id}
                   className="border border-[#333333] rounded-lg overflow-hidden group cursor-pointer hover:shadow-md transition-shadow"
                 >
                   <div className="flex flex-col md:flex-row">
@@ -142,7 +155,9 @@ const ArticlesPage = () => {
                     </div>
                     <div className="md:w-2/3 p-6">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-sm font-medium text-cardinal-red">{article.category}</span>
+                        <span className="text-sm font-medium text-cardinal-red">
+                          {article.category}
+                        </span>
                         <span className="text-gray-400">•</span>
                         <div className="flex items-center text-sm text-gray-500">
                           <Calendar size={14} className="mr-1" />
@@ -150,7 +165,9 @@ const ArticlesPage = () => {
                         </div>
                       </div>
                       <h2 className="font-playfair text-xl font-bold mb-2 group-hover:text-cardinal-red transition-colors">
-                        <Link to={`/articles/${article.id}`}>{article.title}</Link>
+                        <Link to={`/articles/${article.id}`}>
+                          {article.title}
+                        </Link>
                       </h2>
                       <p className="text-gray-600 mb-4">{article.excerpt}</p>
                       <div className="flex items-center justify-between">
@@ -195,16 +212,18 @@ const ArticlesPage = () => {
             <div className="space-y-8 sticky top-32">
               {/* Categories - Now First */}
               <div className="border border-[#333333] rounded-lg p-6">
-                <h3 className="font-playfair text-xl font-bold mb-4">Categories</h3>
+                <h3 className="font-playfair text-xl font-bold mb-4">
+                  Categories
+                </h3>
                 <div className="space-y-2">
-                  {categories.slice(1).map(category => (
+                  {categories.slice(1).map((category) => (
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
                       className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
                         selectedCategory === category
-                          ? 'bg-cardinal-red text-white'
-                          : 'hover:bg-gray-100'
+                          ? "bg-cardinal-red text-white"
+                          : "hover:bg-gray-100"
                       }`}
                     >
                       {category}
@@ -215,9 +234,11 @@ const ArticlesPage = () => {
 
               {/* Popular Articles - Now Second */}
               <div className="border border-[#333333] rounded-lg p-6">
-                <h3 className="font-playfair text-xl font-bold mb-6">Popular Articles</h3>
+                <h3 className="font-playfair text-xl font-bold mb-6">
+                  Popular Articles
+                </h3>
                 <div className="space-y-6">
-                  {mockArticles.slice(0, 3).map(article => (
+                  {mockArticles.slice(0, 3).map((article) => (
                     <Link
                       key={article.id}
                       to={`/articles/${article.id}`}
@@ -246,9 +267,13 @@ const ArticlesPage = () => {
 
               {/* Tags Cloud */}
               <div className="border border-[#333333] rounded-lg p-6">
-                <h3 className="font-playfair text-xl font-bold mb-4">Popular Tags</h3>
+                <h3 className="font-playfair text-xl font-bold mb-4">
+                  Popular Tags
+                </h3>
                 <div className="flex flex-wrap gap-2">
-                  {Array.from(new Set(mockArticles.flatMap(article => article.tags))).map(tag => (
+                  {Array.from(
+                    new Set(mockArticles.flatMap((article) => article.tags)),
+                  ).map((tag) => (
                     <button
                       key={tag}
                       className="px-3 py-1 bg-gray-100 rounded-full text-sm hover:bg-cardinal-red hover:text-white transition-colors"
