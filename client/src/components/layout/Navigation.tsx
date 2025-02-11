@@ -186,9 +186,6 @@ const Navigation = () => {
                       }`}
                     >
                       {link.name}
-                      {link.hasDropdown && (
-                        <ChevronDown size={16} className="inline-block ml-1" />
-                      )}
                       <span
                         className="absolute -bottom-2 left-0 w-full h-0.5 bg-[#8B0000] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
                       />
