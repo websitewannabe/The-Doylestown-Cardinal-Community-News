@@ -220,7 +220,7 @@ const HomePage = () => {
           <div className="flex gap-8">
             {/* Featured Stories Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
-              <Link to="/article/1" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
+              <Link to="/articles/1" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg"
@@ -237,7 +237,7 @@ const HomePage = () => {
                 </p>
               </Link>
 
-              <Link to="/article/2" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
+              <Link to="/articles/2" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg"
@@ -254,7 +254,7 @@ const HomePage = () => {
                 </p>
               </Link>
 
-              <Link to="/article/3" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
+              <Link to="/articles/3" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png"
@@ -272,7 +272,7 @@ const HomePage = () => {
                 </p>
               </Link>
 
-              <Link to="/article/4" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
+              <Link to="/articles/4" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.07.35-PM-888x1024.png"
