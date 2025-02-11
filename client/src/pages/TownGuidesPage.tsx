@@ -258,101 +258,11 @@ const GuidePopup: React.FC<GuidePopupProps> = ({ guide, onClose }) => {
   );
 };
 
-interface WelcomePopupProps {
-  onClose: () => void;
-}
 
-const WelcomePopup: React.FC<WelcomePopupProps> = ({ onClose }) => {
-  return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-2xl w-full">
-        <div className="p-8">
-          <div className="flex justify-between items-center mb-6">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-cardinal-red/10 rounded-lg">
-                <Info size={24} className="text-cardinal-red" />
-              </div>
-              <h2 className="font-playfair text-2xl font-bold text-charcoal-gray">
-                Welcome to Town Guides
-              </h2>
-            </div>
-            <button
-              onClick={onClose}
-              className="p-2 text-charcoal-gray/60 hover:text-cardinal-red transition-colors"
-              aria-label="Close welcome message"
-            >
-              <X size={24} />
-            </button>
-          </div>
-
-          <div className="space-y-6 mb-8">
-            <div>
-              <h3 className="font-medium text-charcoal-gray mb-2">Discover Doylestown</h3>
-              <p className="text-charcoal-gray/70">
-                Explore our curated collection of local guides, designed to help you discover 
-                the best of Doylestown. From historic walks to culinary adventures, each guide 
-                offers a unique perspective on our town.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-medium text-charcoal-gray mb-2">How to Use Guides</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-start gap-2">
-                  <div className="p-2 bg-cardinal-red/10 rounded-lg">
-                    <Map size={16} className="text-cardinal-red" />
-                  </div>
-                  <div className="text-sm">
-                    <p className="font-medium">Interactive Maps</p>
-                    <p className="text-charcoal-gray/70">Access detailed route maps and points of interest</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <div className="p-2 bg-cardinal-red/10 rounded-lg">
-                    <Navigation size={16} className="text-cardinal-red" />
-                  </div>
-                  <div className="text-sm">
-                    <p className="font-medium">Turn-by-Turn Directions</p>
-                    <p className="text-charcoal-gray/70">Follow easy-to-use navigation guides</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex justify-end">
-            <button
-              onClick={onClose}
-              className="px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors"
-            >
-              Start Exploring
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const TownGuidesPage = () => {
   const [selectedGuide, setSelectedGuide] = useState<typeof townGuides[0] | null>(null);
-  const [showWelcome, setShowWelcome] = useState(false);
-
-  useEffect(() => {
-    // Show welcome popup after 2 seconds if it hasn't been shown before
-    const hasSeenWelcome = localStorage.getItem('hasSeenTownGuidesWelcome');
-    if (!hasSeenWelcome) {
-      const timer = setTimeout(() => {
-        setShowWelcome(true);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  const handleWelcomeClose = () => {
-    setShowWelcome(false);
-    localStorage.setItem('hasSeenTownGuidesWelcome', 'true');
-  };
+  
 
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
@@ -488,7 +398,6 @@ const TownGuidesPage = () => {
       </section>
 
       {/* Popups */}
-      {showWelcome && <WelcomePopup onClose={handleWelcomeClose} />}
       {selectedGuide && (
         <GuidePopup
           guide={selectedGuide}
