@@ -731,7 +731,7 @@ const AdvertisePage = () => {
             {pricingPackages.map((pkg, index) => (
               <div
                 key={index}
-                className={`relative bg-white rounded-lg ${
+                className={`relative bg-white rounded-lg flex flex-col h-full ${
                   pkg.popular
                     ? "ring-2 ring-cardinal-red shadow-xl"
                     : "border border-[#333333]"
@@ -744,7 +744,7 @@ const AdvertisePage = () => {
                     </span>
                   </div>
                 )}
-                <div className="p-8">
+                <div className="p-8 flex-grow flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="p-2 bg-cardinal-red/10 rounded-lg">
                       <pkg.icon className="w-6 h-6 text-cardinal-red" />
@@ -775,19 +775,21 @@ const AdvertisePage = () => {
                     ))}
                   </ul>
 
-                  <button
-                    onClick={() => {
-                      setSelectedPackage(pkg.name);
-                      setShowContactForm(true);
-                    }}
-                    className={`w-full px-6 py-3 rounded-lg font-semibold transition-colors ${
-                      pkg.popular
-                        ? "bg-cardinal-red text-white hover:bg-cardinal-red/90"
-                        : "border border-[#333333] hover:bg-cardinal-red hover:text-white hover:border-cardinal-red"
-                    }`}
-                  >
-                    Get Started
-                  </button>
+                  <div className="mt-auto pt-8">
+                    <button
+                      onClick={() => {
+                        setSelectedPackage(pkg.name);
+                        setShowContactForm(true);
+                      }}
+                      className={`w-full px-6 py-3 rounded-lg font-semibold transition-colors ${
+                        pkg.popular
+                          ? "bg-cardinal-red text-white hover:bg-cardinal-red/90"
+                          : "border border-[#333333] hover:bg-cardinal-red hover:text-white hover:border-cardinal-red"
+                      }`}
+                    >
+                      Get Started
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
