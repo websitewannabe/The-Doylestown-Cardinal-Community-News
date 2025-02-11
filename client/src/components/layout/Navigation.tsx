@@ -104,6 +104,7 @@ const Navigation = () => {
           subItems: [
             { name: "Pricing", path: "/advertise#pricing" },
             { name: "Benefits", path: "/advertise#benefits" },
+            { name: "Options", path: "/advertise#options" },
             { name: "Digital Ads", path: "/advertise#digital-ads" },
             { name: "Print Ads", path: "/advertise#print-ads" }
           ]
