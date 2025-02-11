@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { X, Mail, ChevronRight } from 'lucide-react';
 
 interface NewsletterPopupProps {
+  show: boolean;
   onClose: () => void;
 }
 
-const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ onClose }) => {
+const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ show, onClose }) => {
+  if (!show) return null;
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
