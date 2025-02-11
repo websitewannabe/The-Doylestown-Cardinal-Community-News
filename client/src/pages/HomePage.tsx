@@ -124,6 +124,7 @@ const instagramPosts = [
 const HomePage = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [selectedEvent, setSelectedEvent] = useState<typeof upcomingEvents[0] | null>(null);
   const { forceShowPopup } = useNewsletterContext();
 
   useEffect(() => {
@@ -346,7 +347,7 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {upcomingEvents.map((event) => (
-              <Link key={event.id} to={`/events#${event.id}`} className="group">
+              <div key={event.id} className="group cursor-pointer" onClick={() => setSelectedEvent(event)}>
                 <div className="border border-[#333333] rounded-lg overflow-hidden">
                   <div className="relative h-48">
                     <img
@@ -380,7 +381,7 @@ const HomePage = () => {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -590,6 +591,53 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+    {/* Event Modal */}
+      {selectedEvent && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-2xl w-full">
+            <div className="relative">
+              <img
+                src={selectedEvent.image}
+                alt={selectedEvent.title}
+                className="w-full h-64 object-cover rounded-t-lg"
+              />
+              <button
+                onClick={() => setSelectedEvent(null)}
+                className="absolute top-4 right-4 p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <div className="p-6">
+              <h2 className="font-playfair text-2xl font-bold mb-4">{selectedEvent.title}</h2>
+              <div className="space-y-4 mb-6">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-cardinal-red" />
+                  <span>{selectedEvent.date}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-cardinal-red" />
+                  <span>{selectedEvent.time}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-cardinal-red" />
+                  <span>{selectedEvent.location}</span>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <button className="flex items-center gap-2 px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors">
+                  <CalendarCheck size={20} />
+                  Add to Calendar
+                </button>
+                <button className="flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                  <Share2 size={20} />
+                  Share Event
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
