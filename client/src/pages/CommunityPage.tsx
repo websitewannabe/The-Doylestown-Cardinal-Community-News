@@ -369,7 +369,7 @@ const CommunityPage = () => {
                     {spotlights[currentSpotlight].description}
                   </p>
                   <Link
-                    to={spotlights[currentSpotlight].link}
+                    to={spotlights[currentSpotlight].title === "Advertiser of the Month" ? "/community/spotlight/advertiser" : spotlights[currentSpotlight].link}
                     className="inline-flex items-center text-white hover:text-warm-gold transition-colors"
                   >
                     Read More
@@ -598,7 +598,7 @@ const CommunityPage = () => {
                   <h3 className="font-medium mb-3">Date</h3>
                   <input
                     type="date"
-                    className="w-full px-4 py-2 border border-[#333333] rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20 bg-[#F2F0EF]"
+                    className="w-full px-4 py-2 border border-[#333333] rounded-lg focus:outline-none focus:ring-2 focus:ring:cardinal-red/20 bg-[#F2F0EF]"
                     value={dateFilter}
                     onChange={(e) => setDateFilter(e.target.value)}
                   />
