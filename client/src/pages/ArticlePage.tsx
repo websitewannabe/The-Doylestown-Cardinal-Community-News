@@ -127,7 +127,7 @@ const ArticlePage = () => {
                 {article.author}
               </Link>
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">
               {article.title}
             </h1>
             <p className="text-xl text-gray-600">{article.subtitle}</p>
