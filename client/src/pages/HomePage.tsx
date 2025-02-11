@@ -222,7 +222,9 @@ const HomePage = () => {
                   County Theater Celebrates 100 Years
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  Doylestown's historic movie house marks a century of bringing cinema and culture to Bucks County with special anniversary events planned throughout 2024.
+                  Doylestown's historic movie house marks a century of bringing
+                  cinema and culture to Bucks County with special anniversary
+                  events planned throughout 2024.
                 </p>
               </div>
 
@@ -238,7 +240,9 @@ const HomePage = () => {
                   New Exhibit Opens at Mercer Museum
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  "Tools of the Trade" exhibition showcases rare artifacts from early American craftsmen, offering visitors a glimpse into the region's rich industrial heritage.
+                  "Tools of the Trade" exhibition showcases rare artifacts from
+                  early American craftsmen, offering visitors a glimpse into the
+                  region's rich industrial heritage.
                 </p>
               </div>
 
@@ -254,7 +258,9 @@ const HomePage = () => {
                   Farmers Market Expands Local Offerings
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  The Doylestown Farmers Market adds new vendors and extends its season, bringing more fresh, local produce and artisanal products to the community.
+                  The Doylestown Farmers Market adds new vendors and extends its
+                  season, bringing more fresh, local produce and artisanal
+                  products to the community.
                 </p>
               </div>
 
@@ -270,7 +276,9 @@ const HomePage = () => {
                   Small Business Saturday Sets Records
                 </h3>
                 <p className="text-charcoal-gray/80">
-                  Downtown Doylestown merchants report record-breaking sales during annual Small Business Saturday event, highlighting community support for local businesses.
+                  Downtown Doylestown merchants report record-breaking sales
+                  during annual Small Business Saturday event, highlighting
+                  community support for local businesses.
                 </p>
               </div>
             </div>
@@ -290,9 +298,9 @@ const HomePage = () => {
 
                 {/* Current Issue Preview */}
                 <div className="h-[calc(100%-12rem)] bg-[#F2F0EF] rounded-lg overflow-hidden mb-6">
-                  <img 
-                    src="/images/The_Cardinal_Paper.png" 
-                    alt="Current Issue - The Cardinal" 
+                  <img
+                    src="/images/The_Cardinal_Paper.png"
+                    alt="Current Issue - The Cardinal"
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -303,7 +311,7 @@ const HomePage = () => {
                   rel="noopener noreferrer"
                   className="w-full px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors flex items-center justify-center gap-2"
                 >
-                  View Full Screen
+                  View
                   <ChevronRight size={16} />
                 </a>
               </div>
