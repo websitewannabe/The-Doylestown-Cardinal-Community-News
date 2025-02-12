@@ -321,15 +321,15 @@ const EventsPage = () => {
             <div className="space-y-8">
               <div className="inline-block">
                 <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-cardinal-red/10 text-cardinal-red font-medium text-sm">
-                  Featured Events
+                  April 2024 Event Spotlight
                 </span>
               </div>
               <h2 className="font-playfair text-5xl font-bold text-charcoal-gray leading-tight">
-                Connect with Your <br/>
-                <span className="text-cardinal-red">Community</span>
+                Doylestown <br/>
+                <span className="text-cardinal-red">Arts Festival</span>
               </h2>
               <p className="text-lg text-charcoal-gray/80">
-                From local festivals to cultural celebrations, discover events that bring Doylestown together. Join us in creating memorable experiences and strengthening our community bonds.
+                Annual arts festival featuring local artists, live music, and food vendors.
               </p>
             </div>
             <div className="relative">
@@ -338,14 +338,14 @@ const EventsPage = () => {
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
                     <img 
                       src="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb" 
-                      alt="Community Event"
+                      alt="Arts Festival Main"
                       className="w-full h-48 object-cover"
                     />
                   </div>
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
                     <img 
-                      src="https://images.unsplash.com/photo-1511192336575-5a79af67a629" 
-                      alt="Music Event"
+                      src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2" 
+                      alt="Arts Festival Crowd"
                       className="w-full h-64 object-cover"
                     />
                   </div>
@@ -353,15 +353,15 @@ const EventsPage = () => {
                 <div className="space-y-4 pt-8">
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
                     <img 
-                      src="https://images.unsplash.com/photo-1488459716781-31db52582fe9" 
-                      alt="Food Event"
+                      src="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212" 
+                      alt="Arts Festival Display"
                       className="w-full h-64 object-cover"
                     />
                   </div>
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
                     <img 
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e" 
-                      alt="Cultural Event"
+                      src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4" 
+                      alt="Arts Festival Evening"
                       className="w-full h-48 object-cover"
                     />
                   </div>
