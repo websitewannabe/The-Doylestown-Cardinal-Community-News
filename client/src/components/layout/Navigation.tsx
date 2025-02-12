@@ -188,7 +188,7 @@ const Navigation = () => {
       <div className="pt-4 px-2 pb-2">
         <nav
           className={`
-            max-w-7xl w-[calc(95%-4px)] mx-auto
+            w-[calc(95%-4px)] mx-auto
             rounded-2xl
             transition-all duration-300
             bg-[#F2F0EF]
