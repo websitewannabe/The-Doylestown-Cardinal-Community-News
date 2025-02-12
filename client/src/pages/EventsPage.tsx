@@ -312,18 +312,11 @@ const EventsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12">
-        <div className="flex flex-col items-center gap-6 mb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-8">
+        <div className="flex flex-col items-center gap-6 mb-16">
           <h1 className="font-playfair text-4xl font-bold text-charcoal-gray text-center">
             Discover What's Happening
           </h1>
-          <button
-            onClick={() => setIsSubmitFormOpen(true)}
-            className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors flex items-center gap-2"
-          >
-            <Plus size={20} />
-            Submit Your Event
-          </button>
         </div>
       </div>
 
@@ -331,6 +324,13 @@ const EventsPage = () => {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Sidebar */}
           <div className="lg:w-1/4">
+            <button
+              onClick={() => setIsSubmitFormOpen(true)}
+              className="w-full bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors flex items-center justify-center gap-2 mb-6"
+            >
+              <Plus size={20} />
+              Submit Your Event
+            </button>
             <div className="border border-[#333333] rounded-lg p-6 sticky top-24">
               <div className="mb-6">
                 <div className="relative">
