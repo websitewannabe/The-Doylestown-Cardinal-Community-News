@@ -320,16 +320,13 @@ const EventsPage = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="inline-block">
-                <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-cardinal-red/10 text-cardinal-red font-medium text-sm">
-                  April 2024 Event Spotlight
-                </span>
-              </div>
-              <h2 className="font-playfair text-5xl font-bold text-charcoal-gray leading-tight">
-                Doylestown <br/>
-                <span className="text-cardinal-red">Arts Festival</span>
-              </h2>
-              <p className="text-lg text-charcoal-gray/80">
+              <span className="inline-block bg-cardinal-red text-white px-4 py-1 rounded-full text-sm font-medium mb-4">
+                March 2024 Event Spotlight
+              </span>
+              <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
+                Doylestown Arts Festival
+              </h1>
+              <p className="text-xl text-white/90 max-w-2xl">
                 Annual arts festival featuring local artists, live music, and food vendors.
               </p>
               <Link
@@ -340,42 +337,50 @@ const EventsPage = () => {
                 <ChevronRight size={20} className="ml-2" />
               </Link>
             </div>
-            <div className="relative">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-4">
-                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
-                    <img 
-                      src="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb" 
-                      alt="Arts Festival Main"
-                      className="w-full h-48 object-cover"
-                    />
-                  </div>
-                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
-                    <img 
-                      src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2" 
-                      alt="Arts Festival Crowd"
-                      className="w-full h-64 object-cover"
-                    />
-                  </div>
+            <div className="lg:w-1/2">
+              <div className="space-y-4">
+                <div>
+                  <img
+                    src="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb"
+                    alt="Arts Festival Main"
+                    className="w-full h-80 object-cover rounded-lg"
+                  />
                 </div>
-                <div className="space-y-4 pt-8">
-                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
-                    <img 
-                      src="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212" 
-                      alt="Arts Festival Display"
-                      className="w-full h-64 object-cover"
-                    />
-                  </div>
-                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
-                    <img 
-                      src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4" 
-                      alt="Arts Festival Evening"
-                      className="w-full h-48 object-cover"
-                    />
-                  </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2"
+                    alt="Arts Festival Crowd"
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212"
+                    alt="Arts Festival Display"
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                </div>
+
+                <div>
+                  <img
+                    src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4"
+                    alt="Arts Festival Evening"
+                    className="w-full h-80 object-cover rounded-lg"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb"
+                    alt="Arts Festival Details"
+                    className="w-full h-40 object-cover rounded-lg"
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2"
+                    alt="Arts Festival People"
+                    className="w-full h-40 object-cover rounded-lg"
+                  />
                 </div>
               </div>
-              <div className="absolute -top-4 -right-4 -bottom-4 -left-4 bg-gradient-to-br from-cardinal-red/20 to-forest-green/20 rounded-xl -z-10"></div>
             </div>
           </div>
         </div>
