@@ -215,7 +215,6 @@ const AdvertisePage = () => {
           </div>
         </div>
       </div>
-      </div>
 
       {/* Benefits Section */}
       <section id="benefits" className="py-20 -mt-20 relative z-10 bg-[#F2F0EF]">
