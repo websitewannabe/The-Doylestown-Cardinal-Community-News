@@ -272,7 +272,7 @@ const AdvertisePage = () => {
           {/* Digital Display Ads - Left to Right */}
           <div className="flex flex-col md:flex-row items-center mb-24">
             <div className="w-full md:w-1/2 pr-0 md:pr-12">
-              <div className="bg-[#F2F0EF] p-8 rounded-lg">
+              <div className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <h3 className="font-bold text-2xl mb-4">Digital Display Ads</h3>
                 <p className="text-charcoal-gray/70 mb-4">
                   High-visibility banner and sidebar advertisements
@@ -306,7 +306,7 @@ const AdvertisePage = () => {
               />
             </div>
             <div className="w-full md:w-1/2 pl-0 md:pl-12">
-              <div className="bg-[#F2F0EF] p-8 rounded-lg">
+              <div className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <h3 className="font-bold text-2xl mb-4">Print Advertising</h3>
                 <p className="text-charcoal-gray/70 mb-4">
                   Traditional print advertisements in our weekly edition
@@ -326,7 +326,7 @@ const AdvertisePage = () => {
           {/* Sponsored Content - Left to Right */}
           <div className="flex flex-col md:flex-row items-center">
             <div className="w-full md:w-1/2 pr-0 md:pr-12">
-              <div className="bg-[#F2F0EF] p-8 rounded-lg">
+              <div className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <h3 className="font-bold text-2xl mb-4">Sponsored Content</h3>
                 <p className="text-charcoal-gray/70 mb-4">
                   Native advertising that tells your brand's story
@@ -415,7 +415,7 @@ const AdvertisePage = () => {
             ].map((option, index) => (
               <div
                 key={index}
-                className="group relative bg-white p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+                className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
@@ -517,7 +517,7 @@ const AdvertisePage = () => {
             ].map((option, index) => (
               <div
                 key={index}
-                className="group relative bg-white p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+                className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
@@ -568,7 +568,7 @@ const AdvertisePage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#F2F0EF] p-8 rounded-lg">
+            <div className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-2 bg-cardinal-red/10 rounded-lg">
                   <Users className="w-6 h-6 text-cardinal-red" />
@@ -621,7 +621,7 @@ const AdvertisePage = () => {
               </div>
             </div>
 
-            <div className="bg-[#F2F0EF] p-8 rounded-lg">
+            <div className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-2 bg-cardinal-red/10 rounded-lg">
                   <BarChart className="w-6 h-6 text-cardinal-red" />
@@ -656,7 +656,7 @@ const AdvertisePage = () => {
               </div>
             </div>
 
-            <div className="bg-[#F2F0EF] p-8 rounded-lg">
+            <div className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-2 bg-cardinal-red/10 rounded-lg">
                   <Target className="w-6 h-6 text-cardinal-red" />
