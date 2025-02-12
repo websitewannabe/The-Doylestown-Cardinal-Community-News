@@ -378,8 +378,8 @@ const AdvertisePage = () => {
           </div>
 
           <div className="grid grid-cols-12 gap-6 relative">
-            {/* Feature Image Box - Now positioned on the right */}
-            <div className="col-span-12 md:col-start-8 md:col-span-5 row-span-2">
+            {/* Feature Image Box */}
+            <div className="col-span-12 md:col-span-5 row-span-2">
               <div className="h-full border border-[#333333] rounded-lg overflow-hidden p-6 bg-white">
                 <div className="relative h-[400px] mb-6 overflow-hidden rounded-lg">
                   <img
@@ -406,7 +406,7 @@ const AdvertisePage = () => {
                   "Targeted campaigns",
                 ],
                 gradient: "from-blue-500/20 via-purple-500/20 to-pink-500/20",
-                cols: "md:col-span-4",
+                cols: "md:col-span-7",
               },
               {
                 title: "Newsletter Ads",
@@ -418,7 +418,7 @@ const AdvertisePage = () => {
                   "Premium positioning",
                 ],
                 gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
-                cols: "md:col-span-3",
+                cols: "md:col-span-4",
               },
               {
                 title: "Native Content",
@@ -430,7 +430,7 @@ const AdvertisePage = () => {
                   "SEO optimization",
                 ],
                 gradient: "from-orange-500/20 via-red-500/20 to-rose-500/20",
-                cols: "md:col-span-7",
+                cols: "md:col-span-3",
               },
             ].map((option, index) => (
               <div
