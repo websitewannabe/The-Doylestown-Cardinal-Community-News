@@ -83,7 +83,6 @@ const Navigation = () => {
       name: "Events",
       path: "/events",
       hasDropdown: false,
-      onClick: () => handleNavigation("/events")
     },
     {
       name: "Community",
