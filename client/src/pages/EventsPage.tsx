@@ -492,7 +492,7 @@ const EventsPage = () => {
           </div>
 
           {/* Main Content - Events Grid */}
-          <div className="lg:w-3/4">
+          <div className="lg:w-3/4 -mt-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {mockEvents.map(event => (
                 <div
