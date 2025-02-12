@@ -75,18 +75,13 @@ const ArticlesPage = () => {
             alt="Journalism background"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/20 to-charcoal-gray/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/30 to-charcoal-gray/20" />
         </div>
         <div className="relative flex-grow flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
             <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
               Stories That Matter, Articles That Connect
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl mb-8">
-              Discover the latest articles and in-depth coverage of Doylestown
-              and Bucks County. From local politics to community events, we
-              bring you the stories that shape our community.
-            </p>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
