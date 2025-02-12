@@ -213,7 +213,7 @@ const HomePage = () => {
             {/* Featured Stories Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
               <Link
-                to="/articles/1"
+                to="/article/1"
                 className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
               >
                 <div className="relative overflow-hidden rounded-lg mb-4">
@@ -233,7 +233,7 @@ const HomePage = () => {
               </Link>
 
               <Link
-                to="/articles/2"
+                to="/article/2"
                 className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
               >
                 <div className="relative overflow-hidden rounded-lg mb-4">
@@ -253,7 +253,7 @@ const HomePage = () => {
               </Link>
 
               <Link
-                to="/articles/3"
+                to="/article/3"
                 className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
               >
                 <div className="relative overflow-hidden rounded-lg mb-4">
@@ -274,7 +274,7 @@ const HomePage = () => {
               </Link>
 
               <Link
-                to="/articles/4"
+                to="/article/4"
                 className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
               >
                 <div className="relative overflow-hidden rounded-lg mb-4">
@@ -568,7 +568,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      
+
       {/* Event Modal */}
       {selectedEvent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
