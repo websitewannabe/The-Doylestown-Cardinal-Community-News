@@ -568,36 +568,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Community Section */}
-      <section className="py-20 bg-[#F2F0EF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-6">
-                Our Community, Our Stories
-              </h2>
-              <p className="text-lg text-charcoal-gray/80 mb-8">
-                For over 50 years, The Cardinal has been at the heart of
-                Doylestown's community, sharing the stories that shape our town
-                and bringing people together.
-              </p>
-              <button
-                onClick={forceShowPopup}
-                className="bg-forest-green text-off-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors"
-              >
-                Join Our Newsletter
-              </button>
-            </div>
-            <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80"
-                alt="Doylestown Community"
-                className="rounded-lg shadow-xl"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      
       {/* Event Modal */}
       {selectedEvent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
