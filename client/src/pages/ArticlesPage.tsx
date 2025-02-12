@@ -73,7 +73,7 @@ const ArticlesPage = () => {
           <img
             src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
             alt="Journalism background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover blur-[5px]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/20 to-charcoal-gray/20" />
         </div>
