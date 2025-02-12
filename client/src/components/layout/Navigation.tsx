@@ -157,7 +157,7 @@ const Navigation = () => {
   }, [location]);
 
   return (
-    <div className="fixed w-full z-50">
+    <div className="fixed w-full z-50 pt-[8vh]"> {/* Adjusted padding-top here */}
       <div className="p-2">
         <nav 
           className={`
