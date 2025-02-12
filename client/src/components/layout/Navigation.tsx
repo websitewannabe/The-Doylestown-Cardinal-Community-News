@@ -89,26 +89,6 @@ const Navigation = () => {
       path: "#",
       hasDropdown: true,
       dropdownItems: [
-        {
-          name: "Community Spotlight",
-          path: "/community/spotlight",
-          subItems: [
-            {
-              name: "Business Spotlight",
-              path: "/community/spotlight/business",
-            },
-            { name: "Person Spotlight", path: "/community/spotlight/person" },
-            { name: "Event Spotlight", path: "/community/spotlight/event" },
-            {
-              name: "Building Spotlight",
-              path: "/community/spotlight/building",
-            },
-            {
-              name: "Advertiser of the Month",
-              path: "/community/spotlight/advertiser",
-            },
-          ],
-        },
         { name: "Best of Doylestown", path: "/community/best-of" },
         { name: "Business Directory", path: "/community/directory" },
         { name: "Town Guides", path: "/community/directory/guides" },
