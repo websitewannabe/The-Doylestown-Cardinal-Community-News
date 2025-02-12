@@ -47,7 +47,7 @@ const Footer = () => {
 
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12">
           {/* About Section */}
           <div>
             <Link to="/" className="inline-block mb-6">
@@ -125,6 +125,38 @@ const Footer = () => {
               <li>
                 <Link to="/locations" className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors">
                   Find The Cardinal
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Helpful Resources */}
+          <div>
+            <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-6">Helpful Resources</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/community/spotlight" className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors">
+                  Community Spotlight
+                </Link>
+              </li>
+              <li>
+                <Link to="/news" className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors">
+                  Latest News
+                </Link>
+              </li>
+              <li>
+                <Link to="/events-landing" className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors">
+                  Local Events
+                </Link>
+              </li>
+              <li>
+                <Link to="/flavors-and-spirits" className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors">
+                  Flavors & Spirits
+                </Link>
+              </li>
+              <li>
+                <Link to="/town-guides" className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors">
+                  Town Guides
                 </Link>
               </li>
             </ul>
