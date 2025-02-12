@@ -25,6 +25,27 @@ const neighborhoods = [
 ];
 
 // Mock data for businesses
+const spotlightBusinesses = [
+  {
+    id: 1,
+    name: "Doylestown Bookshop",
+    type: "Shopping",
+    image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80",
+  },
+  {
+    id: 2,
+    name: "Honey Restaurant",
+    type: "Dining",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80",
+  },
+  {
+    id: 3,
+    name: "Doylestown Health",
+    type: "Health & Wellness",
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80",
+  }
+];
+
 const mockBusinesses = [
   {
     id: 1,
