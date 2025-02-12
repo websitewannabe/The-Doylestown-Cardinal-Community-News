@@ -75,11 +75,11 @@ const ArticlesPage = () => {
             alt="Journalism background"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/30 to-charcoal-gray/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/20 to-charcoal-gray/20" />
         </div>
         <div className="relative flex-grow flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
+            <h1 className="font-playfair text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl">
               Stories That Matter, Articles That Connect
             </h1>
           </div>
