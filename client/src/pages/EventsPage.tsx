@@ -201,12 +201,12 @@ const EventsPage = () => {
             <X size={24} />
           </button>
         </div>
-        
+
         <div className="p-6">
           <div className="mb-6">
             <span className="text-sm font-medium text-cardinal-red">{event.category}</span>
             <h2 className="font-playfair text-3xl font-bold mt-2 mb-4">{event.name}</h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -217,7 +217,7 @@ const EventsPage = () => {
                     <p className="text-gray-600">{event.time}</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 mt-1 text-gray-500" />
                   <div>
@@ -380,7 +380,7 @@ const EventsPage = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         </div>
 
@@ -492,7 +492,7 @@ const EventsPage = () => {
           </div>
 
           {/* Main Content - Events Grid */}
-          <div className="lg:w-3/4 -mt-6">
+          <div className="lg:w-3/4 mt-16">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {mockEvents.map(event => (
                 <div
@@ -729,7 +729,7 @@ const EventsPage = () => {
                     className="px-6 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                   >
                     Cancel
-                  </button>
+                  </</button>
                   <button
                     type="submit"
                     className="px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors"
