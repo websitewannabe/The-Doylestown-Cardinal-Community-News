@@ -156,11 +156,11 @@ const HomePage = () => {
     <>
       {/* Hero Section */}
       <section className="relative h-screen">
-        <div className="absolute inset-0 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] my-2">
+        <div className="absolute inset-0 bottom-12 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img
             src="https://doylestowncardinal.com/wp-content/uploads/2023/08/Fonthill-castle-990x660.jpg"
             alt="Fonthill Castle"
-            className="w-full h-full object-cover blur-[2px] scale-105"
+            className="w-full h-[105%] object-cover blur-[2px] scale-105"
           />
           <div className="absolute inset-0 bg-charcoal-gray/40"></div>
         </div>
