@@ -201,7 +201,7 @@ const Navigation = () => {
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center space-x-2">
                 <img
-                  src="/images/Cardinal-Logo-Header.png"
+                  src="/images/The_Cardinal_Logo-removebg-preview.png"
                   alt="The Cardinal"
                   className="h-14 w-auto"
                 />

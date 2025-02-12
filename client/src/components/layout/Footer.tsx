@@ -52,7 +52,7 @@ const Footer = () => {
           <div>
             <Link to="/" className="inline-block mb-6">
               <img 
-                src="/images/Cardinal-Logo-Header.png" 
+                src="/images/The_Cardinal_Logo-removebg-preview.png" 
                 alt="The Cardinal"
                 className="h-14 w-auto"
               />
