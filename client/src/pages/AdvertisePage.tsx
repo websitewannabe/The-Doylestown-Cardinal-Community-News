@@ -237,7 +237,7 @@ const AdvertisePage = () => {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-8 shadow-lg transform hover:-translate-y-1 transition-transform"
+                className="bg-white rounded-lg p-8 transform hover:-translate-y-1 transition-transform"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-cardinal-red/10 rounded-lg">
@@ -291,7 +291,7 @@ const AdvertisePage = () => {
               <img
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
                 alt="Digital Marketing"
-                className="rounded-lg shadow-xl w-full h-[300px] object-cover"
+                className="rounded-lg w-full h-[300px] object-cover"
               />
             </div>
           </div>
@@ -302,7 +302,7 @@ const AdvertisePage = () => {
               <img
                 src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
                 alt="Print Advertising"
-                className="rounded-lg shadow-xl w-full h-[300px] object-cover"
+                className="rounded-lg w-full h-[300px] object-cover"
               />
             </div>
             <div className="w-full md:w-1/2 pl-0 md:pl-12">
@@ -345,7 +345,7 @@ const AdvertisePage = () => {
               <img
                 src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80"
                 alt="Content Marketing"
-                className="rounded-lg shadow-xl w-full h-[300px] object-cover"
+                className="rounded-lg w-full h-[300px] object-cover"
               />
             </div>
           </div>
@@ -415,7 +415,7 @@ const AdvertisePage = () => {
             ].map((option, index) => (
               <div
                 key={index}
-                className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+                className="group relative bg-white p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
@@ -517,7 +517,7 @@ const AdvertisePage = () => {
             ].map((option, index) => (
               <div
                 key={index}
-                className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+                className="group relative bg-white p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
@@ -733,7 +733,7 @@ const AdvertisePage = () => {
                 key={index}
                 className={`relative bg-white rounded-lg flex flex-col h-full ${
                   pkg.popular
-                    ? "ring-2 ring-cardinal-red shadow-xl"
+                    ? "ring-2 ring-cardinal-red"
                     : "border border-[#333333]"
                 }`}
               >
