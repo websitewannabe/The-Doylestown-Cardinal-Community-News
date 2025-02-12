@@ -312,66 +312,18 @@ const EventsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
-      {/* Hero Section */}
-      <div className="relative min-h-[60vh] flex flex-col mb-32">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&q=80"
-            alt="Events background"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/90 to-charcoal-gray/90" />
-        </div>
-        <div className="relative flex-grow flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
-              Discover What's Happening
-            </h1>
-            <p className="text-xl text-white/90 max-w-2xl mb-8">
-              Stay connected with the vibrant community of Doylestown. Find local events, gatherings, and celebrations that bring us together.
-            </p>
-            <button
-              onClick={() => setIsSubmitFormOpen(true)}
-              className="bg-forest-green text-white px-8 py-3 rounded-full font-semibold hover:bg-cardinal-red transition-colors flex items-center gap-2"
-            >
-              <Plus size={20} />
-              Submit Your Event
-            </button>
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            viewBox="0 0 1440 120" 
-            className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
-            preserveAspectRatio="none"
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12">
+        <div className="flex justify-between items-center mb-12">
+          <h1 className="font-playfair text-4xl font-bold text-charcoal-gray">
+            Discover What's Happening
+          </h1>
+          <button
+            onClick={() => setIsSubmitFormOpen(true)}
+            className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors flex items-center gap-2"
           >
-            <path 
-              fill="currentColor"
-              d="M0,120 
-                 C320,120 480,60 720,90 
-                 C960,120 1120,30 1440,90 
-                 L1440,120 L0,120 Z"
-              className="transition-all duration-300"
-            />
-            <path 
-              fill="currentColor"
-              fillOpacity="0.2"
-              d="M0,120 
-                 C240,100 480,95 720,110 
-                 C960,95 1200,105 1440,95 
-                 L1440,120 L0,120 Z"
-              className="transition-all duration-300"
-            />
-            <path 
-              fill="currentColor"
-              fillOpacity="0.1"
-              d="M0,120 
-                 C360,110 720,80 1080,100 
-                 C1260,110 1350,115 1440,110 
-                 L1440,120 L0,120 Z"
-              className="transition-all duration-300"
-            />
-          </svg>
+            <Plus size={20} />
+            Submit Your Event
+          </button>
         </div>
       </div>
 
