@@ -77,18 +77,18 @@ const CommunitySpotlightPage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       {/* Hero Section */}
-      <div className="relative min-h-[60vh] flex flex-col">
-        <div className="absolute inset-0">
+      <div className="relative h-[45vh]">
+        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img 
             src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80"
             alt="Doylestown Community"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover blur-[3px]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/90 to-charcoal-gray/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/20 to-charcoal-gray/20" />
         </div>
         <div className="relative flex-grow flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
+            <h1 className="font-playfair text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl">
               Community Spotlight
             </h1>
             <p className="text-xl text-white/90 max-w-2xl mb-8">
@@ -114,7 +114,67 @@ const CommunitySpotlightPage = () => {
       {/* Spotlights Grid */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-16">
+            {spotlights.map((spotlight, index) => (
+              <div
+                key={spotlight.id}
+                className={`flex flex-col md:flex-row gap-8 items-center ${
+                  index % 2 === 1 ? 'md:flex-row-reverse' : ''
+                }`}
+              >
+                <div className="md:w-1/2">
+                  <div className="relative h-[400px] rounded-lg overflow-hidden group">
+                    <img
+                      src={spotlight.featured.image}
+                      alt={spotlight.featured.name}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+                    <div className="absolute bottom-6 left-6">
+                      <span className="text-sm font-medium text-white/90 bg-cardinal-red px-3 py-1 rounded-full">
+                        {spotlight.title}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="md:w-1/2 space-y-4">
+                  <h3 className="font-playfair text-3xl font-bold text-charcoal-gray">
+                    {spotlight.featured.name}
+                  </h3>
+                  <p className="text-charcoal-gray/80 text-lg">
+                    {spotlight.featured.description}
+                  </p>
+                  <div className="space-y-2">
+                    {spotlight.featured.address && (
+                      <div className="flex items-center text-charcoal-gray/70">
+                        <MapPin size={18} className="mr-2" />
+                        {spotlight.featured.address}
+                      </div>
+                    )}
+                    {spotlight.featured.date && (
+                      <div className="flex items-center text-charcoal-gray/70">
+                        <Calendar size={18} className="mr-2" />
+                        {spotlight.featured.date}
+                      </div>
+                    )}
+                    {spotlight.featured.role && (
+                      <div className="flex items-center text-charcoal-gray/70">
+                        <Users size={18} className="mr-2" />
+                        {spotlight.featured.role}
+                      </div>
+                    )}
+                  </div>
+                  <Link
+                    to={spotlight.link}
+                    className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors mt-4"
+                  >
+                    View All {spotlight.title}s
+                    <ChevronRight size={16} className="ml-1" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
             {spotlights.map(spotlight => (
               <div
                 key={spotlight.id}
