@@ -1,7 +1,19 @@
-
-import React, { useState, useRef, useEffect } from 'react';
-import { Search, MapPin, Clock, Phone, Globe, ChevronRight, Star, X, Filter, Building2, Grid, List } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import {
+  Search,
+  MapPin,
+  Clock,
+  Phone,
+  Globe,
+  ChevronRight,
+  Star,
+  X,
+  Filter,
+  Building2,
+  Grid,
+  List,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Constants for filtering
 const businessTypes = [
@@ -11,7 +23,7 @@ const businessTypes = [
   "Dining",
   "Entertainment",
   "Health & Wellness",
-  "Lodging"
+  "Lodging",
 ];
 
 const neighborhoods = [
@@ -21,7 +33,7 @@ const neighborhoods = [
   "Main Street",
   "Buckingham Green",
   "South Main",
-  "North Main"
+  "North Main",
 ];
 
 // Mock data for businesses
@@ -36,9 +48,16 @@ const mockBusinesses = [
     phone: "(215) 230-7610",
     website: "https://doylestownbookshop.com",
     hours: "Mon-Sat: 9am-9pm, Sun: 11am-6pm",
-    description: "Independent bookstore offering a carefully curated selection of books, gifts, and hosting regular community events.",
-    features: ["Events Space", "Children's Section", "Local Authors", "Book Club"],
-    image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80"
+    description:
+      "Independent bookstore offering a carefully curated selection of books, gifts, and hosting regular community events.",
+    features: [
+      "Events Space",
+      "Children's Section",
+      "Local Authors",
+      "Book Club",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80",
   },
   {
     id: 2,
@@ -50,9 +69,11 @@ const mockBusinesses = [
     phone: "(215) 489-4200",
     website: "https://honeyrestaurant.com",
     hours: "Tue-Sun: 5pm-10pm",
-    description: "Farm-to-table restaurant offering seasonal American cuisine in an intimate setting.",
+    description:
+      "Farm-to-table restaurant offering seasonal American cuisine in an intimate setting.",
     features: ["BYOB", "Outdoor Seating", "Private Events", "Seasonal Menu"],
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80"
+    image:
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80",
   },
   {
     id: 3,
@@ -64,10 +85,17 @@ const mockBusinesses = [
     phone: "(215) 345-2200",
     website: "https://doylestownhealth.org",
     hours: "24/7",
-    description: "Comprehensive healthcare facility offering a wide range of medical services and wellness programs.",
-    features: ["Emergency Care", "Specialty Care", "Wellness Programs", "Research"],
-    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80"
-  }
+    description:
+      "Comprehensive healthcare facility offering a wide range of medical services and wellness programs.",
+    features: [
+      "Emergency Care",
+      "Specialty Care",
+      "Wellness Programs",
+      "Research",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80",
+  },
 ];
 
 interface Business {
@@ -88,31 +116,51 @@ interface Business {
 const BusinessDirectoryPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedType, setSelectedType] = useState("All Types");
-  const [selectedNeighborhood, setSelectedNeighborhood] = useState("All Neighborhoods");
-  const [selectedBusiness, setSelectedBusiness] = useState<Business | null>(null);
+  const [selectedNeighborhood, setSelectedNeighborhood] =
+    useState("All Neighborhoods");
+  const [selectedBusiness, setSelectedBusiness] = useState<Business | null>(
+    null,
+  );
   const [isSubmitFormOpen, setIsSubmitFormOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (selectedBusiness && modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      if (
+        selectedBusiness &&
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
         setSelectedBusiness(null);
       }
-      if (isSubmitFormOpen && formRef.current && !formRef.current.contains(event.target as Node)) {
+      if (
+        isSubmitFormOpen &&
+        formRef.current &&
+        !formRef.current.contains(event.target as Node)
+      ) {
         setIsSubmitFormOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [selectedBusiness, isSubmitFormOpen]);
 
-  const BusinessDetailModal = ({ business, onClose }: { business: Business; onClose: () => void }) => (
+  const BusinessDetailModal = ({
+    business,
+    onClose,
+  }: {
+    business: Business;
+    onClose: () => void;
+  }) => (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-      <div ref={modalRef} className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <div
+        ref={modalRef}
+        className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+      >
         <div className="relative">
           <img
             src={business.image}
@@ -126,21 +174,27 @@ const BusinessDirectoryPage = () => {
             <X size={24} />
           </button>
         </div>
-        
+
         <div className="p-6">
           <div className="mb-6">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-sm font-medium text-cardinal-red">{business.type}</span>
+              <span className="text-sm font-medium text-cardinal-red">
+                {business.type}
+              </span>
               <span className="text-gray-400">•</span>
               <div className="flex items-center">
                 <Star size={16} className="text-yellow-400 fill-current" />
-                <span className="ml-1 text-sm font-medium">{business.rating}</span>
+                <span className="ml-1 text-sm font-medium">
+                  {business.rating}
+                </span>
               </div>
             </div>
-            
-            <h2 className="font-playfair text-3xl font-bold mb-4">{business.name}</h2>
+
+            <h2 className="font-playfair text-3xl font-bold mb-4">
+              {business.name}
+            </h2>
             <p className="text-gray-600 mb-6">{business.description}</p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -151,7 +205,7 @@ const BusinessDirectoryPage = () => {
                     <p className="text-gray-600">{business.neighborhood}</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <Clock className="w-5 h-5 mt-1 text-gray-500" />
                   <div>
@@ -174,7 +228,7 @@ const BusinessDirectoryPage = () => {
                   <Globe className="w-5 h-5 mt-1 text-gray-500" />
                   <div>
                     <p className="font-medium">Website</p>
-                    <a 
+                    <a
                       href={business.website}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -221,17 +275,18 @@ const BusinessDirectoryPage = () => {
                 </span>
               </div>
               <h2 className="font-playfair text-5xl font-bold text-charcoal-gray leading-tight">
-                Doylestown <br/>
-                <span className="text-cardinal-red">Business Directory</span>
+                Doylestown <br />
+                <span className="text-cardinal-red">Bookshop</span>
               </h2>
               <p className="text-lg text-charcoal-gray/80">
-                Discover and support local businesses that make Doylestown a vibrant community.
+                Discover and support local businesses that make Doylestown a
+                vibrant community.
               </p>
               <button
                 onClick={() => setIsSubmitFormOpen(true)}
                 className="inline-flex items-center mt-4 px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-forest-green transition-colors"
               >
-                Submit Your Business
+                View Business Spotlight
                 <ChevronRight size={20} className="ml-2" />
               </button>
             </div>
@@ -239,15 +294,15 @@ const BusinessDirectoryPage = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
-                    <img 
-                      src="https://images.unsplash.com/photo-1507842217343-583bb7270b66" 
+                    <img
+                      src="https://images.unsplash.com/photo-1507842217343-583bb7270b66"
                       alt="Business 1"
                       className="w-full h-48 object-cover"
                     />
                   </div>
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
-                    <img 
-                      src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0" 
+                    <img
+                      src="https://images.unsplash.com/photo-1526721940322-10fb6e3ae94a?auto=format&fit=crop&q=80"
                       alt="Business 2"
                       className="w-full h-64 object-cover"
                     />
@@ -255,15 +310,15 @@ const BusinessDirectoryPage = () => {
                 </div>
                 <div className="space-y-4 pt-8">
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
-                    <img 
-                      src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d" 
+                    <img
+                      src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=80"
                       alt="Business 3"
                       className="w-full h-64 object-cover"
                     />
                   </div>
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
-                    <img 
-                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" 
+                    <img
+                      src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&q=80"
                       alt="Business 4"
                       className="w-full h-48 object-cover"
                     />
@@ -317,7 +372,10 @@ const BusinessDirectoryPage = () => {
             <div className="border border-[#333333] rounded-lg p-6 sticky top-24">
               <div className="mb-6">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                  <Search
+                    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                    size={20}
+                  />
                   <input
                     type="text"
                     placeholder="Search businesses..."
@@ -329,16 +387,18 @@ const BusinessDirectoryPage = () => {
               </div>
 
               <div className="mb-6">
-                <h3 className="font-playfair text-lg font-bold mb-3">Business Type</h3>
+                <h3 className="font-playfair text-lg font-bold mb-3">
+                  Business Type
+                </h3>
                 <div className="space-y-2">
-                  {businessTypes.map(type => (
+                  {businessTypes.map((type) => (
                     <button
                       key={type}
                       onClick={() => setSelectedType(type)}
                       className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
                         selectedType === type
-                          ? 'bg-cardinal-red text-white'
-                          : 'hover:bg-gray-100'
+                          ? "bg-cardinal-red text-white"
+                          : "hover:bg-gray-100"
                       }`}
                     >
                       {type}
@@ -348,16 +408,18 @@ const BusinessDirectoryPage = () => {
               </div>
 
               <div>
-                <h3 className="font-playfair text-lg font-bold mb-3">Neighborhood</h3>
+                <h3 className="font-playfair text-lg font-bold mb-3">
+                  Neighborhood
+                </h3>
                 <div className="space-y-2">
-                  {neighborhoods.map(neighborhood => (
+                  {neighborhoods.map((neighborhood) => (
                     <button
                       key={neighborhood}
                       onClick={() => setSelectedNeighborhood(neighborhood)}
                       className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
                         selectedNeighborhood === neighborhood
-                          ? 'bg-cardinal-red text-white'
-                          : 'hover:bg-gray-100'
+                          ? "bg-cardinal-red text-white"
+                          : "hover:bg-gray-100"
                       }`}
                     >
                       {neighborhood}
@@ -371,7 +433,7 @@ const BusinessDirectoryPage = () => {
           {/* Main Content - Business Grid */}
           <div className="lg:w-3/4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {mockBusinesses.map(business => (
+              {mockBusinesses.map((business) => (
                 <div
                   key={business.id}
                   className="border border-[#333333] rounded-lg overflow-hidden hover:shadow-md transition-shadow"
@@ -385,14 +447,21 @@ const BusinessDirectoryPage = () => {
                     />
                     <div className="absolute top-4 right-4">
                       <div className="flex items-center gap-1 px-2 py-1 bg-white/90 rounded-full">
-                        <Star size={14} className="text-yellow-400 fill-current" />
-                        <span className="text-sm font-medium">{business.rating}</span>
+                        <Star
+                          size={14}
+                          className="text-yellow-400 fill-current"
+                        />
+                        <span className="text-sm font-medium">
+                          {business.rating}
+                        </span>
                       </div>
                     </div>
                   </div>
                   <div className="p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-sm font-medium text-cardinal-red">{business.type}</span>
+                      <span className="text-sm font-medium text-cardinal-red">
+                        {business.type}
+                      </span>
                       <span className="text-gray-400">•</span>
                       <span className="text-sm">{business.neighborhood}</span>
                     </div>
@@ -410,7 +479,9 @@ const BusinessDirectoryPage = () => {
                       </div>
                       <div className="flex items-center gap-2">
                         <Building2 size={14} />
-                        <span className="line-clamp-1">{business.features.join(", ")}</span>
+                        <span className="line-clamp-1">
+                          {business.features.join(", ")}
+                        </span>
                       </div>
                     </div>
                   </div>
