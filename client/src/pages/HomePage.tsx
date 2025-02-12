@@ -157,8 +157,8 @@ const HomePage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen max-w-[1400px] mx-auto px-4">
-        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto mt-2">
+      <section className="relative h-screen">
+        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img
             src="https://doylestowncardinal.com/wp-content/uploads/2023/08/Fonthill-castle-990x660.jpg"
             alt="Fonthill Castle"
