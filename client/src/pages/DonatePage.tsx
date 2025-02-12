@@ -202,7 +202,7 @@ const DonatePage = () => {
       </div>
 
       {/* Impact Stats */}
-      <section className="py-20">
+      <section className="pt-8 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-playfair text-4xl font-bold text-charcoal-gray text-center mb-12">
             Your Impact
