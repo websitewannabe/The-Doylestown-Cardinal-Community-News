@@ -168,7 +168,7 @@ const Navigation = () => {
             ${isScrolled ? 'shadow-lg' : ''}
           `}
         >
-          <div className="px-8 py-3 flex items-center justify-between">
+          <div className="px-8 py-2 flex items-center justify-between">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center space-x-2">
