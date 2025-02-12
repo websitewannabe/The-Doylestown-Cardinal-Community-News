@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, MapPin, Clock, Search, Filter, X, Plus, Share2, CalendarCheck, Globe, Phone, Mail, User2, DollarSign, Users, Info, ChevronRight } from 'lucide-react';
+import { Calendar, MapPin, Clock, Search, Filter, X, Plus, Share2, CalendarCheck, Globe, Phone, Mail, User2, DollarSign, Users, Info, ChevronRight, Grid, List } from 'lucide-react';
 
 // Constants for filtering
 const categories = [
@@ -387,6 +387,30 @@ const EventsPage = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-4">
+            <span className="text-charcoal-gray font-medium">View:</span>
+            <div className="flex gap-2 bg-white rounded-lg p-1 border border-[#333333]">
+              <button className="px-4 py-2 bg-forest-green text-white rounded-md flex items-center gap-2">
+                <Grid size={16} /> Grid
+              </button>
+              <button className="px-4 py-2 hover:bg-gray-100 rounded-md flex items-center gap-2">
+                <List size={16} /> List
+              </button>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="text-charcoal-gray font-medium">Sort:</span>
+            <div className="flex gap-2 bg-white rounded-lg p-1 border border-[#333333]">
+              <button className="px-4 py-2 bg-forest-green text-white rounded-md">
+                Recommended
+              </button>
+              <button className="px-4 py-2 hover:bg-gray-100 rounded-md">
+                Near Me
+              </button>
+            </div>
+          </div>
+        </div>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Sidebar */}
           <div className="lg:w-1/4">
