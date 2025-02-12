@@ -85,7 +85,7 @@ const BusinessSpotlightPage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       {/* Hero Section */}
-      <div className="relative h-[45vh]">
+      <div className="relative h-[60vh]">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img 
             src={currentSpotlight.images[0]}
