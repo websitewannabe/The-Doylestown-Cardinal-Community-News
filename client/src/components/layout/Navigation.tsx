@@ -164,7 +164,7 @@ const Navigation = () => {
             w-[calc(95%-4px)] mx-auto
             rounded-2xl
             transition-all duration-300
-            bg-[#FAFAFA]
+            bg-[#F2F0EF]
             ${isScrolled ? 'shadow-lg' : ''}
           `}
         >

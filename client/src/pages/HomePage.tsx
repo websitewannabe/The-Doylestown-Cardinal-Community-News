@@ -162,7 +162,7 @@ const HomePage = () => {
           <img
             src="https://doylestowncardinal.com/wp-content/uploads/2023/08/Fonthill-castle-990x660.jpg"
             alt="Fonthill Castle"
-            className="w-full h-[105%] object-cover blur-[2px] scale-105"
+            className="w-full h-[105%] object-cover blur-[1px] scale-105"
           />
           <div className="absolute inset-0 bg-charcoal-gray/40"></div>
         </div>
