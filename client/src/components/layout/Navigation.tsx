@@ -185,7 +185,7 @@ const Navigation = () => {
 
   return (
     <div className="fixed w-full z-50">
-      <div className="pt-4 px-2 pb-2 max-w-[1400px] mx-auto">
+      <div className="pt-4 px-2 pb-2">
         <nav
           className={`
             w-[calc(95%-4px)] mx-auto
