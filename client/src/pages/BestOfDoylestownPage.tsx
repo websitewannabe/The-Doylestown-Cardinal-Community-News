@@ -125,18 +125,18 @@ const BestOfDoylestownPage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       {/* Hero Section */}
-      <div className="relative min-h-[60vh] flex flex-col">
-        <div className="absolute inset-0">
+      <div className="relative h-[45vh]">
+        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img 
             src="https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&q=80"
             alt="Downtown Doylestown"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover blur-[3px]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/90 to-charcoal-gray/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/20 to-charcoal-gray/20" />
         </div>
         <div className="relative flex-grow flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
+            <h1 className="font-playfair text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl">
               Best of Doylestown
             </h1>
             <p className="text-xl text-white/90 max-w-2xl mb-8">
@@ -154,6 +154,7 @@ const BestOfDoylestownPage = () => {
             <path 
               fill="currentColor"
               d="M0,120 C240,100 480,20 720,40 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
+              className="transition-all duration-300"
             />
           </svg>
         </div>
