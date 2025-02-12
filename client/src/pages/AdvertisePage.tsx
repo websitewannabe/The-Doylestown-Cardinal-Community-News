@@ -231,7 +231,7 @@ const AdvertisePage = () => {
       </div>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-20 -mt-20 relative z-10">
+      <section id="benefits" className="py-20 -mt-20 relative z-10 bg-[#F2F0EF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
@@ -355,7 +355,7 @@ const AdvertisePage = () => {
       {/* Digital Advertising Section */}
       <section
         id="digital-ads"
-        className="py-20 bg-gradient-to-br from-white via-[#FFF8F6] to-[#F8F5F4] relative overflow-hidden"
+        className="py-20 bg-[#F2F0EF] relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] opacity-5"></div>
         <div className="absolute top-0 left-0 w-64 h-64 bg-cardinal-red/5 rounded-full filter blur-3xl"></div>
@@ -455,7 +455,7 @@ const AdvertisePage = () => {
       {/* Print Ads Section */}
       <section
         id="print-ads"
-        className="py-20 bg-gradient-to-br from-[#F8F5F4] via-white to-[#F8F5F4] relative overflow-hidden"
+        className="py-20 bg-white relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] opacity-5"></div>
         <div className="absolute top-0 right-0 w-64 h-64 bg-forest-green/5 rounded-full filter blur-3xl"></div>
