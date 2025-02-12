@@ -309,7 +309,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Current Issue Preview */}
-                <div className="h-64 rounded-lg overflow-hidden mb-6">
+                <div className="h-48 rounded-lg overflow-hidden mb-6">
                   <img
                     src="/images/The_Cardinal_Paper.png"
                     alt="Current Issue - The Cardinal"
