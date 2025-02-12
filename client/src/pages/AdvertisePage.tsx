@@ -179,24 +179,22 @@ const AdvertisePage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       {/* Hero Section */}
-      <div className="relative min-h-[70vh] flex flex-col">
-        <div className="absolute inset-0">
+      <div className="relative h-[70vh]">
+        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img
             src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80"
             alt="Advertising background"
-            className="w-full h-full object-cover"
+            className="w-full h-[105%] object-cover blur-[1px] scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/90 to-charcoal-gray/90" />
+          <div className="absolute inset-0 bg-charcoal-gray/40" />
         </div>
-        <div className="relative flex-grow flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
-              Grow Your Business with The Cardinal
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+          <div>
+            <h1 className="font-playfair text-6xl md:text-[7.45rem] font-bold text-off-white mb-4">
+              Advertise
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl mb-8">
-              Connect with Doylestown's most engaged audience through our
-              trusted platform. Our multi-channel advertising solutions deliver
-              real results for local businesses.
+            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
+              Connect with Doylestown's most engaged audience through our trusted platform
             </p>
             <div className="flex flex-wrap gap-4">
               <button
@@ -216,18 +214,7 @@ const AdvertisePage = () => {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg
-            viewBox="0 0 1440 120"
-            className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
-            preserveAspectRatio="none"
-          >
-            <path
-              fill="currentColor"
-              d="M0,120 C288,98 432,0 720,30 C1008,60 1152,105 1440,85 L1440,120 L0,120 Z"
-            />
-          </svg>
-        </div>
+      </div>
       </div>
 
       {/* Benefits Section */}
