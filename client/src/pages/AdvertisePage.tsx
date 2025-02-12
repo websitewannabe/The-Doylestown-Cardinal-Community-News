@@ -377,7 +377,24 @@ const AdvertisePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-12 gap-6 relative">
+            {/* Feature Image Box */}
+            <div className="col-span-12 md:col-span-5 row-span-2">
+              <div className="h-full border border-[#333333] rounded-lg overflow-hidden p-6 bg-white">
+                <div className="relative h-[400px] mb-6 overflow-hidden rounded-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
+                    alt="Digital Marketing"
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">Why Digital?</h3>
+                <p className="text-charcoal-gray/70">
+                  Connect with our engaged audience through strategic digital placements. Our multi-channel approach ensures maximum visibility for your brand.
+                </p>
+              </div>
+            </div>
+
             {[
               {
                 title: "Display Ads",
@@ -389,6 +406,7 @@ const AdvertisePage = () => {
                   "Targeted campaigns",
                 ],
                 gradient: "from-blue-500/20 via-purple-500/20 to-pink-500/20",
+                cols: "md:col-span-7",
               },
               {
                 title: "Newsletter Ads",
@@ -400,6 +418,7 @@ const AdvertisePage = () => {
                   "Premium positioning",
                 ],
                 gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
+                cols: "md:col-span-4",
               },
               {
                 title: "Native Content",
@@ -411,11 +430,12 @@ const AdvertisePage = () => {
                   "SEO optimization",
                 ],
                 gradient: "from-orange-500/20 via-red-500/20 to-rose-500/20",
+                cols: "md:col-span-3",
               },
             ].map((option, index) => (
               <div
                 key={index}
-                className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
+                className={`group col-span-12 ${option.cols} p-6 border border-[#333333] rounded-lg hover:shadow-xl transition-all hover:z-20 bg-white`}
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
