@@ -377,7 +377,7 @@ const AdvertisePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex flex-col md:flex-row gap-8 relative">
             {[
               {
                 title: "Display Ads",
@@ -415,7 +415,9 @@ const AdvertisePage = () => {
             ].map((option, index) => (
               <div
                 key={index}
-                className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
+                className={`group p-6 border border-[#333333] rounded-lg hover:shadow-xl transition-all ${
+                  index === 1 ? 'md:transform md:-translate-y-8 md:scale-110 z-10' : ''
+                } hover:z-20 bg-white`}
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
