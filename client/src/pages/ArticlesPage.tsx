@@ -68,8 +68,8 @@ const ArticlesPage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       {/* Hero Section */}
-      <div className="relative min-h-[60vh] flex flex-col mb-24">
-        <div className="absolute inset-0">
+      <div className="relative h-screen">
+        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img
             src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
             alt="Journalism background"
