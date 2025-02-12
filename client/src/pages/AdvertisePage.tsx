@@ -435,7 +435,7 @@ const AdvertisePage = () => {
             ].map((option, index) => (
               <div
                 key={index}
-                className={`group col-span-12 ${option.cols} p-6 border border-[#333333] rounded-lg hover:shadow-xl transition-all hover:z-20 bg-white`}
+                className={`group col-span-12 ${option.cols} p-6 border border-[#333333] rounded-lg bg-white`}
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
