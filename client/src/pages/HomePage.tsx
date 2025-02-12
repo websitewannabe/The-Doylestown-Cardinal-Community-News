@@ -199,20 +199,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <div className="relative">
-            <svg
-              viewBox="0 0 1440 120"
-              className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
-              preserveAspectRatio="none"
-            >
-              <path
-                fill="currentColor"
-                d="M0,120 C240,100 480,20 720,40 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
-              />
-            </svg>
-          </div>
-        </div>
+        
       </section>
 
       {/* Featured Stories Section */}
