@@ -45,7 +45,7 @@ const AppContent = () => {
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:id" element={<ArticlePage />} />
           <Route path="/writers" element={<MeetTheWritersPage />} />
-          <Route path="/events" element={<EventsLandingPage />} />
+          <Route path="/events" element={<EventsPage />} />
           <Route path="/events/:category" element={<EventsPage />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/community/spotlight" element={<CommunitySpotlightPage />} />
