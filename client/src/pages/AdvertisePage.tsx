@@ -377,47 +377,68 @@ const AdvertisePage = () => {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-8 relative">
-            {[
-              {
-                title: "Display Ads",
-                icon: Globe,
-                description: "Premium banner positions across our website",
-                features: [
-                  "High-visibility placements",
-                  "Mobile-responsive",
-                  "Targeted campaigns",
-                ],
-                gradient: "from-blue-500/20 via-purple-500/20 to-pink-500/20",
-              },
-              {
-                title: "Newsletter Ads",
-                icon: Mail,
-                description: "Reach our dedicated email subscribers",
-                features: [
-                  "5,000+ subscribers",
-                  "High open rates",
-                  "Premium positioning",
-                ],
-                gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
-              },
-              {
-                title: "Native Content",
-                icon: Megaphone,
-                description: "Engaging sponsored content that resonates",
-                features: [
-                  "Professional writing",
-                  "Social promotion",
-                  "SEO optimization",
-                ],
-                gradient: "from-orange-500/20 via-red-500/20 to-rose-500/20",
-              },
-            ].map((option, index) => (
+          <div className="grid grid-cols-12 gap-8 relative">
+            <div className="col-span-12 md:col-span-5 space-y-8">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
+                alt="Digital Marketing"
+                className="w-full h-[400px] object-cover rounded-lg shadow-xl"
+              />
+              <div className="p-6 bg-white rounded-lg shadow-lg transform md:translate-x-12">
+                <h3 className="font-playfair text-2xl font-bold mb-4">Why Digital?</h3>
+                <p className="text-charcoal-gray/70">
+                  Reach our engaged online audience through strategic digital placements. 
+                  Our multi-channel approach ensures maximum visibility for your brand.
+                </p>
+              </div>
+            </div>
+
+            <div className="col-span-12 md:col-span-7 md:pl-8 space-y-6">
+              {[
+                {
+                  title: "Display Ads",
+                  icon: Globe,
+                  description: "Premium banner positions across our website",
+                  features: [
+                    "High-visibility placements",
+                    "Mobile-responsive",
+                    "Targeted campaigns",
+                  ],
+                  gradient: "from-blue-500/20 via-purple-500/20 to-pink-500/20",
+                  size: "large"
+                },
+                {
+                  title: "Newsletter Ads",
+                  icon: Mail,
+                  description: "Reach our dedicated email subscribers",
+                  features: [
+                    "5,000+ subscribers",
+                    "High open rates",
+                    "Premium positioning",
+                  ],
+                  gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
+                  size: "medium"
+                },
+                {
+                  title: "Native Content",
+                  icon: Megaphone,
+                  description: "Engaging sponsored content that resonates",
+                  features: [
+                    "Professional writing",
+                    "Social promotion",
+                    "SEO optimization",
+                  ],
+                  gradient: "from-orange-500/20 via-red-500/20 to-rose-500/20",
+                  size: "small"
+                },
+              ].map((option, index) => (
               <div
                 key={index}
-                className={`group p-6 border border-[#333333] rounded-lg hover:shadow-xl transition-all ${
-                  index === 1 ? 'md:transform md:-translate-y-8 md:scale-110 z-10' : ''
-                } hover:z-20 bg-white`}
+                className={`group p-6 border border-[#333333] rounded-lg hover:shadow-xl transition-all 
+                  ${option.size === 'large' ? 'md:ml-[-10%] md:w-[110%]' : 
+                    option.size === 'medium' ? 'md:ml-[5%] md:w-[95%]' : 
+                    'md:ml-[10%] md:w-[90%]'} 
+                  hover:z-20 bg-white`}
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
