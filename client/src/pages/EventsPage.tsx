@@ -312,7 +312,68 @@ const EventsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-8">
+      <div className="relative overflow-hidden bg-gradient-to-b from-cardinal-red/5 to-[#F2F0EF] pt-32 pb-16">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="inline-block">
+                <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-cardinal-red/10 text-cardinal-red font-medium text-sm">
+                  Featured Events
+                </span>
+              </div>
+              <h2 className="font-playfair text-5xl font-bold text-charcoal-gray leading-tight">
+                Connect with Your <br/>
+                <span className="text-cardinal-red">Community</span>
+              </h2>
+              <p className="text-lg text-charcoal-gray/80">
+                From local festivals to cultural celebrations, discover events that bring Doylestown together. Join us in creating memorable experiences and strengthening our community bonds.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
+                    <img 
+                      src="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb" 
+                      alt="Community Event"
+                      className="w-full h-48 object-cover"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
+                    <img 
+                      src="https://images.unsplash.com/photo-1511192336575-5a79af67a629" 
+                      alt="Music Event"
+                      className="w-full h-64 object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-4 pt-8">
+                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
+                    <img 
+                      src="https://images.unsplash.com/photo-1488459716781-31db52582fe9" 
+                      alt="Food Event"
+                      className="w-full h-64 object-cover"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
+                    <img 
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e" 
+                      alt="Cultural Event"
+                      className="w-full h-48 object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="absolute -top-4 -right-4 -bottom-4 -left-4 bg-gradient-to-br from-cardinal-red/20 to-forest-green/20 rounded-xl -z-10"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="flex flex-col items-center gap-6 mb-16">
           <h1 className="font-playfair text-4xl font-bold text-charcoal-gray text-center">
             Discover What's Happening
