@@ -296,31 +296,97 @@ const AdvertisePage = () => {
             </div>
           </div>
 
-          {/* Print Advertising - Right to Left */}
-          <div className="flex flex-col-reverse md:flex-row items-center mb-24">
-            <div className="w-full md:w-1/2 mt-8 md:mt-0">
-              <img
-                src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
-                alt="Print Advertising"
-                className="rounded-lg w-full h-[300px] object-cover"
-              />
-            </div>
-            <div className="w-full md:w-1/2 pl-0 md:pl-12">
-              <div className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
-                <h3 className="font-bold text-2xl mb-4">Print Advertising</h3>
-                <p className="text-charcoal-gray/70 mb-4">
-                  Traditional print advertisements in our weekly edition
+          <div className="grid grid-cols-12 gap-6 relative">
+            {/* Feature Image Box - Now positioned on the right */}
+            <div className="col-span-12 md:col-start-8 md:col-span-5 row-span-2">
+              <div className="h-full border border-[#333333] rounded-lg overflow-hidden p-6 bg-white">
+                <div className="relative h-[400px] mb-6 overflow-hidden rounded-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
+                    alt="Print Advertising"
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">Why Print?</h3>
+                <p className="text-charcoal-gray/70">
+                  Reach our engaged local readership through traditional print placements. Our weekly edition provides lasting visibility for your brand.
                 </p>
-                <ul className="space-y-2">
-                  {advertisingOptions[1].specs.map((spec, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-                      <span>{spec}</span>
+              </div>
+            </div>
+
+            {[
+              {
+                title: "Full Page Ads",
+                icon: PieChart,
+                description: "Maximum visibility in our print edition",
+                features: [
+                  "Premium positioning",
+                  "High-quality print",
+                  "Design assistance",
+                ],
+                gradient: "from-emerald-500/20 via-green-500/20 to-forest-green/20",
+                cols: "md:col-span-4",
+              },
+              {
+                title: "Section Sponsorship",
+                icon: Building2,
+                description: "Own a dedicated section of the paper",
+                features: [
+                  "Category exclusivity",
+                  "Regular presence",
+                  "Branded content",
+                ],
+                gradient: "from-red-500/20 via-rose-500/20 to-cardinal-red/20",
+                cols: "md:col-span-3",
+              },
+              {
+                title: "Classified Ads",
+                icon: TrendingUp,
+                description: "Targeted local reach at affordable rates",
+                features: [
+                  "Flexible sizes",
+                  "Weekly placement",
+                  "Quick turnaround",
+                ],
+                gradient: "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
+                cols: "md:col-span-7",
+              },
+            ].map((option, index) => (
+              <div
+                key={index}
+                className={`group col-span-12 ${option.cols} p-6 border border-[#333333] rounded-lg bg-white`}
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
+                ></div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-gradient-to-br from-forest-green/20 to-cardinal-red/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                    <option.icon className="w-7 h-7 text-forest-green" />
+                  </div>
+                  <h3 className="font-playfair text-2xl font-bold bg-gradient-to-r from-charcoal-gray to-charcoal-gray/80 bg-clip-text text-transparent">
+                    {option.title}
+                  </h3>
+                </div>
+                <p className="text-charcoal-gray/70 mb-8 text-lg">
+                  {option.description}
+                </p>
+                <ul className="space-y-4">
+                  {option.features.map((feature, featureIndex) => (
+                    <li
+                      key={featureIndex}
+                      className="flex items-center gap-3 group/item"
+                    >
+                      <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
+                        <CheckCircle2 className="w-5 h-5 text-forest-green" />
+                      </div>
+                      <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
+                        {feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
+            ))}
           </div>
 
           {/* Sponsored Content - Left to Right */}
