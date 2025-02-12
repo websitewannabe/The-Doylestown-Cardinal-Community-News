@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Calendar, MapPin, Clock, Search, Filter, X, Plus, Share2, CalendarCheck, Globe, Phone, Mail, User2, DollarSign, Users, Info } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Calendar, MapPin, Clock, Search, Filter, X, Plus, Share2, CalendarCheck, Globe, Phone, Mail, User2, DollarSign, Users, Info, ChevronRight } from 'lucide-react';
 
 // Constants for filtering
 const categories = [
@@ -385,6 +386,13 @@ const EventsPage = () => {
           <h1 className="font-playfair text-4xl font-bold text-charcoal-gray text-center">
             Discover What's Happening
           </h1>
+          <Link
+            to="/community/spotlight/event"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-forest-green transition-colors"
+          >
+            View Event Spotlight
+            <ChevronRight size={20} />
+          </Link>
         </div>
       </div>
 
