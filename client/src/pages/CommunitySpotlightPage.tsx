@@ -175,7 +175,6 @@ const CommunitySpotlightPage = () => {
               </div>
             ))}
           </div>
-            {spotlights.map(spotlight => (
               <div
                 key={spotlight.id}
                 className="group relative overflow-hidden border border-[#333333] rounded-lg hover:shadow-xl transition-all duration-300"
