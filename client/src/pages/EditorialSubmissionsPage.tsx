@@ -90,23 +90,22 @@ const EditorialSubmissionsPage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       {/* Hero Section */}
-      <div className="relative min-h-[60vh] flex flex-col">
-        <div className="absolute inset-0">
+      <div className="relative h-[70vh]">
+        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img 
             src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80"
             alt="Editorial Submissions"
-            className="w-full h-full object-cover"
+            className="w-full h-[105%] object-cover blur-[1px] scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/90 to-charcoal-gray/90" />
+          <div className="absolute inset-0 bg-charcoal-gray/40" />
         </div>
-        <div className="relative flex-grow flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
-              Editorial Submissions
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+          <div>
+            <h1 className="font-playfair text-6xl md:text-[7.45rem] font-bold text-off-white mb-4">
+              Submit
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl mb-8">
-              Share your stories, news tips, and community updates with The Cardinal. 
-              Help us keep our community informed and connected.
+            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
+              Share your stories and help keep our community connected
             </p>
             <a 
               href="#submit"
