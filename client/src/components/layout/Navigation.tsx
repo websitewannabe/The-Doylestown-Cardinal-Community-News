@@ -99,17 +99,7 @@ const Navigation = () => {
       path: "#",
       hasDropdown: true,
       dropdownItems: [
-        {
-          name: "Advertise with Us",
-          path: "/advertise",
-          subItems: [
-            { name: "Pricing", path: "/advertise#pricing" },
-            { name: "Benefits", path: "/advertise#benefits" },
-            { name: "Options", path: "/advertise#options" },
-            { name: "Digital Ads", path: "/advertise#digital-ads" },
-            { name: "Print Ads", path: "/advertise#print-ads" },
-          ],
-        },
+        { name: "Advertise with Us", path: "/advertise" },
         { name: "Print Subscriptions", path: "/print-subscriptions" },
         { name: "Digital Subscriptions", path: "/digital-subscriptions" },
         { name: "Donate", path: "/donate" },
