@@ -164,7 +164,7 @@ const Navigation = () => {
             w-[calc(95%-4px)] mx-auto
             rounded-2xl
             transition-all duration-300
-            ${isScrolled ? "bg-[#F2F0EF]/93" : "bg-[#F2F0EF]"}
+            ${isScrolled ? "bg-[#F2F0EF]/90" : "bg-[#F2F0EF]/95"}
             backdrop-blur-md
             ${isScrolled ? "shadow-lg" : ""}
           `}
