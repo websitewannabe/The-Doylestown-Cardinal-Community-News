@@ -313,8 +313,8 @@ const EventsPage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12">
-        <div className="flex justify-between items-center mb-12">
-          <h1 className="font-playfair text-4xl font-bold text-charcoal-gray">
+        <div className="flex flex-col items-center gap-6 mb-12">
+          <h1 className="font-playfair text-4xl font-bold text-charcoal-gray text-center">
             Discover What's Happening
           </h1>
           <button
