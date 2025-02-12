@@ -217,15 +217,15 @@ const BusinessDirectoryPage = () => {
             <div className="space-y-8">
               <div className="inline-block">
                 <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-cardinal-red/10 text-cardinal-red font-medium text-sm">
-                  Business Spotlight
+                  Featured Business
                 </span>
               </div>
               <h2 className="font-playfair text-5xl font-bold text-charcoal-gray leading-tight">
-                Stories That <br/>
-                <span className="text-cardinal-red">Connect Us</span>
+                Doylestown <br/>
+                <span className="text-cardinal-red">Business Directory</span>
               </h2>
               <p className="text-lg text-charcoal-gray/80">
-                Discover the local businesses that make our community unique and vibrant.
+                Discover and support local businesses that make Doylestown a vibrant community.
               </p>
               <button
                 onClick={() => setIsSubmitFormOpen(true)}
@@ -240,15 +240,15 @@ const BusinessDirectoryPage = () => {
                 <div className="space-y-4">
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
                     <img 
-                      src={spotlightBusinesses[0].image}
-                      alt={spotlightBusinesses[0].name}
+                      src="https://images.unsplash.com/photo-1507842217343-583bb7270b66" 
+                      alt="Business 1"
                       className="w-full h-48 object-cover"
                     />
                   </div>
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
                     <img 
-                      src={spotlightBusinesses[1].image}
-                      alt={spotlightBusinesses[1].name}
+                      src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0" 
+                      alt="Business 2"
                       className="w-full h-64 object-cover"
                     />
                   </div>
@@ -256,15 +256,15 @@ const BusinessDirectoryPage = () => {
                 <div className="space-y-4 pt-8">
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
                     <img 
-                      src={spotlightBusinesses[2].image}
-                      alt={spotlightBusinesses[2].name}
+                      src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d" 
+                      alt="Business 3"
                       className="w-full h-64 object-cover"
                     />
                   </div>
                   <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
                     <img 
-                      src={currentSpotlight.images[3]}
-                      alt="Business Spotlight"
+                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" 
+                      alt="Business 4"
                       className="w-full h-48 object-cover"
                     />
                   </div>
