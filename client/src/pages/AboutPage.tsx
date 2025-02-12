@@ -160,7 +160,7 @@ const AboutPage = () => {
       </div>
 
       {/* Mission and Values */}
-      <section className="py-20">
+      <section className="pt-8 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -305,7 +305,7 @@ const AboutPage = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {awards.map((award) => (
               <div 
@@ -321,15 +321,15 @@ const AboutPage = () => {
                       <Award className="w-6 h-6 text-cardinal-red" />
                     </div>
                   </div>
-                  
+
                   <h3 className="font-playfair text-lg font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-2">
                     {award.title}
                   </h3>
-                  
+
                   <p className="text-sm text-charcoal-gray/70">
                     {award.organization}
                   </p>
-                  
+
                   <div className="mt-4 pt-4 border-t border-gray-100">
                     <p className="text-sm text-charcoal-gray/80">
                       {award.title.toLowerCase().includes('community') ? 
@@ -357,7 +357,7 @@ const AboutPage = () => {
               <p className="text-lg text-charcoal-gray/80 mb-8">
                 The Cardinal's print edition is available every Wednesday at these trusted local establishments throughout Doylestown. Pick up your copy and support local journalism.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {printLocations.map((location, index) => (
                   <div 
