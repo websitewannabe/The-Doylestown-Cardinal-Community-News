@@ -73,7 +73,7 @@ const ArticlesPage = () => {
           <img
             src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
             alt="Journalism background"
-            className="w-full h-full object-cover blur-[5px]"
+            className="w-full h-full object-cover blur-[3px]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/20 to-charcoal-gray/20" />
         </div>
@@ -108,51 +108,72 @@ const ArticlesPage = () => {
             </div>
             <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="md:col-span-2">
-                <div 
+                <div
                   className="relative h-[400px] rounded-lg overflow-hidden group"
                   style={{
                     backgroundImage: `url(https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg)`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
                   }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent group-hover:from-black/90 transition-all duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="text-cardinal-red bg-white px-3 py-1 rounded-full text-sm font-medium">Live</span>
-                    <h3 className="font-playfair text-2xl font-bold text-white mt-2 mb-2">How Our Emotions Contribute to Heart Disease</h3>
-                    <p className="text-white/90">Did you know that our emotions can also contribute to risks of heart attack and stroke?</p>
+                    <span className="text-cardinal-red bg-white px-3 py-1 rounded-full text-sm font-medium">
+                      Live
+                    </span>
+                    <h3 className="font-playfair text-2xl font-bold text-white mt-2 mb-2">
+                      How Our Emotions Contribute to Heart Disease
+                    </h3>
+                    <p className="text-white/90">
+                      Did you know that our emotions can also contribute to
+                      risks of heart attack and stroke?
+                    </p>
                   </div>
                 </div>
               </div>
               <div className="space-y-4">
-                <div 
+                <div
                   className="p-4 rounded-lg hover:shadow-md transition-all relative h-[180px] overflow-hidden group"
                   style={{
                     backgroundImage: `url(https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg)`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
                   }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent group-hover:from-black/90 transition-all duration-300" />
                   <div className="relative z-10">
-                    <span className="text-white bg-cardinal-red px-3 py-1 rounded-full text-sm font-medium">Community</span>
-                    <h3 className="font-playfair text-lg font-bold mt-2 mb-2 text-white">Cozy Cupid: Valentine's Day Dates</h3>
-                    <p className="text-white/80 text-sm">Are you looking for a cozy night with your love? Here's your guide.</p>
+                    <span className="text-white bg-cardinal-red px-3 py-1 rounded-full text-sm font-medium">
+                      Community
+                    </span>
+                    <h3 className="font-playfair text-lg font-bold mt-2 mb-2 text-white">
+                      Cozy Cupid: Valentine's Day Dates
+                    </h3>
+                    <p className="text-white/80 text-sm">
+                      Are you looking for a cozy night with your love? Here's
+                      your guide.
+                    </p>
                   </div>
                 </div>
-                <div 
+                <div
                   className="p-4 rounded-lg hover:shadow-md transition-all relative h-[180px] overflow-hidden group"
                   style={{
                     backgroundImage: `url(https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png)`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
                   }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent group-hover:from-black/90 transition-all duration-300" />
                   <div className="relative z-10">
-                    <span className="text-white bg-cardinal-red px-3 py-1 rounded-full text-sm font-medium">Live</span>
-                    <h3 className="font-playfair text-lg font-bold mt-2 mb-2 text-white">"Life is for Living:" Organizational Wisdoms</h3>
-                    <p className="text-white/80 text-sm">Nothing is for certain except death and taxes. And laundry.</p>
+                    <span className="text-white bg-cardinal-red px-3 py-1 rounded-full text-sm font-medium">
+                      Live
+                    </span>
+                    <h3 className="font-playfair text-lg font-bold mt-2 mb-2 text-white">
+                      "Life is for Living:" Organizational Wisdoms
+                    </h3>
+                    <p className="text-white/80 text-sm">
+                      Nothing is for certain except death and taxes. And
+                      laundry.
+                    </p>
                   </div>
                 </div>
               </div>

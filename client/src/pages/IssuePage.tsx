@@ -1,6 +1,6 @@
-import React from 'react';
-import { ChevronRight, Calendar, Archive, Info } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { ChevronRight, Calendar, Archive, Info } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const IssuePage = () => {
   return (
@@ -11,7 +11,7 @@ const IssuePage = () => {
           <img
             src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
             alt="Newspaper background"
-            className="w-full h-full object-cover blur-[5px]"
+            className="w-full h-full object-cover blur-[3px]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/20 to-charcoal-gray/20" />
         </div>
@@ -21,14 +21,15 @@ const IssuePage = () => {
               The Cardinal Digital Edition
             </h1>
             <p className="text-xl text-white/90 max-w-2xl mb-8">
-              Experience our newspaper in a new way with our digital edition. 
-              Flip through pages, zoom in on articles, and access our complete archive.
+              Experience our newspaper in a new way with our digital edition.
+              Flip through pages, zoom in on articles, and access our complete
+              archive.
             </p>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            viewBox="0 0 1440 120" 
+          <svg
+            viewBox="0 0 1440 120"
             className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
             preserveAspectRatio="none"
           >
@@ -56,7 +57,7 @@ const IssuePage = () => {
                     March 20, 2024
                   </div>
                 </div>
-                <a 
+                <a
                   href="https://online.fliphtml5.com/onuot/wqtv/#p=1"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -69,9 +70,9 @@ const IssuePage = () => {
 
               {/* Current Issue Preview */}
               <div className="aspect-[4/3] bg-[#F2F0EF] rounded-lg overflow-hidden">
-                <img 
-                  src="/images/The_Cardinal_Paper.png" 
-                  alt="Current Issue - The Cardinal" 
+                <img
+                  src="/images/The_Cardinal_Paper.png"
+                  alt="Current Issue - The Cardinal"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -89,9 +90,10 @@ const IssuePage = () => {
                 <h3 className="font-playfair text-xl font-bold">Past Issues</h3>
               </div>
               <p className="text-charcoal-gray/70 mb-6">
-                Access our complete archive of past editions, dating back to our first digital issue.
+                Access our complete archive of past editions, dating back to our
+                first digital issue.
               </p>
-              <Link 
+              <Link
                 to="/archive"
                 className="w-full px-6 py-3 bg-[#F2F0EF] border border-[#333333] rounded-lg hover:bg-cardinal-red hover:text-white hover:border-cardinal-red transition-colors flex items-center justify-center gap-2"
               >
@@ -102,9 +104,12 @@ const IssuePage = () => {
 
             {/* Subscription Info */}
             <div className="border border-[#333333] rounded-lg p-6">
-              <h3 className="font-playfair text-xl font-bold mb-4">Digital Access</h3>
+              <h3 className="font-playfair text-xl font-bold mb-4">
+                Digital Access
+              </h3>
               <p className="text-charcoal-gray/70 mb-6">
-                Subscribe to get unlimited access to our digital edition and archive.
+                Subscribe to get unlimited access to our digital edition and
+                archive.
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-center gap-2 text-charcoal-gray/70">
