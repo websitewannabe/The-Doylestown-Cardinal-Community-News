@@ -414,12 +414,12 @@ const EventsPage = () => {
           <div className="lg:w-1/4">
             <button
               onClick={() => setIsSubmitFormOpen(true)}
-              className="w-full bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors flex items-center justify-center gap-2 mb-6"
+              className="w-full bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors flex items-center justify-center gap-2"
             >
               <Plus size={20} />
               Submit Your Event
             </button>
-            <div className="border border-[#333333] rounded-lg p-6 sticky top-24">
+            <div className="border border-[#333333] rounded-lg p-6 sticky top-24 mt-6">
               <div className="mb-6">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
