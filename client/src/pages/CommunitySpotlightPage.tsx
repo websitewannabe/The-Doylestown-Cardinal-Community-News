@@ -111,66 +111,66 @@ const CommunitySpotlightPage = () => {
         </div>
       </div>
 
-      {/* Individual Spotlight Sections */}
-      {spotlights.map((spotlight, index) => (
-        <section key={spotlight.id} className={`py-16 ${index % 2 === 0 ? 'bg-white' : 'bg-[#F2F0EF]'}`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative overflow-hidden rounded-lg hover:shadow-xl transition-all duration-300">
-              <div className="flex flex-col lg:flex-row gap-8 items-center">
-                <div className="lg:w-1/2 relative h-[400px] rounded-lg overflow-hidden">
+      {/* Spotlights Grid */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {spotlights.map(spotlight => (
+              <div
+                key={spotlight.id}
+                className="group relative overflow-hidden border border-[#333333] rounded-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="relative h-64">
                   <img
                     src={spotlight.featured.image}
                     alt={spotlight.featured.name}
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-                  <div className="absolute bottom-6 left-6">
-                    <span className="text-sm font-medium text-white bg-cardinal-red px-3 py-1 rounded-full">
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <span className="text-sm font-medium text-white/90 bg-cardinal-red px-3 py-1 rounded-full">
                       {spotlight.title}
                     </span>
-                  </div>
-                </div>
-                <div className="lg:w-1/2 space-y-6 p-6">
-                    <h3 className="font-playfair text-3xl font-bold text-charcoal-gray">
+                    <h3 className="font-playfair text-2xl font-bold text-white mt-2 mb-2">
                       {spotlight.featured.name}
                     </h3>
-                    <p className="text-charcoal-gray/80 text-lg">
-                      {spotlight.featured.description}
-                    </p>
-                    <div className="space-y-2">
-                      {spotlight.featured.address && (
-                        <div className="flex items-center text-charcoal-gray/70">
-                          <MapPin size={18} className="mr-2" />
-                          {spotlight.featured.address}
-                        </div>
-                      )}
-                      {spotlight.featured.date && (
-                        <div className="flex items-center text-charcoal-gray/70">
-                          <Calendar size={18} className="mr-2" />
-                          {spotlight.featured.date}
-                        </div>
-                      )}
-                      {spotlight.featured.role && (
-                        <div className="flex items-center text-charcoal-gray/70">
-                          <Users size={18} className="mr-2" />
-                          {spotlight.featured.role}
-                        </div>
-                      )}
-                    </div>
-                    <Link
-                      to={spotlight.link}
-                      className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
-                    >
-                      View All {spotlight.title}s
-                      <ChevronRight size={16} className="ml-1" />
-                    </Link>
+                    {spotlight.featured.address && (
+                      <div className="flex items-center text-white/80 text-sm">
+                        <MapPin size={14} className="mr-1" />
+                        {spotlight.featured.address}
+                      </div>
+                    )}
+                    {spotlight.featured.date && (
+                      <div className="flex items-center text-white/80 text-sm">
+                        <Calendar size={14} className="mr-1" />
+                        {spotlight.featured.date}
+                      </div>
+                    )}
+                    {spotlight.featured.role && (
+                      <div className="flex items-center text-white/80 text-sm">
+                        <Users size={14} className="mr-1" />
+                        {spotlight.featured.role}
+                      </div>
+                    )}
                   </div>
                 </div>
+                <div className="p-6">
+                  <p className="text-charcoal-gray/80 mb-4">
+                    {spotlight.featured.description}
+                  </p>
+                  <Link
+                    to={spotlight.link}
+                    className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
+                  >
+                    View All {spotlight.title}s
+                    <ChevronRight size={16} className="ml-1" />
+                  </Link>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
 
       {/* Nominate Section */}
       <section className="pb-20">
