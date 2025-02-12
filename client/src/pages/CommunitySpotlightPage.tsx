@@ -111,11 +111,57 @@ const CommunitySpotlightPage = () => {
         </div>
       </div>
 
-      {/* Spotlights Grid */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {spotlights.map(spotlight => (
+      {/* Spotlights Z-Pattern Layout */}
+      {spotlights.map((spotlight, index) => (
+        <section key={spotlight.id} className={`py-16 ${index % 2 === 0 ? 'bg-white' : 'bg-[#F2F0EF]'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center`}>
+              <div className="lg:w-1/2">
+                <img
+                  src={spotlight.featured.image}
+                  alt={spotlight.featured.name}
+                  className="w-full h-[400px] object-cover rounded-lg shadow-lg"
+                />
+              </div>
+              <div className="lg:w-1/2 space-y-6">
+                <span className="text-sm font-medium text-white bg-cardinal-red px-3 py-1 rounded-full">
+                  {spotlight.title}
+                </span>
+                <h3 className="font-playfair text-3xl font-bold text-charcoal-gray mt-4">
+                  {spotlight.featured.name}
+                </h3>
+                {spotlight.featured.address && (
+                  <div className="flex items-center text-charcoal-gray/70">
+                    <MapPin size={18} className="mr-2" />
+                    {spotlight.featured.address}
+                  </div>
+                )}
+                {spotlight.featured.date && (
+                  <div className="flex items-center text-charcoal-gray/70">
+                    <Calendar size={18} className="mr-2" />
+                    {spotlight.featured.date}
+                  </div>
+                )}
+                {spotlight.featured.role && (
+                  <div className="flex items-center text-charcoal-gray/70">
+                    <Users size={18} className="mr-2" />
+                    {spotlight.featured.role}
+                  </div>
+                )}
+                <p className="text-charcoal-gray/80 text-lg">
+                  {spotlight.featured.description}
+                </p>
+                <Link
+                  to={spotlight.link}
+                  className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
+                >
+                  View All {spotlight.title}s
+                  <ChevronRight size={16} className="ml-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
               <div
                 key={spotlight.id}
                 className="group relative overflow-hidden border border-[#333333] rounded-lg hover:shadow-xl transition-all duration-300"
@@ -166,11 +212,7 @@ const CommunitySpotlightPage = () => {
                     <ChevronRight size={16} className="ml-1" />
                   </Link>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              ))}
 
       {/* Nominate Section */}
       <section className="pb-20">
