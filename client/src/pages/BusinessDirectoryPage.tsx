@@ -1,5 +1,7 @@
+
 import React, { useState, useRef, useEffect } from 'react';
-import { Search, MapPin, Clock, Phone, Globe, ChevronRight, Star, X, Filter, Building2 } from 'lucide-react';
+import { Search, MapPin, Clock, Phone, Globe, ChevronRight, Star, X, Filter, Building2, Grid, List } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Constants for filtering
 const businessTypes = [
@@ -88,12 +90,17 @@ const BusinessDirectoryPage = () => {
   const [selectedType, setSelectedType] = useState("All Types");
   const [selectedNeighborhood, setSelectedNeighborhood] = useState("All Neighborhoods");
   const [selectedBusiness, setSelectedBusiness] = useState<Business | null>(null);
+  const [isSubmitFormOpen, setIsSubmitFormOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (selectedBusiness && modalRef.current && !modalRef.current.contains(event.target as Node)) {
         setSelectedBusiness(null);
+      }
+      if (isSubmitFormOpen && formRef.current && !formRef.current.contains(event.target as Node)) {
+        setIsSubmitFormOpen(false);
       }
     };
 
@@ -101,7 +108,7 @@ const BusinessDirectoryPage = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [selectedBusiness]);
+  }, [selectedBusiness, isSubmitFormOpen]);
 
   const BusinessDetailModal = ({ business, onClose }: { business: Business; onClose: () => void }) => (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
@@ -201,42 +208,109 @@ const BusinessDirectoryPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
-      {/* Hero Section */}
-      <div className="relative min-h-[60vh] flex flex-col mb-24">
+      <div className="relative overflow-hidden bg-gradient-to-b from-cardinal-red/5 to-[#F2F0EF] pt-32 pb-16">
         <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&q=80"
-            alt="Doylestown Business District"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/90 to-charcoal-gray/90" />
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         </div>
-        <div className="relative flex-grow flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
-              Business Directory
-            </h1>
-            <p className="text-xl text-white/90 max-w-2xl mb-8">
-              Discover and support local businesses that make Doylestown a vibrant community. 
-              From shopping to dining, find everything our town has to offer.
-            </p>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="inline-block">
+                <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-cardinal-red/10 text-cardinal-red font-medium text-sm">
+                  Featured Business
+                </span>
+              </div>
+              <h2 className="font-playfair text-5xl font-bold text-charcoal-gray leading-tight">
+                Doylestown <br/>
+                <span className="text-cardinal-red">Business Directory</span>
+              </h2>
+              <p className="text-lg text-charcoal-gray/80">
+                Discover and support local businesses that make Doylestown a vibrant community.
+              </p>
+              <button
+                onClick={() => setIsSubmitFormOpen(true)}
+                className="inline-flex items-center mt-4 px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-forest-green transition-colors"
+              >
+                Submit Your Business
+                <ChevronRight size={20} className="ml-2" />
+              </button>
+            </div>
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
+                    <img 
+                      src="https://images.unsplash.com/photo-1507842217343-583bb7270b66" 
+                      alt="Business 1"
+                      className="w-full h-48 object-cover"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
+                    <img 
+                      src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0" 
+                      alt="Business 2"
+                      className="w-full h-64 object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-4 pt-8">
+                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
+                    <img 
+                      src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d" 
+                      alt="Business 3"
+                      className="w-full h-64 object-cover"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform">
+                    <img 
+                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" 
+                      alt="Business 4"
+                      className="w-full h-48 object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="absolute -top-4 -right-4 -bottom-4 -left-4 bg-gradient-to-br from-cardinal-red/20 to-forest-green/20 rounded-xl -z-10"></div>
+            </div>
           </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            viewBox="0 0 1440 120" 
-            className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
-            preserveAspectRatio="none"
-          >
-            <path 
-              fill="currentColor"
-              d="M0,120 C240,100 480,20 720,40 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
-            />
-          </svg>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div className="flex items-center justify-between mb-8">
+          <button
+            onClick={() => setIsSubmitFormOpen(true)}
+            className="bg-forest-green text-white px-8 rounded-lg font-semibold hover:bg-cardinal-red transition-colors flex items-center justify-center gap-2 h-[42px]"
+          >
+            <Building2 size={20} />
+            Submit Your Business
+          </button>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4">
+              <span className="text-charcoal-gray font-medium">View:</span>
+              <div className="flex gap-2 bg-white rounded-lg p-1 border border-[#333333] h-[42px]">
+                <button className="px-4 bg-forest-green text-white rounded-md flex items-center gap-2">
+                  <Grid size={16} /> Grid
+                </button>
+                <button className="px-4 hover:bg-gray-100 rounded-md flex items-center gap-2">
+                  <List size={16} /> List
+                </button>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-charcoal-gray font-medium">Sort:</span>
+              <div className="flex gap-2 bg-white rounded-lg p-1 border border-[#333333] h-[42px]">
+                <button className="px-4 bg-forest-green text-white rounded-md">
+                  Recommended
+                </button>
+                <button className="px-4 hover:bg-gray-100 rounded-md">
+                  Near Me
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Sidebar */}
           <div className="lg:w-1/4">
