@@ -127,7 +127,9 @@ const instagramPosts = [
 const HomePage = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [selectedEvent, setSelectedEvent] = useState<typeof upcomingEvents[0] | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<
+    (typeof upcomingEvents)[0] | null
+  >(null);
   const { forceShowPopup } = useNewsletterContext();
 
   useEffect(() => {
@@ -199,11 +201,10 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        
       </section>
 
       {/* Featured Stories Section */}
-      <section className="pb-20 -mt-32 bg-[#F2F0EF]">
+      <section className="pb-20 -mt-27bg-[#F2F0EF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-12 text-center">
             Featured Stories
@@ -211,7 +212,10 @@ const HomePage = () => {
           <div className="flex gap-8">
             {/* Featured Stories Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
-              <Link to="/articles/1" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
+              <Link
+                to="/articles/1"
+                className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
+              >
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg"
@@ -228,7 +232,10 @@ const HomePage = () => {
                 </p>
               </Link>
 
-              <Link to="/articles/2" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
+              <Link
+                to="/articles/2"
+                className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
+              >
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg"
@@ -245,7 +252,10 @@ const HomePage = () => {
                 </p>
               </Link>
 
-              <Link to="/articles/3" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
+              <Link
+                to="/articles/3"
+                className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
+              >
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png"
@@ -263,7 +273,10 @@ const HomePage = () => {
                 </p>
               </Link>
 
-              <Link to="/articles/4" className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
+              <Link
+                to="/articles/4"
+                className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
+              >
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src="https://doylestowncardinal.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.07.35-PM-888x1024.png"
@@ -337,7 +350,11 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {upcomingEvents.map((event) => (
-              <div key={event.id} className="group cursor-pointer" onClick={() => setSelectedEvent(event)}>
+              <div
+                key={event.id}
+                className="group cursor-pointer"
+                onClick={() => setSelectedEvent(event)}
+              >
                 <div className="border border-[#333333] rounded-lg overflow-hidden">
                   <div className="relative h-48">
                     <img
@@ -581,7 +598,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-    {/* Event Modal */}
+      {/* Event Modal */}
       {selectedEvent && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg max-w-2xl w-full">
@@ -599,7 +616,9 @@ const HomePage = () => {
               </button>
             </div>
             <div className="p-6">
-              <h2 className="font-playfair text-2xl font-bold mb-4">{selectedEvent.title}</h2>
+              <h2 className="font-playfair text-2xl font-bold mb-4">
+                {selectedEvent.title}
+              </h2>
               <div className="space-y-4 mb-6">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-5 h-5 text-cardinal-red" />
