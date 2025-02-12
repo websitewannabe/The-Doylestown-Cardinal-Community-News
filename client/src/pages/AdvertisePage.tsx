@@ -497,24 +497,7 @@ const AdvertisePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-12 gap-6 relative">
-            {/* Feature Image Box - Now positioned on the right */}
-            <div className="col-span-12 md:col-start-8 md:col-span-5 row-span-2">
-              <div className="h-full border border-[#333333] rounded-lg overflow-hidden p-6 bg-white">
-                <div className="relative h-[400px] mb-6 overflow-hidden rounded-lg">
-                  <img
-                    src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
-                    alt="Print Marketing"
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">Why Print?</h3>
-                <p className="text-charcoal-gray/70">
-                  Make a lasting impression with traditional print advertising. Our premium print options offer tangible engagement with our dedicated readership.
-                </p>
-              </div>
-            </div>
-
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: "Full Page Ads",
@@ -525,8 +508,8 @@ const AdvertisePage = () => {
                   "High-quality print",
                   "Design assistance",
                 ],
-                gradient: "from-emerald-500/20 via-green-500/20 to-forest-green/20",
-                cols: "md:col-span-4",
+                gradient:
+                  "from-emerald-500/20 via-green-500/20 to-forest-green/20",
               },
               {
                 title: "Section Sponsorship",
@@ -538,7 +521,6 @@ const AdvertisePage = () => {
                   "Branded content",
                 ],
                 gradient: "from-red-500/20 via-rose-500/20 to-cardinal-red/20",
-                cols: "md:col-span-3",
               },
               {
                 title: "Classified Ads",
@@ -549,13 +531,13 @@ const AdvertisePage = () => {
                   "Weekly placement",
                   "Quick turnaround",
                 ],
-                gradient: "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
-                cols: "md:col-span-7",
+                gradient:
+                  "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
               },
             ].map((option, index) => (
               <div
                 key={index}
-                className={`group col-span-12 ${option.cols} p-6 border border-[#333333] rounded-lg bg-white`}
+                className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
