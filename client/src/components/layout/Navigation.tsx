@@ -164,8 +164,9 @@ const Navigation = () => {
             w-[calc(95%-4px)] mx-auto
             rounded-2xl
             transition-all duration-300
-            bg-[#F2F0EF]
-            ${isScrolled ? 'shadow-lg' : ''}
+            ${isScrolled ? "bg-[#F2F0EF]/90" : "bg-[#F2F0EF]"}
+            backdrop-blur-md
+            ${isScrolled ? "shadow-lg" : ""}
           `}
         >
           <div className="px-8 py-2 flex items-center justify-between">
