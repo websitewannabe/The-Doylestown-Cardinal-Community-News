@@ -388,7 +388,7 @@ const EventsPage = () => {
         <div className="flex items-center justify-between mb-8">
           <button
             onClick={() => setIsSubmitFormOpen(true)}
-            className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors flex items-center justify-center gap-2"
+            className="bg-forest-green text-white px-8 rounded-lg font-semibold hover:bg-cardinal-red transition-colors flex items-center justify-center gap-2 h-[42px]"
           >
             <Plus size={20} />
             Submit Your Event
@@ -396,22 +396,22 @@ const EventsPage = () => {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-4">
               <span className="text-charcoal-gray font-medium">View:</span>
-              <div className="flex gap-2 bg-white rounded-lg p-1 border border-[#333333]">
-                <button className="px-4 py-2 bg-forest-green text-white rounded-md flex items-center gap-2">
+              <div className="flex gap-2 bg-white rounded-lg p-1 border border-[#333333] h-[42px]">
+                <button className="px-4 bg-forest-green text-white rounded-md flex items-center gap-2">
                   <Grid size={16} /> Grid
                 </button>
-                <button className="px-4 py-2 hover:bg-gray-100 rounded-md flex items-center gap-2">
+                <button className="px-4 hover:bg-gray-100 rounded-md flex items-center gap-2">
                   <List size={16} /> List
                 </button>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <span className="text-charcoal-gray font-medium">Sort:</span>
-              <div className="flex gap-2 bg-white rounded-lg p-1 border border-[#333333]">
-                <button className="px-4 py-2 bg-forest-green text-white rounded-md">
+              <div className="flex gap-2 bg-white rounded-lg p-1 border border-[#333333] h-[42px]">
+                <button className="px-4 bg-forest-green text-white rounded-md">
                   Recommended
                 </button>
-                <button className="px-4 py-2 hover:bg-gray-100 rounded-md">
+                <button className="px-4 hover:bg-gray-100 rounded-md">
                   Near Me
                 </button>
               </div>
@@ -421,7 +421,7 @@ const EventsPage = () => {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Sidebar */}
           <div className="lg:w-1/4">
-            <div className="border border-[#333333] rounded-lg p-6 sticky top-24 mt-6">
+            <div className="border border-[#333333] rounded-lg p-6 sticky top-24">
               <div className="mb-6">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
