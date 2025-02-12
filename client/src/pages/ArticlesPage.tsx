@@ -155,10 +155,6 @@ const ArticlesPage = () => {
                     <p className="text-white/80 text-sm">Nothing is for certain except death and taxes. And laundry.</p>
                   </div>
                 </div>
-                <div className="flex justify-between items-center mt-6">
-                  <span className="font-medium text-charcoal-gray">More Featured Stories</span>
-                  <ChevronRight className="text-cardinal-red" size={20} />
-                </div>
               </div>
             </div>
           </div>
