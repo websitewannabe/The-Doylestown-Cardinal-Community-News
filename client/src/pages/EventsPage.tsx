@@ -382,17 +382,10 @@ const EventsPage = () => {
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="flex flex-col items-center gap-6 mb-16">
+        <div className="flex flex-col items-center gap-6 mb-24">
           <h1 className="font-playfair text-4xl font-bold text-charcoal-gray text-center">
             Discover What's Happening
           </h1>
-          <Link
-            to="/community/spotlight/event"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-forest-green transition-colors"
-          >
-            View Event Spotlight
-            <ChevronRight size={20} />
-          </Link>
         </div>
       </div>
 
