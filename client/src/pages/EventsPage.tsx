@@ -331,6 +331,13 @@ const EventsPage = () => {
               <p className="text-lg text-charcoal-gray/80">
                 Annual arts festival featuring local artists, live music, and food vendors.
               </p>
+              <Link
+                to="/community/spotlight/event"
+                className="inline-flex items-center mt-4 px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-forest-green transition-colors"
+              >
+                View Event Spotlight
+                <ChevronRight size={20} className="ml-2" />
+              </Link>
             </div>
             <div className="relative">
               <div className="grid grid-cols-2 gap-4">
