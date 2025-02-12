@@ -113,26 +113,29 @@ const CommunitySpotlightPage = () => {
 
       {/* Individual Spotlight Sections */}
       {spotlights.map((spotlight, index) => (
-        <section key={spotlight.id} className={`py-12 ${index % 2 === 0 ? 'bg-white' : 'bg-[#F2F0EF]'}`}>
+        <section key={spotlight.id} className={`py-16 relative ${index % 2 === 0 ? 'bg-white' : 'bg-[#F2F0EF]'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative overflow-hidden rounded-lg hover:shadow-xl transition-all duration-300">
-              <div className="flex flex-col lg:flex-row gap-8 items-center">
-                <div className="lg:w-1/2 relative h-[400px] rounded-lg overflow-hidden">
-                  <img
-                    src={spotlight.featured.image}
-                    alt={spotlight.featured.name}
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-                  <div className="absolute bottom-6 left-6">
-                    <span className="text-sm font-medium text-white bg-cardinal-red px-3 py-1 rounded-full">
+            <div className={`relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ${index % 2 === 0 ? 'lg:ml-12' : 'lg:mr-12'}`}>
+              <div className={`flex flex-col lg:flex-row gap-8 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+                <div className="lg:w-1/2 relative h-[500px] rounded-lg overflow-hidden transform lg:hover:-translate-y-2 transition-all duration-300">
+                  <div className={`absolute inset-0 ${index % 2 === 0 ? '-rotate-3' : 'rotate-3'} scale-105`}>
+                    <img
+                      src={spotlight.featured.image}
+                      alt={spotlight.featured.name}
+                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+                  </div>
+                  <div className="absolute bottom-6 left-6 z-10">
+                    <span className="text-sm font-medium text-white bg-cardinal-red px-4 py-2 rounded-full shadow-lg">
                       {spotlight.title}
                     </span>
                   </div>
                 </div>
-                <div className="lg:w-1/2 space-y-6 p-6">
-                  <h3 className="font-playfair text-4xl font-bold text-charcoal-gray">
-                    {spotlight.featured.name}
+                <div className="lg:w-1/2 space-y-6 p-8 bg-white rounded-lg shadow-sm">
+                  <h3 className="font-playfair text-4xl font-bold text-charcoal-gray relative">
+                    <span className="relative z-10">{spotlight.featured.name}</span>
+                    <span className="absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-12 bg-cardinal-red/20 rounded-r-full -z-1"></span>
                   </h3>
                   {spotlight.featured.address && (
                     <div className="flex items-center text-charcoal-gray/80 text-sm">
@@ -152,18 +155,23 @@ const CommunitySpotlightPage = () => {
                       {spotlight.featured.role}
                     </div>
                   )}
-                  <p className="text-charcoal-gray/80 text-lg">
+                  <p className="text-charcoal-gray/80 text-lg leading-relaxed">
                     {spotlight.featured.description}
                   </p>
-                  <Link
-                    to={spotlight.link}
-                    className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
-                  >
-                    View All {spotlight.title}s
-                    <ChevronRight size={16} className="ml-1" />
-                  </Link>
+                  <div className="!mt-8">
+                    <Link
+                      to={spotlight.link}
+                      className="inline-flex items-center px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                    >
+                      View All {spotlight.title}s
+                      <ChevronRight size={16} className="ml-2" />
+                    </Link>
+                  </div>
                 </div>
               </div>
+              {/* Decorative Elements */}
+              <div className={`absolute ${index % 2 === 0 ? '-left-4' : '-right-4'} top-1/2 -translate-y-1/2 w-8 h-32 bg-cardinal-red/10 rounded-full -z-1`}></div>
+              <div className={`absolute ${index % 2 === 0 ? 'right-8' : 'left-8'} -bottom-4 w-24 h-24 bg-forest-green/5 rounded-full -z-1`}></div>
             </div>
           </div>
         </section>
