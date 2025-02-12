@@ -82,7 +82,12 @@ const Navigation = () => {
     {
       name: "Events",
       path: "/events",
-      hasDropdown: false,
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "Annual Events", path: "/events/annual-events" },
+        { name: "Upcoming Events", path: "/events/upcoming-events" },
+        { name: "All Events", path: "/events/all-events" },
+      ],
     },
     {
       name: "Community",
