@@ -134,6 +134,7 @@ const BusinessDirectoryPage = () => {
     features: '',
     image: null as File | null
   });
+  const [viewMode, setViewMode] = useState('grid'); // Added state for view mode
   const modalRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -308,10 +309,10 @@ const BusinessDirectoryPage = () => {
             <div className="flex items-center gap-4">
               <span className="text-charcoal-gray font-medium">View:</span>
               <div className="flex gap-2 bg-white rounded-lg p-1 border border-[#333333] h-[42px]">
-                <button className="px-4 bg-forest-green text-white rounded-md flex items-center gap-2">
+                <button onClick={() => setViewMode('grid')} className={`px-4 rounded-md flex items-center gap-2 ${viewMode === 'grid' ? 'bg-forest-green text-white' : 'hover:bg-gray-100'}`}>
                   <Grid size={16} /> Grid
                 </button>
-                <button className="px-4 hover:bg-gray-100 rounded-md flex items-center gap-2">
+                <button onClick={() => setViewMode('list')} className={`px-4 rounded-md flex items-center gap-2 ${viewMode === 'list' ? 'bg-forest-green text-white' : 'hover:bg-gray-100'}`}>
                   <List size={16} /> List
                 </button>
               </div>
@@ -394,64 +395,90 @@ const BusinessDirectoryPage = () => {
             </div>
           </div>
 
-          {/* Main Content - Business Grid */}
+          {/* Main Content - Business Grid/List */}
           <div className="lg:w-3/4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {mockBusinesses.map((business) => (
-                <div
-                  key={business.id}
-                  className="border border-[#333333] rounded-lg overflow-hidden hover:shadow-md transition-shadow"
-                  onClick={() => setSelectedBusiness(business)}
-                >
-                  <div className="relative h-48">
+            {viewMode === 'grid' ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {mockBusinesses.map((business) => (
+                  <div
+                    key={business.id}
+                    className="border border-[#333333] rounded-lg overflow-hidden hover:shadow-md transition-shadow"
+                    onClick={() => setSelectedBusiness(business)}
+                  >
+                    <div className="relative h-48">
+                      <img
+                        src={business.image}
+                        alt={business.name}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-4 right-4">
+                        <div className="flex items-center gap-1 px-2 py-1 bg-white/90 rounded-full">
+                          <Star
+                            size={14}
+                            className="text-yellow-400 fill-current"
+                          />
+                          <span className="text-sm font-medium">
+                            {business.rating}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-sm font-medium text-cardinal-red">
+                          {business.type}
+                        </span>
+                        <span className="text-gray-400">•</span>
+                        <span className="text-sm">{business.neighborhood}</span>
+                      </div>
+                      <h3 className="font-playfair text-lg font-bold mb-2 hover:text-cardinal-red transition-colors">
+                        {business.name}
+                      </h3>
+                      <div className="space-y-2 text-sm text-gray-600">
+                        <div className="flex items-center gap-2">
+                          <MapPin size={14} />
+                          <span>{business.address}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Clock size={14} />
+                          <span>{business.hours}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Building2 size={14} />
+                          <span className="line-clamp-1">
+                            {business.features.join(", ")}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {mockBusinesses.map((business) => (
+                  <div
+                    key={business.id}
+                    onClick={() => setSelectedBusiness(business)}
+                    className="flex items-center border border-[#333333] rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
+                  >
                     <img
                       src={business.image}
                       alt={business.name}
-                      className="w-full h-full object-cover"
+                      className="w-24 h-24 object-cover mr-4 rounded-lg"
                     />
-                    <div className="absolute top-4 right-4">
-                      <div className="flex items-center gap-1 px-2 py-1 bg-white/90 rounded-full">
-                        <Star
-                          size={14}
-                          className="text-yellow-400 fill-current"
-                        />
-                        <span className="text-sm font-medium">
-                          {business.rating}
-                        </span>
-                      </div>
+                    <div>
+                      <h3 className="font-playfair text-lg font-bold mb-1 hover:text-cardinal-red transition-colors">
+                        {business.name}
+                      </h3>
+                      <p className="text-sm text-gray-600">
+                        {business.type} - {business.address}
+                      </p>
                     </div>
                   </div>
-                  <div className="p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-sm font-medium text-cardinal-red">
-                        {business.type}
-                      </span>
-                      <span className="text-gray-400">•</span>
-                      <span className="text-sm">{business.neighborhood}</span>
-                    </div>
-                    <h3 className="font-playfair text-lg font-bold mb-2 hover:text-cardinal-red transition-colors">
-                      {business.name}
-                    </h3>
-                    <div className="space-y-2 text-sm text-gray-600">
-                      <div className="flex items-center gap-2">
-                        <MapPin size={14} />
-                        <span>{business.address}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock size={14} />
-                        <span>{business.hours}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Building2 size={14} />
-                        <span className="line-clamp-1">
-                          {business.features.join(", ")}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -469,7 +496,7 @@ const BusinessDirectoryPage = () => {
                 <X size={24} />
               </button>
             </div>
-            
+
             <form onSubmit={handleSubmit} className="space-y-3">
               <div className="grid grid-cols-2 gap-3">
                 <div>
@@ -585,7 +612,7 @@ const BusinessDirectoryPage = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="flex justify-end gap-4 mt-6">
                 <button
                   type="button"
