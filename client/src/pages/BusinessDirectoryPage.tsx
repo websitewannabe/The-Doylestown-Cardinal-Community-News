@@ -470,122 +470,120 @@ const BusinessDirectoryPage = () => {
               </button>
             </div>
             
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-1">Business Name</label>
-                <input
-                  type="text"
-                  value={formData.businessName}
-                  onChange={(e) => setFormData({...formData, businessName: e.target.value})}
-                  className="w-full p-2 border border-[#333333] rounded-lg"
-                  required
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-1">Business Type</label>
-                <select
-                  value={formData.type}
-                  onChange={(e) => setFormData({...formData, type: e.target.value})}
-                  className="w-full p-2 border border-[#333333] rounded-lg"
-                  required
-                >
-                  {businessTypes.slice(1).map((type) => (
-                    <option key={type} value={type}>{type}</option>
-                  ))}
-                </select>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-1">Address</label>
-                <input
-                  type="text"
-                  value={formData.address}
-                  onChange={(e) => setFormData({...formData, address: e.target.value})}
-                  className="w-full p-2 border border-[#333333] rounded-lg"
-                  required
-                />
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Phone</label>
+                  <label className="block text-xs font-medium">Business Name</label>
+                  <input
+                    type="text"
+                    value={formData.businessName}
+                    onChange={(e) => setFormData({...formData, businessName: e.target.value})}
+                    className="w-full p-1.5 border border-[#333333] rounded-lg text-sm"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium">Business Type</label>
+                  <select
+                    value={formData.type}
+                    onChange={(e) => setFormData({...formData, type: e.target.value})}
+                    className="w-full p-1.5 border border-[#333333] rounded-lg text-sm"
+                    required
+                  >
+                    {businessTypes.slice(1).map((type) => (
+                      <option key={type} value={type}>{type}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3">
+                <div className="col-span-3 sm:col-span-1">
+                  <label className="block text-xs font-medium">Phone</label>
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="w-full p-2 border border-[#333333] rounded-lg"
+                    className="w-full p-1.5 border border-[#333333] rounded-lg text-sm"
                     required
                   />
                 </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-1">Email</label>
+                <div className="col-span-3 sm:col-span-1">
+                  <label className="block text-xs font-medium">Email</label>
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full p-2 border border-[#333333] rounded-lg"
+                    className="w-full p-1.5 border border-[#333333] rounded-lg text-sm"
+                    required
+                  />
+                </div>
+                <div className="col-span-3 sm:col-span-1">
+                  <label className="block text-xs font-medium">Website</label>
+                  <input
+                    type="url"
+                    value={formData.website}
+                    onChange={(e) => setFormData({...formData, website: e.target.value})}
+                    className="w-full p-1.5 border border-[#333333] rounded-lg text-sm"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium">Address</label>
+                  <input
+                    type="text"
+                    value={formData.address}
+                    onChange={(e) => setFormData({...formData, address: e.target.value})}
+                    className="w-full p-1.5 border border-[#333333] rounded-lg text-sm"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium">Business Hours</label>
+                  <input
+                    type="text"
+                    value={formData.hours}
+                    onChange={(e) => setFormData({...formData, hours: e.target.value})}
+                    className="w-full p-1.5 border border-[#333333] rounded-lg text-sm"
+                    placeholder="Mon-Fri: 9am-5pm, Sat: 10am-4pm"
                     required
                   />
                 </div>
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium mb-1">Website</label>
-                <input
-                  type="url"
-                  value={formData.website}
-                  onChange={(e) => setFormData({...formData, website: e.target.value})}
-                  className="w-full p-2 border border-[#333333] rounded-lg"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-1">Business Hours</label>
-                <input
-                  type="text"
-                  value={formData.hours}
-                  onChange={(e) => setFormData({...formData, hours: e.target.value})}
-                  className="w-full p-2 border border-[#333333] rounded-lg"
-                  placeholder="e.g., Mon-Fri: 9am-5pm, Sat: 10am-4pm"
-                  required
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-1">Description</label>
+                <label className="block text-xs font-medium">Description</label>
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({...formData, description: e.target.value})}
-                  className="w-full p-2 border border-[#333333] rounded-lg"
-                  rows={4}
+                  className="w-full p-1.5 border border-[#333333] rounded-lg text-sm"
+                  rows={3}
                   required
                 />
               </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-1">Features (comma-separated)</label>
-                <input
-                  type="text"
-                  value={formData.features}
-                  onChange={(e) => setFormData({...formData, features: e.target.value})}
-                  className="w-full p-2 border border-[#333333] rounded-lg"
-                  placeholder="e.g., Free Parking, WiFi, Outdoor Seating"
-                />
-              </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-1">Business Image</label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => setFormData({...formData, image: e.target.files?.[0] || null})}
-                  className="w-full p-2 border border-[#333333] rounded-lg"
-                />
-                <p className="mt-1 text-sm text-gray-500">
-                  Recommended size: 1200x800 pixels. Maximum file size: 5MB
-                </p>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium">Features</label>
+                  <input
+                    type="text"
+                    value={formData.features}
+                    onChange={(e) => setFormData({...formData, features: e.target.value})}
+                    className="w-full p-1.5 border border-[#333333] rounded-lg text-sm"
+                    placeholder="Free Parking, WiFi, Outdoor Seating"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium">Business Image</label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setFormData({...formData, image: e.target.files?.[0] || null})}
+                    className="w-full p-1.5 border border-[#333333] rounded-lg text-sm"
+                  />
+                </div>
               </div>
               
               <div className="flex justify-end gap-4 mt-6">
