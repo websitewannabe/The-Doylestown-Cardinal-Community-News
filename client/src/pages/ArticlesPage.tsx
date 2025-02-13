@@ -103,8 +103,16 @@ const ArticlesPage = () => {
       <div className="relative -mt-16 mb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-xl shadow-lg p-8 relative">
-            <div className="absolute -top-4 left-8 bg-cardinal-red text-white px-6 py-2 rounded-full font-medium">
-              Featured This Month
+            <div className="flex justify-between items-center absolute -top-4 left-8 right-8">
+              <div className="bg-cardinal-red text-white px-6 py-2 rounded-full font-medium">
+                Featured This Month
+              </div>
+              <Link
+                to="/current-issue"
+                className="bg-cardinal-red text-white px-6 py-2 rounded-full font-medium hover:bg-forest-green transition-colors"
+              >
+                View Current Issue
+              </Link>
             </div>
             <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="md:col-span-2">
