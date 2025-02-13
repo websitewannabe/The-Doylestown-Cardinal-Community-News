@@ -206,7 +206,7 @@ const BestOfDoylestownPage = () => {
                   <p className="text-charcoal-gray/70">{category.description}</p>
                 </div>
                 <Link
-                  to={`/best-of/${category.id}`}
+                  to="/community/directory"
                   className="text-cardinal-red hover:text-forest-green transition-colors flex items-center gap-1"
                 >
                   View All
