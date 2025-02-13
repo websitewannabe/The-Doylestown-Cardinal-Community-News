@@ -79,7 +79,7 @@ const ArticlesPage = () => {
         </div>
         <div className="relative flex-grow flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <h1 className="font-playfair text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl">
+            <h1 className="font-playfair text-3xl md:text-5xl font-bold text-white mb-6 max-w-4xl">
               Stories That Matter, Articles That Connect
             </h1>
           </div>
