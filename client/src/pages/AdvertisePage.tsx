@@ -160,11 +160,11 @@ const advertisingOptions = [
     description: "",
     features: [],
     content: (
-      <a href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf" target="_blank" className="block">
+      <a href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf" target="_blank" rel="noopener noreferrer" className="block">
         <img
           src="/images/The-Cardinal-Rates-1.png"
           alt="The Cardinal Rates"
-          className="w-full h-auto"
+          className="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity"
         />
       </a>
     ),
