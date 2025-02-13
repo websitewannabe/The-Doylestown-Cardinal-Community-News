@@ -421,17 +421,10 @@ const AboutPage = () => {
               Be part of our story. Subscribe to our newsletter, contribute to our community section, 
               or reach out to learn more about partnership opportunities.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button
-                onClick={forceShowPopup}
-                className="inline-flex items-center px-6 py-3 bg-white text-cardinal-red rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors"
-              >
-                Subscribe Now
-                <ChevronRight size={20} className="ml-2" />
-              </button>
+            <div className="flex justify-center">
               <Link
                 to="/contact"
-                className="inline-flex items-center px-6 py-3 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-cardinal-red transition-colors"
+                className="inline-flex items-center px-8 py-4 bg-white text-cardinal-red rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors"
               >
                 Contact Us
                 <ChevronRight size={20} className="ml-2" />
