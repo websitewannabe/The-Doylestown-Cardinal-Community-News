@@ -212,10 +212,7 @@ const HomePage = () => {
           <div className="flex gap-8">
             {/* Featured Stories Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
-              <Link
-                to="/article/1"
-                className="group cursor-pointer"
-              >
+              <Link to="/article/1" className="group cursor-pointer">
                 <div className="border border-[#333333] rounded-lg overflow-hidden">
                   <div className="relative h-48">
                     <img
@@ -234,17 +231,14 @@ const HomePage = () => {
                       How Our Emotions Contribute to Heart Disease
                     </h3>
                     <p className="text-charcoal-gray/70">
-                      Did you know that our emotions can also contribute to risks of
-                      heart attack and stroke?
+                      Did you know that our emotions can also contribute to
+                      risks of heart attack and stroke?
                     </p>
                   </div>
                 </div>
               </Link>
 
-              <Link
-                to="/article/2"
-                className="group cursor-pointer"
-              >
+              <Link to="/article/2" className="group cursor-pointer">
                 <div className="border border-[#333333] rounded-lg overflow-hidden">
                   <div className="relative h-48">
                     <img
@@ -263,17 +257,14 @@ const HomePage = () => {
                       Cozy Cupid: Valentine's Day Dates
                     </h3>
                     <p className="text-charcoal-gray/70">
-                      Are you looking for a cozy night with your love? Here's your
-                      guide.
+                      Are you looking for a cozy night with your love? Here's
+                      your guide.
                     </p>
                   </div>
                 </div>
               </Link>
 
-              <Link
-                to="/article/3"
-                className="group cursor-pointer"
-              >
+              <Link to="/article/3" className="group cursor-pointer">
                 <div className="border border-[#333333] rounded-lg overflow-hidden">
                   <div className="relative h-48">
                     <img
@@ -292,17 +283,15 @@ const HomePage = () => {
                       Organizational Wisdoms from Wingmoms
                     </h3>
                     <p className="text-charcoal-gray/70">
-                      Nothing is for certain except death and taxes. And laundry. A
-                      loyal friend through life's trials, Laundry will always be there for us
+                      Nothing is for certain except death and taxes. And
+                      laundry. A loyal friend through life's trials, Laundry
+                      will always be there for us
                     </p>
                   </div>
                 </div>
               </Link>
 
-              <Link
-                to="/article/4"
-                className="group cursor-pointer"
-              >
+              <Link to="/article/4" className="group cursor-pointer">
                 <div className="border border-[#333333] rounded-lg overflow-hidden">
                   <div className="relative h-48">
                     <img
@@ -322,7 +311,8 @@ const HomePage = () => {
                     </h3>
                     <p className="text-charcoal-gray/70">
                       Join in the history of the Tile Works in Doylestown for A
-                      Night of Song, a monthly songwriter showcase hosted...
+                      Night of Song, a monthly songwriter showcase hosted by Joe
+                      Montone, a Bucks County music producer.
                     </p>
                   </div>
                 </div>
