@@ -296,7 +296,7 @@ const HomePage = () => {
             </div>
 
             {/* Current Edition Box */}
-            <div className="hidden lg:block w-[33%]">
+            <div className="hidden lg:block w-[45%]">
               <div className="border border-[#333333] rounded-lg p-8 sticky top-32 w-full">
                 <div className="mb-6">
                   <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-2">
