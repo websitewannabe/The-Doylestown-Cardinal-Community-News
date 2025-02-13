@@ -375,7 +375,7 @@ const AdvertisePage = () => {
                   {option.image && (
                     <div className="w-48">
                       <img
-                        src={option.image}
+                        src="/images/Mechanical_Rates.png"
                         alt="Print Rates"
                         className="w-full h-auto rounded-lg"
                       />
