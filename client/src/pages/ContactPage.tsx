@@ -54,7 +54,7 @@ const ContactPage = () => {
             alt="Contact Us"
             className="w-full h-[105%] object-cover blur-[1px] scale-105"
           />
-          <div className="absolute inset-0 bg-charcoal-gray/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div>
