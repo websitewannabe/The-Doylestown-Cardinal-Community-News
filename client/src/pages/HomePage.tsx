@@ -305,7 +305,7 @@ const HomePage = () => {
                   </h2>
                   <div className="flex items-center text-charcoal-gray/60">
                     <Calendar size={16} className="mr-2" />
-                    March 20, 2024
+                    February, 2025
                   </div>
                 </div>
 
@@ -333,11 +333,11 @@ const HomePage = () => {
               <div className="border border-[#333333] rounded-lg p-8 w-full">
                 <div className="mb-6">
                   <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-2">
-                    Current Edition
+                    Previous Edition
                   </h2>
                   <div className="flex items-center text-charcoal-gray/60">
                     <Calendar size={16} className="mr-2" />
-                    March 20, 2024
+                    January, 2025
                   </div>
                 </div>
 
@@ -351,7 +351,7 @@ const HomePage = () => {
                 </div>
 
                 <a
-                  href="https://online.fliphtml5.com/onuot/wqtv/#p=1"
+                  href="https://fliphtml5.com/bookcase/qugjm/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors flex items-center justify-center gap-2"
@@ -600,7 +600,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
 
       {/* Event Modal */}
       {selectedEvent && (
