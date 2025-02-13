@@ -182,7 +182,7 @@ const AdvertisePage = () => {
       <div className="relative h-[70vh]">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img
-            src="https://images.unsplash.com/photo-_Zua2hyvTBk?auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TmV3c3BhcGVyfGVufDB8fDB8fHww"
             alt="Advertising background"
             className="w-full h-[105%] object-cover blur-[1px] scale-105"
           />
