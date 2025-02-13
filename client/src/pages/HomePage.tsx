@@ -212,7 +212,7 @@ const HomePage = () => {
           <div className="flex gap-8">
             {/* Featured Stories Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
-              <Link to="/article/1" className="group cursor-pointer">
+              <Link to="/article/1" className="block">
                 <div className="border border-[#333333] rounded-lg overflow-hidden">
                   <div className="relative h-48">
                     <img
@@ -238,7 +238,7 @@ const HomePage = () => {
                 </div>
               </Link>
 
-              <Link to="/article/2" className="group cursor-pointer">
+              <Link to="/article/2" className="block">
                 <div className="border border-[#333333] rounded-lg overflow-hidden">
                   <div className="relative h-48">
                     <img
@@ -264,7 +264,7 @@ const HomePage = () => {
                 </div>
               </Link>
 
-              <Link to="/article/3" className="group cursor-pointer">
+              <Link to="/article/3" className="block">
                 <div className="border border-[#333333] rounded-lg overflow-hidden">
                   <div className="relative h-48">
                     <img
@@ -291,7 +291,7 @@ const HomePage = () => {
                 </div>
               </Link>
 
-              <Link to="/article/4" className="group cursor-pointer">
+              <Link to="/article/4" className="block">
                 <div className="border border-[#333333] rounded-lg overflow-hidden">
                   <div className="relative h-48">
                     <img
