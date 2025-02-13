@@ -288,11 +288,18 @@ const AdvertisePage = () => {
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Why Print?</h3>
+                <h3 className="text-2xl font-bold mb-4">Deadline Materials</h3>
                 <p className="text-charcoal-gray/70">
-                  Connect with our engaged local readership through traditional
-                  print placements. Our trusted print platform ensures your
-                  message reaches the community.
+                  Space deadline: the 10th of the month prior to publication.
+                  Materials deadline: the 15th of the month prior to
+                  publication. Cancellations: must be received by the space
+                  reservation deadline of the issue in which to be published.
+                  Digital files submitted must be composite press-ready CMYK pdf
+                  (preferred), jpg, tif or eps file with all images at minimum
+                  of 300dpi (CMYK). Please include/embed all linked graphics and
+                  fonts (Illustrator files, convert text to outlines). Maximum
+                  ink density of 230-240 is best. Production contact: Jenny
+                  (267) 824-2412 JD@DoylestownCardinal.com
                 </p>
               </div>
             </div>
@@ -375,7 +382,7 @@ const AdvertisePage = () => {
                   {option.title === "Full Page Ads" && (
                     <div className="w-80 -mt-4">
                       <img
-                        src="/images/mechanical-specs.png"
+                        src="/images/Mechanical_Rates.png"
                         alt="Mechanical Specifications"
                         className="w-full rounded-lg shadow-md"
                       />
