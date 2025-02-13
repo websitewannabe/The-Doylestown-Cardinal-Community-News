@@ -234,7 +234,7 @@ const ArchivePage = () => {
                 <X size={24} />
               </button>
             </div>
-            
+
             <div className="p-8">
               <div className="flex items-center text-sm text-charcoal-gray/60 mb-2">
                 <Calendar size={14} className="mr-1" />
@@ -246,7 +246,7 @@ const ArchivePage = () => {
               <p className="text-charcoal-gray/70 mb-6">
                 {selectedIssue.description}
               </p>
-              
+
               <div className="flex flex-wrap gap-2 mb-8">
                 {selectedIssue.topics.map(topic => (
                   <span
