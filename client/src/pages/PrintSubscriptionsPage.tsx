@@ -135,7 +135,7 @@ const PrintSubscriptionsPage = () => {
             {plans.map(plan => (
               <div
                 key={plan.id}
-                className={`relative bg-[#F2F0EF] rounded-lg p-8 ${
+                className={`relative bg-[#F2F0EF] rounded-lg p-8 flex flex-col h-full ${
                   plan.popular ? 'ring-2 ring-cardinal-red shadow-xl' : ''
                 }`}
               >
@@ -153,7 +153,7 @@ const PrintSubscriptionsPage = () => {
                     <span className="text-charcoal-gray/60 ml-2">{plan.period}</span>
                   </div>
                 </div>
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-4 mb-8 flex-grow">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-forest-green flex-shrink-0 mt-0.5" />
