@@ -279,11 +279,11 @@ const AdvertisePage = () => {
             {/* Feature Image Box */}
             <div className="col-span-12 md:col-span-5 row-span-2">
               <div className="h-full border border-[#333333] rounded-lg overflow-hidden p-6 bg-white">
-                <div className="relative h-[400px] mb-6 overflow-hidden rounded-lg">
+                <div className="relative h-[400px] mb-6 overflow-hidden rounded-lg bg-white">
                   <img
-                    src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
-                    alt="Print Advertising"
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                    src="/images/print-rates.png"
+                    alt="Print Advertising Rates"
+                    className="w-full h-full object-contain transform hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Why Print?</h3>
