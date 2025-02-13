@@ -282,8 +282,8 @@ const AdvertisePage = () => {
             </div>
           </div>
 
-          {/* Print Advertising - Right to Left */}
-          <div className="flex flex-col-reverse md:flex-row items-center mb-24">
+          {/* Print Advertising - Left to Right */}
+          <div className="flex flex-col-reverse md:flex-row-reverse items-center mb-24">
             <div className="w-full md:w-1/2 mt-8 md:mt-0">
               <img
                 src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
@@ -291,7 +291,7 @@ const AdvertisePage = () => {
                 className="rounded-lg w-full h-[300px] object-cover"
               />
             </div>
-            <div className="w-full md:w-1/2 pl-0 md:pl-12">
+            <div className="w-full md:w-1/2 pr-0 md:pr-12">
               <div className="group p-4 border border-[#333333] rounded-lg hover:shadow-lg transition-all">
                 <h3 className="font-bold text-2xl mb-4">Print Advertising</h3>
                 <p className="text-charcoal-gray/70 mb-4">
