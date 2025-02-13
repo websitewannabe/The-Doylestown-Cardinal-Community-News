@@ -44,12 +44,16 @@ const mockArticles = [
 
 const categories = [
   "All Categories",
-  "Local News",
-  "Politics",
-  "Community",
-  "Arts & Culture",
+  "Things To Do",
+  "Hotels",
+  "Restaurants",
+  "Art/Music",
+  "Style",
+  "Fitness",
+  "Life",
   "Business",
-  "Education"
+  "Technology",
+  "Real Estate"
 ];
 
 const ArticlesPage = () => {
