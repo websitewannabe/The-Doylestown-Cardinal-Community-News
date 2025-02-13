@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNewsletterContext } from '../context/NewsletterContext';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Award, Users, Heart, BookOpen, ChevronRight, Clock, Info } from 'lucide-react';
 
 // Mock data for team members
@@ -98,6 +99,7 @@ const printLocations = [
 ];
 
 const AboutPage = () => {
+  const { forceShowPopup } = useNewsletterContext();
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       {/* Hero Section */}
@@ -420,13 +422,13 @@ const AboutPage = () => {
               or reach out to learn more about partnership opportunities.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                to="/subscribe"
+              <button
+                onClick={() => forceShowPopup()}
                 className="inline-flex items-center px-6 py-3 bg-white text-cardinal-red rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors"
               >
                 Subscribe Now
                 <ChevronRight size={20} className="ml-2" />
-              </Link>
+              </button>
               <Link
                 to="/contact"
                 className="inline-flex items-center px-6 py-3 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-cardinal-red transition-colors"
