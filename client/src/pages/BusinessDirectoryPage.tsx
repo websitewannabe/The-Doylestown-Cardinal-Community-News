@@ -122,8 +122,38 @@ const BusinessDirectoryPage = () => {
     null,
   );
   const [isSubmitFormOpen, setIsSubmitFormOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    businessName: '',
+    type: 'Shopping',
+    address: '',
+    phone: '',
+    email: '',
+    website: '',
+    hours: '',
+    description: '',
+    features: '',
+    image: null as File | null
+  });
   const modalRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(formData);
+    setIsSubmitFormOpen(false);
+    setFormData({
+      businessName: '',
+      type: 'Shopping',
+      address: '',
+      phone: '',
+      email: '',
+      website: '',
+      hours: '',
+      description: '',
+      features: '',
+      image: null
+    });
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -425,6 +455,158 @@ const BusinessDirectoryPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Submit Business Form Modal */}
+      {isSubmitFormOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div ref={formRef} className="bg-white rounded-lg max-w-2xl w-full p-6">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="font-playfair text-2xl font-bold">Submit Your Business</h2>
+              <button
+                onClick={() => setIsSubmitFormOpen(false)}
+                className="p-2 hover:bg-gray-100 rounded-full"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">Business Name</label>
+                <input
+                  type="text"
+                  value={formData.businessName}
+                  onChange={(e) => setFormData({...formData, businessName: e.target.value})}
+                  className="w-full p-2 border border-[#333333] rounded-lg"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Business Type</label>
+                <select
+                  value={formData.type}
+                  onChange={(e) => setFormData({...formData, type: e.target.value})}
+                  className="w-full p-2 border border-[#333333] rounded-lg"
+                  required
+                >
+                  {businessTypes.slice(1).map((type) => (
+                    <option key={type} value={type}>{type}</option>
+                  ))}
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Address</label>
+                <input
+                  type="text"
+                  value={formData.address}
+                  onChange={(e) => setFormData({...formData, address: e.target.value})}
+                  className="w-full p-2 border border-[#333333] rounded-lg"
+                  required
+                />
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">Phone</label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    className="w-full p-2 border border-[#333333] rounded-lg"
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium mb-1">Email</label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-full p-2 border border-[#333333] rounded-lg"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Website</label>
+                <input
+                  type="url"
+                  value={formData.website}
+                  onChange={(e) => setFormData({...formData, website: e.target.value})}
+                  className="w-full p-2 border border-[#333333] rounded-lg"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Business Hours</label>
+                <input
+                  type="text"
+                  value={formData.hours}
+                  onChange={(e) => setFormData({...formData, hours: e.target.value})}
+                  className="w-full p-2 border border-[#333333] rounded-lg"
+                  placeholder="e.g., Mon-Fri: 9am-5pm, Sat: 10am-4pm"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Description</label>
+                <textarea
+                  value={formData.description}
+                  onChange={(e) => setFormData({...formData, description: e.target.value})}
+                  className="w-full p-2 border border-[#333333] rounded-lg"
+                  rows={4}
+                  required
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Features (comma-separated)</label>
+                <input
+                  type="text"
+                  value={formData.features}
+                  onChange={(e) => setFormData({...formData, features: e.target.value})}
+                  className="w-full p-2 border border-[#333333] rounded-lg"
+                  placeholder="e.g., Free Parking, WiFi, Outdoor Seating"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1">Business Image</label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => setFormData({...formData, image: e.target.files?.[0] || null})}
+                  className="w-full p-2 border border-[#333333] rounded-lg"
+                />
+                <p className="mt-1 text-sm text-gray-500">
+                  Recommended size: 1200x800 pixels. Maximum file size: 5MB
+                </p>
+              </div>
+              
+              <div className="flex justify-end gap-4 mt-6">
+                <button
+                  type="button"
+                  onClick={() => setIsSubmitFormOpen(false)}
+                  className="px-6 py-2 border border-[#333333] rounded-lg hover:bg-gray-100"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90"
+                >
+                  Submit Business
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Business Detail Modal */}
       {selectedBusiness && (
