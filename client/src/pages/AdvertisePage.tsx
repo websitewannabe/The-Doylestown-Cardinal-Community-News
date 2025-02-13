@@ -164,7 +164,7 @@ const advertisingOptions = [
         <img
           src="/images/The-Cardinal-Rates-1.png"
           alt="The Cardinal Rates"
-          className="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity"
+          className="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity border border-charcoal-gray/20"
         />
       </a>
     ),
