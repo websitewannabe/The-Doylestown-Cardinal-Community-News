@@ -294,7 +294,7 @@ const HomePage = () => {
             </div>
 
             {/* Current Edition Boxes */}
-            <div className="hidden lg:block w-[35%] space-y-8">
+            <div className="hidden lg:block w-[25%] space-y-8">
               {/* First Current Edition Box */}
               <div className="border border-[#333333] rounded-lg p-8 w-full">
                 <div className="mb-6">
