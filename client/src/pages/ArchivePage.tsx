@@ -93,7 +93,7 @@ const ArchivePage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       {/* Hero Section */}
-      <div className="relative h-[70vh]">
+      <div className="relative h-[55vh]">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img 
             src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80"
@@ -104,7 +104,7 @@ const ArchivePage = () => {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div>
-            <h1 className="font-playfair text-6xl md:text-[7.45rem] font-bold text-off-white mb-4">
+            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
               Archives
             </h1>
             <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">

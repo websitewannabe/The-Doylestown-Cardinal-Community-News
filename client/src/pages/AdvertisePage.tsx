@@ -196,7 +196,7 @@ const AdvertisePage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       {/* Hero Section */}
-      <div className="relative h-[70vh]">
+      <div className="relative h-[55vh]">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img
             src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TmV3c3BhcGVyfGVufDB8fDB8fHww"
@@ -207,7 +207,7 @@ const AdvertisePage = () => {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div>
-            <h1 className="font-playfair text-6xl md:text-[7.45rem] font-bold text-off-white mb-4">
+            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
               Advertise
             </h1>
             <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
