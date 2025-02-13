@@ -1,7 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useNewsletterContext } from '../context/NewsletterContext';
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Award, Users, Heart, BookOpen, ChevronRight, Clock, Info } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useNewsletterContext } from "../context/NewsletterContext";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Award,
+  Users,
+  Heart,
+  BookOpen,
+  ChevronRight,
+  Clock,
+  Info,
+} from "lucide-react";
 
 // Mock data for team members
 const teamMembers = [
@@ -9,34 +23,38 @@ const teamMembers = [
     name: "Sarah Mitchell",
     role: "Editor-in-Chief",
     bio: "With over 20 years of journalism experience, Sarah leads our newsroom with a passion for local storytelling and community engagement.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
     email: "sarah@thecardinal.com",
-    linkedin: "#"
+    linkedin: "#",
   },
   {
     name: "Michael Chen",
     role: "Managing Editor",
     bio: "Michael brings 15 years of digital media expertise and a deep commitment to investigative journalism that matters to our community.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80",
     email: "michael@thecardinal.com",
-    linkedin: "#"
+    linkedin: "#",
   },
   {
     name: "Emily Rodriguez",
     role: "Community Outreach Director",
     bio: "Emily's background in community organizing helps forge meaningful connections between The Cardinal and our diverse readership.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80",
     email: "emily@thecardinal.com",
-    linkedin: "#"
+    linkedin: "#",
   },
   {
     name: "James Wilson",
     role: "Senior Reporter",
     bio: "A Doylestown native, James covers local politics and community development with insight and dedication.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80",
     email: "james@thecardinal.com",
-    linkedin: "#"
-  }
+    linkedin: "#",
+  },
 ];
 
 // Mock data for awards and recognition
@@ -44,18 +62,18 @@ const awards = [
   {
     year: "2023",
     title: "Excellence in Community Journalism",
-    organization: "Pennsylvania Press Association"
+    organization: "Pennsylvania Press Association",
   },
   {
     year: "2022",
     title: "Best Digital News Platform",
-    organization: "Local Media Association"
+    organization: "Local Media Association",
   },
   {
     year: "2021",
     title: "Community Service Award",
-    organization: "Bucks County Chamber of Commerce"
-  }
+    organization: "Bucks County Chamber of Commerce",
+  },
 ];
 
 // Mock data for print edition locations
@@ -64,38 +82,38 @@ const printLocations = [
     name: "Doylestown Bookshop",
     address: "16 S Main St, Doylestown, PA 18901",
     type: "Bookstore",
-    hours: "Mon-Sat: 9am-8pm, Sun: 11am-6pm"
+    hours: "Mon-Sat: 9am-8pm, Sun: 11am-6pm",
   },
   {
     name: "Nonno's Italian Coffee Parlor",
     address: "6 W State St, Doylestown, PA 18901",
     type: "Coffee Shop",
-    hours: "Daily: 7am-6pm"
+    hours: "Daily: 7am-6pm",
   },
   {
     name: "Wawa Food Market",
     address: "440 S Main St, Doylestown, PA 18901",
     type: "Convenience Store",
-    hours: "24/7"
+    hours: "24/7",
   },
   {
     name: "Doylestown Food Market",
     address: "29 W State St, Doylestown, PA 18901",
     type: "Grocery Store",
-    hours: "Mon-Sat: 8am-8pm, Sun: 9am-6pm"
+    hours: "Mon-Sat: 8am-8pm, Sun: 9am-6pm",
   },
   {
     name: "Central News",
     address: "52 E State St, Doylestown, PA 18901",
     type: "Newsstand",
-    hours: "Mon-Sat: 6am-7pm, Sun: 7am-3pm"
+    hours: "Mon-Sat: 6am-7pm, Sun: 7am-3pm",
   },
   {
     name: "Doylestown Library",
     address: "150 S Pine St, Doylestown, PA 18901",
     type: "Library",
-    hours: "Mon-Thu: 9am-9pm, Fri-Sat: 9am-5pm"
-  }
+    hours: "Mon-Thu: 9am-9pm, Fri-Sat: 9am-5pm",
+  },
 ];
 
 const AboutPage = () => {
@@ -105,7 +123,7 @@ const AboutPage = () => {
       {/* Hero Section */}
       <div className="relative h-[70vh]">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1524813686514-a57563d77965?auto=format&fit=crop&q=80"
             alt="The Cardinal newsroom"
             className="w-full h-[105%] object-cover blur-[1px] scale-105"
@@ -118,17 +136,18 @@ const AboutPage = () => {
               Our Story
             </h1>
             <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
-              Since 1970, delivering authentic journalism that matters to our community
+              Since 1970, delivering authentic journalism that matters to our
+              community
             </p>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            viewBox="0 0 1440 120" 
+          <svg
+            viewBox="0 0 1440 120"
             className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
             preserveAspectRatio="none"
           >
-            <path 
+            <path
               fill="currentColor"
               d="M0,120 
                  C180,90 360,120 540,100 
@@ -137,7 +156,7 @@ const AboutPage = () => {
                  L1440,120 L0,120 Z"
               className="transition-all duration-300"
             />
-            <path 
+            <path
               fill="currentColor"
               fillOpacity="0.4"
               d="M0,120 
@@ -147,7 +166,7 @@ const AboutPage = () => {
                  L1440,120 L0,120 Z"
               className="transition-all duration-300"
             />
-            <path 
+            <path
               fill="currentColor"
               fillOpacity="0.2"
               d="M0,120 
@@ -169,10 +188,10 @@ const AboutPage = () => {
                 Our Mission
               </h2>
               <p className="text-lg text-charcoal-gray/80 mb-8">
-                The Cardinal exists to serve the greater Doylestown community through 
-                authentic, impactful journalism that informs, connects, and empowers 
-                our readers. We believe in the power of local news to strengthen 
-                community bonds and foster positive change.
+                The Cardinal exists to serve the greater Doylestown community
+                through authentic, impactful journalism that informs, connects,
+                and empowers our readers. We believe in the power of local news
+                to strengthen community bonds and foster positive change.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex items-start gap-4">
@@ -222,13 +241,15 @@ const AboutPage = () => {
               </div>
             </div>
             <div className="relative">
-              <img 
+              <img
                 src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
                 alt="The Cardinal newsroom in action"
                 className="rounded-lg shadow-xl"
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-lg">
-                <p className="font-playfair text-3xl font-bold text-cardinal-red">50+</p>
+                <p className="font-playfair text-3xl font-bold text-cardinal-red">
+                  50+
+                </p>
                 <p className="text-charcoal-gray">Years of Service</p>
               </div>
             </div>
@@ -243,7 +264,7 @@ const AboutPage = () => {
             Meet Our Team
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map(member => (
+            {teamMembers.map((member) => (
               <div key={member.name} className="group">
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
@@ -270,8 +291,12 @@ const AboutPage = () => {
                     </div>
                   </div>
                 </div>
-                <h3 className="font-playfair text-xl font-bold mb-1">{member.name}</h3>
-                <p className="text-cardinal-red font-medium mb-2">{member.role}</p>
+                <h3 className="font-playfair text-xl font-bold mb-1">
+                  {member.name}
+                </h3>
+                <p className="text-cardinal-red font-medium mb-2">
+                  {member.role}
+                </p>
                 <p className="text-sm text-charcoal-gray/70">{member.bio}</p>
               </div>
             ))}
@@ -288,20 +313,27 @@ const AboutPage = () => {
                 Recognition & Awards
               </h2>
               <p className="text-charcoal-gray/80">
-                Our commitment to excellence in journalism and community service has been recognized by leading industry organizations.
+                Our commitment to excellence in journalism and community service
+                has been recognized by leading industry organizations.
               </p>
             </div>
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-white p-6 rounded-lg text-center group hover:bg-cardinal-red/5 transition-colors">
-                <div className="font-playfair text-4xl font-bold text-cardinal-red mb-2">15+</div>
+                <div className="font-playfair text-4xl font-bold text-cardinal-red mb-2">
+                  15+
+                </div>
                 <div className="text-charcoal-gray">Industry Awards</div>
               </div>
               <div className="bg-white p-6 rounded-lg text-center group hover:bg-cardinal-red/5 transition-colors">
-                <div className="font-playfair text-4xl font-bold text-cardinal-red mb-2">50+</div>
+                <div className="font-playfair text-4xl font-bold text-cardinal-red mb-2">
+                  50+
+                </div>
                 <div className="text-charcoal-gray">Years of Excellence</div>
               </div>
               <div className="bg-white p-6 rounded-lg text-center group hover:bg-cardinal-red/5 transition-colors">
-                <div className="font-playfair text-4xl font-bold text-cardinal-red mb-2">100K+</div>
+                <div className="font-playfair text-4xl font-bold text-cardinal-red mb-2">
+                  100K+
+                </div>
                 <div className="text-charcoal-gray">Readers Served</div>
               </div>
             </div>
@@ -309,7 +341,7 @@ const AboutPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {awards.map((award) => (
-              <div 
+              <div
                 key={award.title}
                 className="group bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
               >
@@ -333,11 +365,11 @@ const AboutPage = () => {
 
                   <div className="mt-4 pt-4 border-t border-gray-100">
                     <p className="text-sm text-charcoal-gray/80">
-                      {award.title.toLowerCase().includes('community') ? 
-                        'Recognized for outstanding community engagement and local impact.' :
-                      award.title.toLowerCase().includes('digital') ?
-                        'Honored for excellence in digital innovation and user experience.' :
-                        'Awarded for exceptional journalistic standards and editorial integrity.'}
+                      {award.title.toLowerCase().includes("community")
+                        ? "Recognized for outstanding community engagement and local impact."
+                        : award.title.toLowerCase().includes("digital")
+                          ? "Honored for excellence in digital innovation and user experience."
+                          : "Awarded for exceptional journalistic standards and editorial integrity."}
                     </p>
                   </div>
                 </div>
@@ -356,12 +388,14 @@ const AboutPage = () => {
                 Where to Find Our Print Edition
               </h2>
               <p className="text-lg text-charcoal-gray/80 mb-8">
-                The Cardinal's print edition is available every Wednesday at these trusted local establishments throughout Doylestown. Pick up your copy and support local journalism.
+                The Cardinal's print edition is available every Wednesday at
+                these trusted local establishments throughout Doylestown. Pick
+                up your copy and support local journalism.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {printLocations.map((location, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="bg-[#F2F0EF] p-6 rounded-lg hover:shadow-md transition-shadow"
                   >
@@ -373,11 +407,17 @@ const AboutPage = () => {
                     </span>
                     <div className="space-y-2 text-charcoal-gray/80">
                       <div className="flex items-start gap-2">
-                        <MapPin size={16} className="mt-1 flex-shrink-0 text-cardinal-red" />
+                        <MapPin
+                          size={16}
+                          className="mt-1 flex-shrink-0 text-cardinal-red"
+                        />
                         <span>{location.address}</span>
                       </div>
                       <div className="flex items-start gap-2">
-                        <Clock size={16} className="mt-1 flex-shrink-0 text-cardinal-red" />
+                        <Clock
+                          size={16}
+                          className="mt-1 flex-shrink-0 text-cardinal-red"
+                        />
                         <span>{location.hours}</span>
                       </div>
                     </div>
@@ -387,13 +427,18 @@ const AboutPage = () => {
 
               <div className="mt-8 p-6 bg-cardinal-red/10 rounded-lg">
                 <div className="flex items-start gap-4">
-                  <Info size={24} className="text-cardinal-red flex-shrink-0 mt-1" />
+                  <Info
+                    size={24}
+                    className="text-cardinal-red flex-shrink-0 mt-1"
+                  />
                   <div>
                     <h4 className="font-bold text-charcoal-gray mb-2">
                       Want to become a distribution location?
                     </h4>
                     <p className="text-charcoal-gray/80 mb-4">
-                      If you're interested in carrying The Cardinal at your business, we'd love to hear from you. Contact our distribution team to learn more about becoming a partner.
+                      If you're interested in carrying The Cardinal at your
+                      business, we'd love to hear from you. Contact our
+                      distribution team to learn more about becoming a partner.
                     </p>
                     <a
                       href="mailto:distribution@thecardinal.com"
@@ -415,11 +460,11 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-cardinal-red rounded-lg p-12 text-center">
             <h2 className="font-playfair text-3xl font-bold text-white mb-6">
-              Join Our Community
+              Get in Touch!
             </h2>
             <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-              Be part of our story. Subscribe to our newsletter, contribute to our community section, 
-              or reach out to learn more about partnership opportunities.
+              We value your feedback and inquiries. Reach out to our team for
+              any questions, comments, or story ideas.
             </p>
             <div className="flex justify-center">
               <Link
