@@ -330,7 +330,7 @@ const HomePage = () => {
               </div>
 
               {/* Second Current Edition Box */}
-              <div className="border border-[#333333] rounded-lg p-8 w-full">
+              <div className="border border-[#333333] rounded-lg p-8 w-full h-[calc(100%-2rem)]">
                 <div className="mb-6">
                   <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-2">
                     Previous Edition
