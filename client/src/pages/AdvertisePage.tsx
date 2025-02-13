@@ -355,7 +355,7 @@ const AdvertisePage = () => {
                       ))}
                     </ul>
                   </div>
-                  <div className="w-1/2 pl-4 flex items-center justify-center">
+                  <div className="w-1/2 pl-4 flex items-start justify-center pt-4">
                     <img
                       src="/images/Mechanical_Rates.png"
                       alt="Mechanical Specifications"
