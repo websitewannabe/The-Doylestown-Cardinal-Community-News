@@ -194,7 +194,8 @@ const AdvertisePage = () => {
               Advertise
             </h1>
             <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
-              Connect with Doylestown's most engaged audience through our trusted platform
+              Connect with Doylestown's most engaged audience through our
+              trusted platform
             </p>
             <div className="flex flex-wrap gap-4">
               <button
@@ -217,7 +218,10 @@ const AdvertisePage = () => {
       </div>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-20 -mt-20 relative z-10 bg-[#F2F0EF]">
+      <section
+        id="benefits"
+        className="py-20 -mt-20 relative z-10 bg-[#F2F0EF]"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
@@ -247,8 +251,6 @@ const AdvertisePage = () => {
           </div>
         </div>
       </section>
-
-      
 
       {/* Print Ads Section */}
       <section
@@ -281,14 +283,16 @@ const AdvertisePage = () => {
               <div className="h-full border border-[#333333] rounded-lg overflow-hidden p-6 bg-white">
                 <div className="relative h-[400px] mb-6 overflow-hidden rounded-lg bg-white">
                   <img
-                    src="/images/print-rates.png"
+                    src="/images/Print-Rate.png"
                     alt="Print Advertising Rates"
                     className="w-full h-full object-contain transform hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Why Print?</h3>
                 <p className="text-charcoal-gray/70">
-                  Connect with our engaged local readership through traditional print placements. Our trusted print platform ensures your message reaches the community.
+                  Connect with our engaged local readership through traditional
+                  print placements. Our trusted print platform ensures your
+                  message reaches the community.
                 </p>
               </div>
             </div>
@@ -301,9 +305,10 @@ const AdvertisePage = () => {
                   "Premium positioning",
                   "High-quality print",
                   "Design assistance",
-                  "Brand dominance"
+                  "Brand dominance",
                 ],
-                gradient: "from-emerald-500/20 via-green-500/20 to-forest-green/20",
+                gradient:
+                  "from-emerald-500/20 via-green-500/20 to-forest-green/20",
                 cols: "md:col-span-7",
               },
               {
@@ -313,7 +318,7 @@ const AdvertisePage = () => {
                 features: [
                   "Category exclusivity",
                   "Regular presence",
-                  "Branded content"
+                  "Branded content",
                 ],
                 gradient: "from-red-500/20 via-rose-500/20 to-cardinal-red/20",
                 cols: "md:col-span-4",
@@ -325,9 +330,10 @@ const AdvertisePage = () => {
                 features: [
                   "Flexible sizes",
                   "Weekly placement",
-                  "Quick turnaround"
+                  "Quick turnaround",
                 ],
-                gradient: "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
+                gradient:
+                  "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
                 cols: "md:col-span-3",
               },
             ].map((option, index) => (
@@ -408,7 +414,9 @@ const AdvertisePage = () => {
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Why Digital?</h3>
                 <p className="text-charcoal-gray/70">
-                  Connect with our engaged audience through strategic digital placements. Our multi-channel approach ensures maximum visibility for your brand.
+                  Connect with our engaged audience through strategic digital
+                  placements. Our multi-channel approach ensures maximum
+                  visibility for your brand.
                 </p>
               </div>
             </div>
