@@ -264,12 +264,11 @@ const HomePage = () => {
                   />
                 </div>
                 <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-2 group-hover:text-cardinal-red">
-                  "Life is for Living:" Organizational Wisdoms from Wingmoms
+                  Organizational Wisdoms from Wingmoms
                 </h3>
                 <p className="text-charcoal-gray/80">
                   Nothing is for certain except death and taxes. And laundry. A
-                  loyal friend through life's trials, Laundry will always be
-                  there for us.
+                  loyal friend through life's trials, Laundry will always be...
                 </p>
               </Link>
 
@@ -289,8 +288,7 @@ const HomePage = () => {
                 </h3>
                 <p className="text-charcoal-gray/80">
                   Join in the history of the Tile Works in Doylestown for A
-                  Night of Song, a monthly songwriter showcase hosted by Joe
-                  Montone, a Bucks County music producer.
+                  Night of Song, a monthly songwriter showcase hosted...
                 </p>
               </Link>
             </div>
