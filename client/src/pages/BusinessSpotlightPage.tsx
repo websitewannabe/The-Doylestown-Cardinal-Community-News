@@ -268,7 +268,7 @@ const BusinessSpotlightPage = () => {
                 </div>
 
                 <Link
-                  to={`/business/${currentSpotlight.id}`}
+                  to="/business-directory"
                   className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
                 >
                   View Business Profile
