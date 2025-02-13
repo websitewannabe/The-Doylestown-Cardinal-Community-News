@@ -147,6 +147,7 @@ const EventsPage = () => {
   const [visibleArticles, setVisibleArticles] = useState(6);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [dateRange, setDateRange] = useState({ start: "", end: "" });
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const modalRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -397,10 +398,20 @@ const EventsPage = () => {
             <div className="flex items-center gap-4">
               <span className="text-charcoal-gray font-medium">View:</span>
               <div className="flex gap-2 bg-white rounded-lg p-1 border border-[#333333] h-[42px]">
-                <button className="px-4 bg-forest-green text-white rounded-md flex items-center gap-2">
+                <button 
+                  onClick={() => setViewMode('grid')}
+                  className={`px-4 rounded-md flex items-center gap-2 ${
+                    viewMode === 'grid' ? 'bg-forest-green text-white' : 'hover:bg-gray-100'
+                  }`}
+                >
                   <Grid size={16} /> Grid
                 </button>
-                <button className="px-4 hover:bg-gray-100 rounded-md flex items-center gap-2">
+                <button 
+                  onClick={() => setViewMode('list')}
+                  className={`px-4 rounded-md flex items-center gap-2 ${
+                    viewMode === 'list' ? 'bg-forest-green text-white' : 'hover:bg-gray-100'
+                  }`}
+                >
                   <List size={16} /> List
                 </button>
               </div>
@@ -495,13 +506,15 @@ const EventsPage = () => {
 
           {/* Main Content - Events Grid */}
           <div className="lg:w-3/4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
               {[...mockEvents].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map(event => (
                 <div
                   key={event.id}
-                  className="border border-[#333333] rounded-lg overflow-hidden hover:shadow-md transition-shadow"
+                  className={`border border-[#333333] rounded-lg overflow-hidden hover:shadow-md transition-shadow ${
+                    viewMode === 'list' ? 'flex' : ''
+                  }`}
                 >
-                  <div className="relative h-48">
+                  <div className={`relative ${viewMode === 'list' ? 'w-64 min-w-64' : 'h-48'}`}>
                     <img
                       src={event.image}
                       alt={event.name}
