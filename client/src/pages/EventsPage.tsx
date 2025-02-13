@@ -511,10 +511,10 @@ const EventsPage = () => {
                 <div
                   key={event.id}
                   className={`border border-[#333333] rounded-lg overflow-hidden hover:shadow-md transition-shadow ${
-                    viewMode === 'list' ? 'flex' : ''
+                    viewMode === 'list' ? 'flex h-40' : ''
                   }`}
                 >
-                  <div className={`relative ${viewMode === 'list' ? 'w-64 min-w-64' : 'h-48'}`}>
+                  <div className={`relative ${viewMode === 'list' ? 'w-48 min-w-48' : 'h-48'}`}>
                     <img
                       src={event.image}
                       alt={event.name}
