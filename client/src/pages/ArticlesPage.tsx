@@ -139,7 +139,7 @@ const ArticlesPage = () => {
                   </div>
                 </div>
               </Link>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <Link to={`/articles/${mockArticles[1].id}`}>
                 <div
                   className="p-4 rounded-lg hover:shadow-md transition-all relative h-[180px] overflow-hidden group"
