@@ -293,7 +293,7 @@ const HomePage = () => {
                     </h3>
                     <p className="text-charcoal-gray/70">
                       Nothing is for certain except death and taxes. And laundry. A
-                      loyal friend through life's trials, Laundry will always be...
+                      loyal friend through life's trials, Laundry will always be there for us
                     </p>
                   </div>
                 </div>
