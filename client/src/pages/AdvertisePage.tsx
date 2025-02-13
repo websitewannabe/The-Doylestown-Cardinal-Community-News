@@ -360,8 +360,12 @@ const AdvertisePage = () => {
                 cols: "md:col-span-4",
               },
               {
+                title: "Rate Card",
+                icon: TrendingUp,
+                description: "",
+                features: [],
                 content: (
-                  <a href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf" target="_blank" rel="noopener noreferrer" className="block">
+                  <a href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf" target="_blank" className="block">
                     <img
                       src="/images/The-Cardinal-Rates-1.png"
                       alt="The Cardinal Rates"
@@ -377,7 +381,12 @@ const AdvertisePage = () => {
                 key={index}
                 className={`group col-span-12 ${option.cols} p-6 border border-[#333333] rounded-lg bg-white`}
               >
-                {option.content}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
+                ></div>
+                <div className="flex justify-between items-start gap-4">
+                  <ul className="space-y-4">
+                    {option.features.map((feature, featureIndex) => (
                       <li
                         key={featureIndex}
                         className="flex items-center gap-3 group/item"
@@ -404,7 +413,6 @@ const AdvertisePage = () => {
                 </div>
               </div>
             ))}
-          </div>
           </div>
         </div>
       </section>
