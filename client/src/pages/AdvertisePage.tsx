@@ -160,12 +160,7 @@ const advertisingOptions = [
     description: "",
     features: [],
     content: (
-      <a
-        href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block"
-      >
+      <a href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf" target="_blank" rel="noopener noreferrer" className="block">
         <img
           src="/images/The-Cardinal-Rates-1.png"
           alt="The Cardinal Rates"
@@ -371,16 +366,12 @@ const AdvertisePage = () => {
                 cols: "md:col-span-4",
               },
               {
-                title: "",
+                title: "Rate Card",
                 icon: TrendingUp,
                 description: "",
                 features: [],
                 content: (
-                  <a
-                    href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf"
-                    target="_blank"
-                    className="block"
-                  >
+                  <a href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf" target="_blank" className="block">
                     <img
                       src="/images/The-Cardinal-Rates-1.png"
                       alt="The Cardinal Rates"
@@ -388,8 +379,7 @@ const AdvertisePage = () => {
                     />
                   </a>
                 ),
-                gradient:
-                  "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
+                gradient: "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
                 cols: "md:col-span-3",
               },
             ].map((option, index) => (
@@ -400,7 +390,10 @@ const AdvertisePage = () => {
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
                 ></div>
-                <div className="mb-6">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-gradient-to-br from-forest-green/20 to-cardinal-red/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                    <option.icon className="w-7 h-7 text-forest-green" />
+                  </div>
                   <h3 className="font-playfair text-2xl font-bold bg-gradient-to-r from-charcoal-gray to-charcoal-gray/80 bg-clip-text text-transparent">
                     {option.title}
                   </h3>
