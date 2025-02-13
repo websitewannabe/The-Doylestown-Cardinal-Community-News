@@ -332,7 +332,6 @@ const AdvertisePage = () => {
                 gradient:
                   "from-emerald-500/20 via-green-500/20 to-forest-green/20",
                 cols: "md:col-span-7",
-                imageOnly: false, // Added imageOnly property
               },
               {
                 title: "Section Sponsorship",
@@ -345,7 +344,6 @@ const AdvertisePage = () => {
                 ],
                 gradient: "from-red-500/20 via-rose-500/20 to-cardinal-red/20",
                 cols: "md:col-span-4",
-                imageOnly: false, // Added imageOnly property
               },
               {
                 title: "Classified Ads",
@@ -359,7 +357,6 @@ const AdvertisePage = () => {
                 gradient:
                   "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
                 cols: "md:col-span-3",
-                imageOnly: false, // Added imageOnly property
               },
             ].map((option, index) => (
               <div
@@ -380,17 +377,9 @@ const AdvertisePage = () => {
                 <p className="text-charcoal-gray/70 mb-8 text-lg">
                   {option.description}
                 </p>
-                {option.imageOnly ? (
-                  <div className="mt-4">
-                    <img
-                      src={option.image}
-                      alt="Specifications"
-                      className="w-full rounded-lg shadow-md"
-                    />
-                  </div>
-                ) : (
+                <div className="flex justify-between items-start gap-4">
                   <ul className="space-y-4">
-                    {option.features?.map((feature, featureIndex) => (
+                    {option.features.map((feature, featureIndex) => (
                       <li
                         key={featureIndex}
                         className="flex items-center gap-3 group/item"
@@ -404,7 +393,16 @@ const AdvertisePage = () => {
                       </li>
                     ))}
                   </ul>
-                )}
+                  {option.title === "Full Page Ads" && (
+                    <div className="w-80 -mt-4">
+                      <img
+                        src="/images/Mechanical_Rates.png"
+                        alt="Mechanical Specifications"
+                        className="w-full rounded-lg shadow-md"
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -468,7 +466,6 @@ const AdvertisePage = () => {
                 ],
                 gradient: "from-blue-500/20 via-purple-500/20 to-pink-500/20",
                 cols: "md:col-span-7",
-                imageOnly: false, // Added imageOnly property
               },
               {
                 title: "Newsletter Ads",
@@ -481,7 +478,6 @@ const AdvertisePage = () => {
                 ],
                 gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
                 cols: "md:col-span-4",
-                imageOnly: false, // Added imageOnly property
               },
               {
                 title: "Native Content",
@@ -494,7 +490,6 @@ const AdvertisePage = () => {
                 ],
                 gradient: "from-orange-500/20 via-red-500/20 to-rose-500/20",
                 cols: "md:col-span-3",
-                imageOnly: false, // Added imageOnly property
               },
             ].map((option, index) => (
               <div
@@ -516,7 +511,7 @@ const AdvertisePage = () => {
                   {option.description}
                 </p>
                 <ul className="space-y-4">
-                  {option.features?.map((feature, featureIndex) => (
+                  {option.features.map((feature, featureIndex) => (
                     <li
                       key={featureIndex}
                       className="flex items-center gap-3 group/item"
