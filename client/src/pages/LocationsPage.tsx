@@ -97,7 +97,7 @@ const LocationsPage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
       {/* Hero Section */}
-      <div className="relative h-[70vh]">
+      <div className="relative h-[55vh]">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img 
             src="https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&q=80"
@@ -106,15 +106,30 @@ const LocationsPage = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+        <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
           <div>
-            <h1 className="font-playfair text-6xl md:text-[7.45rem] font-bold text-off-white mb-4">
+            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
               Locations
             </h1>
             <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
-              Locate the nearest distribution point for The Cardinal. Our newspaper is available 
-              at various locations throughout Doylestown and surrounding areas.
+              Find The Cardinal at various distribution points throughout Doylestown
             </p>
+            <div className="flex flex-wrap gap-4">
+              <button
+                onClick={() => document.getElementById('locations-grid')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors inline-flex items-center gap-2"
+              >
+                Find Locations
+                <ChevronRight size={20} />
+              </button>
+              <button
+                onClick={() => document.getElementById('map')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors inline-flex items-center gap-2"
+              >
+                View Map
+                <ChevronRight size={20} />
+              </button>
+            </div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
