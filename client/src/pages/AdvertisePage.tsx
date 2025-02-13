@@ -332,37 +332,37 @@ const AdvertisePage = () => {
                   "from-emerald-500/20 via-green-500/20 to-forest-green/20",
                 cols: "md:col-span-7",
                 customContent: (
-                  <div className="grid grid-cols-2 gap-4 mt-4">
-                    <div className="space-y-4">
-                      <ul className="space-y-4">
-                        {[
-                          "Premium positioning",
-                          "High-quality print",
-                          "Design assistance",
-                          "Brand dominance",
-                        ].map((feature, featureIndex) => (
-                          <li
-                            key={featureIndex}
-                            className="flex items-center gap-3 group/item"
-                          >
-                            <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
-                              <CheckCircle2 className="w-5 h-5 text-forest-green" />
-                            </div>
-                            <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
-                              {feature}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="flex items-center justify-center">
-                      <img
-                        src="/images/Mechanical_Rates.png"
-                        alt="Mechanical Specifications"
-                        className="w-full rounded-lg shadow-md"
-                      />
-                    </div>
+                  <div className="flex">
+                  <div className="w-1/2 pr-4 border-r border-gray-200">
+                    <ul className="space-y-4">
+                      {[
+                        "Premium positioning",
+                        "High-quality print",
+                        "Design assistance",
+                        "Brand dominance",
+                      ].map((feature, featureIndex) => (
+                        <li
+                          key={featureIndex}
+                          className="flex items-center gap-3 group/item"
+                        >
+                          <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
+                            <CheckCircle2 className="w-5 h-5 text-forest-green" />
+                          </div>
+                          <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
+                  <div className="w-1/2 pl-4 flex items-center justify-center">
+                    <img
+                      src="/images/Mechanical_Rates.png"
+                      alt="Mechanical Specifications"
+                      className="w-full rounded-lg shadow-md"
+                    />
+                  </div>
+                </div>
                 ),
               },
               {
@@ -787,8 +787,7 @@ const AdvertisePage = () => {
                         pkg.popular
                           ? "bg-cardinal-red text-white hover:bg-cardinal-red/90"
                           : "border border-[#333333] hover:bg-cardinal-red hover:text-white hover:border-cardinal-red"
-                      }`}
-                    >
+                      }`}                    >
                       Get Started
                     </button>
                   </div>
