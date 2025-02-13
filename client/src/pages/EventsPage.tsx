@@ -496,7 +496,7 @@ const EventsPage = () => {
           {/* Main Content - Events Grid */}
           <div className="lg:w-3/4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {mockEvents.map(event => (
+              {[...mockEvents].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map(event => (
                 <div
                   key={event.id}
                   className="border border-[#333333] rounded-lg overflow-hidden hover:shadow-md transition-shadow"
@@ -507,6 +507,12 @@ const EventsPage = () => {
                       alt={event.name}
                       className="w-full h-full object-cover"
                     />
+                    <div className="absolute top-0 left-0 bg-cardinal-red text-white py-2 px-4 rounded-br-lg shadow-md">
+                      {new Date(event.date).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric'
+                      })}
+                    </div>
                     <div className="absolute top-4 right-4 flex gap-2">
                       <button
                         className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
