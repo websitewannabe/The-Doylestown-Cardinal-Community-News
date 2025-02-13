@@ -328,17 +328,10 @@ const AdvertisePage = () => {
                   "Design assistance",
                   "Brand dominance",
                 ],
+                image: "/images/mechanical-specs.png",
                 gradient:
                   "from-emerald-500/20 via-green-500/20 to-forest-green/20",
-                cols: "md:col-span-3.5",
-              },
-              {
-                title: "Specifications",
-                isImageBox: true,
-                image: "/images/Mechanical_Rates.png",
-                gradient:
-                  "from-emerald-500/20 via-green-500/20 to-forest-green/20",
-                cols: "md:col-span-3.5",
+                cols: "md:col-span-7",
               },
               {
                 title: "Section Sponsorship",
@@ -373,31 +366,19 @@ const AdvertisePage = () => {
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
                 ></div>
-                {!option.isImageBox ? (
-                  <>
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="p-3 bg-gradient-to-br from-forest-green/20 to-cardinal-red/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
-                        <option.icon className="w-7 h-7 text-forest-green" />
-                      </div>
-                      <h3 className="font-playfair text-2xl font-bold bg-gradient-to-r from-charcoal-gray to-charcoal-gray/80 bg-clip-text text-transparent">
-                        {option.title}
-                      </h3>
-                    </div>
-                    <p className="text-charcoal-gray/70 mb-8 text-lg">
-                      {option.description}
-                    </p>
-                    <div className="flex justify-between items-start gap-4">
-                      <ul className="space-y-4">
-                  </>
-                ) : (
-                  <div className="h-full flex items-center justify-center p-4">
-                    <img
-                      src={option.image}
-                      alt={option.title}
-                      className="w-full h-auto rounded-lg shadow-md"
-                    />
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-gradient-to-br from-forest-green/20 to-cardinal-red/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                    <option.icon className="w-7 h-7 text-forest-green" />
                   </div>
-                )}
+                  <h3 className="font-playfair text-2xl font-bold bg-gradient-to-r from-charcoal-gray to-charcoal-gray/80 bg-clip-text text-transparent">
+                    {option.title}
+                  </h3>
+                </div>
+                <p className="text-charcoal-gray/70 mb-8 text-lg">
+                  {option.description}
+                </p>
+                <div className="flex justify-between items-start gap-4">
+                  <ul className="space-y-4">
                     {option.features.map((feature, featureIndex) => (
                       <li
                         key={featureIndex}
@@ -412,6 +393,15 @@ const AdvertisePage = () => {
                       </li>
                     ))}
                   </ul>
+                  {option.title === "Full Page Ads" && (
+                    <div className="w-80 -mt-4">
+                      <img
+                        src="/images/Mechanical_Rates.png"
+                        alt="Mechanical Specifications"
+                        className="w-full rounded-lg shadow-md"
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
