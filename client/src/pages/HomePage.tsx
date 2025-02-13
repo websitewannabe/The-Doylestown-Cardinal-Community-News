@@ -529,13 +529,13 @@ const HomePage = () => {
               </p>
             </div>
             <a
-              href="https://instagram.com/thecardinal"
+              href="https://www.instagram.com/doylestown_cardinal/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors"
             >
               <Instagram size={20} />
-              @thecardinal
+              @doylestown_cardinal
             </a>
           </div>
 
