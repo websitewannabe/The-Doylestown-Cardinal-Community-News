@@ -372,12 +372,12 @@ const AdvertisePage = () => {
                       </li>
                     ))}
                   </ul>
-                  {option.image && (
-                    <div className="w-48">
+                  {option.title === "Full Page Ads" && (
+                    <div className="w-80 -mt-4">
                       <img
-                        src="/images/Mechanical_Rates.png"
-                        alt="Print Rates"
-                        className="w-full h-auto rounded-lg"
+                        src="/images/mechanical-specs.png"
+                        alt="Mechanical Specifications"
+                        className="w-full rounded-lg shadow-md"
                       />
                     </div>
                   )}
@@ -805,7 +805,7 @@ const AdvertisePage = () => {
                         }))
                       }
                     />
-                  </div>
+                  </div</div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
