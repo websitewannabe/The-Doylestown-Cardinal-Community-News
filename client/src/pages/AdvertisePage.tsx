@@ -307,6 +307,7 @@ const AdvertisePage = () => {
                   "Design assistance",
                   "Brand dominance",
                 ],
+                image: "/images/mechanical-specs.png",
                 gradient:
                   "from-emerald-500/20 via-green-500/20 to-forest-green/20",
                 cols: "md:col-span-7",
@@ -355,21 +356,32 @@ const AdvertisePage = () => {
                 <p className="text-charcoal-gray/70 mb-8 text-lg">
                   {option.description}
                 </p>
-                <ul className="space-y-4">
-                  {option.features.map((feature, featureIndex) => (
-                    <li
-                      key={featureIndex}
-                      className="flex items-center gap-3 group/item"
-                    >
-                      <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
-                        <CheckCircle2 className="w-5 h-5 text-forest-green" />
-                      </div>
-                      <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="flex justify-between items-start gap-4">
+                  <ul className="space-y-4">
+                    {option.features.map((feature, featureIndex) => (
+                      <li
+                        key={featureIndex}
+                        className="flex items-center gap-3 group/item"
+                      >
+                        <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
+                          <CheckCircle2 className="w-5 h-5 text-forest-green" />
+                        </div>
+                        <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  {option.image && (
+                    <div className="w-48">
+                      <img
+                        src={option.image}
+                        alt="Print Rates"
+                        className="w-full h-auto rounded-lg"
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
