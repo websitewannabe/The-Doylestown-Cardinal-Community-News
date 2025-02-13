@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  ChevronRight, 
-  Calendar, 
-  MapPin, 
-  Clock, 
-  Users, 
-  Heart, 
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  ChevronRight,
+  Calendar,
+  MapPin,
+  Clock,
+  Users,
+  Heart,
   Award,
   Star,
   Gift,
   Ticket,
   DollarSign,
-  Mail
-} from 'lucide-react';
+  Mail,
+} from "lucide-react";
 
 // Mock data for the fundraiser event
 const fundraiserDetails = {
@@ -34,8 +34,8 @@ const fundraiserDetails = {
         "Featured in The Cardinal",
         "VIP reception access",
         "Commemorative gift",
-        "1-year digital subscription for all guests"
-      ]
+        "1-year digital subscription for all guests",
+      ],
     },
     {
       name: "Gold",
@@ -45,8 +45,8 @@ const fundraiserDetails = {
         "Recognition in event program",
         "Featured in The Cardinal",
         "VIP reception access",
-        "6-month digital subscription for all guests"
-      ]
+        "6-month digital subscription for all guests",
+      ],
     },
     {
       name: "Silver",
@@ -55,35 +55,35 @@ const fundraiserDetails = {
         "4 event tickets",
         "Recognition in event program",
         "VIP reception access",
-        "3-month digital subscription"
-      ]
-    }
+        "3-month digital subscription",
+      ],
+    },
   ],
   schedule: [
     {
       time: "6:00 PM",
-      event: "VIP Reception & Castle Tours"
+      event: "VIP Reception & Castle Tours",
     },
     {
       time: "7:00 PM",
-      event: "Welcome & Cocktail Hour"
+      event: "Welcome & Cocktail Hour",
     },
     {
       time: "7:45 PM",
-      event: "Dinner Service"
+      event: "Dinner Service",
     },
     {
       time: "8:30 PM",
-      event: "Program & Awards"
+      event: "Program & Awards",
     },
     {
       time: "9:00 PM",
-      event: "Live Auction"
+      event: "Live Auction",
     },
     {
       time: "9:45 PM",
-      event: "Dessert & Dancing"
-    }
+      event: "Dessert & Dancing",
+    },
   ],
   features: [
     "Gourmet dinner by local chefs",
@@ -91,8 +91,8 @@ const fundraiserDetails = {
     "Silent and live auctions",
     "Exclusive castle tours",
     "Community awards ceremony",
-    "Local wine and spirits tasting"
-  ]
+    "Local wine and spirits tasting",
+  ],
 };
 
 const AnnualFundraiserPage = () => {
@@ -103,7 +103,7 @@ const AnnualFundraiserPage = () => {
       {/* Hero Section */}
       <div className="relative h-[55vh]">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80"
             alt="Fonthill Castle"
             className="w-full h-[105%] object-cover blur-[1px] scale-105"
@@ -119,11 +119,11 @@ const AnnualFundraiserPage = () => {
               Fonthill Castle
             </h1>
             <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
-              Join us for an elegant evening of dining, entertainment, and community celebration 
-              as we support local journalism in Doylestown.
+              Join us for an elegant evening of dining, entertainment, and
+              community celebration..
             </p>
             <div className="flex flex-wrap gap-4">
-              <a 
+              <a
                 href="#tickets"
                 className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors inline-flex items-center gap-2"
               >
@@ -140,12 +140,12 @@ const AnnualFundraiserPage = () => {
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            viewBox="0 0 1440 120" 
+          <svg
+            viewBox="0 0 1440 120"
             className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
             preserveAspectRatio="none"
           >
-            <path 
+            <path
               fill="currentColor"
               d="M0,120 C240,100 480,20 720,40 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
             />
@@ -161,7 +161,9 @@ const AnnualFundraiserPage = () => {
               <div className="inline-block p-4 bg-cardinal-red/10 rounded-lg mb-4">
                 <Calendar className="w-8 h-8 text-cardinal-red" />
               </div>
-              <h3 className="font-playfair text-xl font-bold mb-2">Date & Time</h3>
+              <h3 className="font-playfair text-xl font-bold mb-2">
+                Date & Time
+              </h3>
               <p className="text-charcoal-gray/70">{fundraiserDetails.date}</p>
               <p className="text-charcoal-gray/70">{fundraiserDetails.time}</p>
             </div>
@@ -170,24 +172,38 @@ const AnnualFundraiserPage = () => {
                 <MapPin className="w-8 h-8 text-cardinal-red" />
               </div>
               <h3 className="font-playfair text-xl font-bold mb-2">Location</h3>
-              <p className="text-charcoal-gray/70">{fundraiserDetails.location}</p>
-              <p className="text-charcoal-gray/70">{fundraiserDetails.address}</p>
+              <p className="text-charcoal-gray/70">
+                {fundraiserDetails.location}
+              </p>
+              <p className="text-charcoal-gray/70">
+                {fundraiserDetails.address}
+              </p>
             </div>
             <div className="bg-white rounded-lg p-6 text-center">
               <div className="inline-block p-4 bg-cardinal-red/10 rounded-lg mb-4">
                 <Ticket className="w-8 h-8 text-cardinal-red" />
               </div>
-              <h3 className="font-playfair text-xl font-bold mb-2">Ticket Price</h3>
-              <p className="text-charcoal-gray/70">{fundraiserDetails.ticketPrice} per person</p>
-              <p className="text-sm text-cardinal-red">Early Bird: {fundraiserDetails.earlyBirdPrice}</p>
-              <p className="text-xs text-charcoal-gray/60">until {fundraiserDetails.earlyBirdDeadline}</p>
+              <h3 className="font-playfair text-xl font-bold mb-2">
+                Ticket Price
+              </h3>
+              <p className="text-charcoal-gray/70">
+                {fundraiserDetails.ticketPrice} per person
+              </p>
+              <p className="text-sm text-cardinal-red">
+                Early Bird: {fundraiserDetails.earlyBirdPrice}
+              </p>
+              <p className="text-xs text-charcoal-gray/60">
+                until {fundraiserDetails.earlyBirdDeadline}
+              </p>
             </div>
             <div className="bg-white rounded-lg p-6 text-center">
               <div className="inline-block p-4 bg-cardinal-red/10 rounded-lg mb-4">
                 <Gift className="w-8 h-8 text-cardinal-red" />
               </div>
               <h3 className="font-playfair text-xl font-bold mb-2">Features</h3>
-              <p className="text-charcoal-gray/70">Dinner, Entertainment & Auctions</p>
+              <p className="text-charcoal-gray/70">
+                Dinner, Entertainment & Auctions
+              </p>
               <p className="text-charcoal-gray/70">Castle Tours</p>
             </div>
           </div>
@@ -208,7 +224,9 @@ const AnnualFundraiserPage = () => {
                     <Clock className="w-6 h-6 text-cardinal-red" />
                   </div>
                   <div>
-                    <div className="font-playfair text-xl font-bold">{item.time}</div>
+                    <div className="font-playfair text-xl font-bold">
+                      {item.time}
+                    </div>
                     <p className="text-charcoal-gray/70">{item.event}</p>
                   </div>
                 </div>
@@ -246,8 +264,8 @@ const AnnualFundraiserPage = () => {
             Sponsorship Opportunities
           </h2>
           <p className="text-lg text-charcoal-gray/70 text-center max-w-2xl mx-auto mb-12">
-            Support local journalism while gaining visibility for your organization 
-            through our sponsorship packages.
+            Support local journalism while gaining visibility for your
+            organization through our sponsorship packages.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {fundraiserDetails.sponsorshipLevels.map((level, index) => (
@@ -256,7 +274,9 @@ const AnnualFundraiserPage = () => {
                 className="bg-[#F2F0EF] rounded-lg p-8 flex flex-col h-full"
               >
                 <div className="text-center mb-8">
-                  <h3 className="font-playfair text-2xl font-bold mb-2">{level.name}</h3>
+                  <h3 className="font-playfair text-2xl font-bold mb-2">
+                    {level.name}
+                  </h3>
                   <div className="font-playfair text-3xl font-bold text-cardinal-red">
                     {level.price}
                   </div>
@@ -291,9 +311,12 @@ const AnnualFundraiserPage = () => {
             <div className="mb-8">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="font-playfair text-xl font-bold">Individual Tickets</h3>
+                  <h3 className="font-playfair text-xl font-bold">
+                    Individual Tickets
+                  </h3>
                   <p className="text-charcoal-gray/70">
-                    Early Bird Price: {fundraiserDetails.earlyBirdPrice} (until {fundraiserDetails.earlyBirdDeadline})
+                    Early Bird Price: {fundraiserDetails.earlyBirdPrice} (until{" "}
+                    {fundraiserDetails.earlyBirdDeadline})
                   </p>
                 </div>
                 <div className="font-playfair text-2xl font-bold text-cardinal-red">
@@ -307,15 +330,21 @@ const AnnualFundraiserPage = () => {
                   onChange={(e) => setTicketQuantity(parseInt(e.target.value))}
                   className="px-4 py-2 border border-[#333333] rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20 bg-[#F2F0EF]"
                 >
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-                    <option key={num} value={num}>{num}</option>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                    <option key={num} value={num}>
+                      {num}
+                    </option>
                   ))}
                 </select>
               </div>
               <div className="flex items-center justify-between p-4 bg-[#F2F0EF] rounded-lg mb-6">
                 <span className="font-medium">Total:</span>
                 <span className="font-playfair text-xl font-bold text-cardinal-red">
-                  ${(parseInt(fundraiserDetails.ticketPrice.replace('$', '')) * ticketQuantity).toLocaleString()}
+                  $
+                  {(
+                    parseInt(fundraiserDetails.ticketPrice.replace("$", "")) *
+                    ticketQuantity
+                  ).toLocaleString()}
                 </span>
               </div>
               <button className="w-full px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors">
@@ -324,7 +353,10 @@ const AnnualFundraiserPage = () => {
             </div>
             <div className="text-sm text-charcoal-gray/60">
               <p>* Tickets are non-refundable but are transferable.</p>
-              <p>* All proceeds support The Cardinal's local journalism initiatives.</p>
+              <p>
+                * All proceeds support The Cardinal's local journalism
+                initiatives.
+              </p>
             </div>
           </div>
         </div>
@@ -340,8 +372,8 @@ const AnnualFundraiserPage = () => {
             Questions About the Event?
           </h2>
           <p className="text-lg text-charcoal-gray/70 mb-8">
-            Contact our events team for more information about tickets, sponsorships, 
-            or other ways to support the fundraiser.
+            Contact our events team for more information about tickets,
+            sponsorships, or other ways to support the fundraiser.
           </p>
           <a
             href="mailto:events@thecardinal.com"
