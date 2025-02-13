@@ -371,16 +371,16 @@ const AdvertisePage = () => {
                   ))}
                 </ul>
                   </div>
-                  {option.title === "Full Page Ads" && (
-                    <div className="w-64">
-                      <img
-                        src="/images/Mechanical_Specs.png"
-                        alt="Mechanical Specifications"
-                        className="w-full rounded-lg shadow-md"
-                      />
-                    </div>
-                  )}
                 </div>
+                {option.title === "Full Page Ads" && (
+                  <div className="w-64">
+                    <img
+                      src="/images/Mechanical_Specs.png"
+                      alt="Mechanical Specifications"
+                      className="w-full rounded-lg shadow-md"
+                    />
+                  </div>
+                )}
               </div>
             ))}
           </div>
