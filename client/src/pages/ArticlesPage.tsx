@@ -115,11 +115,12 @@ const ArticlesPage = () => {
               </Link>
             </div>
             <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+              <Link to={`/articles/${mockArticles[0].id}`}>
               <div className="md:col-span-2">
                 <div
                   className="relative h-[400px] rounded-lg overflow-hidden group"
                   style={{
-                    backgroundImage: `url(https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg)`,
+                    backgroundImage: `url(${mockArticles[0].image})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -130,20 +131,21 @@ const ArticlesPage = () => {
                       Live
                     </span>
                     <h3 className="font-playfair text-2xl font-bold text-white mt-2 mb-2">
-                      How Our Emotions Contribute to Heart Disease
+                      {mockArticles[0].title}
                     </h3>
                     <p className="text-white/90">
-                      Did you know that our emotions can also contribute to
-                      risks of heart attack and stroke?
+                      {mockArticles[0].excerpt}
                     </p>
                   </div>
                 </div>
               </div>
+              </Link>
               <div className="space-y-4">
+                <Link to={`/articles/${mockArticles[1].id}`}>
                 <div
                   className="p-4 rounded-lg hover:shadow-md transition-all relative h-[180px] overflow-hidden group"
                   style={{
-                    backgroundImage: `url(https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg)`,
+                    backgroundImage: `url(${mockArticles[1].image})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -154,18 +156,19 @@ const ArticlesPage = () => {
                       Community
                     </span>
                     <h3 className="font-playfair text-lg font-bold mt-2 mb-2 text-white">
-                      Cozy Cupid: Valentine's Day Dates
+                      {mockArticles[1].title}
                     </h3>
                     <p className="text-white/80 text-sm">
-                      Are you looking for a cozy night with your love? Here's
-                      your guide.
+                      {mockArticles[1].excerpt}
                     </p>
                   </div>
                 </div>
+                </Link>
+                <Link to={`/articles/${mockArticles[2].id}`}>
                 <div
                   className="p-4 rounded-lg hover:shadow-md transition-all relative h-[180px] overflow-hidden group"
                   style={{
-                    backgroundImage: `url(https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png)`,
+                    backgroundImage: `url(${mockArticles[2].image})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -176,14 +179,14 @@ const ArticlesPage = () => {
                       Live
                     </span>
                     <h3 className="font-playfair text-lg font-bold mt-2 mb-2 text-white">
-                      "Life is for Living:" Organizational Wisdoms
+                      {mockArticles[2].title}
                     </h3>
                     <p className="text-white/80 text-sm">
-                      Nothing is for certain except death and taxes. And
-                      laundry.
+                      {mockArticles[2].excerpt}
                     </p>
                   </div>
                 </div>
+                </Link>
               </div>
             </div>
           </div>
