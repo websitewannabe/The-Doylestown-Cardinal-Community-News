@@ -304,8 +304,8 @@ const AdvertisePage = () => {
                 </p>
                 <br />
                 <p className="text-charcoal-gray/70">
-                  Digital files submitted must be composite press-ready CMYK pdf
-                  (preferred), jpg, tif or eps file with all images at minimum
+                  <strong>Digital files</strong> submitted must be composite press-ready <strong>CMYK pdf</strong>
+                  (preferred), <strong>jpg, tif</strong> or <strong>eps</strong> file with all images at minimum
                   of 300dpi (CMYK). Please include/embed all linked graphics and
                   fonts (Illustrator files, convert text to outlines). Maximum
                   ink density of 230-240 is best.
