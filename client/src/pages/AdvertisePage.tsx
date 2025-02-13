@@ -388,19 +388,19 @@ const AdvertisePage = () => {
                     </p>
                     <div className="flex justify-between items-start gap-4">
                       <ul className="space-y-4">
-                      {option.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center gap-3 group/item">
-                          <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
-                            <CheckCircle2 className="w-5 h-5 text-forest-green" />
-                          </div>
-                          <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </>
+                        {option.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-center gap-3 group/item">
+                            <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
+                              <CheckCircle2 className="w-5 h-5 text-forest-green" />
+                            </div>
+                            <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
                 ) : (
                   <div className="h-full flex items-center justify-center p-4">
                     <img
@@ -410,21 +410,6 @@ const AdvertisePage = () => {
                     />
                   </div>
                 )}
-                    {option.features.map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className="flex items-center gap-3 group/item"
-                      >
-                        <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
-                          <CheckCircle2 className="w-5 h-5 text-forest-green" />
-                        </div>
-                        <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             ))}
           </div>
@@ -798,7 +783,7 @@ const AdvertisePage = () => {
 
       {/* Contact Form Modal */}
       {showContactForm && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/50flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg max-w-2xl w-full">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
