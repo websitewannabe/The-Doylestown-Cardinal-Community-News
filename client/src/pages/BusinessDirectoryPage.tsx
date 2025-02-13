@@ -288,7 +288,7 @@ const BusinessDirectoryPage = () => {
                 <DialogTitle className="font-playfair text-2xl">Submit Your Business</DialogTitle>
                 <DialogDescription>Fill out the form below to add your business to our directory.</DialogDescription>
               </DialogHeader>
-              <form className="space-y-4 mt-4">
+              <form className="space-y-4 mt-4 bg-gray-50 p-6 rounded-lg">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Business Name</label>
