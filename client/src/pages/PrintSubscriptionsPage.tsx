@@ -89,6 +89,21 @@ const PrintSubscriptionsPage = () => {
             <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
               Get Doylestown's most trusted source of local news delivered to your doorstep
             </p>
+            <div className="flex flex-wrap gap-4">
+              <a 
+                href="#pricing"
+                className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors inline-flex items-center gap-2"
+              >
+                View Plans
+                <ChevronRight size={20} />
+              </a>
+              <Link
+                to="/digital-subscriptions"
+                className="bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors"
+              >
+                Digital Subscriptions
+              </Link>
+            </div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
