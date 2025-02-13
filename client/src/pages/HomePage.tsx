@@ -295,9 +295,42 @@ const HomePage = () => {
               </Link>
             </div>
 
-            {/* Current Edition Box */}
-            <div className="hidden lg:block w-[45%]">
-              <div className="border border-[#333333] rounded-lg p-8 sticky top-32 w-full">
+            {/* Current Edition Boxes */}
+            <div className="hidden lg:block w-[45%] space-y-8">
+              {/* First Current Edition Box */}
+              <div className="border border-[#333333] rounded-lg p-8 w-full">
+                <div className="mb-6">
+                  <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-2">
+                    Current Edition
+                  </h2>
+                  <div className="flex items-center text-charcoal-gray/60">
+                    <Calendar size={16} className="mr-2" />
+                    March 20, 2024
+                  </div>
+                </div>
+
+                {/* Current Issue Preview */}
+                <div className="h-36 rounded-lg overflow-hidden mb-6">
+                  <img
+                    src="/images/The_Cardinal_Paper.png"
+                    alt="Current Issue - The Cardinal"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+
+                <a
+                  href="https://online.fliphtml5.com/onuot/wqtv/#p=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors flex items-center justify-center gap-2"
+                >
+                  View
+                  <ChevronRight size={16} />
+                </a>
+              </div>
+
+              {/* Second Current Edition Box */}
+              <div className="border border-[#333333] rounded-lg p-8 w-full">
                 <div className="mb-6">
                   <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-2">
                     Current Edition
