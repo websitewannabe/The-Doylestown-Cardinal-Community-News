@@ -285,7 +285,7 @@ const AdvertisePage = () => {
                   <img
                     src="/images/Print-Rate.png"
                     alt="Print Advertising Rates"
-                    className="w-full h-full object-contain transform hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-contain"
                   />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Why Print?</h3>
