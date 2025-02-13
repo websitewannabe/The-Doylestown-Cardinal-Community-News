@@ -250,126 +250,6 @@ const AdvertisePage = () => {
 
       
 
-      {/* Digital Advertising Section */}
-      <section
-        id="digital-ads"
-        className="py-20 bg-[#F2F0EF] relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] opacity-5"></div>
-        <div className="absolute top-0 left-0 w-64 h-64 bg-cardinal-red/5 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-forest-green/5 rounded-full filter blur-3xl"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center mb-16">
-            <div className="inline-block">
-              <span className="bg-cardinal-red/10 text-cardinal-red text-sm font-semibold px-4 py-1 rounded-full mb-4 block">
-                Digital Solutions
-              </span>
-            </div>
-            <h2 className="font-playfair text-5xl font-bold text-charcoal-gray mb-6 leading-tight bg-gradient-to-r from-cardinal-red to-forest-green bg-clip-text text-transparent">
-              Digital Advertising Solutions
-            </h2>
-            <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
-              Reach our engaged online audience through strategic digital
-              placements
-            </p>
-          </div>
-
-          <div className="grid grid-cols-12 gap-6 relative">
-            {/* Feature Image Box */}
-            <div className="col-span-12 md:col-span-5 row-span-2">
-              <div className="h-full border border-[#333333] rounded-lg overflow-hidden p-6 bg-white">
-                <div className="relative h-[400px] mb-6 overflow-hidden rounded-lg">
-                  <img
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
-                    alt="Digital Marketing"
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">Why Digital?</h3>
-                <p className="text-charcoal-gray/70">
-                  Connect with our engaged audience through strategic digital placements. Our multi-channel approach ensures maximum visibility for your brand.
-                </p>
-              </div>
-            </div>
-
-            {[
-              {
-                title: "Display Ads",
-                icon: Globe,
-                description: "Premium banner positions across our website",
-                features: [
-                  "High-visibility placements",
-                  "Mobile-responsive",
-                  "Targeted campaigns",
-                ],
-                gradient: "from-blue-500/20 via-purple-500/20 to-pink-500/20",
-                cols: "md:col-span-7",
-              },
-              {
-                title: "Newsletter Ads",
-                icon: Mail,
-                description: "Reach our dedicated email subscribers",
-                features: [
-                  "5,000+ subscribers",
-                  "High open rates",
-                  "Premium positioning",
-                ],
-                gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
-                cols: "md:col-span-4",
-              },
-              {
-                title: "Native Content",
-                icon: Megaphone,
-                description: "Engaging sponsored content that resonates",
-                features: [
-                  "Professional writing",
-                  "Social promotion",
-                  "SEO optimization",
-                ],
-                gradient: "from-orange-500/20 via-red-500/20 to-rose-500/20",
-                cols: "md:col-span-3",
-              },
-            ].map((option, index) => (
-              <div
-                key={index}
-                className={`group col-span-12 ${option.cols} p-6 border border-[#333333] rounded-lg bg-white`}
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
-                ></div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-gradient-to-br from-cardinal-red/20 to-forest-green/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
-                    <option.icon className="w-7 h-7 text-cardinal-red" />
-                  </div>
-                  <h3 className="font-playfair text-2xl font-bold bg-gradient-to-r from-charcoal-gray to-charcoal-gray/80 bg-clip-text text-transparent">
-                    {option.title}
-                  </h3>
-                </div>
-                <p className="text-charcoal-gray/70 mb-8 text-lg">
-                  {option.description}
-                </p>
-                <ul className="space-y-4">
-                  {option.features.map((feature, featureIndex) => (
-                    <li
-                      key={featureIndex}
-                      className="flex items-center gap-3 group/item"
-                    >
-                      <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
-                        <CheckCircle2 className="w-5 h-5 text-forest-green" />
-                      </div>
-                      <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Print Ads Section */}
       <section
         id="print-ads"
@@ -461,6 +341,126 @@ const AdvertisePage = () => {
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-gradient-to-br from-forest-green/20 to-cardinal-red/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
                     <option.icon className="w-7 h-7 text-forest-green" />
+                  </div>
+                  <h3 className="font-playfair text-2xl font-bold bg-gradient-to-r from-charcoal-gray to-charcoal-gray/80 bg-clip-text text-transparent">
+                    {option.title}
+                  </h3>
+                </div>
+                <p className="text-charcoal-gray/70 mb-8 text-lg">
+                  {option.description}
+                </p>
+                <ul className="space-y-4">
+                  {option.features.map((feature, featureIndex) => (
+                    <li
+                      key={featureIndex}
+                      className="flex items-center gap-3 group/item"
+                    >
+                      <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
+                        <CheckCircle2 className="w-5 h-5 text-forest-green" />
+                      </div>
+                      <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Digital Advertising Section */}
+      <section
+        id="digital-ads"
+        className="py-20 bg-[#F2F0EF] relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] opacity-5"></div>
+        <div className="absolute top-0 left-0 w-64 h-64 bg-cardinal-red/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-forest-green/5 rounded-full filter blur-3xl"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-16">
+            <div className="inline-block">
+              <span className="bg-cardinal-red/10 text-cardinal-red text-sm font-semibold px-4 py-1 rounded-full mb-4 block">
+                Digital Solutions
+              </span>
+            </div>
+            <h2 className="font-playfair text-5xl font-bold text-charcoal-gray mb-6 leading-tight bg-gradient-to-r from-cardinal-red to-forest-green bg-clip-text text-transparent">
+              Digital Advertising Solutions
+            </h2>
+            <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
+              Reach our engaged online audience through strategic digital
+              placements
+            </p>
+          </div>
+
+          <div className="grid grid-cols-12 gap-6 relative">
+            {/* Feature Image Box */}
+            <div className="col-span-12 md:col-span-5 row-span-2">
+              <div className="h-full border border-[#333333] rounded-lg overflow-hidden p-6 bg-white">
+                <div className="relative h-[400px] mb-6 overflow-hidden rounded-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
+                    alt="Digital Marketing"
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">Why Digital?</h3>
+                <p className="text-charcoal-gray/70">
+                  Connect with our engaged audience through strategic digital placements. Our multi-channel approach ensures maximum visibility for your brand.
+                </p>
+              </div>
+            </div>
+
+            {[
+              {
+                title: "Display Ads",
+                icon: Globe,
+                description: "Premium banner positions across our website",
+                features: [
+                  "High-visibility placements",
+                  "Mobile-responsive",
+                  "Targeted campaigns",
+                ],
+                gradient: "from-blue-500/20 via-purple-500/20 to-pink-500/20",
+                cols: "md:col-span-7",
+              },
+              {
+                title: "Newsletter Ads",
+                icon: Mail,
+                description: "Reach our dedicated email subscribers",
+                features: [
+                  "5,000+ subscribers",
+                  "High open rates",
+                  "Premium positioning",
+                ],
+                gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20",
+                cols: "md:col-span-4",
+              },
+              {
+                title: "Native Content",
+                icon: Megaphone,
+                description: "Engaging sponsored content that resonates",
+                features: [
+                  "Professional writing",
+                  "Social promotion",
+                  "SEO optimization",
+                ],
+                gradient: "from-orange-500/20 via-red-500/20 to-rose-500/20",
+                cols: "md:col-span-3",
+              },
+            ].map((option, index) => (
+              <div
+                key={index}
+                className={`group col-span-12 ${option.cols} p-6 border border-[#333333] rounded-lg bg-white`}
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
+                ></div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-gradient-to-br from-cardinal-red/20 to-forest-green/20 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                    <option.icon className="w-7 h-7 text-cardinal-red" />
                   </div>
                   <h3 className="font-playfair text-2xl font-bold bg-gradient-to-r from-charcoal-gray to-charcoal-gray/80 bg-clip-text text-transparent">
                     {option.title}
