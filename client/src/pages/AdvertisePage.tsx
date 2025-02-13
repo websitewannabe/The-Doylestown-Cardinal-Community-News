@@ -790,7 +790,8 @@ const AdvertisePage = () => {
                       }`}
                     >
                       Get Started
-                    </button                  </div>
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
