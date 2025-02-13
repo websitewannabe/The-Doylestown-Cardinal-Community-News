@@ -154,6 +154,23 @@ const advertisingOptions = [
       "Permanent archive",
     ],
   },
+  {
+    title: "Rate Card",
+    icon: TrendingUp,
+    description: "",
+    features: [],
+    content: (
+      <a href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf" target="_blank" className="block">
+        <img
+          src="/images/The-Cardinal-Rates-1.png"
+          alt="The Cardinal Rates"
+          className="w-full h-auto"
+        />
+      </a>
+    ),
+    gradient: "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
+    cols: "md:col-span-3",
+  },
 ];
 
 const AdvertisePage = () => {
@@ -349,16 +366,20 @@ const AdvertisePage = () => {
                 cols: "md:col-span-4",
               },
               {
-                title: "Classified Ads",
+                title: "Rate Card",
                 icon: TrendingUp,
-                description: "Targeted local reach at affordable rates",
-                features: [
-                  "Flexible sizes",
-                  "Weekly placement",
-                  "Quick turnaround",
-                ],
-                gradient:
-                  "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
+                description: "",
+                features: [],
+                content: (
+                  <a href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf" target="_blank" className="block">
+                    <img
+                      src="/images/The-Cardinal-Rates-1.png"
+                      alt="The Cardinal Rates"
+                      className="w-full h-auto"
+                    />
+                  </a>
+                ),
+                gradient: "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
                 cols: "md:col-span-3",
               },
             ].map((option, index) => (
@@ -405,6 +426,7 @@ const AdvertisePage = () => {
                       />
                     </div>
                   )}
+                  {option.content}
                 </div>
               </div>
             ))}
@@ -768,8 +790,7 @@ const AdvertisePage = () => {
                       }`}
                     >
                       Get Started
-                    </button>
-                  </div>
+                    </button                  </div>
                 </div>
               </div>
             ))}
