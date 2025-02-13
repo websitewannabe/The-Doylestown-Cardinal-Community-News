@@ -84,7 +84,7 @@ const CommunitySpotlightPage = () => {
             alt="Doylestown Community"
             className="w-full h-full object-cover blur-[3px]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/30 to-charcoal-gray/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
         </div>
         <div className="relative flex-grow flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
