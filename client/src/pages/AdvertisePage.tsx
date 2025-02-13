@@ -290,17 +290,16 @@ const AdvertisePage = () => {
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Deadline Materials</h3>
                 <p className="text-charcoal-gray/70">
-                  Space deadline: the 10th of the month prior to publication.{" "}
+                  <strong>Space deadline:</strong> the 10th of the month prior to publication.{" "}
                 </p>{" "}
                 <br />
                 <p className="text-charcoal-gray/70">
-                  Materials deadline: the 15th of the month prior to
+                  <strong>Materials deadline:</strong> the 15th of the month prior to
                   publication.
                 </p>
                 <br />
                 <p className="text-charcoal-gray/70">
-                  {" "}
-                  Cancellations: must be received by the space reservation
+                  <strong>Cancellations:</strong> must be received by the space reservation
                   deadline of the issue in which to be published.
                 </p>
                 <br />
