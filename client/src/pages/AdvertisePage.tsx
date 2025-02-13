@@ -377,13 +377,7 @@ const AdvertisePage = () => {
                 key={index}
                 className={`group col-span-12 ${option.cols} p-6 border border-[#333333] rounded-lg bg-white`}
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10`}
-                ></div>
-                
-                <div className="flex justify-between items-start gap-4">
-                  <ul className="space-y-4">
-                    {option.features.map((feature, featureIndex) => (
+                {option.content}
                       <li
                         key={featureIndex}
                         className="flex items-center gap-3 group/item"
