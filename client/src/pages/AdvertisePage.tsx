@@ -290,16 +290,31 @@ const AdvertisePage = () => {
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Deadline Materials</h3>
                 <p className="text-charcoal-gray/70">
-                  Space deadline: the 10th of the month prior to publication.
+                  Space deadline: the 10th of the month prior to publication.{" "}
+                </p>{" "}
+                <br />
+                <p className="text-charcoal-gray/70">
                   Materials deadline: the 15th of the month prior to
-                  publication. Cancellations: must be received by the space
-                  reservation deadline of the issue in which to be published.
+                  publication.
+                </p>
+                <br />
+                <p className="text-charcoal-gray/70">
+                  {" "}
+                  Cancellations: must be received by the space reservation
+                  deadline of the issue in which to be published.
+                </p>
+                <br />
+                <p className="text-charcoal-gray/70">
                   Digital files submitted must be composite press-ready CMYK pdf
                   (preferred), jpg, tif or eps file with all images at minimum
                   of 300dpi (CMYK). Please include/embed all linked graphics and
                   fonts (Illustrator files, convert text to outlines). Maximum
-                  ink density of 230-240 is best. Production contact: Jenny
-                  (267) 824-2412 JD@DoylestownCardinal.com
+                  ink density of 230-240 is best.
+                </p>
+                <br />
+                <p className="text-charcoal-gray/70">
+                  Production contact: Jenny (267) 824-2412
+                  JD@DoylestownCardinal.com
                 </p>
               </div>
             </div>
