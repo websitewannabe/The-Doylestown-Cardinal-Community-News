@@ -332,7 +332,7 @@ const HomePage = () => {
             {/* Current Edition Boxes */}
             <div className="hidden lg:block w-[25%] space-y-8">
               {/* First Current Edition Box */}
-              <div className="border border-[#333333] rounded-lg p-8 w-full h-[calc(50%-1rem)]">
+              <div className="border border-[#333333] rounded-lg p-8 w-full">
                 <div className="mb-6">
                   <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-2">
                     Current Edition
@@ -359,7 +359,7 @@ const HomePage = () => {
               </div>
 
               {/* Previous Edition Box */}
-              <div className="border border-[#333333] rounded-lg p-8 w-full h-[calc(50%-1rem)]">
+              <div className="border border-[#333333] rounded-lg p-8 w-full min-h-[calc(360px)]">
                 <div className="mb-6">
                   <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-2">
                     Previous Edition
