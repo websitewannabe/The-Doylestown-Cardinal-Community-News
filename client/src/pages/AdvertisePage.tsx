@@ -72,25 +72,25 @@ const pricingPackages = [
 // Mock data for benefits
 const benefits = [
   {
-    title: "Targeted Local Reach",
-    description: "Connect with Doylestown's most engaged readers",
-    stat: "25,000+",
-    subtext: "Monthly Readers",
+    title: "Print Ad Solutions",
+    description: "Premium print advertising opportunities",
+    stat: "Full Page",
+    subtext: "Maximum Impact",
     icon: Target,
   },
   {
-    title: "High Engagement",
-    description: "Industry-leading engagement rates",
-    stat: "4.5x",
-    subtext: "Above Average",
-    icon: Zap,
+    title: "Digital Ad Solutions",
+    description: "Strategic digital advertising options",
+    stat: "Multi-Channel",
+    subtext: "Online Reach",
+    icon: Globe,
   },
   {
-    title: "Brand Trust",
-    description: "Leverage our trusted community presence",
-    stat: "50+",
-    subtext: "Years of Service",
-    icon: Star,
+    title: "Sponsor Solutions",
+    description: "Custom sponsorship opportunities",
+    stat: "Premium",
+    subtext: "Partnerships",
+    icon: Award,
   },
 ];
 
