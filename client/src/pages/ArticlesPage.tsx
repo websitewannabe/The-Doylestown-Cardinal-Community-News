@@ -142,7 +142,7 @@ const ArticlesPage = () => {
               <div className="space-y-4">
                 <Link to={`/articles/${mockArticles[1].id}`}>
                 <div
-                  className="p-4 rounded-lg hover:shadow-md transition-all relative h-[180px] overflow-hidden group"
+                  className="p-6 rounded-lg hover:shadow-md transition-all relative h-[180px] overflow-hidden group"
                   style={{
                     backgroundImage: `url(${mockArticles[1].image})`,
                     backgroundSize: "cover",
@@ -166,7 +166,7 @@ const ArticlesPage = () => {
                 </Link>
                 <Link to={`/articles/${mockArticles[2].id}`}>
                 <div
-                  className="p-4 rounded-lg hover:shadow-md transition-all relative h-[180px] overflow-hidden group"
+                  className="p-6 rounded-lg hover:shadow-md transition-all relative h-[180px] overflow-hidden group"
                   style={{
                     backgroundImage: `url(${mockArticles[2].image})`,
                     backgroundSize: "cover",
