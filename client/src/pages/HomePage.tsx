@@ -168,7 +168,7 @@ const HomePage = () => {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="flex items-center justify-between w-full">
-            <div>
+            <div className="pl-4 md:pl-8 lg:pl-12">
               <h1 className="font-playfair text-6xl md:text-[7.45rem] font-bold text-off-white mb-4">
                 Doylestown
               </h1>
@@ -192,7 +192,7 @@ const HomePage = () => {
               </div>
             </div>
             <div className="w-1 h-48 bg-white/50 mx-8"></div>
-            <div className="w-60 h-60">
+            <div className="w-60 h-60 pr-4 md:pr-8 lg:pr-12">
               <img
                 src="/images/Favicon_Cardinal-Icon_512.png"
                 alt="The Cardinal Logo"
