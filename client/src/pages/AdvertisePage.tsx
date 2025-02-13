@@ -160,7 +160,12 @@ const advertisingOptions = [
     description: "",
     features: [],
     content: (
-      <a href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf" target="_blank" rel="noopener noreferrer" className="block">
+      <a
+        href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
         <img
           src="/images/The-Cardinal-Rates-1.png"
           alt="The Cardinal Rates"
@@ -366,12 +371,16 @@ const AdvertisePage = () => {
                 cols: "md:col-span-4",
               },
               {
-                title: "Rate Card",
+                title: "",
                 icon: TrendingUp,
                 description: "",
                 features: [],
                 content: (
-                  <a href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf" target="_blank" className="block">
+                  <a
+                    href="/images/Rate-Card-The-Cardinal-2024-Jay (2).pdf"
+                    target="_blank"
+                    className="block"
+                  >
                     <img
                       src="/images/The-Cardinal-Rates-1.png"
                       alt="The Cardinal Rates"
@@ -379,7 +388,8 @@ const AdvertisePage = () => {
                     />
                   </a>
                 ),
-                gradient: "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
+                gradient:
+                  "from-amber-500/20 via-orange-500/20 to-yellow-500/20",
                 cols: "md:col-span-3",
               },
             ].map((option, index) => (
