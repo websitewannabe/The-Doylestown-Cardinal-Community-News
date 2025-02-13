@@ -405,6 +405,7 @@ const AdvertisePage = () => {
               </div>
             ))}
           </div>
+          </div>
         </div>
       </section>
 
