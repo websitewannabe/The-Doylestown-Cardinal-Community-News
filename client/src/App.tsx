@@ -32,6 +32,7 @@ import AnnualFundraiserPage from './pages/AnnualFundraiserPage';
 import ContactPage from './pages/ContactPage';
 import EditorialSubmissionsPage from './pages/EditorialSubmissionsPage';
 import { NewsletterProvider, useNewsletterContext } from './context/NewsletterContext';
+import NewsletterPopup from './components/ui/NewsletterPopup';
 
 const AppContent = () => {
   const { showPopup, handleClose } = useNewsletterContext();
