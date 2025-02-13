@@ -423,7 +423,7 @@ const AboutPage = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <button
-                onClick={() => forceShowPopup()}
+                onClick={forceShowPopup}
                 className="inline-flex items-center px-6 py-3 bg-white text-cardinal-red rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors"
               >
                 Subscribe Now
