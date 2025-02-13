@@ -363,32 +363,30 @@ const AdvertisePage = () => {
                 <p className="text-charcoal-gray/70 mb-8 text-lg">
                   {option.description}
                 </p>
-                <div className="flex justify-between items-start gap-4">
-                  <ul className="space-y-4">
-                    {option.features.map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className="flex items-center gap-3 group/item"
-                      >
-                        <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
-                          <CheckCircle2 className="w-5 h-5 text-forest-green" />
-                        </div>
-                        <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  {option.title === "Full Page Ads" && (
-                    <div className="w-80 -mt-4">
-                      <img
-                        src="/images/Mechanical_Rates.png"
-                        alt="Mechanical Specifications"
-                        className="w-full rounded-lg shadow-md"
-                      />
-                    </div>
-                  )}
-                </div>
+                {option.title === "Full Page Ads" && (
+                  <div className="w-80 mx-auto mb-6">
+                    <img
+                      src="/images/Mechanical_Rates.png"
+                      alt="Mechanical Specifications"
+                      className="w-full rounded-lg shadow-md"
+                    />
+                  </div>
+                )}
+                <ul className="space-y-4">
+                  {option.features.map((feature, featureIndex) => (
+                    <li
+                      key={featureIndex}
+                      className="flex items-center gap-3 group/item"
+                    >
+                      <div className="p-1 bg-forest-green/10 rounded-full group-hover/item:bg-forest-green/20 transition-colors">
+                        <CheckCircle2 className="w-5 h-5 text-forest-green" />
+                      </div>
+                      <span className="text-charcoal-gray/80 group-hover/item:text-charcoal-gray transition-colors">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
