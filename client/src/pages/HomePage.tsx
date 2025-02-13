@@ -344,22 +344,17 @@ const HomePage = () => {
                 </div>
 
                 {/* Current Issue Preview */}
-                <div className="h-36 rounded-lg overflow-hidden mb-6">
+                <a
+                  href="https://online.fliphtml5.com/onuot/wqtv/#p=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-36 rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
+                >
                   <img
                     src="/images/The_Cardinal_Paper.png"
                     alt="Current Issue - The Cardinal"
                     className="w-full h-full object-contain"
                   />
-                </div>
-
-                <a
-                  href="https://online.fliphtml5.com/onuot/wqtv/#p=1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors flex items-center justify-center gap-2"
-                >
-                  View
-                  <ChevronRight size={16} />
                 </a>
               </div>
 
@@ -376,22 +371,17 @@ const HomePage = () => {
                 </div>
 
                 {/* Current Issue Preview */}
-                <div className="h-36 rounded-lg overflow-hidden mb-6">
+                <a
+                  href="https://fliphtml5.com/bookcase/qugjm/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-36 rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
+                >
                   <img
                     src="/images/The_Cardinal_Paper.png"
                     alt="Current Issue - The Cardinal"
                     className="w-full h-full object-contain"
                   />
-                </div>
-
-                <a
-                  href="https://fliphtml5.com/bookcase/qugjm/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors flex items-center justify-center gap-2"
-                >
-                  View
-                  <ChevronRight size={16} />
                 </a>
               </div>
             </div>
