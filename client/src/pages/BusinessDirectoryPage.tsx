@@ -13,15 +13,6 @@ import {
   Grid,
   List,
 } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
 
 // Constants for filtering
@@ -276,63 +267,13 @@ const BusinessDirectoryPage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div className="flex items-center justify-between mb-8">
-          <Dialog open={isSubmitFormOpen} onOpenChange={setIsSubmitFormOpen}>
-            <DialogTrigger asChild>
-              <button className="bg-forest-green text-white px-8 rounded-lg font-semibold hover:bg-cardinal-red transition-colors flex items-center justify-center gap-2 h-[42px]">
-                <Building2 size={20} />
-                Submit Your Business
-              </button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[600px]">
-              <DialogHeader>
-                <DialogTitle className="font-playfair text-2xl">Submit Your Business</DialogTitle>
-                <DialogDescription>Fill out the form below to add your business to our directory.</DialogDescription>
-              </DialogHeader>
-              <form className="space-y-4 mt-4 bg-gray-50 p-6 rounded-lg">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Business Name</label>
-                    <input type="text" className="w-full border rounded-lg p-2" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Business Type</label>
-                    <select className="w-full border rounded-lg p-2">
-                      {businessTypes.map((type) => (
-                        <option key={type} value={type}>{type}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Address</label>
-                  <input type="text" className="w-full border rounded-lg p-2" />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Phone</label>
-                    <input type="tel" className="w-full border rounded-lg p-2" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Website</label>
-                    <input type="url" className="w-full border rounded-lg p-2" />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Business Description</label>
-                  <textarea className="w-full border rounded-lg p-2 h-24"></textarea>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Business Hours</label>
-                  <input type="text" className="w-full border rounded-lg p-2" placeholder="e.g., Mon-Sat: 9am-9pm, Sun: 11am-6pm" />
-                </div>
-                <DialogFooter>
-                  <button type="submit" className="bg-forest-green text-white px-6 py-2 rounded-lg font-semibold hover:bg-cardinal-red transition-colors">
-                    Submit Business
-                  </button>
-                </DialogFooter>
-              </form>
-            </DialogContent>
-          </Dialog>
+          <button
+            onClick={() => setIsSubmitFormOpen(true)}
+            className="bg-forest-green text-white px-8 rounded-lg font-semibold hover:bg-cardinal-red transition-colors flex items-center justify-center gap-2 h-[42px]"
+          >
+            <Building2 size={20} />
+            Submit Your Business
+          </button>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-4">
               <span className="text-charcoal-gray font-medium">View:</span>
