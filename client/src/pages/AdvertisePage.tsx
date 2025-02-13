@@ -227,7 +227,7 @@ const AdvertisePage = () => {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-8 transform hover:-translate-y-1 transition-transform flex flex-col"
+                className="bg-white rounded-lg p-8 transform hover:-translate-y-1 transition-transform"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-cardinal-red/10 rounded-lg">
@@ -240,11 +240,11 @@ const AdvertisePage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="mt-4 flex-grow flex flex-col">
+                <div className="mt-4">
                   <div className="font-playfair text-3xl font-bold text-cardinal-red">
                     {benefit.stat}
                   </div>
-                  <div className="text-charcoal-gray/60 mt-auto">{benefit.subtext}</div>
+                  <div className="text-charcoal-gray/60">{benefit.subtext}</div>
                 </div>
               </div>
             ))}
