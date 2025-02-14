@@ -162,8 +162,15 @@ const HomePage = () => {
           <img
             src="https://doylestowncardinal.com/wp-content/uploads/2023/08/Fonthill-castle-990x660.jpg"
             alt="Fonthill Castle"
-            className="w-full h-[105%] object-cover blur-[0.5px] scale-105"
+            className="w-full h-[105%] object-cover scale-105"
           />
+          <div className="absolute inset-0">
+            <img
+              src="/images/paper-overlay4.jpg"
+              alt="Paper texture"
+              className="w-full h-full object-cover opacity-95"
+            />
+          </div>
           <div className="absolute inset-0 bg-charcoal-gray/40"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
