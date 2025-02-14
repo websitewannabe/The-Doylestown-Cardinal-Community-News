@@ -386,6 +386,7 @@ const EventsPage = () => {
         </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <h2 className="font-playfair text-3xl font-bold text-charcoal-gray mb-8">Browse Events</h2>
         <div className="flex items-center justify-between mb-8">
           <button
             onClick={() => setIsSubmitFormOpen(true)}
@@ -432,6 +433,7 @@ const EventsPage = () => {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Sidebar */}
           <div className="lg:w-1/4">
+            <h3 className="font-playfair text-2xl font-bold text-charcoal-gray mb-4">Filter Events</h3>
             <div className="border border-[#333333] rounded-lg p-6 sticky top-24">
               <div className="mb-6">
                 <div className="relative">
@@ -506,6 +508,7 @@ const EventsPage = () => {
 
           {/* Main Content - Events Grid */}
           <div className="lg:w-3/4">
+            <h3 className="font-playfair text-2xl font-bold text-charcoal-gray mb-6">Available Events</h3>
             <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
               {[...mockEvents].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map(event => (
                 <div
