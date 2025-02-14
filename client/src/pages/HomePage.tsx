@@ -170,7 +170,7 @@ const HomePage = () => {
           <div className="flex items-center justify-between w-full">
             <div className="pl-4 md:pl-8 lg:pl-12">
               <h1 className="font-playfair text-6xl md:text-[7.45rem] font-bold text-off-white mb-4">
-                Doylestown
+                The Cardinal
               </h1>
               <p className="text-2xl text-off-white mb-8 font-playfair italic">
                 Experience the heart of Bucks County
