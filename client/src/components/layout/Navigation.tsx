@@ -77,6 +77,7 @@ const Navigation = () => {
         { name: "Business", path: "/articles?category=business" },
         { name: "Technology", path: "/articles?category=technology" },
         { name: "Real Estate", path: "/articles?category=real-estate" },
+        { name: "Past Articles", path: "/archive" },
       ],
     },
     {
