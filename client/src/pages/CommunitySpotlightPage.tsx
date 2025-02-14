@@ -115,6 +115,9 @@ const CommunitySpotlightPage = () => {
       {spotlights.map((spotlight, index) => (
         <section key={spotlight.id} className={`py-16 relative ${index % 2 === 0 ? 'bg-white' : 'bg-[#F2F0EF]'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-playfair text-3xl font-bold text-charcoal-gray mb-8 text-center">
+              {spotlight.title}
+            </h2>
             <div className={`relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ${index % 2 === 0 ? 'lg:ml-12' : 'lg:mr-12'}`}>
               <div className={`flex flex-col lg:flex-row gap-8 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
                 <div className="lg:w-1/2 relative h-[500px] rounded-lg overflow-hidden transform lg:hover:-translate-y-2 transition-all duration-300">
