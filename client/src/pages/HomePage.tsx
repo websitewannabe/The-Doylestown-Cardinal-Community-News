@@ -166,9 +166,9 @@ const HomePage = () => {
           />
           <div className="absolute inset-0">
             <img
-              src="/images/paper-overlay.jpg"
+              src="/images/paper-overlay4.jpg"
               alt="Paper texture"
-              className="w-full h-full object-cover opacity-15"
+              className="w-full h-full object-cover opacity-10"
             />
           </div>
           <div className="absolute inset-0 bg-charcoal-gray/40"></div>
