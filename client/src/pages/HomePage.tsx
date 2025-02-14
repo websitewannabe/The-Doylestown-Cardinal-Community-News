@@ -162,7 +162,7 @@ const HomePage = () => {
           <img
             src="/images/Fonthill.png"
             alt="Fonthill Castle"
-            className="w-full h-[105%] object-cover object-center scale-105"
+            className="w-full h-[105%] object-cover object-top scale-105"
           />
           <div className="absolute inset-0">
             <img
