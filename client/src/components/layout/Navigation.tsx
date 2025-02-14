@@ -104,7 +104,6 @@ const Navigation = () => {
         { name: "Digital Subscriptions", path: "/digital-subscriptions" },
         { name: "Donate", path: "/donate" },
         { name: "Annual Fundraiser", path: "/annual-fundraiser" },
-        { name: "Find The Cardinal", path: "/locations" },
       ],
     },
     {
@@ -116,6 +115,7 @@ const Navigation = () => {
         { name: "Meet the Writers", path: "/writers" },
         { name: "Editorial Submissions", path: "/editorial-submissions" },
         { name: "Past Issues", path: "/archive" },
+        { name: "Find The Cardinal", path: "/locations" },
         { name: "Contact Us", path: "/contact" },
       ],
     },
