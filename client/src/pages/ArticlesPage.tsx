@@ -73,29 +73,19 @@ const ArticlesPage = () => {
           <img
             src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
             alt="Journalism background"
-            className="w-full h-full object-cover blur-[3px]"
+            className="w-full h-[105%] object-cover blur-[1px] scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
         </div>
-        <div className="relative flex-grow flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <h1 className="font-playfair text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl">
-              Stories That Matter, Articles That Connect
+        <div className="relative max-w-7xl mx-auto pl-4 pr-4 sm:pl-6 sm:px-6 lg:pl-8 lg:px-8 h-full flex items-center">
+          <div>
+            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
+              Stories That Matter
             </h1>
+            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
+              Articles That Connect Our Community
+            </p>
           </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg
-            viewBox="0 0 1440 120"
-            className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
-            preserveAspectRatio="none"
-          >
-            <path
-              fill="currentColor"
-              d="M0,120 C240,100 480,20 720,40 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
-              className="transition-all duration-300"
-            />
-          </svg>
         </div>
       </div>
 
