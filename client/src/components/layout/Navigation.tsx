@@ -67,6 +67,7 @@ const Navigation = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: "Current Issue", path: "/current-issue" },
+        { name: "Past Articles", path: "/archive" },
         { name: "Things To Do", path: "/articles?category=play" },
         { name: "Hotels", path: "/articles?category=stay" },
         { name: "Restaurants", path: "/articles?category=taste" },
@@ -77,7 +78,6 @@ const Navigation = () => {
         { name: "Business", path: "/articles?category=business" },
         { name: "Technology", path: "/articles?category=technology" },
         { name: "Real Estate", path: "/articles?category=real-estate" },
-        { name: "Past Articles", path: "/archive" },
       ],
     },
     {
