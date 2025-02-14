@@ -112,22 +112,6 @@ const ArchivePage = () => {
             </p>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            viewBox="0 0 1440 120" 
-            className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
-            preserveAspectRatio="none"
-          >
-            <path 
-              fill="currentColor"
-              d="M0,120 
-                 C180,90 360,120 540,100 
-                 C720,80 900,110 1080,105 
-                 C1260,100 1350,85 1440,95 
-                 L1440,120 L0,120 Z"
-            />
-          </svg>
-        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 pb-20">
