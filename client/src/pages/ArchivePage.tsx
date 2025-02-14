@@ -132,20 +132,20 @@ const ArchivePage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 pb-20">
         {/* Search and Filter Bar */}
-        <div className="border border-[#333333] rounded-lg p-6 mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="relative">
+        <div className="bg-white border border-[#333333] rounded-lg p-6 mb-12 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="relative md:col-span-2">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-charcoal-gray/60" size={20} />
               <input
                 type="text"
                 placeholder="Search archives..."
-                className="w-full pl-10 pr-4 py-2 border border-[#333333] rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20 bg-[#F2F0EF]"
+                className="w-full pl-10 pr-4 py-3 border border-[#333333] rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20 bg-white"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
             <select
-              className="px-4 py-2 border border-[#333333] rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20 bg-[#F2F0EF]"
+              className="w-full px-4 py-3 border border-[#333333] rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20 bg-white appearance-none cursor-pointer hover:border-cardinal-red/50 transition-colors"
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
             >
