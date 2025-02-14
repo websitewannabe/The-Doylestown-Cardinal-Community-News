@@ -1,34 +1,43 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Globe, Send, Building2, Users, Newspaper } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Globe,
+  Send,
+  Building2,
+  Users,
+  Newspaper,
+} from "lucide-react";
 
 const departments = [
   {
     name: "Editorial",
     email: "editorial@thecardinal.com",
     description: "For news tips, corrections, and editorial inquiries",
-    icon: Newspaper
+    icon: Newspaper,
   },
   {
     name: "Advertising",
     email: "advertising@thecardinal.com",
     description: "For advertising and sponsorship opportunities",
-    icon: Building2
+    icon: Building2,
   },
   {
     name: "Subscriptions",
     email: "subscriptions@thecardinal.com",
     description: "For subscription and delivery inquiries",
-    icon: Users
-  }
+    icon: Users,
+  },
 ];
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    department: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    department: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -36,11 +45,11 @@ const ContactPage = () => {
     // Handle form submission
     alert("Thank you for your message. We will get back to you shortly.");
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      department: '',
-      message: ''
+      name: "",
+      email: "",
+      phone: "",
+      department: "",
+      message: "",
     });
   };
 
@@ -49,7 +58,7 @@ const ContactPage = () => {
       {/* Hero Section */}
       <div className="relative h-[45vh]">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?auto=format&fit=crop&q=80"
             alt="Contact Us"
             className="w-full h-[105%] object-cover blur-[1px] scale-105"
@@ -62,7 +71,7 @@ const ContactPage = () => {
               Contact
             </h1>
             <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
-              Get in touch with The Cardinal team
+              Get in touch with The Cardinal team!
             </p>
           </div>
         </div>
@@ -114,7 +123,9 @@ const ContactPage = () => {
                   <div className="p-3 bg-cardinal-red/10 rounded-lg">
                     <dept.icon className="w-6 h-6 text-cardinal-red" />
                   </div>
-                  <h3 className="font-playfair text-xl font-bold">{dept.name}</h3>
+                  <h3 className="font-playfair text-xl font-bold">
+                    {dept.name}
+                  </h3>
                 </div>
                 <p className="text-charcoal-gray/70 mb-4">{dept.description}</p>
                 <a
@@ -144,7 +155,12 @@ const ContactPage = () => {
                       required
                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                       value={formData.name}
-                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          name: e.target.value,
+                        }))
+                      }
                     />
                   </div>
                   <div>
@@ -156,7 +172,12 @@ const ContactPage = () => {
                       required
                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                       value={formData.email}
-                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          email: e.target.value,
+                        }))
+                      }
                     />
                   </div>
                 </div>
@@ -170,7 +191,12 @@ const ContactPage = () => {
                       type="tel"
                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                       value={formData.phone}
-                      onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          phone: e.target.value,
+                        }))
+                      }
                     />
                   </div>
                   <div>
@@ -181,10 +207,15 @@ const ContactPage = () => {
                       required
                       className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                       value={formData.department}
-                      onChange={(e) => setFormData(prev => ({ ...prev, department: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          department: e.target.value,
+                        }))
+                      }
                     >
                       <option value="">Select a department</option>
-                      {departments.map(dept => (
+                      {departments.map((dept) => (
                         <option key={dept.name} value={dept.name}>
                           {dept.name}
                         </option>
@@ -202,7 +233,12 @@ const ContactPage = () => {
                     rows={4}
                     className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                     value={formData.message}
-                    onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        message: e.target.value,
+                      }))
+                    }
                   />
                 </div>
 
