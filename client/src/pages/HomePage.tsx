@@ -160,9 +160,9 @@ const HomePage = () => {
       <section className="relative h-screen">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img
-            src="https://doylestowncardinal.com/wp-content/uploads/2023/08/Fonthill-castle-990x660.jpg"
+            src="/images/Fonthill.png"
             alt="Fonthill Castle"
-            className="w-full h-[105%] object-cover scale-105"
+            className="w-full h-[105%] object-cover object-top scale-105"
           />
           <div className="absolute inset-0">
             <img
