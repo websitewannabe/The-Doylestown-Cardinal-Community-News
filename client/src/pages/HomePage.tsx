@@ -211,17 +211,9 @@ const HomePage = () => {
       </section>
 
       {/* Featured Stories Section */}
-      <section className="pb-20 -mt-[70px] pt-1 relative bg-[#F2F0EF]">
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="/images/paper-overlay4.jpg"
-            alt="Paper texture"
-            className="w-full h-full object-cover opacity-5"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/5 to-charcoal-gray/5" />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-playfair text-5xl md:text-6xl font-bold text-charcoal-gray mb-12 text-center">
+      <section className="pb-20 -mt-[70px] pt-1 bg-[#F2F0EF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-12 text-center">
             Featured Stories
           </h2>
           <div className="flex gap-8">
