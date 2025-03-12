@@ -84,35 +84,30 @@ const topics = [
 ];
 
 const ArchivePage = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedYear, setSelectedYear] = useState("All Years");
-  const [selectedMonth, setSelectedMonth] = useState("All Months");
-  const [selectedTopic, setSelectedTopic] = useState("All Topics");
-  const [selectedIssue, setSelectedIssue] = useState<typeof archivedIssues[0] | null>(null);
+  // Redirect to Issuu
+  React.useEffect(() => {
+    window.location.href = "https://issuu.com/doylestowncardinal";
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[#F2F0EF]">
-      {/* Hero Section */}
-      <div className="relative h-[45vh]">
-        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
-          <img 
-            src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80"
-            alt="Archive background"
-            className="w-full h-[105%] object-cover blur-[1px] scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
-        </div>
-        <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
-          <div>
-            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
-              Archives
-            </h1>
-            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
-              Documenting the history and stories of Doylestown
-            </p>
-          </div>
-        </div>
+    <div className="min-h-screen bg-[#F2F0EF] flex justify-center items-center">
+      <div className="text-center">
+        <h1 className="font-playfair text-3xl font-bold text-charcoal-gray mb-4">
+          Redirecting to Past Issues...
+        </h1>
+        <p className="text-lg text-charcoal-gray/70 mb-6">
+          Taking you to our Past Issues on Issuu
+        </p>
+        <a 
+          href="https://issuu.com/doylestowncardinal" 
+          className="bg-cardinal-red text-white px-6 py-3 rounded-lg hover:bg-forest-green transition-colors inline-flex items-center gap-2"
+        >
+          Click here if you're not redirected
+          <ChevronRight size={16} />
+        </a>
       </div>
+    </div>
+  );
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 pb-20">
         {/* Search and Filter Bar */}

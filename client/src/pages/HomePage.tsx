@@ -369,14 +369,14 @@ const HomePage = () => {
 
                 {/* Current Issue Preview */}
                 <a
-                  href="https://fliphtml5.com/bookcase/qugjm/"
+                  href="https://issuu.com/doylestowncardinal"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block h-36 rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
                 >
                   <img
                     src="/images/The_Cardinal_Paper.png"
-                    alt="Current Issue - The Cardinal"
+                    alt="Previous Issue - The Cardinal"
                     className="w-full h-full object-contain"
                   />
                 </a>

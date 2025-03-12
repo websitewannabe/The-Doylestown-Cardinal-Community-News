@@ -78,13 +78,15 @@ const IssuePage = () => {
                 Access our complete archive of past editions, dating back to our
                 first digital issue.
               </p>
-              <Link
-                to="/archive"
+              <a
+                href="https://issuu.com/doylestowncardinal"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full px-6 py-3 bg-[#F2F0EF] border border-[#333333] rounded-lg hover:bg-cardinal-red hover:text-white hover:border-cardinal-red transition-colors flex items-center justify-center gap-2"
               >
-                Browse Archive
+                Past Issues
                 <ChevronRight size={16} />
-              </Link>
+              </a>
             </div>
 
             {/* Subscription Info */}
