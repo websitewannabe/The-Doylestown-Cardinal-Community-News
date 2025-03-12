@@ -115,7 +115,7 @@ const Navigation = () => {
         { name: "About Us", path: "/about" },
         { name: "Meet the Writers", path: "/writers" },
         { name: "Editorial Submissions", path: "/editorial-submissions" },
-        { name: "Past Issues", path: "/archive" },
+        { name: "Past Issues", path: "https://issuu.com/doylestowncardinal", isExternal: true },
         { name: "Find The Cardinal", path: "/locations" },
         { name: "Contact Us", path: "/contact" },
       ],
@@ -202,17 +202,28 @@ const Navigation = () => {
                         <div className="bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 py-1">
                           {link.dropdownItems.map((item) => (
                             <div key={item.path}>
-                              <Link
-                                to={item.path}
-                                onClick={() => handleNavigation(item.path)}
-                                className={`block px-4 py-2 text-sm transition-colors ${
-                                  isCurrentPage(item.path)
-                                    ? "text-[#8B0000] font-semibold bg-[#8B0000]/5"
-                                    : "text-[#333333] hover:text-[#8B0000] hover:bg-[#8B0000]/5"
-                                }`}
-                              >
-                                {item.name}
-                              </Link>
+                              {item.isExternal ? (
+                                <a
+                                  href={item.path}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="block px-4 py-2 text-sm transition-colors text-[#333333] hover:text-[#8B0000] hover:bg-[#8B0000]/5"
+                                >
+                                  {item.name}
+                                </a>
+                              ) : (
+                                <Link
+                                  to={item.path}
+                                  onClick={() => handleNavigation(item.path)}
+                                  className={`block px-4 py-2 text-sm transition-colors ${
+                                    isCurrentPage(item.path)
+                                      ? "text-[#8B0000] font-semibold bg-[#8B0000]/5"
+                                      : "text-[#333333] hover:text-[#8B0000] hover:bg-[#8B0000]/5"
+                                  }`}
+                                >
+                                  {item.name}
+                                </Link>
+                              )}
                               {item.subItems && (
                                 <div className="pl-4">
                                   {item.subItems.map((subItem) => (
