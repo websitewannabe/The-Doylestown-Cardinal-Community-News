@@ -233,7 +233,7 @@ const HomePage = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 flex-grow">
                     <h3 className="font-playfair text-xl font-bold mb-4 group-hover:text-cardinal-red transition-colors">
                       How Our Emotions Contribute to Heart Disease
                     </h3>
@@ -259,7 +259,7 @@ const HomePage = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 flex-grow">
                     <h3 className="font-playfair text-xl font-bold mb-4 group-hover:text-cardinal-red transition-colors">
                       Cozy Cupid: Valentine's Day Dates
                     </h3>
@@ -285,7 +285,7 @@ const HomePage = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 flex-grow">
                     <h3 className="font-playfair text-xl font-bold mb-4 group-hover:text-cardinal-red transition-colors">
                       Organizational Wisdoms from Wingmoms
                     </h3>
@@ -312,7 +312,7 @@ const HomePage = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 flex-grow">
                     <h3 className="font-playfair text-xl font-bold mb-4 group-hover:text-cardinal-red transition-colors">
                       Stage United Hosts A Night of Song at Tile Works
                     </h3>
