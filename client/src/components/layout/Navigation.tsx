@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Transition } from "@headlessui/react";
-import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
+import { Menu, X, Search, ChevronDown } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -287,83 +286,76 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <Transition
-            show={isMobileMenuOpen}
-            enter="transition ease-out duration-200"
-            enterFrom="opacity-0 -translate-y-2"
-            enterTo="opacity-100 translate-y-0"
-            leave="transition ease-in duration-150"
-            leaveFrom="opacity-100 translate-y-0"
-            leaveTo="opacity-0 -translate-y-2"
-            className="md:hidden"
+          <div
+            className={`
+              md:hidden 
+              overflow-hidden 
+              transition-all duration-300 ease-in-out
+              ${isMobileMenuOpen ? "max-h-[400px] border-t border-gray-100" : "max-h-0"}
+            `}
           >
-            <div className="absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
-              <div className="p-6 space-y-6 max-h-[80vh] overflow-y-auto">
-                {navLinks.map((link) => {
-                  const [isOpen, setIsOpen] = useState(false);
+            <div className="px-8 py-6 space-y-4">
+              <div className="flex flex-col space-y-4">
+                {navLinks.map((link) => (
+                  <div key={link.name}>
+                    <MobileNavLink
+                      to={link.path}
+                      onClick={() => handleNavigation(link.path)}
+                    >
+                      {link.name}
+                    </MobileNavLink>
+                    {link.hasDropdown && (
+                      <div className="pl-4 mt-2 space-y-2">
+                        {link.dropdownItems.map((item) => (
+                          <div key={item.path}>
+                            <MobileNavLink
+                              to={item.path}
+                              onClick={() => handleNavigation(item.path)}
+                            >
+                              {item.name}
+                            </MobileNavLink>
+                            {item.subItems && (
+                              <div className="pl-4 mt-2 space-y-2">
+                                {item.subItems.map((subItem) => (
+                                  <MobileNavLink
+                                    key={subItem.path}
+                                    to={subItem.path}
+                                    onClick={() =>
+                                      handleNavigation(subItem.path)
+                                    }
+                                  >
+                                    {subItem.name}
+                                  </MobileNavLink>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
 
-                  return (
-                    <div key={link.path} className="space-y-4">
-                      {link.hasDropdown ? (
-                        <>
-                          <button
-                            className="flex items-center justify-between w-full text-xl font-serif italic font-bold text-[#333333] hover:text-[#8B0000] transition-colors"
-                            onClick={() => setIsOpen(!isOpen)}
-                          >
-                            <span>{link.name}</span>
-                            <ChevronDown
-                              className={`h-5 w-5 transition-transform duration-200 ${
-                                isOpen ? "rotate-180" : ""
-                              }`}
-                            />
-                          </button>
-                          {isOpen && (
-                            <div className="pl-4 border-l-2 border-[#8B0000]/20 space-y-4">
-                              {link.dropdownItems?.map((item) => (
-                                <div key={item.path}>
-                                  {item.isExternal ? (
-                                    <a
-                                      href={item.path}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="text-xl font-serif italic transition-colors text-[#333333] hover:text-[#8B0000]"
-                                      onClick={() => setIsMobileMenuOpen(false)}
-                                    >
-                                      {item.name}
-                                    </a>
-                                  ) : (
-                                    <MobileNavLink to={item.path}>
-                                      {item.name}
-                                    </MobileNavLink>
-                                  )}
-                                  {item.subItems && (
-                                    <div className="pl-4 mt-2 space-y-2">
-                                      {item.subItems.map((subItem) => (
-                                        <MobileNavLink
-                                          key={subItem.path}
-                                          to={subItem.path}
-                                        >
-                                          {subItem.name}
-                                        </MobileNavLink>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </>
-                      ) : (
-                        <MobileNavLink to={link.path}>
-                          {link.name}
-                        </MobileNavLink>
-                      )}
-                    </div>
-                  );
-                })}
+              <div className="pt-4 border-t border-gray-100">
+                <Link
+                  to="/advertise"
+                  className="
+                    w-full
+                    inline-flex
+                    justify-center
+                    px-8 py-3
+                    rounded-2xl
+                    font-semibold
+                    transition-all duration-300
+                    bg-[#8B0000] text-white hover:bg-[#660000]
+                  "
+                >
+                  Advertise with Us
+                </Link>
               </div>
             </div>
-          </Transition>
+          </div>
         </nav>
       </div>
     </div>
