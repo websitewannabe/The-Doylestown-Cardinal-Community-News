@@ -1,53 +1,24 @@
-
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { useAuth } from "../hooks/useAuth";
+import { Navigate, Link } from "react-router-dom";
 import { Lock, User } from "lucide-react";
 
+interface LoginForm {
+  username: string;
+  password: string;
+}
+
 const LoginPage = () => {
-  const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
-  });
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const { login, isAuthenticated, isLoggingIn, loginError } = useAuth();
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCredentials({
-      ...credentials,
-      [name]: value,
-    });
-  };
+  if (isAuthenticated) {
+    return <Navigate to="/admin" replace />;
+  }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(credentials),
-        credentials: "include", // Important for cookies
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Login failed");
-      }
-
-      // Redirect to admin dashboard
-      navigate("/admin");
-    } catch (err) {
-      setError(err.message || "Invalid username or password");
-    } finally {
-      setLoading(false);
-    }
+  const onSubmit = (data: LoginForm) => {
+    login(data);
   };
 
   return (
@@ -60,13 +31,13 @@ const LoginPage = () => {
           </p>
         </div>
 
-        {error && (
+        {loginError && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-            {error}
+            Invalid username or password
           </div>
         )}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-6">
             <label
               htmlFor="username"
@@ -80,15 +51,14 @@ const LoginPage = () => {
               </div>
               <input
                 type="text"
-                id="username"
-                name="username"
-                value={credentials.username}
-                onChange={handleChange}
-                required
+                {...register("username", { required: "Username is required" })}
                 className="pl-10 w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                 placeholder="Enter your username"
               />
             </div>
+            {errors.username && (
+              <p className="mt-1 text-sm text-red-600">{errors.username.message}</p>
+            )}
           </div>
 
           <div className="mb-6">
@@ -104,23 +74,22 @@ const LoginPage = () => {
               </div>
               <input
                 type="password"
-                id="password"
-                name="password"
-                value={credentials.password}
-                onChange={handleChange}
-                required
+                {...register("password", { required: "Password is required" })}
                 className="pl-10 w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-cardinal-red/20"
                 placeholder="Enter your password"
               />
             </div>
+            {errors.password && (
+              <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+            )}
           </div>
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={isLoggingIn}
             className="w-full bg-cardinal-red hover:bg-cardinal-red/90 text-white py-2 px-4 rounded-lg flex items-center justify-center"
           >
-            {loading ? "Signing in..." : "Sign In"}
+            {isLoggingIn ? "Signing in..." : "Sign In"}
           </button>
         </form>
 

@@ -2,6 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import AdminPage from "./pages/AdminPage";
+import ArticleEditorPage from "./pages/ArticleEditorPage";
+import LoginPage from "./pages/LoginPage";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import HomePage from './pages/HomePage';
 import ArticlesPage from './pages/ArticlesPage';
 import EventsLandingPage from './pages/EventsLandingPage';
@@ -33,10 +38,9 @@ import ContactPage from './pages/ContactPage';
 import EditorialSubmissionsPage from './pages/EditorialSubmissionsPage';
 import { NewsletterProvider, useNewsletterContext } from './context/NewsletterContext';
 import NewsletterPopup from './components/ui/NewsletterPopup';
-import AdminPage from "./pages/AdminPage"; // Added
-import ArticleEditorPage from "./pages/ArticleEditorPage"; // Added
-import LoginPage from "./pages/LoginPage"; // Added
 
+
+const queryClient = new QueryClient();
 
 const AppContent = () => {
   const { showPopup, handleClose } = useNewsletterContext();
@@ -75,15 +79,36 @@ const AppContent = () => {
           <Route path="/annual-fundraiser" element={<AnnualFundraiserPage />} />
           <Route path="/writer/:writerId" element={<WriterPage />} />
           <Route path="/locations" element={<LocationsPage />} />
+          <Route path="/login" element={<LoginPage />} />
 
-          {/* Admin Routes */}
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="/admin/articles/new" element={<ArticleEditorPage />} />
-          <Route path="/admin/articles/:id/edit" element={<ArticleEditorPage />} />
-          <Route path="/login" element={<LoginPage />} /> {/* Added login route */}
+          {/* Protected Admin Routes */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/articles/new"
+            element={
+              <ProtectedRoute>
+                <ArticleEditorPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/articles/:id/edit"
+            element={
+              <ProtectedRoute>
+                <ArticleEditorPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
         <Footer />
-        {showPopup && <NewsletterPopup onClose={handleClose} />}
+        {showPopup && <NewsletterPopup show={showPopup} onClose={handleClose} />}
       </div>
     </Router>
   );
@@ -91,9 +116,11 @@ const AppContent = () => {
 
 function App() {
   return (
-    <NewsletterProvider>
-      <AppContent />
-    </NewsletterProvider>
+    <QueryClientProvider client={queryClient}>
+      <NewsletterProvider>
+        <AppContent />
+      </NewsletterProvider>
+    </QueryClientProvider>
   );
 }
 

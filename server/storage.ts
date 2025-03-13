@@ -1,15 +1,16 @@
 import { users, type User, type InsertUser } from "@shared/schema";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
-import { db as db2 } from './db';
 import { articles, categories, type Article, type InsertArticle } from '../shared/schema';
-import { eq, desc } from 'drizzle-orm';
+import { desc } from 'drizzle-orm';
+import session from "express-session";
+import createMemoryStore from "memorystore";
 
-// modify the interface with any CRUD methods
-// you might need
+const MemoryStore = createMemoryStore(session);
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
+  getUserById(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   getAllArticles(): Promise<Article[]>;
@@ -17,21 +18,33 @@ export interface IStorage {
   insertArticle(article: InsertArticle): Promise<Article>;
   updateArticle(id: number, article: Partial<InsertArticle>): Promise<Article | null>;
   deleteArticle(id: number): Promise<boolean>;
-  getAllCategories():Promise<any[]>;
-  insertUser(user: { username: string; password: string }): Promise<any>;
-
-
+  getAllCategories(): Promise<any[]>;
+  insertUser(user: { username: string; password: string }): Promise<User>;
+  sessionStore: session.Store;
 }
 
 export class DatabaseStorage implements IStorage {
+  sessionStore: session.Store;
+
+  constructor() {
+    this.sessionStore = new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    });
+  }
+
   async getUser(id: number): Promise<User | undefined> {
     const [user] = await db.select().from(users).where(eq(users.id, id));
-    return user || undefined;
+    return user;
+  }
+
+  async getUserById(id: number): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
     const [user] = await db.select().from(users).where(eq(users.username, username));
-    return user || undefined;
+    return user;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
@@ -43,7 +56,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getAllArticles() {
-    return db2.query.articles.findMany({
+    return db.query.articles.findMany({
       orderBy: [desc(articles.created_at)],
       with: {
         category: true,
@@ -53,22 +66,22 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getArticleBySlug(slug: string) {
-    return db2.query.articles.findFirst({
+    return db.query.articles.findFirst({
       where: eq(articles.slug, slug),
       with: {
         category: true,
         author: true
       },
-    });
+    }) || null;
   }
 
   async insertArticle(article: InsertArticle) {
-    const result = await db2.insert(articles).values(article).returning();
+    const result = await db.insert(articles).values(article).returning();
     return result[0];
   }
 
   async updateArticle(id: number, article: Partial<InsertArticle>) {
-    const result = await db2.update(articles)
+    const result = await db.update(articles)
       .set({
         ...article,
         updated_at: new Date()
@@ -80,7 +93,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async deleteArticle(id: number) {
-    const result = await db2.delete(articles)
+    const result = await db.delete(articles)
       .where(eq(articles.id, id))
       .returning();
 
@@ -88,12 +101,12 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getAllCategories() {
-    return db2.query.categories.findMany();
+    return db.query.categories.findMany();
   }
 
-  async insertUser(user: { username: string; password: string }) {
-    const result = await db2.insert(users).values(user).returning();
-    return result[0];
+  async insertUser(user: { username: string; password: string }): Promise<User> {
+    const [newUser] = await db.insert(users).values(user).returning();
+    return newUser;
   }
 }
 

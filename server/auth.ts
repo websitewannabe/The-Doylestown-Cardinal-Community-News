@@ -10,9 +10,10 @@ export function setupAuth(app: Express) {
   // Sessions setup
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || 'keyboard cat',
+      secret: process.env.SESSION_SECRET || 'your-secret-key',
       resave: false,
       saveUninitialized: false,
+      store: storage.sessionStore,
       cookie: { 
         secure: process.env.NODE_ENV === 'production',
         maxAge: 1000 * 60 * 60 * 24 // 24 hours
@@ -67,14 +68,6 @@ export function setupAuth(app: Express) {
       if (err) { return next(err); }
       res.json({ success: true });
     });
-  });
-
-  app.get('/api/auth/check', (req, res) => {
-    if (req.isAuthenticated()) {
-      res.json({ authenticated: true, user: req.user });
-    } else {
-      res.json({ authenticated: false });
-    }
   });
 }
 

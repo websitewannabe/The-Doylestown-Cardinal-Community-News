@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Plus,
   Edit2,
@@ -10,14 +9,19 @@ import {
   LogOut,
   ArrowLeft,
 } from "lucide-react";
+import { Article } from "@shared/schema";
+import { useAuth } from "../hooks/useAuth";
 
-// You'll need to add auth state management later
+interface ErrorState {
+  message: string;
+}
+
 const AdminPage = () => {
-  const [articles, setArticles] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const [error, setError] = useState<ErrorState | null>(null);
+  const { logout } = useAuth();
 
   useEffect(() => {
     // Fetch articles and categories on component mount
@@ -32,12 +36,12 @@ const AdminPage = () => {
       })
       .catch((err) => {
         console.error("Error fetching data:", err);
-        setError("Failed to load data. Please try again.");
+        setError({ message: "Failed to load data. Please try again." });
         setLoading(false);
       });
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: number) => {
     if (!window.confirm("Are you sure you want to delete this article?")) {
       return;
     }
@@ -50,11 +54,11 @@ const AdminPage = () => {
       if (response.ok) {
         setArticles(articles.filter((article) => article.id !== id));
       } else {
-        setError("Failed to delete article");
+        setError({ message: "Failed to delete article" });
       }
     } catch (err) {
       console.error("Error deleting article:", err);
-      setError("An error occurred while deleting the article");
+      setError({ message: "An error occurred while deleting the article" });
     }
   };
 
@@ -89,7 +93,7 @@ const AdminPage = () => {
               New Article
             </Link>
             <button
-              onClick={() => navigate("/logout")}
+              onClick={() => logout()}
               className="bg-charcoal-gray hover:bg-charcoal-gray/90 text-white py-2 px-4 rounded-lg flex items-center gap-2"
             >
               <LogOut size={18} />
@@ -100,7 +104,7 @@ const AdminPage = () => {
 
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-            {error}
+            {error.message}
           </div>
         )}
 
