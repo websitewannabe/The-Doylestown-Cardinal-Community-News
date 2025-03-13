@@ -1,4 +1,4 @@
-import buildConfig from "payload/config";
+import { buildConfig } from "payload/config";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import path, { dirname } from "path";
