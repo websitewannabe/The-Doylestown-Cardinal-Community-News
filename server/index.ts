@@ -1,7 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-import payload from "@payloadcms/payload";
+import payload from "payload";
 import payloadConfig from "./payload"; // Assumed path; adjust as needed
 
 

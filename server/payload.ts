@@ -1,5 +1,5 @@
 
-import { buildConfig } from '@payloadcms/payload/config';
+import { buildConfig } from 'payload/config';
 import path from 'path';
 
 const config = buildConfig({
