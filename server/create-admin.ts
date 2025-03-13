@@ -2,45 +2,26 @@
 import { db } from './db';
 import { users } from '../shared/schema';
 import bcrypt from 'bcryptjs';
-import { eq } from 'drizzle-orm';
 
 async function createAdminUser() {
   try {
-    // Check if admin user already exists
-    const existingAdmin = await db.select().from(users).where(eq(users.username, 'admin'));
+    // Hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash('cardinal', salt);
     
-    if (existingAdmin.length > 0) {
-      console.log('Admin user already exists - updating password');
-      
-      // Update password for existing admin
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash('cardinal', salt);
-      
-      await db.update(users)
-        .set({ password: hashedPassword })
-        .where(eq(users.username, 'admin'));
-      
-      console.log('Admin password updated successfully');
-    } else {
-      // Create new admin user
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash('cardinal', salt);
-      
-      const [adminUser] = await db.insert(users).values({
-        username: 'admin',
-        password: hashedPassword
-      }).returning();
-      
-      console.log('Admin user created successfully:', adminUser);
-    }
+    // Insert admin user
+    const [adminUser] = await db.insert(users).values({
+      username: 'admin',
+      password: hashedPassword
+    }).returning();
+    
+    console.log('Admin user created successfully:', adminUser);
   } catch (error) {
-    console.error('Error managing admin user:', error);
+    console.error('Error creating admin user:', error);
+  } finally {
+    // Close the database connection
+    await db.pool.end();
   }
 }
 
-createAdminUser()
-  .catch(console.error)
-  .finally(() => {
-    console.log('Done');
-    process.exit(0);
-  });
+createAdminUser().catch(console.error);

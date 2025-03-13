@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
 import { ProtectedRoute } from './components/ProtectedRoute';
@@ -38,7 +38,6 @@ import ContactPage from './pages/ContactPage';
 import EditorialSubmissionsPage from './pages/EditorialSubmissionsPage';
 import { NewsletterProvider, useNewsletterContext } from './context/NewsletterContext';
 import NewsletterPopup from './components/ui/NewsletterPopup';
-import { BrowserRouter as Router } from 'react-router-dom';
 
 
 const queryClient = new QueryClient();
@@ -47,7 +46,7 @@ const AppContent = () => {
   const { showPopup, handleClose } = useNewsletterContext();
 
   return (
-    <Router> {/* Router added back here */}
+    <Router>
       <div className="min-h-screen bg-[#F2F0EF]">
         <Navigation />
         <Routes>

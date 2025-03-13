@@ -38,23 +38,13 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getUserById(id: number): Promise<User | undefined> {
-    try {
-      const result = await db.select().from(users).where(eq(users.id, id)).limit(1);
-      return result[0];
-    } catch (error) {
-      console.error("Error fetching user by ID:", error);
-      return undefined;
-    }
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    try {
-      const result = await db.select().from(users).where(eq(users.username, username)).limit(1);
-      return result[0];
-    } catch (error) {
-      console.error("Error fetching user by username:", error);
-      return undefined;
-    }
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {

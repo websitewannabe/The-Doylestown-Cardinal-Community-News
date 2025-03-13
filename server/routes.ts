@@ -49,14 +49,6 @@ export function registerRoutes(app: Express): Server {
       if (!updated) {
         return res.status(404).json({ error: 'Article not found' });
       }
-
-  // Auth check endpoint
-  app.get('/api/auth/check', isAuthenticated, (req: Request, res: Response) => {
-    // If request gets here, user is authenticated due to isAuthenticated middleware
-    res.json(req.user);
-  });
-
-
       res.json(updated);
     } catch (error) {
       console.error('Error updating article:', error);

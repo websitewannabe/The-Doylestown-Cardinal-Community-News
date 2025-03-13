@@ -1,21 +1,9 @@
-
-import React, { useState, useEffect, createContext, useContext, ReactNode } from 'react';
+import { useQuery, useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@tanstack/react-query';
 
 interface User {
   id: number;
   username: string;
-}
-
-interface AuthContextType {
-  user: User | null;
-  isAuthenticated: boolean;
-  isLoading: boolean;
-  login: (credentials: LoginCredentials) => void;
-  logout: () => void;
-  loginError: Error | null;
-  isLoggingIn: boolean;
 }
 
 interface LoginCredentials {
@@ -23,25 +11,10 @@ interface LoginCredentials {
   password: string;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const auth = useProvideAuth();
-  return React.createElement(AuthContext.Provider, { value: auth }, children);
-}
-
 export function useAuth() {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-}
-
-function useProvideAuth() {
   const navigate = useNavigate();
 
-  const { data: user, isLoading, refetch } = useQuery<User>({
+  const { data: user, isLoading } = useQuery<User>({
     queryKey: ['auth'],
     queryFn: async () => {
       const response = await fetch('/api/auth/check');
@@ -50,8 +23,7 @@ function useProvideAuth() {
       }
       return response.json();
     },
-    retry: false,
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    retry: false
   });
 
   const loginMutation = useMutation({
@@ -71,7 +43,6 @@ function useProvideAuth() {
       return response.json();
     },
     onSuccess: () => {
-      refetch();
       navigate('/admin');
     },
   });
@@ -92,7 +63,7 @@ function useProvideAuth() {
   });
 
   return {
-    user: user || null,
+    user,
     isLoading,
     isAuthenticated: !!user,
     login: loginMutation.mutate,
