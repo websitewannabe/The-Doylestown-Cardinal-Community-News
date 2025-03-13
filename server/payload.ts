@@ -1,19 +1,24 @@
-import buildConfig from 'payload/config';
-import { postgresAdapter } from '@payloadcms/db-postgres';
-import { slateEditor } from '@payloadcms/richtext-slate';
-import { webpackBundler } from '@payloadcms/bundler-webpack';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import buildConfig from "payload/config";
+import { postgresAdapter } from "@payloadcms/db-postgres";
+import slateEditor from "@payloadcms/richtext-slate";
+import { webpackBundler } from "@payloadcms/bundler-webpack";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default buildConfig({
-  serverURL: process.env.NODE_ENV === 'production' 
-    ? 'https://' + process.env.REPL_SLUG + '.' + process.env.REPL_OWNER + '.repl.co' 
-    : 'http://localhost:5000',
+  serverURL:
+    process.env.NODE_ENV === "production"
+      ? "https://" +
+        process.env.REPL_SLUG +
+        "." +
+        process.env.REPL_OWNER +
+        ".repl.co"
+      : "http://localhost:5000",
   admin: {
-    user: 'users',
+    user: "users",
     bundler: webpackBundler(),
   },
   editor: slateEditor({}),
@@ -24,73 +29,73 @@ export default buildConfig({
   }),
   collections: [
     {
-      slug: 'users',
+      slug: "users",
       auth: true,
       admin: {
-        useAsTitle: 'username',
+        useAsTitle: "username",
       },
       fields: [
         {
-          name: 'username',
-          type: 'text',
+          name: "username",
+          type: "text",
           required: true,
         },
       ],
     },
     {
-      slug: 'articles',
+      slug: "articles",
       admin: {
-        useAsTitle: 'title',
+        useAsTitle: "title",
       },
       fields: [
         {
-          name: 'title',
-          type: 'text',
+          name: "title",
+          type: "text",
           required: true,
         },
         {
-          name: 'excerpt',
-          type: 'textarea',
+          name: "excerpt",
+          type: "textarea",
         },
         {
-          name: 'content',
-          type: 'richText',
+          name: "content",
+          type: "richText",
         },
         {
-          name: 'category',
-          type: 'select',
+          name: "category",
+          type: "select",
           options: [
-            { label: 'Live', value: 'live' },
-            { label: 'Community', value: 'community' },
-            { label: 'News', value: 'news' },
-          ]
+            { label: "Live", value: "live" },
+            { label: "Community", value: "community" },
+            { label: "News", value: "news" },
+          ],
         },
         {
-          name: 'author',
-          type: 'text',
+          name: "author",
+          type: "text",
         },
         {
-          name: 'image',
-          type: 'text',
+          name: "image",
+          type: "text",
         },
         {
-          name: 'date',
-          type: 'date',
+          name: "date",
+          type: "date",
         },
         {
-          name: 'tags',
-          type: 'array',
+          name: "tags",
+          type: "array",
           fields: [
             {
-              name: 'tag',
-              type: 'text',
-            }
-          ]
-        }
+              name: "tag",
+              type: "text",
+            },
+          ],
+        },
       ],
-    }
+    },
   ],
   typescript: {
-    outputFile: path.resolve(__dirname, '../shared/payload-types.ts'),
+    outputFile: path.resolve(__dirname, "../shared/payload-types.ts"),
   },
 });
