@@ -30,16 +30,20 @@ export function setupAuth(app: Express) {
     try {
       const user = await storage.getUserByUsername(username);
       if (!user) {
+        console.log('Login failed: User not found -', username);
         return done(null, false, { message: 'Incorrect username.' });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
+        console.log('Login failed: Invalid password -', username);
         return done(null, false, { message: 'Incorrect password.' });
       }
 
+      console.log('Login successful:', username);
       return done(null, user);
     } catch (err) {
+      console.error('Login error:', err);
       return done(err);
     }
   }));
@@ -68,6 +72,15 @@ export function setupAuth(app: Express) {
       if (err) { return next(err); }
       res.json({ success: true });
     });
+  });
+
+  // Add a route to check authentication status
+  app.get('/api/auth/check', (req, res) => {
+    if (req.isAuthenticated()) {
+      res.json(req.user);
+    } else {
+      res.status(401).json({ message: 'Not authenticated' });
+    }
   });
 }
 
