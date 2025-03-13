@@ -1,18 +1,11 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-import payload from 'payload';
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Logging middleware
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -44,61 +37,29 @@ app.use((req, res, next) => {
 });
 
 (async () => {
-  try {
-    // Debug logging
-    log('Starting server initialization');
-    log('Environment check:', {
-      NODE_ENV: process.env.NODE_ENV,
-      DATABASE_URL: process.env.DATABASE_URL ? 'Set' : 'Not set',
-      PAYLOAD_SECRET: process.env.PAYLOAD_SECRET ? 'Set' : 'Not set'
-    });
+  const server = registerRoutes(app);
 
-    // Initialize Payload
-    let payloadConfig;
-    try {
-      // Use dynamic import for the ESM config file
-      const configPath = path.join(__dirname, 'payload.config.ts');
-      log(`Loading payload config from: ${configPath}`);
-      payloadConfig = await import('./payload.config.ts');
-      log('Successfully loaded payload config');
-    } catch (error) {
-      log('Error loading payload config:', error);
-      throw error;
-    }
+  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+    const status = err.status || err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
 
-    const server = registerRoutes(app);
+    res.status(status).json({ message });
+    throw err;
+  });
 
-    // Error handling middleware
-    app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-      console.error('Error:', err);
-      const status = err.status || err.statusCode || 500;
-      const message = err.message || "Internal Server Error";
-      res.status(status).json({ message });
-    });
-
-    if (app.get("env") === "development") {
-      await setupVite(app, server);
-    } else {
-      serveStatic(app);
-    }
-
-    const PORT = 5000;
-    server.listen(PORT, "0.0.0.0", () => {
-      log(`Server running on port ${PORT}`);
-    });
-
-    // Initialize Payload after server is running
-    await payload.init({
-      secret: process.env.PAYLOAD_SECRET,
-      express: app,
-      config: payloadConfig.default,
-      onInit: () => {
-        log('Payload CMS initialized successfully');
-      },
-    });
-
-  } catch (error) {
-    console.error('Failed to start server:', error);
-    process.exit(1);
+  // importantly only setup vite in development and after
+  // setting up all the other routes so the catch-all route
+  // doesn't interfere with the other routes
+  if (app.get("env") === "development") {
+    await setupVite(app, server);
+  } else {
+    serveStatic(app);
   }
+
+  // ALWAYS serve the app on port 5000
+  // this serves both the API and the client
+  const PORT = 5000;
+  server.listen(PORT, "0.0.0.0", () => {
+    log(`serving on port ${PORT}`);
+  });
 })();
