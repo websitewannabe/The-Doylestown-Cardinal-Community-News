@@ -12,6 +12,7 @@ export function registerRoutes(app: Express): Server {
       const article = await storage.createArticle(articleData);
       res.json(article);
     } catch (error) {
+      console.error("Error creating article:", error);
       if (error instanceof ZodError) {
         res.status(400).json({ message: "Invalid article data", errors: error.errors });
       } else {
@@ -29,6 +30,7 @@ export function registerRoutes(app: Express): Server {
       const articles = await storage.listArticles({ limit, offset, published });
       res.json(articles);
     } catch (error) {
+      console.error("Error fetching articles:", error);
       res.status(500).json({ message: "Failed to fetch articles" });
     }
   });
@@ -42,6 +44,7 @@ export function registerRoutes(app: Express): Server {
       }
       res.json(article);
     } catch (error) {
+      console.error("Error fetching article:", error);
       res.status(500).json({ message: "Failed to fetch article" });
     }
   });
@@ -53,6 +56,7 @@ export function registerRoutes(app: Express): Server {
       const category = await storage.createCategory(categoryData);
       res.json(category);
     } catch (error) {
+      console.error("Error creating category:", error);
       if (error instanceof ZodError) {
         res.status(400).json({ message: "Invalid category data", errors: error.errors });
       } else {
@@ -66,6 +70,7 @@ export function registerRoutes(app: Express): Server {
       const categories = await storage.listCategories();
       res.json(categories);
     } catch (error) {
+      console.error("Error fetching categories:", error);
       res.status(500).json({ message: "Failed to fetch categories" });
     }
   });
@@ -80,6 +85,7 @@ export function registerRoutes(app: Express): Server {
       const articles = await storage.getArticlesByCategory(category.id);
       res.json(articles);
     } catch (error) {
+      console.error("Error fetching category articles:", error);
       res.status(500).json({ message: "Failed to fetch category articles" });
     }
   });
