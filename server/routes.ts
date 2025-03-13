@@ -1,4 +1,4 @@
-import type { Express, Router } from "express";
+import express, { type Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertUserSchema } from "@shared/schema";
@@ -6,7 +6,7 @@ import { db } from "./db";
 
 export function registerRoutes(app: Express): Server {
   // Create a dedicated router for API routes
-  const apiRouter = Router();
+  const apiRouter = express.Router();
 
   // Health check endpoint
   apiRouter.get("/health", async (_req, res) => {
