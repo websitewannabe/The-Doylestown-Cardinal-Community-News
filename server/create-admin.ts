@@ -2,11 +2,12 @@
 import { db } from './db';
 import { users } from '../shared/schema';
 import bcrypt from 'bcryptjs';
+import { eq } from 'drizzle-orm';
 
 async function createAdminUser() {
   try {
     // Check if admin user already exists
-    const existingAdmin = await db.select().from(users).where(users.username).equals('admin');
+    const existingAdmin = await db.select().from(users).where(eq(users.username, 'admin'));
     
     if (existingAdmin.length > 0) {
       console.log('Admin user already exists - updating password');
@@ -17,7 +18,7 @@ async function createAdminUser() {
       
       await db.update(users)
         .set({ password: hashedPassword })
-        .where(users.username).equals('admin');
+        .where(eq(users.username, 'admin'));
       
       console.log('Admin password updated successfully');
     } else {
@@ -39,7 +40,7 @@ async function createAdminUser() {
 
 createAdminUser()
   .catch(console.error)
-  .finally(async () => {
+  .finally(() => {
     console.log('Done');
     process.exit(0);
   });

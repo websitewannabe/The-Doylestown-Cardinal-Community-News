@@ -25,6 +25,21 @@ export function setupAuth(app: Express) {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  // Debug endpoint to check session
+  app.get('/api/auth/debug', (req: Request, res: Response) => {
+    console.log('Session ID:', req.sessionID);
+    console.log('Session:', req.session);
+    console.log('Is authenticated:', req.isAuthenticated());
+    console.log('User:', req.user);
+    
+    res.json({
+      sessionID: req.sessionID,
+      isAuthenticated: req.isAuthenticated(),
+      user: req.user || null,
+      session: req.session
+    });
+  });
+
   // Configure passport local strategy
   passport.use(new LocalStrategy(async (username, password, done) => {
     try {
@@ -59,13 +74,40 @@ export function setupAuth(app: Express) {
   });
 
   // Authentication routes
-  app.post('/api/login', passport.authenticate('local'), (req, res) => {
-    res.json({ success: true, user: req.user });
+  app.post('/api/login', (req: Request, res: Response, next: NextFunction) => {
+    console.log('Login attempt:', req.body);
+    
+    passport.authenticate('local', (err, user, info) => {
+      if (err) {
+        console.error('Auth error:', err);
+        return next(err);
+      }
+      
+      if (!user) {
+        console.log('Auth failed:', info);
+        return res.status(401).json({ success: false, message: info?.message || 'Authentication failed' });
+      }
+      
+      req.login(user, (loginErr) => {
+        if (loginErr) {
+          console.error('Login error:', loginErr);
+          return next(loginErr);
+        }
+        
+        console.log('User logged in successfully:', user.username);
+        return res.json({ success: true, user: req.user });
+      });
+    })(req, res, next);
   });
 
   app.post('/api/logout', (req: Request, res: Response, next: NextFunction) => {
+    console.log('Logout request for user:', req.user);
     req.logout(function(err) {
-      if (err) { return next(err); }
+      if (err) { 
+        console.error('Logout error:', err);
+        return next(err); 
+      }
+      console.log('User logged out successfully');
       res.json({ success: true });
     });
   });
