@@ -6,9 +6,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { queryClient, apiRequest } from "@/lib/queryClient";
+import { Loader2 } from "lucide-react";
 
 export default function CreateArticle() {
   const [, setLocation] = useLocation();
@@ -24,10 +26,11 @@ export default function CreateArticle() {
       metaTitle: "",
       metaDescription: "",
       published: false,
+      categoryId: undefined,
     },
   });
 
-  const { data: categories } = useQuery({
+  const { data: categories, isLoading: loadingCategories } = useQuery({
     queryKey: ["/api/categories"],
   });
 
@@ -45,13 +48,22 @@ export default function CreateArticle() {
       setLocation("/articles");
     },
     onError: (error) => {
+      console.error("Article creation error:", error);
       toast({
         title: "Error",
-        description: "Failed to create article",
+        description: "Failed to create article. Please try again.",
         variant: "destructive",
       });
     },
   });
+
+  if (loadingCategories) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="container max-w-2xl py-10">
@@ -82,6 +94,31 @@ export default function CreateArticle() {
                 <FormControl>
                   <Input {...field} placeholder="my-article-title" />
                 </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="categoryId"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Category</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value?.toString()}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a category" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {categories?.map((category) => (
+                      <SelectItem key={category.id} value={category.id.toString()}>
+                        {category.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 <FormMessage />
               </FormItem>
             )}

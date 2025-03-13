@@ -26,90 +26,197 @@ export interface IStorage {
 export class DatabaseStorage implements IStorage {
   // User methods
   async getUser(id: number): Promise<User | undefined> {
-    const users = await db.select().from(users).where(eq(users.id, id));
-    return users[0];
+    try {
+      const userResult = await db
+        .select()
+        .from(users)
+        .where(eq(users.id, id))
+        .execute();
+      return userResult[0];
+    } catch (error) {
+      console.error('Error in getUser:', error);
+      throw error;
+    }
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    const users = await db.select().from(users).where(eq(users.username, username));
-    return users[0];
+    try {
+      const userResult = await db
+        .select()
+        .from(users)
+        .where(eq(users.username, username))
+        .execute();
+      return userResult[0];
+    } catch (error) {
+      console.error('Error in getUserByUsername:', error);
+      throw error;
+    }
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const users = await db.insert(users).values(insertUser).returning();
-    return users[0];
+    try {
+      const userResult = await db
+        .insert(users)
+        .values(insertUser)
+        .returning()
+        .execute();
+      return userResult[0];
+    } catch (error) {
+      console.error('Error in createUser:', error);
+      throw error;
+    }
   }
 
   // Article methods
   async createArticle(insertArticle: InsertArticle): Promise<Article> {
-    const articles = await db.insert(articles).values(insertArticle).returning();
-    return articles[0];
+    try {
+      const articleResult = await db
+        .insert(articles)
+        .values(insertArticle)
+        .returning()
+        .execute();
+      return articleResult[0];
+    } catch (error) {
+      console.error('Error in createArticle:', error);
+      throw error;
+    }
   }
 
   async getArticle(id: number): Promise<Article | undefined> {
-    const articles = await db.select().from(articles).where(eq(articles.id, id));
-    return articles[0];
+    try {
+      const articleResult = await db
+        .select()
+        .from(articles)
+        .where(eq(articles.id, id))
+        .execute();
+      return articleResult[0];
+    } catch (error) {
+      console.error('Error in getArticle:', error);
+      throw error;
+    }
   }
 
   async getArticleBySlug(slug: string): Promise<Article | undefined> {
-    const articles = await db.select().from(articles).where(eq(articles.slug, slug));
-    return articles[0];
+    try {
+      const articleResult = await db
+        .select()
+        .from(articles)
+        .where(eq(articles.slug, slug))
+        .execute();
+      return articleResult[0];
+    } catch (error) {
+      console.error('Error in getArticleBySlug:', error);
+      throw error;
+    }
   }
 
   async listArticles(options: { limit?: number; offset?: number; published?: boolean } = {}): Promise<Article[]> {
-    let query = db.select().from(articles);
+    try {
+      let query = db
+        .select()
+        .from(articles)
+        .orderBy(desc(articles.createdAt));
 
-    if (options.published !== undefined) {
-      query = query.where(eq(articles.published, options.published));
+      if (options.published !== undefined) {
+        query = query.where(eq(articles.published, options.published));
+      }
+
+      if (options.limit !== undefined) {
+        query = query.limit(options.limit);
+      }
+
+      if (options.offset !== undefined) {
+        query = query.offset(options.offset);
+      }
+
+      return await query.execute();
+    } catch (error) {
+      console.error('Error in listArticles:', error);
+      throw error;
     }
-
-    query = query.orderBy(desc(articles.createdAt));
-
-    if (options.limit !== undefined) {
-      query = query.limit(options.limit);
-    }
-
-    if (options.offset !== undefined) {
-      query = query.offset(options.offset);
-    }
-
-    return await query;
   }
 
   async getArticlesByCategory(categoryId: number): Promise<Article[]> {
-    return await db
-      .select()
-      .from(articles)
-      .where(eq(articles.categoryId, categoryId))
-      .orderBy(desc(articles.createdAt));
+    try {
+      return await db
+        .select()
+        .from(articles)
+        .where(eq(articles.categoryId, categoryId))
+        .orderBy(desc(articles.createdAt))
+        .execute();
+    } catch (error) {
+      console.error('Error in getArticlesByCategory:', error);
+      throw error;
+    }
   }
 
   async getArticlesByAuthor(authorId: number): Promise<Article[]> {
-    return await db
-      .select()
-      .from(articles)
-      .where(eq(articles.authorId, authorId))
-      .orderBy(desc(articles.createdAt));
+    try {
+      return await db
+        .select()
+        .from(articles)
+        .where(eq(articles.authorId, authorId))
+        .orderBy(desc(articles.createdAt))
+        .execute();
+    } catch (error) {
+      console.error('Error in getArticlesByAuthor:', error);
+      throw error;
+    }
   }
 
   // Category methods
   async createCategory(insertCategory: InsertCategory): Promise<Category> {
-    const categories = await db.insert(categories).values(insertCategory).returning();
-    return categories[0];
+    try {
+      const categoryResult = await db
+        .insert(categories)
+        .values(insertCategory)
+        .returning()
+        .execute();
+      return categoryResult[0];
+    } catch (error) {
+      console.error('Error in createCategory:', error);
+      throw error;
+    }
   }
 
   async getCategory(id: number): Promise<Category | undefined> {
-    const categories = await db.select().from(categories).where(eq(categories.id, id));
-    return categories[0];
+    try {
+      const categoryResult = await db
+        .select()
+        .from(categories)
+        .where(eq(categories.id, id))
+        .execute();
+      return categoryResult[0];
+    } catch (error) {
+      console.error('Error in getCategory:', error);
+      throw error;
+    }
   }
 
   async getCategoryBySlug(slug: string): Promise<Category | undefined> {
-    const categories = await db.select().from(categories).where(eq(categories.slug, slug));
-    return categories[0];
+    try {
+      const categoryResult = await db
+        .select()
+        .from(categories)
+        .where(eq(categories.slug, slug))
+        .execute();
+      return categoryResult[0];
+    } catch (error) {
+      console.error('Error in getCategoryBySlug:', error);
+      throw error;
+    }
   }
 
   async listCategories(): Promise<Category[]> {
-    return await db.select().from(categories);
+    try {
+      return await db
+        .select()
+        .from(categories)
+        .execute();
+    } catch (error) {
+      console.error('Error in listCategories:', error);
+      throw error;
+    }
   }
 }
 
