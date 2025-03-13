@@ -3,6 +3,7 @@ import { postgresAdapter } from "@payloadcms/db-postgres";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import RichTextUploadFeature from "payload/dist/fields/richText/upload";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -58,6 +59,22 @@ export default buildConfig({
         {
           name: "content",
           type: "richText",
+          admin: {
+            elements: [
+              "h2",
+              "h3",
+              "h4",
+              "link",
+              "blockquote",
+              "ul",
+              "ol"
+            ],
+            leaves: [
+              "bold",
+              "italic",
+              "underline"
+            ],
+          },
         },
         {
           name: "category",
