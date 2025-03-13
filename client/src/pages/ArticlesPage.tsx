@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Search, Share2, ChevronRight, Calendar, User2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 
-// Mock data for demonstration
+// Mock data for articles
 const mockArticles = [
   {
     id: 1,
@@ -99,15 +99,14 @@ const ArticlesPage = () => {
                   Featured This Month
                 </div>
                 <Link
-                  to="/current-issue"
+                  href="/current-issue"
                   className="bg-cardinal-red text-white px-6 py-2 rounded-full font-medium hover:bg-forest-green transition-colors"
                 >
                   View Current Issue
                 </Link>
               </div>
-              
               <div className="grid grid-cols-12 gap-6">
-                <Link to={`/articles/${mockArticles[0].id}`} className="col-span-12 md:col-span-8">
+                <Link href={`/articles/${mockArticles[0].id}`} className="col-span-12 md:col-span-8">
                   <div className="group h-full">
                     <div
                       className="relative h-[500px] rounded-xl overflow-hidden"
@@ -133,9 +132,8 @@ const ArticlesPage = () => {
                     </div>
                   </div>
                 </Link>
-                
                 <div className="col-span-12 md:col-span-4 flex flex-col gap-6">
-                <Link to={`/articles/${mockArticles[1].id}`} className="flex-1">
+                  <Link href={`/articles/${mockArticles[1].id}`} className="flex-1">
                     <div
                       className="relative h-full rounded-xl overflow-hidden group"
                       style={{
@@ -160,7 +158,7 @@ const ArticlesPage = () => {
                       </div>
                     </div>
                   </Link>
-                  <Link to={`/articles/${mockArticles[2].id}`} className="flex-1">
+                  <Link href={`/articles/${mockArticles[2].id}`} className="flex-1">
                     <div
                       className="relative h-full rounded-xl overflow-hidden group"
                       style={{
@@ -234,11 +232,13 @@ const ArticlesPage = () => {
                   <div className="flex flex-col md:flex-row">
                     <div className="md:w-1/3">
                       <div className="relative h-full">
-                        <img
-                          src={article.image}
-                          alt={article.title}
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                        />
+                        <Link href={`/articles/${article.id}`}>
+                          <img
+                            src={article.image}
+                            alt={article.title}
+                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </Link>
                       </div>
                     </div>
                     <div className="md:w-2/3 p-6">
@@ -253,7 +253,7 @@ const ArticlesPage = () => {
                         </div>
                       </div>
                       <h2 className="font-playfair text-xl font-bold mb-2 group-hover:text-cardinal-red transition-colors">
-                        <Link to={`/articles/${article.id}`}>
+                        <Link href={`/articles/${article.id}`}>
                           {article.title}
                         </Link>
                       </h2>
@@ -268,7 +268,7 @@ const ArticlesPage = () => {
                             <Share2 size={18} />
                           </button>
                           <Link
-                            to={`/articles/${article.id}`}
+                            href={`/articles/${article.id}`}
                             className="flex items-center text-cardinal-red hover:text-forest-green transition-colors"
                           >
                             Read More
@@ -329,7 +329,7 @@ const ArticlesPage = () => {
                   {mockArticles.slice(0, 3).map((article) => (
                     <Link
                       key={article.id}
-                      to={`/articles/${article.id}`}
+                      href={`/articles/${article.id}`}
                       className="flex gap-4 group"
                     >
                       <div className="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
@@ -360,7 +360,7 @@ const ArticlesPage = () => {
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {Array.from(
-                    new Set(mockArticles.flatMap((article) => article.tags)),
+                    new Set(mockArticles.flatMap((article) => article.tags))
                   ).map((tag) => (
                     <button
                       key={tag}

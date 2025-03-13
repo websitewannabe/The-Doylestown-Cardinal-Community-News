@@ -26,34 +26,34 @@ export interface IStorage {
 export class DatabaseStorage implements IStorage {
   // User methods
   async getUser(id: number): Promise<User | undefined> {
-    const rows = await db.select().from(users).where(eq(users.id, id)).all();
-    return rows[0];
+    const users = await db.select().from(users).where(eq(users.id, id));
+    return users[0];
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    const rows = await db.select().from(users).where(eq(users.username, username)).all();
-    return rows[0];
+    const users = await db.select().from(users).where(eq(users.username, username));
+    return users[0];
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const rows = await db.insert(users).values(insertUser).returning().all();
-    return rows[0];
+    const users = await db.insert(users).values(insertUser).returning();
+    return users[0];
   }
 
   // Article methods
   async createArticle(insertArticle: InsertArticle): Promise<Article> {
-    const rows = await db.insert(articles).values(insertArticle).returning().all();
-    return rows[0];
+    const articles = await db.insert(articles).values(insertArticle).returning();
+    return articles[0];
   }
 
   async getArticle(id: number): Promise<Article | undefined> {
-    const rows = await db.select().from(articles).where(eq(articles.id, id)).all();
-    return rows[0];
+    const articles = await db.select().from(articles).where(eq(articles.id, id));
+    return articles[0];
   }
 
   async getArticleBySlug(slug: string): Promise<Article | undefined> {
-    const rows = await db.select().from(articles).where(eq(articles.slug, slug)).all();
-    return rows[0];
+    const articles = await db.select().from(articles).where(eq(articles.slug, slug));
+    return articles[0];
   }
 
   async listArticles(options: { limit?: number; offset?: number; published?: boolean } = {}): Promise<Article[]> {
@@ -73,7 +73,7 @@ export class DatabaseStorage implements IStorage {
       query = query.offset(options.offset);
     }
 
-    return await query.all();
+    return await query;
   }
 
   async getArticlesByCategory(categoryId: number): Promise<Article[]> {
@@ -81,8 +81,7 @@ export class DatabaseStorage implements IStorage {
       .select()
       .from(articles)
       .where(eq(articles.categoryId, categoryId))
-      .orderBy(desc(articles.createdAt))
-      .all();
+      .orderBy(desc(articles.createdAt));
   }
 
   async getArticlesByAuthor(authorId: number): Promise<Article[]> {
@@ -90,28 +89,27 @@ export class DatabaseStorage implements IStorage {
       .select()
       .from(articles)
       .where(eq(articles.authorId, authorId))
-      .orderBy(desc(articles.createdAt))
-      .all();
+      .orderBy(desc(articles.createdAt));
   }
 
   // Category methods
   async createCategory(insertCategory: InsertCategory): Promise<Category> {
-    const rows = await db.insert(categories).values(insertCategory).returning().all();
-    return rows[0];
+    const categories = await db.insert(categories).values(insertCategory).returning();
+    return categories[0];
   }
 
   async getCategory(id: number): Promise<Category | undefined> {
-    const rows = await db.select().from(categories).where(eq(categories.id, id)).all();
-    return rows[0];
+    const categories = await db.select().from(categories).where(eq(categories.id, id));
+    return categories[0];
   }
 
   async getCategoryBySlug(slug: string): Promise<Category | undefined> {
-    const rows = await db.select().from(categories).where(eq(categories.slug, slug)).all();
-    return rows[0];
+    const categories = await db.select().from(categories).where(eq(categories.slug, slug));
+    return categories[0];
   }
 
   async listCategories(): Promise<Category[]> {
-    return await db.select().from(categories).all();
+    return await db.select().from(categories);
   }
 }
 
