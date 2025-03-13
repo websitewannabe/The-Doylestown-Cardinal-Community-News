@@ -136,8 +136,7 @@ const AboutPage = () => {
               Our Story
             </h1>
             <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
-              Since 1970, delivering authentic journalism that matters to our
-              community
+              Delivering authentic journalism that matters to our community
             </p>
           </div>
         </div>
