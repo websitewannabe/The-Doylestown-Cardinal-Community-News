@@ -1,59 +1,54 @@
-
-import { Request, Response, NextFunction } from 'express';
-import passport from 'passport';
-import { Strategy as LocalStrategy } from 'passport-local';
 import { storage } from './storage';
 import bcrypt from 'bcryptjs';
-
 import session from 'express-session';
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
+import type { Express, Request, Response, NextFunction } from 'express';
 
 // Set up passport authentication
-export function setupAuth(app) {
+export function setupAuth(app: Express) {
   // Sessions setup
   app.use(
     session({
       secret: process.env.SESSION_SECRET || 'keyboard cat',
       resave: false,
       saveUninitialized: false,
-      cookie: {
+      cookie: { 
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 1000 * 60 * 60 * 24, // 1 day
-      },
-    })
-  );
-
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  // Configure local strategy
-  passport.use(
-    new LocalStrategy(async (username, password, done) => {
-      try {
-        const user = await storage.getUserByUsername(username);
-        
-        if (!user) {
-          return done(null, false, { message: 'Incorrect username' });
-        }
-        
-        const isMatch = await bcrypt.compare(password, user.password);
-        
-        if (!isMatch) {
-          return done(null, false, { message: 'Incorrect password' });
-        }
-        
-        return done(null, user);
-      } catch (err) {
-        return done(err);
+        maxAge: 1000 * 60 * 60 * 24 // 24 hours
       }
     })
   );
 
+  // Initialize passport
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  // Configure passport local strategy
+  passport.use(new LocalStrategy(async (username, password, done) => {
+    try {
+      const user = await storage.getUserByUsername(username);
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+
+      return done(null, user);
+    } catch (err) {
+      return done(err);
+    }
+  }));
+
   // Serialize and deserialize user
-  passport.serializeUser((user, done) => {
+  passport.serializeUser((user: any, done) => {
     done(null, user.id);
   });
 
-  passport.deserializeUser(async (id, done) => {
+  passport.deserializeUser(async (id: number, done) => {
     try {
       const user = await storage.getUserById(id);
       done(null, user);
@@ -62,30 +57,23 @@ export function setupAuth(app) {
     }
   });
 
-  // Auth routes
+  // Authentication routes
   app.post('/api/login', passport.authenticate('local'), (req, res) => {
-    // If this function gets called, authentication was successful
     res.json({ success: true, user: req.user });
   });
 
-  app.post('/api/logout', (req, res, next) => {
+  app.post('/api/logout', (req: Request, res: Response, next: NextFunction) => {
     req.logout(function(err) {
       if (err) { return next(err); }
       res.json({ success: true });
     });
   });
 
-  app.get('/api/current-user', (req, res) => {
+  app.get('/api/auth/check', (req, res) => {
     if (req.isAuthenticated()) {
-      res.json({ 
-        isAuthenticated: true, 
-        user: { 
-          id: req.user.id, 
-          username: req.user.username 
-        } 
-      });
+      res.json({ authenticated: true, user: req.user });
     } else {
-      res.json({ isAuthenticated: false });
+      res.json({ authenticated: false });
     }
   });
 }
@@ -95,6 +83,5 @@ export function isAuthenticated(req: Request, res: Response, next: NextFunction)
   if (req.isAuthenticated()) {
     return next();
   }
-  
   res.status(401).json({ error: 'Unauthorized' });
 }

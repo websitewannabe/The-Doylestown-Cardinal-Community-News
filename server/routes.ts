@@ -40,14 +40,23 @@ export function registerRoutes(app: Express): Server {
 
   app.put('/api/articles/:id', isAuthenticated, async (req: Request, res: Response) => {
     try {
-      const updated = await storage.updateArticle(Number(req.params.id), req.body);
+      const articleId = Number(req.params.id);
+      if (isNaN(articleId)) {
+        return res.status(400).json({ error: 'Invalid article ID' });
+      }
+      
+      const updated = await storage.updateArticle(articleId, req.body);
       if (!updated) {
         return res.status(404).json({ error: 'Article not found' });
       }
       res.json(updated);
     } catch (error) {
       console.error('Error updating article:', error);
-      res.status(500).json({ error: 'Failed to update article' });
+      // Include more details about the error in development
+      const errorMessage = process.env.NODE_ENV === 'production' 
+        ? 'Failed to update article' 
+        : `Failed to update article: ${error.message}`;
+      res.status(500).json({ error: errorMessage });
     }
   });
 

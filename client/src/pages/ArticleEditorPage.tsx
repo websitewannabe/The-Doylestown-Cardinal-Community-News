@@ -116,10 +116,13 @@ const ArticleEditorPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+        credentials: 'include', // This is important for sending cookies with the request
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to ${isNewArticle ? "create" : "update"} article`);
+        const errorData = await response.json().catch(() => ({}));
+        const errorMessage = errorData.error || `Failed to ${isNewArticle ? "create" : "update"} article`;
+        throw new Error(errorMessage);
       }
 
       const savedArticle = await response.json();
