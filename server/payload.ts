@@ -1,6 +1,6 @@
 import buildConfig from "payload/config";
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import { createSlateRichTextField } from "@payloadcms/richtext-slate";
+import { slateEditor } from "@payloadcms/richtext-slate";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
@@ -21,7 +21,7 @@ export default buildConfig({
     user: "users",
     bundler: webpackBundler(),
   },
-  editor: createSlateRichTextField({}),
+  editor: slateEditor({}),
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL,
