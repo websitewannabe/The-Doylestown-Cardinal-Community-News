@@ -1,6 +1,6 @@
 import buildConfig from "payload/config";
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import slateEditor from "@payloadcms/richtext-slate";
+import { slateEditor } from "@payloadcms/richtext-slate";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
