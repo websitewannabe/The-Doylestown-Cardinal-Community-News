@@ -13,10 +13,6 @@ export interface IStorage {
   getUserById(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  updateUserPassword(id: number, hashedPassword: string): Promise<User | undefined>;
-  storeResetToken(userId: number, token: string, expires: Date): Promise<void>;
-  getUserByResetToken(token: string): Promise<User | undefined>;
-  clearResetToken(userId: number): Promise<void>;
   getAllArticles(): Promise<Article[]>;
   getArticleBySlug(slug: string): Promise<Article | null>;
   insertArticle(article: InsertArticle): Promise<Article>;
@@ -29,7 +25,6 @@ export interface IStorage {
 
 export class DatabaseStorage implements IStorage {
   sessionStore: session.Store;
-  private resetTokens: Map<string, { userId: number, expires: Date }> = new Map();
 
   constructor() {
     this.sessionStore = new MemoryStore({
@@ -58,35 +53,6 @@ export class DatabaseStorage implements IStorage {
       .values(insertUser)
       .returning();
     return user;
-  }
-
-  async updateUserPassword(id: number, hashedPassword: string): Promise<User | undefined> {
-    const [updatedUser] = await db
-      .update(users)
-      .set({ password: hashedPassword })
-      .where(eq(users.id, id))
-      .returning();
-    return updatedUser;
-  }
-
-  async storeResetToken(userId: number, token: string, expires: Date): Promise<void> {
-    this.resetTokens.set(token, { userId, expires });
-  }
-
-  async getUserByResetToken(token: string): Promise<User | undefined> {
-    const resetData = this.resetTokens.get(token);
-    if (!resetData || resetData.expires < new Date()) {
-      return undefined;
-    }
-    return this.getUserById(resetData.userId);
-  }
-
-  async clearResetToken(userId: number): Promise<void> {
-    for (const [token, data] of this.resetTokens.entries()) {
-      if (data.userId === userId) {
-        this.resetTokens.delete(token);
-      }
-    }
   }
 
   async getAllArticles() {

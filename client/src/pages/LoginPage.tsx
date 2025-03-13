@@ -61,7 +61,7 @@ const LoginPage = () => {
             )}
           </div>
 
-          <div className="mb-2">
+          <div className="mb-6">
             <label
               htmlFor="password"
               className="block text-sm font-medium text-gray-700 mb-1"
@@ -82,15 +82,6 @@ const LoginPage = () => {
             {errors.password && (
               <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
             )}
-          </div>
-
-          <div className="mb-6 text-right">
-            <Link 
-              to="/reset-password"
-              className="text-sm text-cardinal-red hover:text-cardinal-red/80"
-            >
-              Forgot password?
-            </Link>
           </div>
 
           <button
