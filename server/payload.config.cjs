@@ -1,6 +1,6 @@
-import type { BuildConfig } from 'payload/config';
+const { buildConfig } = require('payload/config');
 
-const config: BuildConfig = {
+module.exports = buildConfig({
   serverURL: process.env.NODE_ENV === 'production' 
     ? 'https://your-production-url.com' 
     : 'http://localhost:5000',
@@ -64,6 +64,4 @@ const config: BuildConfig = {
     type: 'postgres',
     url: process.env.DATABASE_URL,
   },
-};
-
-export default config;
+});

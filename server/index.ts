@@ -45,15 +45,26 @@ app.use((req, res, next) => {
 
 (async () => {
   try {
-    // Initialize Payload
-    await payload.init({
-      secret: process.env.PAYLOAD_SECRET,
-      express: app,
-      config: await import('./payload.config.js').then(module => module.default),
-      onInit: () => {
-        log('Payload CMS initialized successfully');
-      },
+    // Debug logging
+    log('Starting server initialization');
+    log('Environment check:', {
+      NODE_ENV: process.env.NODE_ENV,
+      DATABASE_URL: process.env.DATABASE_URL ? 'Set' : 'Not set',
+      PAYLOAD_SECRET: process.env.PAYLOAD_SECRET ? 'Set' : 'Not set'
     });
+
+    // Initialize Payload
+    let payloadConfig;
+    try {
+      // Use dynamic import for the ESM config file
+      const configPath = path.join(__dirname, 'payload.config.ts');
+      log(`Loading payload config from: ${configPath}`);
+      payloadConfig = await import('./payload.config.ts');
+      log('Successfully loaded payload config');
+    } catch (error) {
+      log('Error loading payload config:', error);
+      throw error;
+    }
 
     const server = registerRoutes(app);
 
@@ -75,6 +86,17 @@ app.use((req, res, next) => {
     server.listen(PORT, "0.0.0.0", () => {
       log(`Server running on port ${PORT}`);
     });
+
+    // Initialize Payload after server is running
+    await payload.init({
+      secret: process.env.PAYLOAD_SECRET,
+      express: app,
+      config: payloadConfig.default,
+      onInit: () => {
+        log('Payload CMS initialized successfully');
+      },
+    });
+
   } catch (error) {
     console.error('Failed to start server:', error);
     process.exit(1);
