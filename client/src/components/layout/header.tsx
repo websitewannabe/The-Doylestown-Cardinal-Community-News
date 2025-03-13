@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { PenLine } from "lucide-react";
 
 export function Header() {
   return (
@@ -23,10 +24,18 @@ export function Header() {
               </Link>
             </Button>
             <Button variant="ghost" asChild>
-              <Link href="/about" className={cn(
+              <Link href="/articles" className={cn(
                 "text-sm font-medium transition-colors hover:text-primary"
               )}>
-                About
+                Articles
+              </Link>
+            </Button>
+            <Button variant="ghost" asChild>
+              <Link href="/articles/create" className={cn(
+                "text-sm font-medium transition-colors hover:text-primary"
+              )}>
+                <PenLine className="mr-2 h-4 w-4" />
+                Write Article
               </Link>
             </Button>
           </nav>
