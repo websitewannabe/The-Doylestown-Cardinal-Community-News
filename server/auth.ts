@@ -8,8 +8,9 @@ import bcrypt from 'bcryptjs';
 // Set up passport authentication
 export function setupAuth(app) {
   // Sessions setup
+  import session from 'express-session';
   app.use(
-    require('express-session')({
+    session({
       secret: process.env.SESSION_SECRET || 'keyboard cat',
       resave: false,
       saveUninitialized: false,
@@ -66,7 +67,7 @@ export function setupAuth(app) {
     res.json({ success: true, user: req.user });
   });
 
-  app.post('/api/logout', (req, res) => {
+  app.post('/api/logout', (req, res, next) => {
     req.logout(function(err) {
       if (err) { return next(err); }
       res.json({ success: true });
