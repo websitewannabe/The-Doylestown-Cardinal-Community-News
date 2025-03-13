@@ -1,6 +1,5 @@
 import buildConfig from "payload/config";
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import { buildSlateConfig } from "@payloadcms/richtext-slate";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
@@ -21,7 +20,6 @@ export default buildConfig({
     user: "users",
     bundler: webpackBundler(),
   },
-  editor: buildSlateConfig(),
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL,
