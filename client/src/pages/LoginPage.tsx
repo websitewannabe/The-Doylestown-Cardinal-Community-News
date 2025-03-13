@@ -17,8 +17,9 @@ const LoginPage = () => {
     return <Navigate to="/admin" replace />;
   }
 
-  const onSubmit = (data: LoginForm) => {
-    login(data);
+  const onSubmit = async (data: LoginForm) => {
+    await login(data);
+    console.log("Login attempt completed, authenticated:", isAuthenticated);
   };
 
   return (
