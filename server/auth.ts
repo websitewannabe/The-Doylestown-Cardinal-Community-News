@@ -5,10 +5,11 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import { storage } from './storage';
 import bcrypt from 'bcryptjs';
 
+import session from 'express-session';
+
 // Set up passport authentication
 export function setupAuth(app) {
   // Sessions setup
-  import session from 'express-session';
   app.use(
     session({
       secret: process.env.SESSION_SECRET || 'keyboard cat',
