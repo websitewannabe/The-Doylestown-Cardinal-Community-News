@@ -33,6 +33,10 @@ import ContactPage from './pages/ContactPage';
 import EditorialSubmissionsPage from './pages/EditorialSubmissionsPage';
 import { NewsletterProvider, useNewsletterContext } from './context/NewsletterContext';
 import NewsletterPopup from './components/ui/NewsletterPopup';
+import AdminPage from "./pages/AdminPage"; // Added
+import ArticleEditorPage from "./pages/ArticleEditorPage"; // Added
+import LoginPage from "./pages/LoginPage"; // Added
+
 
 const AppContent = () => {
   const { showPopup, handleClose } = useNewsletterContext();
@@ -71,6 +75,12 @@ const AppContent = () => {
           <Route path="/annual-fundraiser" element={<AnnualFundraiserPage />} />
           <Route path="/writer/:writerId" element={<WriterPage />} />
           <Route path="/locations" element={<LocationsPage />} />
+
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin/articles/new" element={<ArticleEditorPage />} />
+          <Route path="/admin/articles/:id/edit" element={<ArticleEditorPage />} />
+          <Route path="/login" element={<LoginPage />} /> {/* Added login route */}
         </Routes>
         <Footer />
         {showPopup && <NewsletterPopup onClose={handleClose} />}

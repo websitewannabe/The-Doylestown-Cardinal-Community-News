@@ -2,6 +2,7 @@
 import { pgTable, text, serial, integer, boolean, timestamp, date, jsonb, primaryKey } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
+import { relations } from "drizzle-orm";
 
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -129,3 +130,23 @@ export type BusinessDirectory = typeof business_directory.$inferSelect;
 export type BestOfCategory = typeof best_of_categories.$inferSelect;
 export type BestOfWinner = typeof best_of_winners.$inferSelect;
 export type NewsletterSubscriber = typeof newsletter_subscribers.$inferSelect;
+
+// Define relations
+export const usersRelations = relations(users, ({ many }) => ({
+  articles: many(articles),
+}));
+
+export const categoriesRelations = relations(categories, ({ many }) => ({
+  articles: many(articles),
+}));
+
+export const articlesRelations = relations(articles, ({ one }) => ({
+  category: one(categories, {
+    fields: [articles.category_id],
+    references: [categories.id],
+  }),
+  author: one(users, {
+    fields: [articles.author_id],
+    references: [users.id],
+  }),
+}));
