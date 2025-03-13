@@ -2,8 +2,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import payload from "payload";
-import payloadConfig from "./payload"; // Assumed path; adjust as needed
-
+import payloadConfig from "./payload";
 
 const app = express();
 app.use(express.json());
@@ -40,6 +39,35 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  if (!process.env.PAYLOAD_SECRET) {
+    throw new Error("PAYLOAD_SECRET is required");
+  }
+
+  // Verify database connection
+  if (!process.env.DATABASE_URL) {
+    throw new Error("DATABASE_URL, ensure the database is provisioned");
+  }
+
+  try {
+    log("Initializing Payload CMS...");
+    // Initialize Payload CMS before setting up routes
+    await payload.init({
+      secret: process.env.PAYLOAD_SECRET,
+      express: app,
+      config: payloadConfig,
+      onInit: () => {
+        log("Payload CMS initialized successfully");
+      },
+    });
+    log("Payload initialization completed");
+  } catch (error) {
+    log(`Failed to initialize Payload CMS: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    if (error instanceof Error && error.stack) {
+      log(`Stack trace: ${error.stack}`);
+    }
+    process.exit(1);
+  }
+
   const server = registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
@@ -50,28 +78,12 @@ app.use((req, res, next) => {
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  // Initialize Payload CMS
-  await payload.init({
-    secret: process.env.PAYLOAD_SECRET || 'your-secret-key-here',
-    express: app,
-    onInit: () => {
-      console.log('Payload CMS initialized');
-    },
-    config: payloadConfig,
-  });
-
-
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client
   const PORT = 5000;
   server.listen(PORT, "0.0.0.0", () => {
     log(`serving on port ${PORT}`);

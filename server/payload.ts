@@ -1,14 +1,27 @@
+import buildConfig from 'payload/config';
+import { postgresAdapter } from '@payloadcms/db-postgres';
+import { slateEditor } from '@payloadcms/richtext-slate';
+import { webpackBundler } from '@payloadcms/bundler-webpack';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-import { buildConfig } from 'payload/config';
-import path from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-const config = buildConfig({
+export default buildConfig({
   serverURL: process.env.NODE_ENV === 'production' 
     ? 'https://' + process.env.REPL_SLUG + '.' + process.env.REPL_OWNER + '.repl.co' 
-    : 'http://localhost:3000',
+    : 'http://localhost:5000',
   admin: {
     user: 'users',
+    bundler: webpackBundler(),
   },
+  editor: slateEditor({}),
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URL,
+    },
+  }),
   collections: [
     {
       slug: 'users',
@@ -75,37 +88,9 @@ const config = buildConfig({
           ]
         }
       ],
-    },
-    {
-      slug: 'writers',
-      admin: {
-        useAsTitle: 'name',
-      },
-      fields: [
-        {
-          name: 'name',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'slug',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'bio',
-          type: 'textarea',
-        },
-        {
-          name: 'photo',
-          type: 'text',
-        }
-      ],
     }
   ],
   typescript: {
     outputFile: path.resolve(__dirname, '../shared/payload-types.ts'),
   },
 });
-
-export default config;
