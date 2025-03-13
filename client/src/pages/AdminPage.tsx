@@ -210,10 +210,6 @@ const AdminPage = () => {
 };
 
 export default AdminPage;
-import React from 'react';
-import { useAuth } from '../hooks/useAuth';
-
-const AdminPage = () => {
   const { user, logout } = useAuth();
 
   return (
