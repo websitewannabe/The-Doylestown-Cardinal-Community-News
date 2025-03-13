@@ -4,6 +4,7 @@ import session from 'express-session';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import type { Express, Request, Response, NextFunction } from 'express';
+import crypto from 'crypto';
 
 // Set up passport authentication
 export function setupAuth(app: Express) {
@@ -72,6 +73,56 @@ export function setupAuth(app: Express) {
       if (err) { return next(err); }
       res.json({ success: true });
     });
+  });
+
+  // Password reset request endpoint
+  app.post('/api/reset-password/request', async (req: Request, res: Response) => {
+    try {
+      const { username } = req.body;
+      const user = await storage.getUserByUsername(username);
+
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+
+      // Generate reset token
+      const token = crypto.randomBytes(32).toString('hex');
+      const expires = new Date();
+      expires.setHours(expires.getHours() + 1); // Token expires in 1 hour
+
+      await storage.storeResetToken(user.id, token, expires);
+
+      // In a real application, you would send this token via email
+      // For development, we'll just return it in the response
+      res.json({ 
+        message: 'Password reset requested successfully',
+        resetToken: token // Remove this in production
+      });
+    } catch (error) {
+      console.error('Password reset request error:', error);
+      res.status(500).json({ message: 'Error processing password reset request' });
+    }
+  });
+
+  // Reset password with token endpoint
+  app.post('/api/reset-password/reset', async (req: Request, res: Response) => {
+    try {
+      const { token, newPassword } = req.body;
+      const user = await storage.getUserByResetToken(token);
+
+      if (!user) {
+        return res.status(400).json({ message: 'Invalid or expired reset token' });
+      }
+
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      await storage.updateUserPassword(user.id, hashedPassword);
+      await storage.clearResetToken(user.id);
+
+      res.json({ message: 'Password reset successful' });
+    } catch (error) {
+      console.error('Password reset error:', error);
+      res.status(500).json({ message: 'Error resetting password' });
+    }
   });
 
   // Add a route to check authentication status

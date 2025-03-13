@@ -6,6 +6,7 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import AdminPage from "./pages/AdminPage";
 import ArticleEditorPage from "./pages/ArticleEditorPage";
 import LoginPage from "./pages/LoginPage";
+import PasswordResetPage from "./pages/PasswordResetPage";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import HomePage from './pages/HomePage';
 import ArticlesPage from './pages/ArticlesPage';
@@ -80,6 +81,7 @@ const AppContent = () => {
           <Route path="/writer/:writerId" element={<WriterPage />} />
           <Route path="/locations" element={<LocationsPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/reset-password" element={<PasswordResetPage />} />
 
           {/* Protected Admin Routes */}
           <Route
