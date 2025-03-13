@@ -80,7 +80,6 @@ const AppContent = () => {
           <Route path="/writer/:writerId" element={<WriterPage />} />
           <Route path="/locations" element={<LocationsPage />} />
           <Route path="/login" element={<LoginPage />} />
-<Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
 
           {/* Protected Admin Routes */}
           <Route
