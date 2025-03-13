@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 .bg-grid-pattern {
   background-image: linear-gradient(to right, #33333310 1px, transparent 1px),
     linear-gradient(to bottom, #33333310 1px, transparent 1px);
   background-size: 24px 24px;
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   body {
