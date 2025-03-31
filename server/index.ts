@@ -71,8 +71,8 @@ log('Authentication setup complete');
       log('Static file serving setup complete');
     }
 
-    // ALWAYS serve the app on port 5000
-    const PORT = 5000;
+    // Serve the app on port 3000 to avoid conflicts with Payload
+    const PORT = 3000;
     log(`Starting server on port ${PORT}...`);
     server.listen(PORT, "0.0.0.0", () => {
       log(`Server is running on port ${PORT}`);
