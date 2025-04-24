@@ -1,54 +1,42 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
-import { Mail, Twitter, Linkedin, Calendar, ChevronRight } from "lucide-react";
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { Mail, Twitter, Linkedin, Calendar, ChevronRight } from 'lucide-react';
 
-// Mock writer data
+// Import writers data from MeetTheWritersPage
 const writers = {
-  "sarah-mitchell": {
-    name: "Jill Sonlin",
-    role: "Featured Writer",
-    bio: `Jill Sonlin has been covering local news in Doylestown for over a decade. With a background in investigative journalism and a deep connection to the community, she specializes in covering arts, culture, and local government.
-
-Her work has earned multiple Pennsylvania Press Association awards, and she's known for her in-depth coverage of issues that matter most to Doylestown residents.
-
-Jill holds a degree in Journalism from Temple University and has previously worked with several major publications in Philadelphia before finding her home at The Cardinal.`,
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
-    email: "sarah@thecardinal.com",
-    twitter: "https://twitter.com/sarahmitchell",
-    linkedin: "https://linkedin.com/in/sarahmitchell",
+  "natalya-bucuy": {
+    id: "natalya-bucuy",
+    name: "Natalya Bucuy",
+    role: "Managing Editor",
+    bio: "Natalya Bucuy is a journalist, fiction and non-fiction writer, and the managing editor of the Cardinal. She believes that if a story doesn't come to you, you just have to go find it and live it. That's pretty much why she usually ends up in some kind of shenanigans. You can often find her roaming the streets of her beloved Doylestown in search of writing material, adventure, or both. Connections within the community are her driving force in journalism and in life.",
+    image: "/images/natalya-Bucuy.jpg",
+    email: "natalya@thecardinal.com",
+    twitter: "https://twitter.com/natalyabucuy",
+    linkedin: "https://linkedin.com/in/natalyabucuy",
     expertise: ["Local Politics", "Arts & Culture", "Community Development"],
-    articles: [
-      {
-        id: 1,
-        title: "Historic Doylestown Theater Announces Major Renovation Plans",
-        excerpt:
-          "The beloved County Theater reveals ambitious restoration project aimed at preserving its art deco charm while modernizing facilities.",
-        date: "March 15, 2024",
-        image:
-          "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80",
-      },
-      {
-        id: 2,
-        title: "Local Artists Transform Downtown Alleyways",
-        excerpt:
-          "New mural project brings vibrant art to unexpected spaces in Doylestown's historic district.",
-        date: "March 10, 2024",
-        image:
-          "https://images.unsplash.com/photo-1738762390183-c18525eb3f8e?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      },
-      {
-        id: 3,
-        title: "Council Approves New Cultural District Plan",
-        excerpt:
-          "Five-year development plan aims to enhance Doylestown's position as a regional arts destination.",
-        date: "March 5, 2024",
-        image:
-          "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80",
-      },
-    ],
   },
-  // Add more writers as needed
+  "leia-riggins": {
+    id: "leia-riggins",
+    name: "Leia Riggins",
+    role: "Writer",
+    bio: "Leia Riggins is a school counselor, therapist, and wellness advocate based in Doylestown, PA. With a deep passion for supporting personal growth, she combines her expertise in mental health with holistic practices to help individuals navigate life's transitions with clarity and confidence.",
+    image: "/images/leiaRiggins.jpg",
+    email: "leia@thecardinal.com",
+    twitter: "https://twitter.com/leiariggins",
+    linkedin: "https://linkedin.com/in/leiariggins",
+    expertise: ["Mental Health", "Wellness", "Community Support"],
+  },
+  "annika-verma": {
+    id: "annika-verma",
+    name: "Annika Verma",
+    role: "Writer",
+    bio: "Annika Verma is a sophomore at Bucks County Community College who started with The Cardinal in August 2023. She writes the monthly Artist Spotlight column, where she platforms the person behind, or perhaps even before, the art.",
+    image: "/images/annikaVerma.jpg",
+    email: "annika.verma@gmail.com",
+    twitter: "https://twitter.com/annikaverma",
+    linkedin: "https://linkedin.com/in/annikaverma",
+    expertise: ["Arts", "Culture", "Student Life"],
+  }
 };
 
 const WriterPage = () => {
@@ -60,6 +48,9 @@ const WriterPage = () => {
       <div className="min-h-screen bg-[#F2F0EF] pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-2xl font-bold">Writer not found</h1>
+          <Link to="/writers" className="text-cardinal-red hover:text-forest-green">
+            Return to Writers
+          </Link>
         </div>
       </div>
     );
@@ -68,7 +59,6 @@ const WriterPage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF] pt-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Writer Profile Section */}
         <div className="bg-white rounded-lg shadow-sm overflow-hidden mb-8">
           <div className="relative h-48 bg-cardinal-red/10">
             <div className="absolute -bottom-16 left-8">
@@ -132,46 +122,6 @@ const WriterPage = () => {
                 {writer.bio}
               </p>
             </div>
-          </div>
-        </div>
-
-        {/* Recent Articles Section */}
-        <div className="bg-white rounded-lg shadow-sm p-8">
-          <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-6">
-            Recent Articles by {writer.name}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {writer.articles.map((article) => (
-              <Link
-                key={article.id}
-                to={`/articles/${article.id}`}
-                className="group"
-              >
-                <div className="relative overflow-hidden rounded-lg mb-4">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div>
-                  <div className="flex items-center text-sm text-charcoal-gray/60 mb-2">
-                    <Calendar size={14} className="mr-1" />
-                    {article.date}
-                  </div>
-                  <h3 className="font-medium group-hover:text-cardinal-red transition-colors line-clamp-2 mb-2">
-                    {article.title}
-                  </h3>
-                  <p className="text-sm text-charcoal-gray/70 line-clamp-2">
-                    {article.excerpt}
-                  </p>
-                  <div className="mt-4 inline-flex items-center text-cardinal-red group-hover:text-forest-green transition-colors">
-                    Read Article
-                    <ChevronRight size={16} className="ml-1" />
-                  </div>
-                </div>
-              </Link>
-            ))}
           </div>
         </div>
       </div>

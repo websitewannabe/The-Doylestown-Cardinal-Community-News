@@ -94,9 +94,10 @@ const MeetTheWritersPage = () => {
         {/* Writers Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {writers.map((writer) => (
-            <div
+            <Link
+              to={`/writer/${writer.id}`}
               key={writer.id}
-              className="border border-[#333333] rounded-lg overflow-hidden group hover:shadow-lg transition-shadow"
+              className="block border border-[#333333] rounded-lg overflow-hidden group hover:shadow-lg transition-shadow"
             >
               <div className="relative">
                 <img
@@ -192,7 +193,7 @@ const MeetTheWritersPage = () => {
                   <ChevronRight size={16} className="ml-1" />
                 </Link>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
