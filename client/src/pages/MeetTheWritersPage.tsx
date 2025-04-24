@@ -1,15 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Mail, Twitter, Linkedin, ChevronRight } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Mail, Twitter, Linkedin, ChevronRight } from "lucide-react";
 
 // Mock data for writers
 const writers = [
   {
-    id: "sarah-mitchell",
-    name: "Sarah Mitchell",
-    role: "Senior Reporter",
-    bio: "With over a decade of experience covering local news in Doylestown, Sarah specializes in arts, culture, and local government reporting.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
+    id: "natalya-bucuy",
+    name: "Natalya Bucuy",
+    role: "Managing Editor",
+    bio: "Natalya Bucuy is a journalist, fiction and non-fiction writer, and the managing editor of the Cardinal. She believes that if a story doesn’t come to you, you just have to go find it and live it. That’s pretty much why she usually ends up in some kind of shenanigans. You can often find her roaming the streets of her beloved Doylestown in search of writing material, adventure, or both. Connections within the community are her driving force in journalism and in life. ",
+    image: "client/public/images/natalya-Bucuy.jpg",
     email: "sarah@thecardinal.com",
     twitter: "https://twitter.com/sarahmitchell",
     linkedin: "https://linkedin.com/in/sarahmitchell",
@@ -18,21 +18,22 @@ const writers = [
       {
         id: 1,
         title: "Historic Doylestown Theater Announces Major Renovation Plans",
-        date: "March 15, 2024"
+        date: "March 15, 2024",
       },
       {
         id: 2,
         title: "Local Artists Transform Downtown Alleyways",
-        date: "March 10, 2024"
-      }
-    ]
+        date: "March 10, 2024",
+      },
+    ],
   },
   {
     id: "michael-chen",
     name: "Michael Chen",
     role: "Managing Editor",
     bio: "Michael brings 15 years of digital media expertise and a deep commitment to investigative journalism that matters to our community.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80",
     email: "michael@thecardinal.com",
     twitter: "https://twitter.com/michaelchen",
     linkedin: "https://linkedin.com/in/michaelchen",
@@ -41,21 +42,22 @@ const writers = [
       {
         id: 3,
         title: "The Future of Small Business in Doylestown",
-        date: "March 12, 2024"
+        date: "March 12, 2024",
       },
       {
         id: 4,
         title: "Investigation: Local Infrastructure Projects",
-        date: "March 5, 2024"
-      }
-    ]
+        date: "March 5, 2024",
+      },
+    ],
   },
   {
     id: "emily-rodriguez",
     name: "Emily Rodriguez",
     role: "Community Reporter",
     bio: "Emily's background in community organizing helps forge meaningful connections between The Cardinal and our diverse readership.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80",
     email: "emily@thecardinal.com",
     twitter: "https://twitter.com/emilyrodriguez",
     linkedin: "https://linkedin.com/in/emilyrodriguez",
@@ -64,15 +66,15 @@ const writers = [
       {
         id: 5,
         title: "Doylestown Schools Embrace New Learning Initiative",
-        date: "March 8, 2024"
+        date: "March 8, 2024",
       },
       {
         id: 6,
         title: "Community Gardens Foster Connection",
-        date: "March 1, 2024"
-      }
-    ]
-  }
+        date: "March 1, 2024",
+      },
+    ],
+  },
 ];
 
 const MeetTheWritersPage = () => {
@@ -85,16 +87,16 @@ const MeetTheWritersPage = () => {
             Meet Our Writers
           </h1>
           <p className="text-xl text-charcoal-gray/80 max-w-3xl mx-auto">
-            Get to know the talented journalists bringing you Doylestown's stories. 
-            Our writers are dedicated to delivering authentic, impactful journalism 
-            that matters to our community.
+            Get to know the talented journalists bringing you Doylestown's
+            stories. Our writers are dedicated to delivering authentic,
+            impactful journalism that matters to our community.
           </p>
         </div>
 
         {/* Writers Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {writers.map((writer) => (
-            <div 
+            <div
               key={writer.id}
               className="border border-[#333333] rounded-lg overflow-hidden group hover:shadow-lg transition-shadow"
             >
@@ -143,8 +145,10 @@ const MeetTheWritersPage = () => {
                     {writer.name}
                   </h2>
                 </Link>
-                <div className="text-cardinal-red font-medium mb-3">{writer.role}</div>
-                
+                <div className="text-cardinal-red font-medium mb-3">
+                  {writer.role}
+                </div>
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {writer.expertise.map((skill, index) => (
                     <span
@@ -159,7 +163,9 @@ const MeetTheWritersPage = () => {
                 <p className="text-charcoal-gray/80 mb-6">{writer.bio}</p>
 
                 <div className="border-t border-[#333333]/10 pt-4">
-                  <h3 className="font-medium text-charcoal-gray mb-3">Popular Articles</h3>
+                  <h3 className="font-medium text-charcoal-gray mb-3">
+                    Popular Articles
+                  </h3>
                   <div className="space-y-2">
                     {writer.popularArticles.map((article) => (
                       <Link
