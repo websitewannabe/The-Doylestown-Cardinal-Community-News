@@ -9,7 +9,7 @@ const writers = [
     name: "Natalya Bucuy",
     role: "Managing Editor",
     bio: "Natalya Bucuy is a journalist, fiction and non-fiction writer, and the managing editor of the Cardinal. She believes that if a story doesn’t come to you, you just have to go find it and live it. That’s pretty much why she usually ends up in some kind of shenanigans. You can often find her roaming the streets of her beloved Doylestown in search of writing material, adventure, or both. Connections within the community are her driving force in journalism and in life. ",
-    image: "client/public/images/natalya-Bucuy.jpg",
+    image: "/images/natalya-Bucuy.jpg",
     email: "sarah@thecardinal.com",
     twitter: "https://twitter.com/sarahmitchell",
     linkedin: "https://linkedin.com/in/sarahmitchell",
