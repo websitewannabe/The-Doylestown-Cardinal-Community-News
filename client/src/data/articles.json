@@ -1,0 +1,53 @@
+
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "How Our Emotions Contribute to Heart Disease",
+      "subtitle": "Understanding the crucial link between emotional well-being and heart health",
+      "author": "Jill Sonlin",
+      "authorRole": "Senior Reporter",
+      "authorImage": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
+      "slug": "emotions-heart-disease-connection",
+      "category": "Live",
+      "tags": ["Live", "Health", "Wellness"],
+      "date": "2025-02-01T09:00:00Z",
+      "readingTime": "6 min read",
+      "mainImage": "https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg",
+      "excerpt": "Did you know that our emotions can also contribute to risks of heart attack and stroke? Understanding this connection is crucial for holistic heart health.",
+      "content": "<h2>Persuasive emotions that harm</h2><p>Negative states of mind, including emotions of anger, bitterness, depression, loneliness, and anxiety, can each carry risks of doing a lot of damage to the heart and the body. To lower potential health risks, we must account for and nurish the mind-body connection.</p><p>If you are experiencing emotional pain, know that you are not alone.</p><p>Seek help to talk about your feelings with a trusted friend, family member, pastor, or therapist. Talking openly about negative feelings can be the start of dealing effectively with and healing emotional burdens of the heart that can affect physical heart health.</p>"
+    },
+    {
+      "id": 2,
+      "title": "Stage United Hosts A Night of Song at Tile Works",
+      "subtitle": "Local musicians gather for a magical evening of storytelling through song",
+      "author": "Lauren Heine",
+      "authorRole": "Arts & Culture Reporter",
+      "authorImage": "https://doylestowncardinal.com/wp-content/uploads/authors/lauren-heine.jpg",
+      "slug": "stage-united-night-of-song",
+      "category": "Arts",
+      "tags": ["Arts", "Music", "Local Events"],
+      "date": "2025-01-13T14:30:00Z",
+      "readingTime": "4 min read",
+      "mainImage": "https://doylestowncardinal.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.07.35-PM-888x1024.png",
+      "excerpt": "Join in the history of the Tile Works in Doylestown for A Night of Song, a monthly songwriter showcase hosted by Joe Montone, a Bucks County music producer.",
+      "content": "<h2>A Celebration of Local Talent</h2><p>The historic Moravian Pottery and Tile Works transforms into an intimate concert venue as Stage United presents its monthly songwriter showcase. Local music producer Joe Montone curates an evening featuring the region's most compelling voices in contemporary folk and acoustic music.</p><p>This month's lineup includes emerging artists from across Bucks County, each bringing their unique perspective to the storytelling tradition of folk music. The historic setting of the Tile Works provides perfect acoustics and atmosphere for these intimate performances.</p>"
+    },
+    {
+      "id": 3,
+      "title": "Organizational Wisdoms from Wingmoms",
+      "subtitle": "Finding order in the chaos of family life",
+      "author": "Natalya Bucuy",
+      "authorRole": "Family & Lifestyle Editor",
+      "authorImage": "/images/natalya-Bucuy.jpg",
+      "slug": "organizational-wisdoms-wingmoms",
+      "category": "Family",
+      "tags": ["Live", "Family", "Organization"],
+      "date": "2025-02-01T12:00:00Z",
+      "readingTime": "5 min read",
+      "mainImage": "https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png",
+      "excerpt": "Nothing is for certain except death and taxes. And laundry. A loyal friend through life's trials, Laundry will always be there for us.",
+      "content": "<h2>The Art of Family Organization</h2><p>In the grand symphony of family life, organization is the conductor that keeps everything in harmony. Local moms share their tried-and-true methods for maintaining order in the beautiful chaos of raising children.</p><p>From innovative storage solutions to time-management strategies, these Doylestown parents have mastered the art of keeping their households running smoothly while preserving their sanity.</p><h2>Beyond Basic Organization</h2><p>The secret, they say, isn't in pursuing perfection but in finding systems that work for your unique family dynamic. These practical solutions have evolved through years of trial and error, resulting in methods that actually stick.</p>"
+    }
+  ]
+}
