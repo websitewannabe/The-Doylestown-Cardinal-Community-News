@@ -198,8 +198,8 @@ const HomePage = () => {
                 </Link>
               </div>
             </div>
-            <div className="w-1 h-64 bg-[#F2F0EF] mx-8"></div>
-            <div className="w-96 h-96 pr-4 md:pr-8 lg:pr-12">
+            <div className="hidden md:block w-1 h-64 bg-[#F2F0EF] mx-8"></div>
+            <div className="hidden md:block w-96 h-96 pr-4 md:pr-8 lg:pr-12">
               <img
                 src="/images/Favicon_Cardinal-Icon_512.png"
                 alt="The Cardinal Logo"
