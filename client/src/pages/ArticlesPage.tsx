@@ -224,7 +224,7 @@ const ArticlesPage = () => {
                     <div className="md:w-1/3">
                       <div className="relative h-full">
                         <img
-                          src={article.image}
+                          src={article.mainImage}
                           alt={article.title}
                           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                         />
