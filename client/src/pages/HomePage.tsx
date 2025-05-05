@@ -124,13 +124,45 @@ const instagramPosts = [
   },
 ];
 
+interface Article {
+  id: number;
+  title: string;
+  subtitle: string;
+  excerpt: string;
+  mainImage: string;
+  category: string;
+  slug: string;
+}
+
 const HomePage = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [selectedEvent, setSelectedEvent] = useState<
     (typeof upcomingEvents)[0] | null
   >(null);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const { forceShowPopup } = useNewsletterContext();
+
+  useEffect(() => {
+    fetch('/articles.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch articles');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setArticles(data.articles);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error loading articles:', error);
+        setError('Failed to load articles');
+        setIsLoading(false);
+      });
+  }, []);
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -218,113 +250,44 @@ const HomePage = () => {
           </h2>
           <div className="flex gap-8">
             {/* Featured Stories Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
-              <Link to="/articles/1" className="group h-full">
-                <div className="border border-[#333333] rounded-lg overflow-hidden cursor-pointer h-full flex flex-col">
-                  <div className="relative h-48">
-                    <img
-                      src="https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg"
-                      alt="County Theater"
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-cardinal-red text-white text-sm rounded-full">
-                        Health
-                      </span>
+            {isLoading ? (
+              <div className="flex-grow flex items-center justify-center">
+                <div className="text-2xl text-gray-600">Loading articles...</div>
+              </div>
+            ) : error ? (
+              <div className="flex-grow flex items-center justify-center">
+                <div className="text-xl text-red-600">{error}</div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
+                {articles.slice(0, 4).map((article) => (
+                  <Link key={article.id} to={`/articles/${article.slug}`} className="group h-full">
+                    <div className="border border-[#333333] rounded-lg overflow-hidden cursor-pointer h-full flex flex-col">
+                      <div className="relative h-48">
+                        <img
+                          src={article.mainImage}
+                          alt={article.title}
+                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 bg-cardinal-red text-white text-sm rounded-full">
+                            {article.category}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-6 flex-grow">
+                        <h3 className="font-playfair text-xl font-bold mb-4 group-hover:text-cardinal-red transition-colors">
+                          {article.title}
+                        </h3>
+                        <p className="text-charcoal-gray/70">
+                          {article.excerpt}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-6 flex-grow">
-                    <h3 className="font-playfair text-xl font-bold mb-4 group-hover:text-cardinal-red transition-colors">
-                      How Our Emotions Contribute to Heart Disease
-                    </h3>
-                    <p className="text-charcoal-gray/70">
-                      Did you know that our emotions can also contribute to
-                      risks of heart attack and stroke?
-                    </p>
-                  </div>
-                </div>
-              </Link>
-
-              <Link to="/articles/2" className="group h-full">
-                <div className="border border-[#333333] rounded-lg overflow-hidden cursor-pointer h-full flex flex-col">
-                  <div className="relative h-48">
-                    <img
-                      src="https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg"
-                      alt="Mercer Museum"
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-cardinal-red text-white text-sm rounded-full">
-                        Lifestyle
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6 flex-grow">
-                    <h3 className="font-playfair text-xl font-bold mb-4 group-hover:text-cardinal-red transition-colors">
-                      Cozy Cupid: Valentine's Day Dates
-                    </h3>
-                    <p className="text-charcoal-gray/70">
-                      Are you looking for a cozy night with your love? Here's
-                      your guide.
-                    </p>
-                  </div>
-                </div>
-              </Link>
-
-              <Link to="/articles/3" className="group h-full">
-                <div className="border border-[#333333] rounded-lg overflow-hidden cursor-pointer h-full flex flex-col">
-                  <div className="relative h-48">
-                    <img
-                      src="https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png"
-                      alt="Farmers Market"
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-cardinal-red text-white text-sm rounded-full">
-                        Family
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6 flex-grow">
-                    <h3 className="font-playfair text-xl font-bold mb-4 group-hover:text-cardinal-red transition-colors">
-                      Organizational Wisdoms from Wingmoms
-                    </h3>
-                    <p className="text-charcoal-gray/70">
-                      Nothing is for certain except death and taxes. And
-                      laundry. A loyal friend through life's trials, Laundry
-                      will always be there for us
-                    </p>
-                  </div>
-                </div>
-              </Link>
-
-              <Link to="/articles/4" className="group h-full">
-                <div className="border border-[#333333] rounded-lg overflow-hidden cursor-pointer h-full flex flex-col">
-                  <div className="relative h-48">
-                    <img
-                      src="https://doylestowncardinal.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.07.35-PM-888x1024.png"
-                      alt="Local Business"
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-cardinal-red text-white text-sm rounded-full">
-                        Arts
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6 flex-grow">
-                    <h3 className="font-playfair text-xl font-bold mb-4 group-hover:text-cardinal-red transition-colors">
-                      Stage United Hosts A Night of Song at Tile Works
-                    </h3>
-                    <p className="text-charcoal-gray/70">
-                      Join in the history of the Tile Works in Doylestown for A
-                      Night of Song, a monthly songwriter showcase hosted by Joe
-                      Montone, a Bucks County music producer.
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </div>
+                  </Link>
+                ))}
+              </div>
+            )}
 
             {/* Current Edition Boxes */}
             <div className="hidden lg:block w-[25%] space-y-8">
