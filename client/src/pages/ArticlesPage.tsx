@@ -57,6 +57,10 @@ const ArticlesPage = () => {
       });
   }, []);
 
+  const filteredArticles = selectedCategory === 'All Categories' 
+    ? articles 
+    : articles.filter(article => article.category === selectedCategory);
+
   const handleLoadMore = () => {
     setVisibleArticles((prev) => prev + 3);
   };
@@ -215,7 +219,7 @@ const ArticlesPage = () => {
 
             {/* Articles Grid */}
             <div className="grid grid-cols-1 gap-8 mb-12">
-              {articles.slice(0, visibleArticles).map((article) => (
+              {filteredArticles.slice(0, visibleArticles).map((article) => (
                 <article
                   key={article.id}
                   className="border border-[#333333] rounded-lg overflow-hidden group cursor-pointer hover:shadow-md transition-shadow min-h-[300px]"
@@ -272,7 +276,7 @@ const ArticlesPage = () => {
             </div>
 
             {/* Load More Button */}
-            {visibleArticles < articles.length && (
+            {visibleArticles < filteredArticles.length && (
               <div className="text-center">
                 <button
                   onClick={handleLoadMore}
@@ -315,7 +319,7 @@ const ArticlesPage = () => {
                   Popular Articles
                 </h3>
                 <div className="space-y-6">
-                  {articles.slice(0, 3).map((article) => (
+                  {filteredArticles.slice(0, 3).map((article) => (
                     <Link
                       key={article.id}
                       to={`/articles/${article.slug}`}
