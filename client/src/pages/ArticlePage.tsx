@@ -34,11 +34,11 @@ const ArticlePage = () => {
           <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
           <p className="mb-8">The article you're looking for doesn't exist.</p>
           <Link
-            to="/news"
+            to="/articles"
             className="inline-flex items-center text-blue-600 hover:text-blue-700"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to News
+            Back to Articles
           </Link>
         </div>
       </div>
@@ -188,11 +188,11 @@ const ArticlePage = () => {
         </section>
 
         <Link
-          to="/news"
+          to="/articles"
           className="inline-flex items-center text-blue-600 hover:text-blue-700"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to News
+          Back to Articles
         </Link>
       </div>
     </div>
