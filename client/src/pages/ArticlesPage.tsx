@@ -147,7 +147,7 @@ const ArticlesPage = () => {
                   </Link>
 
                   <div className="col-span-12 md:col-span-4 flex flex-col gap-6">
-                    {articles.slice(1).map((article) => (
+                    {articles.slice(1, 3).map((article) => (
                       <Link key={article.id} to={`/articles/${article.slug}`} className="flex-1">
                         <div
                           className="relative h-full rounded-xl overflow-hidden group"
