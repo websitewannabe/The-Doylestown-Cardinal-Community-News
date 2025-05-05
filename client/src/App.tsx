@@ -52,8 +52,7 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/articles" element={<ArticlesPage />} />
-          <Route path="/articles/:slug" element={<ArticlePage />} />
-          <Route path="/article/:slug" element={<ArticlePage />} /> {/* Keep old route for backwards compatibility */}
+          <Route path="/articles/:id" element={<ArticlePage />} />
           <Route path="/writers" element={<MeetTheWritersPage />} />
           <Route path="/writer/:writerId" element={<WriterPage />} />
           <Route path="/events" element={<EventsPage />} />
