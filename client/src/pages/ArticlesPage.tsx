@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Search, Share2, ChevronRight, Calendar, User2 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -27,7 +26,8 @@ const categories = [
   "Life",
   "Business",
   "Technology",
-  "Real Estate"
+  "Real Estate",
+  "Live",
 ];
 
 const ArticlesPage = () => {
@@ -39,10 +39,10 @@ const ArticlesPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/articles.json')
+    fetch("/articles.json")
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to fetch articles');
+          throw new Error("Failed to fetch articles");
         }
         return response.json();
       })
@@ -51,15 +51,16 @@ const ArticlesPage = () => {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error('Error loading articles:', error);
-        setError('Failed to load articles. Please try again later.');
+        console.error("Error loading articles:", error);
+        setError("Failed to load articles. Please try again later.");
         setIsLoading(false);
       });
   }, []);
 
-  const filteredArticles = selectedCategory === 'All Categories' 
-    ? articles 
-    : articles.filter(article => article.category === selectedCategory);
+  const filteredArticles =
+    selectedCategory === "All Categories"
+      ? articles
+      : articles.filter((article) => article.category === selectedCategory);
 
   const handleLoadMore = () => {
     setVisibleArticles((prev) => prev + 3);
@@ -124,7 +125,10 @@ const ArticlesPage = () => {
 
               {articles.length > 0 && (
                 <div className="grid grid-cols-12 gap-6">
-                  <Link to={`/articles/${articles[0].slug}`} className="col-span-12 md:col-span-8">
+                  <Link
+                    to={`/articles/${articles[0].slug}`}
+                    className="col-span-12 md:col-span-8"
+                  >
                     <div className="group h-full">
                       <div
                         className="relative h-[500px] rounded-xl overflow-hidden"
@@ -152,14 +156,18 @@ const ArticlesPage = () => {
 
                   <div className="col-span-12 md:col-span-4 flex flex-col gap-6">
                     {articles.slice(1, 3).map((article) => (
-                      <Link key={article.id} to={`/articles/${article.slug}`} className="flex-1">
+                      <Link
+                        key={article.id}
+                        to={`/articles/${article.slug}`}
+                        className="flex-1"
+                      >
                         <div
                           className="relative h-full rounded-xl overflow-hidden group"
                           style={{
                             backgroundImage: `url(${article.image})`,
                             backgroundSize: "cover",
                             backgroundPosition: "center",
-                            minHeight: "235px"
+                            minHeight: "235px",
                           }}
                         >
                           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-300" />
@@ -250,7 +258,9 @@ const ArticlesPage = () => {
                           {article.title}
                         </Link>
                       </h2>
-                      <p className="text-gray-600 mb-4 line-clamp-3">{article.excerpt}</p>
+                      <p className="text-gray-600 mb-4 line-clamp-3">
+                        {article.excerpt}
+                      </p>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center text-sm text-gray-500">
                           <User2 size={14} className="mr-1" />
