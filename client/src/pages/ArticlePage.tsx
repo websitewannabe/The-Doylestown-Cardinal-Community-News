@@ -160,21 +160,21 @@ const ArticlePage = () => {
               <Link
                 key={relatedArticle.id}
                 to={`/articles/${relatedArticle.slug}`}
-                className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow h-full"
               >
                 <img
                   src={relatedArticle.mainImage}
                   alt={relatedArticle.title}
                   className="w-full h-48 object-cover"
                 />
-                <div className="p-6">
-                  <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600">
+                <div className="p-6 flex flex-col h-[calc(100%-192px)]">
+                  <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 line-clamp-2">
                     {relatedArticle.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4">
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
                     {relatedArticle.excerpt}
                   </p>
-                  <div className="flex items-center text-sm text-gray-500">
+                  <div className="flex items-center text-sm text-gray-500 mt-auto">
                     <Calendar className="w-4 h-4 mr-2" />
                     {relatedArticle.date}
                     <span className="mx-2">•</span>
