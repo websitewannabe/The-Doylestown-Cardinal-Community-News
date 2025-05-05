@@ -1,6 +1,5 @@
-
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   Calendar,
   Clock,
@@ -16,14 +15,15 @@ import {
 import articlesData from "../data/articles.json";
 
 const ArticlePage = () => {
-  const { slug } = useParams();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  // Find the current article by slug
-  const article = articlesData.articles.find(a => a.slug === slug);
+  // Find the current article
+  const article = articlesData.articles.find(a => a.id === parseInt(id || "0"));
 
   // Get related articles (exclude current article, limit to 3)
   const relatedArticles = articlesData.articles
-    .filter(a => a.slug !== article?.slug)
+    .filter(a => a.id !== article?.id)
     .slice(0, 3);
 
   // If no article found, show 404
@@ -65,7 +65,7 @@ const ArticlePage = () => {
             <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
               <span className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
-                {new Date(article.date).toLocaleDateString()}
+                {article.date}
               </span>
               <span className="flex items-center gap-1">
                 <Clock className="w-4 h-4" />
@@ -159,7 +159,7 @@ const ArticlePage = () => {
             {relatedArticles.map((relatedArticle) => (
               <Link
                 key={relatedArticle.id}
-                to={`/article/${relatedArticle.slug}`}
+                to={`/article/${relatedArticle.id}`}
                 className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
               >
                 <img
@@ -176,7 +176,7 @@ const ArticlePage = () => {
                   </p>
                   <div className="flex items-center text-sm text-gray-500">
                     <Calendar className="w-4 h-4 mr-2" />
-                    {new Date(relatedArticle.date).toLocaleDateString()}
+                    {relatedArticle.date}
                     <span className="mx-2">•</span>
                     <Clock className="w-4 h-4 mr-2" />
                     {relatedArticle.readingTime}

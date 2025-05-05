@@ -1,7 +1,46 @@
 import React, { useState } from "react";
 import { Search, Share2, ChevronRight, Calendar, User2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import articlesData from "../data/articles.json";
+
+// Mock data for demonstration
+const mockArticles = [
+  {
+    id: 1,
+    title: "How Our Emotions Contribute to Heart Disease",
+    excerpt:
+      "Did you know that our emotions can also contribute to risks of heart attack and stroke?",
+    category: "Live",
+    author: "Jill Sonlin",
+    date: "2025-02-01",
+    image:
+      "https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg",
+    tags: ["Live"],
+  },
+  {
+    id: 2,
+    title: "Cozy Cupid: Valentine’s Day Dates",
+    excerpt:
+      "Are you looking for a cozy night with your love? Here’s your guide.",
+    category: "Community",
+    author: "Lauren Heine",
+    date: "2025-02-01",
+    image:
+      "https://doylestowncardinal.com/wp-content/uploads/2025/02/WeissEngBlog25-768x514.jpg",
+    tags: ["Uncategorized"],
+  },
+  {
+    id: 3,
+    title: "“Life is for Living:” Organizational Wisdoms from Wingmoms",
+    excerpt:
+      "Nothing is for certain except death and taxes. And laundry. A loyal friend through life’s trials, Laundry will always be there for us. ",
+    category: "Live",
+    author: "Natalya Bucuy",
+    date: "2025-02-01",
+    image:
+      "https://doylestowncardinal.com/wp-content/uploads/2025/01/458305498_392015483999134_6822641435809695635_n-990x707.png",
+    tags: ["Live"],
+  },
+];
 
 const categories = [
   "All Categories",
@@ -23,7 +62,7 @@ const ArticlesPage = () => {
   const [visibleArticles, setVisibleArticles] = useState(6);
 
   const handleLoadMore = () => {
-    setVisibleArticles(prev => prev + 3);
+    setVisibleArticles((prev) => prev + 3);
   };
 
   return (
@@ -66,63 +105,86 @@ const ArticlesPage = () => {
                   View Current Issue
                 </Link>
               </div>
-
+              
               <div className="grid grid-cols-12 gap-6">
-                {articlesData.articles.length > 0 && (
-                  <Link to={`/article/${articlesData.articles[0].slug}`} className="col-span-12 md:col-span-8">
-                    <div className="group h-full">
-                      <div
-                        className="relative h-[500px] rounded-xl overflow-hidden"
-                        style={{
-                          backgroundImage: `url(${articlesData.articles[0].mainImage})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                        }}
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-300" />
-                        <div className="absolute bottom-0 left-0 right-0 p-8">
-                          <span className="text-cardinal-red bg-white px-4 py-1.5 rounded-full text-sm font-medium">
-                            {articlesData.articles[0].category}
-                          </span>
-                          <h3 className="font-playfair text-3xl font-bold text-white mt-4 mb-3 group-hover:text-cardinal-red transition-colors">
-                            {articlesData.articles[0].title}
-                          </h3>
-                          <p className="text-white/90 text-lg">
-                            {articlesData.articles[0].excerpt}
-                          </p>
-                        </div>
+                <Link to={`/articles/${mockArticles[0].id}`} className="col-span-12 md:col-span-8">
+                  <div className="group h-full">
+                    <div
+                      className="relative h-[500px] rounded-xl overflow-hidden"
+                      style={{
+                        backgroundImage: `url(${mockArticles[0].image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-300" />
+                      <div className="absolute bottom-0 left-0 right-0 p-8">
+                        <span className="text-cardinal-red bg-white px-4 py-1.5 rounded-full text-sm font-medium">
+                          Live
+                        </span>
+                        <h3 className="font-playfair text-3xl font-bold text-white mt-4 mb-3 group-hover:text-cardinal-red transition-colors">
+                          How Our Emotions Contribute to Heart Disease
+                        </h3>
+                        <p className="text-white/90 text-lg">
+                          Did you know that our emotions can also contribute to
+                          risks of heart attack and stroke?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+                
+                <div className="col-span-12 md:col-span-4 flex flex-col gap-6">
+                <Link to={`/articles/${mockArticles[1].id}`} className="flex-1">
+                    <div
+                      className="relative h-full rounded-xl overflow-hidden group"
+                      style={{
+                        backgroundImage: `url(${mockArticles[1].image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        minHeight: "235px"
+                      }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-300" />
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <span className="text-white bg-cardinal-red px-3 py-1 rounded-full text-sm font-medium">
+                          Community
+                        </span>
+                        <h3 className="font-playfair text-xl font-bold mt-3 mb-2 text-white group-hover:text-cardinal-red transition-colors">
+                          Cozy Cupid: Valentine's Day Dates
+                        </h3>
+                        <p className="text-white/90 text-sm line-clamp-2">
+                          Are you looking for a cozy night with your love? Here's
+                          your guide.
+                        </p>
                       </div>
                     </div>
                   </Link>
-                )}
-
-                <div className="col-span-12 md:col-span-4 flex flex-col gap-6">
-                  {articlesData.articles.slice(1, 3).map((article) => (
-                    <Link key={article.id} to={`/article/${article.slug}`} className="flex-1">
-                      <div
-                        className="relative h-full rounded-xl overflow-hidden group"
-                        style={{
-                          backgroundImage: `url(${article.mainImage})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          minHeight: "235px"
-                        }}
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-300" />
-                        <div className="absolute bottom-0 left-0 right-0 p-6">
-                          <span className="text-white bg-cardinal-red px-3 py-1 rounded-full text-sm font-medium">
-                            {article.category}
-                          </span>
-                          <h3 className="font-playfair text-xl font-bold mt-3 mb-2 text-white group-hover:text-cardinal-red transition-colors">
-                            {article.title}
-                          </h3>
-                          <p className="text-white/90 text-sm line-clamp-2">
-                            {article.excerpt}
-                          </p>
-                        </div>
+                  <Link to={`/articles/${mockArticles[2].id}`} className="flex-1">
+                    <div
+                      className="relative h-full rounded-xl overflow-hidden group"
+                      style={{
+                        backgroundImage: `url(${mockArticles[2].image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        minHeight: "235px"
+                      }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-300" />
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <span className="text-white bg-cardinal-red px-3 py-1 rounded-full text-sm font-medium">
+                          Live
+                        </span>
+                        <h3 className="font-playfair text-xl font-bold mt-3 mb-2 text-white group-hover:text-cardinal-red transition-colors">
+                          "Life is for Living:" Organizational Wisdoms
+                        </h3>
+                        <p className="text-white/90 text-sm line-clamp-2">
+                          Nothing is for certain except death and taxes. And
+                          laundry.
+                        </p>
                       </div>
-                    </Link>
-                  ))}
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -164,7 +226,7 @@ const ArticlesPage = () => {
 
             {/* Articles Grid */}
             <div className="grid grid-cols-1 gap-8 mb-12">
-              {articlesData.articles.slice(0, visibleArticles).map((article) => (
+              {mockArticles.slice(0, visibleArticles).map((article) => (
                 <article
                   key={article.id}
                   className="border border-[#333333] rounded-lg overflow-hidden group cursor-pointer hover:shadow-md transition-shadow"
@@ -173,7 +235,7 @@ const ArticlesPage = () => {
                     <div className="md:w-1/3">
                       <div className="relative h-full">
                         <img
-                          src={article.mainImage}
+                          src={article.image}
                           alt={article.title}
                           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                         />
@@ -187,11 +249,11 @@ const ArticlesPage = () => {
                         <span className="text-gray-400">•</span>
                         <div className="flex items-center text-sm text-gray-500">
                           <Calendar size={14} className="mr-1" />
-                          {new Date(article.date).toLocaleDateString()}
+                          {article.date}
                         </div>
                       </div>
                       <h2 className="font-playfair text-xl font-bold mb-2 group-hover:text-cardinal-red transition-colors">
-                        <Link to={`/article/${article.slug}`}>
+                        <Link to={`/articles/${article.id}`}>
                           {article.title}
                         </Link>
                       </h2>
@@ -206,7 +268,7 @@ const ArticlesPage = () => {
                             <Share2 size={18} />
                           </button>
                           <Link
-                            to={`/article/${article.slug}`}
+                            to={`/articles/${article.id}`}
                             className="flex items-center text-cardinal-red hover:text-forest-green transition-colors"
                           >
                             Read More
@@ -221,7 +283,7 @@ const ArticlesPage = () => {
             </div>
 
             {/* Load More Button */}
-            {visibleArticles < articlesData.articles.length && (
+            {visibleArticles < mockArticles.length && (
               <div className="text-center">
                 <button
                   onClick={handleLoadMore}
@@ -236,7 +298,7 @@ const ArticlesPage = () => {
           {/* Sidebar */}
           <div className="lg:w-1/3">
             <div className="space-y-8 sticky top-32">
-              {/* Categories */}
+              {/* Categories - Now First */}
               <div className="border border-[#333333] rounded-lg p-6">
                 <h3 className="font-playfair text-xl font-bold mb-4">
                   Categories
@@ -258,21 +320,21 @@ const ArticlesPage = () => {
                 </div>
               </div>
 
-              {/* Popular Articles */}
+              {/* Popular Articles - Now Second */}
               <div className="border border-[#333333] rounded-lg p-6">
                 <h3 className="font-playfair text-xl font-bold mb-6">
                   Popular Articles
                 </h3>
                 <div className="space-y-6">
-                  {articlesData.articles.slice(0, 3).map((article) => (
+                  {mockArticles.slice(0, 3).map((article) => (
                     <Link
                       key={article.id}
-                      to={`/article/${article.slug}`}
+                      to={`/articles/${article.id}`}
                       className="flex gap-4 group"
                     >
                       <div className="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
                         <img
-                          src={article.mainImage}
+                          src={article.image}
                           alt={article.title}
                           className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                         />
@@ -283,7 +345,7 @@ const ArticlesPage = () => {
                         </h4>
                         <div className="flex items-center text-sm text-gray-500 mt-1">
                           <Calendar size={14} className="mr-1 flex-shrink-0" />
-                          {new Date(article.date).toLocaleDateString()}
+                          {article.date}
                         </div>
                       </div>
                     </Link>
@@ -298,7 +360,7 @@ const ArticlesPage = () => {
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {Array.from(
-                    new Set(articlesData.articles.flatMap((article) => article.tags))
+                    new Set(mockArticles.flatMap((article) => article.tags)),
                   ).map((tag) => (
                     <button
                       key={tag}
