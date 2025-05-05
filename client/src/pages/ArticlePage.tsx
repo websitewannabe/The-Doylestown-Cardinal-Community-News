@@ -15,15 +15,14 @@ import {
 import articlesData from "../data/articles.json";
 
 const ArticlePage = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const { slug } = useParams();
 
-  // Find the current article
-  const article = articlesData.articles.find(a => a.id === parseInt(id || "0"));
+  // Find the current article by slug
+  const article = articlesData.articles.find(a => a.slug === slug);
 
   // Get related articles (exclude current article, limit to 3)
   const relatedArticles = articlesData.articles
-    .filter(a => a.id !== article?.id)
+    .filter(a => a.slug !== article?.slug)
     .slice(0, 3);
 
   // If no article found, show 404
@@ -159,7 +158,7 @@ const ArticlePage = () => {
             {relatedArticles.map((relatedArticle) => (
               <Link
                 key={relatedArticle.id}
-                to={`/article/${relatedArticle.id}`}
+                to={`/articles/${relatedArticle.slug}`}
                 className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
               >
                 <img
