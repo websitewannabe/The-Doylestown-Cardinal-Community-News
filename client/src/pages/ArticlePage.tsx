@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   Calendar,
   Clock,
@@ -12,86 +12,38 @@ import {
   ArrowLeft,
   Mail,
 } from "lucide-react";
-
-// Mock article data
-const article = {
-  id: 1,
-  title: "How Our Emotions Contribute to Heart Disease",
-  subtitle:
-    "We all are familiar with the common risk factors of heart disease – high blood pressure, high cholesterol, being overweight, smoking, poor diet, and of course, not keeping up with with daily exercise.But did you know that our emotions can also contribute to risks of heart attack and stroke?",
-  author: "Jill Sonlin",
-  authorRole: "Senior Reporter",
-  authorImage:
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
-  date: "February 1, 2025",
-  readingTime: "6 min read",
-  category: "Live",
-  mainImage:
-    "https://doylestowncardinal.com/wp-content/uploads/2025/02/HeartHealthy-990x660.jpg",
-  content: `
-    <h2 class="text-3xl mb-3">Persuasive emotions that harm</h2>
-    <p class="mb-8">Negative states of mind, including emotions of anger, bitterness, depression, loneliness, and anxiety, can each carry risks of doing a lot of damage to the heart and the body. To lower potential health risks, we must account for and nurish the mind-body connection. </p>
-
-    <p class="mb-8">When we are upset, have a problem, or put unrealistic pressure on ourselves with perfectionism, these persuasive emotions can go on to cause powerful chemical responses in the body. They trigger stress hormones release, including cortisol and adrenaline, which are meant to protect us from immediate danger. Our body doesn’t know if we are in the wild being chased by a lion, or if we are arguing with our neighbor. But when stressful situations happen one after the other or are chronic and long-lasting, the body remains in a perpetual state of fight or flight. This leads to high levels of inflammation, elevated blood pressure, increased heart rate, and sleepless nights.</p>
-
-    <p class="mb-8">The chemical communication between the brain and the body puts extra stress on the heart muscle to work harder and faster. This added demand increases the risks of heart attack and stroke.</p>
-
-  <p class="mb-8">Chronic stress often leads to many unhealthy lifestyle habits too. This can be seen as withdrawal from others, emotional outbursts, lack of appetite, smoking, excessive alcohol use, poor diet, overeating, lack of energy, and a sedentary lifestyle.</p>
-
-  <p class="mb-8">The truth is, that life is stressful for all of us. It has a way of ebbing and flowing, in both amazing times and those really difficult ones. Adopting new ways of handling negative emotions is vital to our long-term heart health.</p>
-
-  <h2 class="text-3xl mb-3">A Way Out</h2>
-
-  <p class="mb-8">If you are experiencing emotional pain,  know that you are not alone.</p>
-
-    <p class="mb-8">Seek help to talk about your feelings with a trusted friend, family member, pastor, or therapist. Talking openly about negative feelings can be the start of dealing effectively with and healing emotional burdens of the heart that can affect physical heart health.</p>
-
-    <p class="mb-8">Positive coping mechanisms can lower stress and ease emotional distress. Try taking a walk, bike riding, or getting outside for some fresh air in the sunshine. Take a yoga class, meditate, or learn deep breathing exercises that are calming. The 4-7-8 deep breathing technique is my go-to breathing exercise in times of stress. It  involves breathing in for 4 seconds, holding the breath for 7 seconds, and exhaling for 8 seconds.</p>
-
-    <p class="mb-8">Get connected in your community. Volunteer or help someone in need. Giving to others is emotionally uplifting. Also, keep close to your faith. Having a spiritual belief system gives comfort, hope, and spiritual guidance through troubling times.</p>
-
-    <p class="mb-8">Lastly, start a gratitude journal even – and especially so –  in the face of a present struggle. According to research, those who practice daily gratitude show improvements in their health – lower inflammation and better health outcomes with physical diseases. Gratitude is a powerful medicine for the heart and is linked to a longer healthier life.</p>
-  `,
-  tags: ["Live"],
-};
-
-// Mock related articles
-const relatedArticles = [
-  {
-    id: 2,
-    title: "Local Artists to Create Murals for Theater's Construction Barriers",
-    excerpt:
-      "Community artists will transform construction barriers into public art displays during renovation.",
-    image:
-      "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80",
-    date: "March 14, 2024",
-    readingTime: "4 min read",
-  },
-  {
-    id: 3,
-    title: "Remembering the County Theater: Community Shares Stories",
-    excerpt:
-      "Residents share their cherished memories of the historic venue ahead of renovation.",
-    image:
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80",
-    date: "March 13, 2024",
-    readingTime: "5 min read",
-  },
-  {
-    id: 4,
-    title: "The Architecture of Memory: Preserving Art Deco in Doylestown",
-    excerpt:
-      "A look at the town's efforts to maintain its architectural heritage.",
-    image:
-      "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80",
-    date: "March 12, 2024",
-    readingTime: "7 min read",
-  },
-];
+import articlesData from "../data/articles.json";
 
 const ArticlePage = () => {
   const { id } = useParams();
-  const writerSlug = "sarah-mitchell"; // In a real app, this would come from the article data
+  const navigate = useNavigate();
+
+  // Find the current article
+  const article = articlesData.articles.find(a => a.id === parseInt(id || "0"));
+
+  // Get related articles (exclude current article, limit to 3)
+  const relatedArticles = articlesData.articles
+    .filter(a => a.id !== article?.id)
+    .slice(0, 3);
+
+  // If no article found, show 404
+  if (!article) {
+    return (
+      <div className="min-h-screen bg-[#F2F0EF] pt-32">
+        <div className="container mx-auto px-4 max-w-5xl text-center">
+          <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
+          <p className="mb-8">The article you're looking for doesn't exist.</p>
+          <Link
+            to="/news"
+            className="inline-flex items-center text-blue-600 hover:text-blue-700"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to News
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#F2F0EF] pt-32">
@@ -120,7 +72,7 @@ const ArticlePage = () => {
                 {article.readingTime}
               </span>
               <Link
-                to={`/writer/${writerSlug}`}
+                to={`/writer/${article.author.toLowerCase().replace(/\s+/g, "-")}`}
                 className="flex items-center gap-1 hover:text-gray-700"
               >
                 <User2 className="w-4 h-4" />
@@ -135,7 +87,7 @@ const ArticlePage = () => {
 
           <img
             src={article.mainImage}
-            alt="County Theater facade"
+            alt={article.title}
             className="w-full h-[400px] object-cover rounded-lg mb-8"
           />
 
@@ -166,7 +118,7 @@ const ArticlePage = () => {
                 />
                 <div>
                   <Link
-                    to={`/writer/${writerSlug}`}
+                    to={`/writer/${article.author.toLowerCase().replace(/\s+/g, "-")}`}
                     className="font-medium text-gray-900 hover:text-gray-700"
                   >
                     {article.author}
@@ -204,30 +156,30 @@ const ArticlePage = () => {
             Related Articles
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {relatedArticles.map((article) => (
+            {relatedArticles.map((relatedArticle) => (
               <Link
-                key={article.id}
-                to={`/article/${article.id}`}
+                key={relatedArticle.id}
+                to={`/article/${relatedArticle.id}`}
                 className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
               >
                 <img
-                  src={article.image}
-                  alt={article.title}
+                  src={relatedArticle.mainImage}
+                  alt={relatedArticle.title}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600">
-                    {article.title}
+                    {relatedArticle.title}
                   </h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    {article.excerpt}
+                    {relatedArticle.excerpt}
                   </p>
                   <div className="flex items-center text-sm text-gray-500">
                     <Calendar className="w-4 h-4 mr-2" />
-                    {article.date}
+                    {relatedArticle.date}
                     <span className="mx-2">•</span>
                     <Clock className="w-4 h-4 mr-2" />
-                    {article.readingTime}
+                    {relatedArticle.readingTime}
                   </div>
                 </div>
               </Link>
