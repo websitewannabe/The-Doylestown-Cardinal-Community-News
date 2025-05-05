@@ -1,0 +1,89 @@
+---
+
+````
+Problem:
+On the mobile view, the navigation menu currently shows all dropdown sections (Articles, Support Us, More) fully expanded by default. We want to improve the UX by making these sections collapsible (accordion style), so only the one clicked is open, and the rest are closed. Additionally, the mobile nav menu should be scrollable when content overflows the screen.
+
+Steps to implement:
+
+1️⃣ Add local state to track which section is open:
+- Example:
+   const [openSection, setOpenSection] = useState(null);
+
+2️⃣ Update the section headers (Articles, Support Us, More) to toggle open/close:
+- When clicked, check if they are already open:
+   - If yes → setOpenSection(null)
+   - If no → setOpenSection('Articles'), 'SupportUs', or 'More'
+
+3️⃣ Wrap the mobile navigation container in a scrollable div:
+- Apply Tailwind or CSS:
+   overflow-y-auto max-h-screen
+- This ensures the menu scrolls if it overflows the vertical space.
+
+4️⃣ Update the JSX to conditionally show submenu items only when their parent is selected:
+```tsx
+{openSection === 'Articles' && (
+  <ul>
+    <li>Current Issue</li>
+    <li>Past Issues</li>
+    ...
+  </ul>
+)}
+````
+
+5️⃣ Style the section headers to clearly show they are expandable (optional):
+
+* Add a chevron or plus/minus icon that rotates when open.
+
+6️⃣ Test:
+
+* On mobile, verify:
+  ✅ Only one section can be open at a time.
+  ✅ Clicking an open section closes it.
+  ✅ Long menus can scroll without breaking layout.
+
+Optional:
+✅ Add smooth transitions (e.g., CSS height or opacity) for open/close animations.
+✅ Remember to ensure accessibility (aria-expanded, aria-controls).
+
+````
+
+---
+
+### 🚀 Example Code Snippet
+
+```tsx
+const [openSection, setOpenSection] = useState(null);
+
+const toggleSection = (section) => {
+  setOpenSection(openSection === section ? null : section);
+};
+
+<div className="overflow-y-auto max-h-screen">
+  <button onClick={() => toggleSection('Articles')}>Articles</button>
+  {openSection === 'Articles' && (
+    <ul>
+      <li>Current Issue</li>
+      <li>Past Issues</li>
+    </ul>
+  )}
+
+  <button onClick={() => toggleSection('SupportUs')}>Support Us</button>
+  {openSection === 'SupportUs' && (
+    <ul>
+      <li>Make a Donation</li>
+      <li>Our Mission</li>
+    </ul>
+  )}
+
+  <button onClick={() => toggleSection('More')}>More</button>
+  {openSection === 'More' && (
+    <ul>
+      <li>About</li>
+      <li>Contact</li>
+    </ul>
+  )}
+</div>
+````
+
+---
