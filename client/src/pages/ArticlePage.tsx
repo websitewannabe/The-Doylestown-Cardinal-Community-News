@@ -23,7 +23,7 @@ const ArticlePage = () => {
 
   // Get related articles (exclude current article, limit to 3)
   const relatedArticles = articlesData.articles
-    .filter(a => a.id !== article?.id)
+    .filter(a => a.slug !== slug)
     .slice(0, 3);
 
   // If no article found, show 404
