@@ -307,7 +307,7 @@ const ArticlesPage = () => {
                   Categories
                 </h3>
                 <div className="space-y-2">
-                  {categories.slice(1).map((category) => (
+                  {categories.map((category) => (
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
