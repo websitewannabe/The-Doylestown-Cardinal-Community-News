@@ -218,11 +218,11 @@ const ArticlesPage = () => {
               {articles.slice(0, visibleArticles).map((article) => (
                 <article
                   key={article.id}
-                  className="border border-[#333333] rounded-lg overflow-hidden group cursor-pointer hover:shadow-md transition-shadow"
+                  className="border border-[#333333] rounded-lg overflow-hidden group cursor-pointer hover:shadow-md transition-shadow min-h-[300px]"
                 >
-                  <div className="flex flex-col md:flex-row">
+                  <div className="flex flex-col md:flex-row h-full">
                     <div className="md:w-1/3">
-                      <div className="relative h-full">
+                      <div className="relative h-48 md:h-full">
                         <img
                           src={article.mainImage}
                           alt={article.title}
@@ -230,7 +230,7 @@ const ArticlesPage = () => {
                         />
                       </div>
                     </div>
-                    <div className="md:w-2/3 p-6">
+                    <div className="md:w-2/3 p-6 flex flex-col justify-between flex-grow">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-sm font-medium text-cardinal-red">
                           {article.category}
@@ -241,12 +241,12 @@ const ArticlesPage = () => {
                           {article.date}
                         </div>
                       </div>
-                      <h2 className="font-playfair text-xl font-bold mb-2 group-hover:text-cardinal-red transition-colors">
+                      <h2 className="font-playfair text-xl font-bold mb-2 group-hover:text-cardinal-red transition-colors line-clamp-2">
                         <Link to={`/articles/${article.slug}`}>
                           {article.title}
                         </Link>
                       </h2>
-                      <p className="text-gray-600 mb-4">{article.excerpt}</p>
+                      <p className="text-gray-600 mb-4 line-clamp-3">{article.excerpt}</p>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center text-sm text-gray-500">
                           <User2 size={14} className="mr-1" />
