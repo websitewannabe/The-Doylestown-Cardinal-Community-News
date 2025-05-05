@@ -138,60 +138,64 @@ const MeetTheWritersPage = () => {
                 </div>
               </div>
 
-              <div className="p-6">
-                <Link to={`/writer/${writer.id}`}>
-                  <h2 className="font-playfair text-2xl font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-1">
-                    {writer.name}
-                  </h2>
-                </Link>
-                <div className="text-cardinal-red font-medium mb-3">
-                  {writer.role}
-                </div>
+              <div className="p-6 flex flex-col h-full">
+                <div className="flex-grow">
+                  <Link to={`/writer/${writer.id}`}>
+                    <h2 className="font-playfair text-2xl font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-1">
+                      {writer.name}
+                    </h2>
+                  </Link>
+                  <div className="text-cardinal-red font-medium mb-3">
+                    {writer.role}
+                  </div>
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {writer.expertise.map((skill, index) => (
-                    <span
-                      key={index}
-                      className="px-2 py-1 bg-cardinal-red/10 text-cardinal-red rounded-full text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-
-                <p className="text-charcoal-gray/80 mb-6">{writer.bio}</p>
-
-                <div className="border-t border-[#333333]/10 pt-4">
-                  <h3 className="font-medium text-charcoal-gray mb-3">
-                    Popular Articles
-                  </h3>
-                  <div className="space-y-2">
-                    {writer.popularArticles.map((article) => (
-                      <Link
-                        key={article.id}
-                        to={`/articles/${article.id}`}
-                        className="block group/article"
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {writer.expertise.map((skill, index) => (
+                      <span
+                        key={index}
+                        className="px-2 py-1 bg-cardinal-red/10 text-cardinal-red rounded-full text-sm"
                       >
-                        <div className="flex justify-between items-center">
-                          <span className="text-charcoal-gray/80 group-hover/article:text-cardinal-red transition-colors">
-                            {article.title}
-                          </span>
-                          <span className="text-sm text-charcoal-gray/60">
-                            {article.date}
-                          </span>
-                        </div>
-                      </Link>
+                        {skill}
+                      </span>
                     ))}
                   </div>
+
+                  <p className="text-charcoal-gray/80 mb-6">{writer.bio}</p>
                 </div>
 
-                <Link
-                  to={`/writer/${writer.id}`}
-                  className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors mt-4"
-                >
-                  View Full Profile
-                  <ChevronRight size={16} className="ml-1" />
-                </Link>
+                <div className="mt-auto">
+                  <div className="border-t border-[#333333]/10 pt-4">
+                    <h3 className="font-medium text-charcoal-gray mb-3">
+                      Popular Articles
+                    </h3>
+                    <div className="space-y-2">
+                      {writer.popularArticles.map((article) => (
+                        <Link
+                          key={article.id}
+                          to={`/articles/${article.id}`}
+                          className="block group/article"
+                        >
+                          <div className="flex justify-between items-center">
+                            <span className="text-charcoal-gray/80 group-hover/article:text-cardinal-red transition-colors">
+                              {article.title}
+                            </span>
+                            <span className="text-sm text-charcoal-gray/60">
+                              {article.date}
+                            </span>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Link
+                    to={`/writer/${writer.id}`}
+                    className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors mt-4"
+                  >
+                    View Full Profile
+                    <ChevronRight size={16} className="ml-1" />
+                  </Link>
+                </div>
               </div>
             </Link>
           ))}
