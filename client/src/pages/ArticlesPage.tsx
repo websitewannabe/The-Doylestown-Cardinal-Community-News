@@ -215,7 +215,7 @@ const ArticlesPage = () => {
 
             {/* Articles Grid */}
             <div className="grid grid-cols-1 gap-8 mb-12">
-              {articles.slice(0, visibleArticles).map((article) => (
+              {articles.slice(4).slice(0, visibleArticles).map((article) => (
                 <article
                   key={article.id}
                   className="border border-[#333333] rounded-lg overflow-hidden group cursor-pointer hover:shadow-md transition-shadow"
