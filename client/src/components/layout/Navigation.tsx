@@ -94,7 +94,6 @@ const Navigation = () => {
         { name: "Print Subscriptions", path: "/print-subscriptions" },
         { name: "Digital Subscriptions", path: "/digital-subscriptions" },
         { name: "Donate", path: "/donate" },
-        { name: "Annual Fundraiser", path: "/annual-fundraiser" },
       ],
     },
     {
