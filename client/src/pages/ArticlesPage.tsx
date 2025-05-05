@@ -89,7 +89,7 @@ const ArticlesPage = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
         </div>
-        <div className="relative max-w-7xl mx-auto pl-4 pr-4 sm:pl-6 sm:px-6 lg:pl-8 lg:px-8 h-full flex items-center">
+        <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
           <div>
             <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
               Stories That Matter
