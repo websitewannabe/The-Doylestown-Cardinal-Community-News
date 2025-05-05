@@ -1,13 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
+import { Menu, X, Search, ChevronDown, ChevronRight } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [openSection, setOpenSection] = useState<string | null>(null);
   const location = useLocation();
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const toggleSection = (section: string) => {
+    setOpenSection(openSection === section ? null : section);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -279,44 +284,51 @@ const Navigation = () => {
               ${isMobileMenuOpen ? "max-h-[400px] border-t border-gray-100" : "max-h-0"}
             `}
           >
-            <div className="px-8 py-6 space-y-4">
+            <div className="px-8 py-6 space-y-4 overflow-y-auto max-h-screen">
               <div className="flex flex-col space-y-4">
-                {navLinks.map((link) => (
-                  <div key={link.name}>
-                    <MobileNavLink
-                      to={link.path}
-                      onClick={() => handleNavigation(link.path)}
-                    >
-                      {link.name}
-                    </MobileNavLink>
-                    {link.hasDropdown && (
-                      <div className="pl-4 mt-2 space-y-2">
-                        {link.dropdownItems.map((item) => (
-                          <div key={item.path}>
-                            <MobileNavLink
-                              to={item.path}
-                              onClick={() => handleNavigation(item.path)}
-                            >
-                              {item.name}
-                            </MobileNavLink>
-                            {item.subItems && (
-                              <div className="pl-4 mt-2 space-y-2">
-                                {item.subItems.map((subItem) => (
-                                  <MobileNavLink
-                                    key={subItem.path}
-                                    to={subItem.path}
-                                    onClick={() =>
-                                      handleNavigation(subItem.path)
-                                    }
-                                  >
-                                    {subItem.name}
-                                  </MobileNavLink>
-                                ))}
-                              </div>
-                            )}
+                {navLinks.map((item) => (
+                  <div key={item.name}>
+                    {item.path === "#" ? (
+                      <>
+                        <button
+                          className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md flex justify-between items-center"
+                          onClick={() => toggleSection(item.name)}
+                          aria-expanded={openSection === item.name}
+                          aria-controls={`section-${item.name}`}
+                        >
+                          {item.name}
+                          <ChevronRight
+                            className={`w-5 h-5 transition-transform ${
+                              openSection === item.name ? "rotate-90" : ""
+                            }`}
+                          />
+                        </button>
+                        {item.dropdownItems && openSection === item.name && (
+                          <div
+                            id={`section-${item.name}`}
+                            className="pl-4 space-y-1"
+                          >
+                            {item.dropdownItems.map((dropdownItem) => (
+                              <Link
+                                key={dropdownItem.name}
+                                to={dropdownItem.path}
+                                className="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                {dropdownItem.name}
+                              </Link>
+                            ))}
                           </div>
-                        ))}
-                      </div>
+                        )}
+                      </>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        className="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
                     )}
                   </div>
                 ))}
