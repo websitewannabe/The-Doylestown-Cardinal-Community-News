@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Search, Share2, ChevronRight, Calendar, User2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-// Mock data for demonstration
+// Mock data for demonstration - Added slugs
 const mockArticles = [
   {
     id: 1,
+    slug: "heart-disease-emotions",
     title: "How Our Emotions Contribute to Heart Disease",
     excerpt:
       "Did you know that our emotions can also contribute to risks of heart attack and stroke?",
@@ -18,6 +19,7 @@ const mockArticles = [
   },
   {
     id: 2,
+    slug: "valentines-day-dates",
     title: "Cozy Cupid: Valentine’s Day Dates",
     excerpt:
       "Are you looking for a cozy night with your love? Here’s your guide.",
@@ -30,6 +32,7 @@ const mockArticles = [
   },
   {
     id: 3,
+    slug: "organizational-wisdoms-wingmoms",
     title: "“Life is for Living:” Organizational Wisdoms from Wingmoms",
     excerpt:
       "Nothing is for certain except death and taxes. And laundry. A loyal friend through life’s trials, Laundry will always be there for us. ",
@@ -105,9 +108,9 @@ const ArticlesPage = () => {
                   View Current Issue
                 </Link>
               </div>
-              
+
               <div className="grid grid-cols-12 gap-6">
-                <Link to={`/articles/${mockArticles[0].id}`} className="col-span-12 md:col-span-8">
+                <Link to={`/articles/${mockArticles[0].slug}`} className="col-span-12 md:col-span-8">
                   <div className="group h-full">
                     <div
                       className="relative h-[500px] rounded-xl overflow-hidden"
@@ -133,9 +136,9 @@ const ArticlesPage = () => {
                     </div>
                   </div>
                 </Link>
-                
+
                 <div className="col-span-12 md:col-span-4 flex flex-col gap-6">
-                <Link to={`/articles/${mockArticles[1].id}`} className="flex-1">
+                  <Link to={`/articles/${mockArticles[1].slug}`} className="flex-1">
                     <div
                       className="relative h-full rounded-xl overflow-hidden group"
                       style={{
@@ -160,7 +163,7 @@ const ArticlesPage = () => {
                       </div>
                     </div>
                   </Link>
-                  <Link to={`/articles/${mockArticles[2].id}`} className="flex-1">
+                  <Link to={`/articles/${mockArticles[2].slug}`} className="flex-1">
                     <div
                       className="relative h-full rounded-xl overflow-hidden group"
                       style={{
@@ -253,7 +256,7 @@ const ArticlesPage = () => {
                         </div>
                       </div>
                       <h2 className="font-playfair text-xl font-bold mb-2 group-hover:text-cardinal-red transition-colors">
-                        <Link to={`/articles/${article.id}`}>
+                        <Link to={`/articles/${article.slug}`}>
                           {article.title}
                         </Link>
                       </h2>
@@ -268,7 +271,7 @@ const ArticlesPage = () => {
                             <Share2 size={18} />
                           </button>
                           <Link
-                            to={`/articles/${article.id}`}
+                            to={`/articles/${article.slug}`}
                             className="flex items-center text-cardinal-red hover:text-forest-green transition-colors"
                           >
                             Read More
@@ -329,7 +332,7 @@ const ArticlesPage = () => {
                   {mockArticles.slice(0, 3).map((article) => (
                     <Link
                       key={article.id}
-                      to={`/articles/${article.id}`}
+                      to={`/articles/${article.slug}`}
                       className="flex gap-4 group"
                     >
                       <div className="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
