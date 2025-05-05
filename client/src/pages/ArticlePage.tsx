@@ -158,10 +158,10 @@ const ArticlePage = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {relatedArticles.map((relatedArticle) => (
               <Link
-                key={relatedArticle.id}
-                to={`/article/${relatedArticle.id}`}
-                className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-              >
+                  key={relatedArticle.id}
+                  to={`/article/${relatedArticle.slug}`}
+                  className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                >
                 <img
                   src={relatedArticle.mainImage}
                   alt={relatedArticle.title}
