@@ -81,21 +81,6 @@ const Navigation = () => {
       ],
     },
     {
-      name: "Events",
-      path: "/events",
-      hasDropdown: false,
-    },
-    {
-      name: "Community",
-      path: "#",
-      hasDropdown: true,
-      dropdownItems: [
-        { name: "Community Spotlight", path: "/community/spotlight" },
-        { name: "Best of Doylestown", path: "/community/best-of" },
-        { name: "Business Directory", path: "/community/directory" },
-      ],
-    },
-    {
       name: "Support Us",
       path: "#",
       hasDropdown: true,
