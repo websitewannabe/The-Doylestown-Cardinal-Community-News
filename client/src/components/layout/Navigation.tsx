@@ -356,7 +356,7 @@ const Navigation = () => {
                               </Link>
                             ))}
                           </div>
-                        )}
+                        </div>
                       </>
                     ) : (
                       <Link
