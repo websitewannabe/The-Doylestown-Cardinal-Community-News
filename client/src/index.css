@@ -12,14 +12,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .hide-on-mobile {
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
-}
-
 @layer base {
   body {
     @apply font-open-sans text-charcoal-gray;

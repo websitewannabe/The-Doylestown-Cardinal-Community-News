@@ -211,7 +211,7 @@ const HomePage = () => {
               <h1 className="font-playfair text-6xl md:text-[7.45rem] font-bold text-off-white mb-4">
                 The Cardinal
               </h1>
-              <p className="text-2xl text-off-white mb-8 font-playfair italic hide-on-mobile">
+              <p className="text-2xl text-off-white mb-8 font-playfair italic">
                 Experience the heart of Bucks County
               </p>
               <div className="flex flex-wrap gap-4">
