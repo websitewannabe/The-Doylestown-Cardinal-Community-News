@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Clock, Phone, Search, Filter, Building2, ChevronRight, Navigation } from 'lucide-react';
+import LocationsMap from '../components/ui/LocationsMap';
 
 // Mock data for distribution locations
 const locations = [
@@ -96,53 +97,24 @@ const LocationsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
-      {/* Hero Section */}
-      <div className="relative h-[55vh]">
-        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
-          <img 
-            src="https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&q=80"
-            alt="Doylestown streets"
-            className="w-full h-[105%] object-cover blur-[1px] scale-105"
+      <div className="relative h-[300px] mb-8">
+        <div className="absolute inset-0">
+          <img
+            src="/images/Fonthill.png"
+            alt="Fonthill Castle"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
         </div>
-        <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
+        <div className="relative max-w-7xl mx-auto pl-4 pr-4 sm:pl-6 sm:px-6 lg:pl-8 lg:px-8 h-full flex items-center">
           <div>
-            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
-              Locations
+            <h1 className="font-playfair text-4xl md:text-6xl font-bold text-off-white mb-4">
+              Our Locations
             </h1>
-            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
-              Find The Cardinal at various distribution points throughout Doylestown
+            <p className="hidden md:block text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
+              Discover local businesses in New Hope and Lambertville
             </p>
-            <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => document.getElementById('locations-grid')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors inline-flex items-center gap-2"
-              >
-                Find Locations
-                <ChevronRight size={20} />
-              </button>
-              <button
-                onClick={() => document.getElementById('map')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors inline-flex items-center gap-2"
-              >
-                View Map
-                <ChevronRight size={20} />
-              </button>
-            </div>
           </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            viewBox="0 0 1440 120" 
-            className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
-            preserveAspectRatio="none"
-          >
-            <path 
-              fill="currentColor"
-              d="M0,120 C240,100 480,20 720,40 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
-            />
-          </svg>
         </div>
       </div>
 
@@ -213,7 +185,7 @@ const LocationsPage = () => {
                   <h3 className="font-playfair text-lg font-bold">Become a Distribution Location</h3>
                 </div>
                 <p className="text-charcoal-gray/70 mb-4">
-                  Interested in carrying The Cardinal at your business? Contact our distribution team 
+                  Interested in carrying The Cardinal at your business? Contact our distribution team
                   to learn more about becoming a distribution partner.
                 </p>
                 <a
@@ -229,72 +201,7 @@ const LocationsPage = () => {
 
           {/* Main Content */}
           <div className="lg:w-3/4">
-            {/* Map Container */}
-            <div className="bg-white rounded-lg p-4 mb-8 h-[400px] relative">
-              <div className="absolute inset-0 flex items-center justify-center bg-[#F2F0EF] rounded-lg border-2 border-dashed border-[#333333]/20">
-                <div className="text-center">
-                  <p className="text-charcoal-gray/70 mb-2">Google Maps will be integrated here</p>
-                  <p className="text-sm text-charcoal-gray/60">
-                    Showing all distribution locations with interactive markers
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Locations Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {locations.map(location => (
-                <div
-                  key={location.id}
-                  className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="relative h-48">
-                    <img
-                      src={location.image}
-                      alt={location.name}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-4 right-4">
-                      <span className="px-3 py-1 bg-white/90 rounded-full text-sm">
-                        {location.availability}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-sm font-medium text-cardinal-red">{location.type}</span>
-                    </div>
-                    <h3 className="font-playfair text-xl font-bold mb-4">
-                      {location.name}
-                    </h3>
-                    <div className="space-y-2 text-sm text-gray-600">
-                      <div className="flex items-center gap-2">
-                        <MapPin size={14} />
-                        <span>{location.address}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock size={14} />
-                        <span>{location.hours}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Phone size={14} />
-                        <span>{location.phone}</span>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => {
-                        // Handle navigation to location on map
-                        setSelectedLocation(location);
-                      }}
-                      className="mt-4 inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
-                    >
-                      <Navigation size={16} className="mr-1" />
-                      View on Map
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <LocationsMap locations={locations} searchQuery={searchQuery} selectedType={selectedType} selectedAvailability={selectedAvailability}/>
           </div>
         </div>
       </div>
