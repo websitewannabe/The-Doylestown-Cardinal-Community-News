@@ -379,6 +379,16 @@ const Navigation = () => {
                           }`}
                         >
                           <div className="pl-4 py-2 space-y-2">
+                            <Link
+                              to="/articles"
+                              className="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setOpenSection(null);
+                              }}
+                            >
+                              All Articles
+                            </Link>
                             {item.dropdownItems?.map((dropdownItem) => (
                               <Link
                                 key={dropdownItem.name}
