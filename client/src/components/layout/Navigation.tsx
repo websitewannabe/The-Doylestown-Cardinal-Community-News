@@ -280,10 +280,10 @@ const Navigation = () => {
               md:hidden 
               overflow-hidden 
               transition-all duration-300 ease-in-out
-              ${isMobileMenuOpen ? "max-h-[400px] border-t border-gray-100" : "max-h-0"}
+              ${isMobileMenuOpen ? "max-h-[80vh] border-t border-gray-100" : "max-h-0"}
             `}
           >
-            <div className="px-8 py-6 space-y-4 overflow-y-auto max-h-screen">
+            <div className="px-8 py-6 space-y-4 overflow-y-auto max-h-[calc(80vh-4rem)]">
               <div className="flex flex-col space-y-4">
                 {navLinks.map((item) => (
                   <div key={item.name}>
