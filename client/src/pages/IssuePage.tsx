@@ -17,10 +17,10 @@ const IssuePage = () => {
         </div>
         <div className="relative max-w-7xl mx-auto pl-4 pr-4 sm:pl-6 sm:px-6 lg:pl-8 lg:px-8 h-full flex items-center">
           <div>
-            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
+            <h1 className="font-playfair text-4xl md:text-6xl font-bold text-off-white mb-4">
               The Cardinal Digital Edition
             </h1>
-            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
+            <p className="hidden md:block text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
               Experience our newspaper in a new way
             </p>
           </div>
