@@ -119,7 +119,7 @@ const ArticlesPage = () => {
                   to="/current-issue"
                   className="bg-cardinal-red text-white px-6 py-2 rounded-full font-medium hover:bg-forest-green transition-colors"
                 >
-                  View Current Issue
+                  <span className="hidden md:inline">View </span>Current Issue
                 </Link>
               </div>
 
