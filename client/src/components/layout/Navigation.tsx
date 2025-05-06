@@ -333,17 +333,18 @@ const Navigation = () => {
                           aria-controls={`section-${item.name}`}
                         >
                           {item.name}
-                          <ChevronRight
-                            className={`w-5 h-5 transition-transform ${
-                              openSection === item.name ? "rotate-90" : ""
+                          <ChevronDown
+                            className={`w-5 h-5 transition-transform duration-200 ${
+                              openSection === item.name ? "rotate-180" : ""
                             }`}
                           />
                         </button>
-                        {item.dropdownItems && openSection === item.name && (
-                          <div
-                            id={`section-${item.name}`}
-                            className="pl-4 space-y-1"
-                          >
+                        <div
+                          className={`overflow-hidden transition-all duration-200 ${
+                            openSection === item.name ? "max-h-96" : "max-h-0"
+                          }`}
+                        >
+                          <div className="pl-4 py-2 space-y-2">
                             {item.dropdownItems.map((dropdownItem) => (
                               <Link
                                 key={dropdownItem.name}
