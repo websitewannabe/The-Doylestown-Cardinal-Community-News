@@ -12,6 +12,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .hero-subtitle {
+    @apply text-2xl text-off-white mb-8 font-playfair italic max-w-2xl md:block hidden;
+  }
+}
+
 @layer base {
   body {
     @apply font-open-sans text-charcoal-gray;

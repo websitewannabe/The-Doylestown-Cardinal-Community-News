@@ -112,7 +112,7 @@ const LocationsPage = () => {
             <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
               Locations
             </h1>
-            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
+            <p className="hero-subtitle">
               Find The Cardinal at various distribution points throughout Doylestown
             </p>
             <div className="flex flex-wrap gap-4">

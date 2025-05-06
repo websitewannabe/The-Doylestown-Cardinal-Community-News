@@ -307,7 +307,7 @@ const CommunityPage = () => {
             <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
               Our Community
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl mb-8">
+            <p className="hero-subtitle">
               Discover the people, places, and stories that make Doylestown special. 
               From local heroes to community initiatives, explore what brings our town together.
             </p>

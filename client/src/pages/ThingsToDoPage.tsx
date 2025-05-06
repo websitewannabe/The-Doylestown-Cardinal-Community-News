@@ -185,7 +185,7 @@ const ThingsToDoPage = () => {
             <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
               Things to Do
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl mb-8">
+            <p className="hero-subtitle">
               Discover exciting activities and events in Doylestown. From outdoor adventures 
               to cultural experiences, there's something for everyone.
             </p>

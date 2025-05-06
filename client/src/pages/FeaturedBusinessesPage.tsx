@@ -109,7 +109,7 @@ const FeaturedBusinessesPage = () => {
             <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
               Discover Local Businesses
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl mb-8">
+            <p className="hero-subtitle">
               Explore the diverse businesses that make Doylestown a vibrant community, 
               from historic establishments to innovative newcomers.
             </p>
