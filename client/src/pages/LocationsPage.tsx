@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { MapPin, Clock, Phone, Search, Filter, Building2, ChevronRight, Navigation } from 'lucide-react';
-import LocationsMap from '../components/ui/LocationsMap';
 
 // Mock data for distribution locations
 const locations = [
@@ -231,8 +230,15 @@ const LocationsPage = () => {
           {/* Main Content */}
           <div className="lg:w-3/4">
             {/* Map Container */}
-            <div className="bg-white rounded-lg p-4 mb-8">
-              <LocationsMap />
+            <div className="bg-white rounded-lg p-4 mb-8 h-[400px] relative">
+              <div className="absolute inset-0 flex items-center justify-center bg-[#F2F0EF] rounded-lg border-2 border-dashed border-[#333333]/20">
+                <div className="text-center">
+                  <p className="text-charcoal-gray/70 mb-2">Google Maps will be integrated here</p>
+                  <p className="text-sm text-charcoal-gray/60">
+                    Showing all distribution locations with interactive markers
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Locations Grid */}
