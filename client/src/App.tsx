@@ -38,6 +38,7 @@ import ContactPage from './pages/ContactPage';
 import EditorialSubmissionsPage from './pages/EditorialSubmissionsPage';
 import { NewsletterProvider, useNewsletterContext } from './context/NewsletterContext';
 import NewsletterPopup from './components/ui/NewsletterPopup';
+import ScrollToTop from './components/ScrollToTop';
 
 
 const queryClient = new QueryClient();
@@ -47,6 +48,7 @@ const AppContent = () => {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-[#F2F0EF]">
         <Navigation />
         <Routes>
