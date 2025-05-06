@@ -146,10 +146,10 @@ const HomePage = () => {
   const { forceShowPopup } = useNewsletterContext();
 
   useEffect(() => {
-    fetch('/articles.json')
+    fetch("/articles.json")
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to fetch articles');
+          throw new Error("Failed to fetch articles");
         }
         return response.json();
       })
@@ -158,8 +158,8 @@ const HomePage = () => {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error('Error loading articles:', error);
-        setError('Failed to load articles');
+        console.error("Error loading articles:", error);
+        setError("Failed to load articles");
         setIsLoading(false);
       });
   }, []);
@@ -252,7 +252,9 @@ const HomePage = () => {
             {/* Featured Stories Grid */}
             {isLoading ? (
               <div className="flex-grow flex items-center justify-center">
-                <div className="text-2xl text-gray-600">Loading articles...</div>
+                <div className="text-2xl text-gray-600">
+                  Loading articles...
+                </div>
               </div>
             ) : error ? (
               <div className="flex-grow flex items-center justify-center">
@@ -261,7 +263,11 @@ const HomePage = () => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
                 {articles.slice(0, 4).map((article) => (
-                  <Link key={article.id} to={`/articles/${article.slug}`} className="group h-full">
+                  <Link
+                    key={article.id}
+                    to={`/articles/${article.slug}`}
+                    className="group h-full"
+                  >
                     <div className="border border-[#333333] rounded-lg overflow-hidden cursor-pointer h-full flex flex-col">
                       <div className="relative h-48">
                         <img
@@ -350,7 +356,7 @@ const HomePage = () => {
       </section>
 
       {/* Upcoming Events Section */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-12">
             <h2 className="font-playfair text-4xl font-bold text-charcoal-gray">
@@ -409,7 +415,7 @@ const HomePage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
       <section className="py-20 bg-[#F2F0EF]">
