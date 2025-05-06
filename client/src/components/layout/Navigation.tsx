@@ -358,6 +358,43 @@ const Navigation = () => {
                           </div>
                         </div>
                       </>
+                    ) : item.name === "Articles" ? (
+                      <>
+                        <button
+                          className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md flex justify-between items-center"
+                          onClick={() => toggleSection(item.name)}
+                          aria-expanded={openSection === item.name}
+                          aria-controls={`section-${item.name}`}
+                        >
+                          {item.name}
+                          <ChevronDown
+                            className={`w-5 h-5 transition-transform duration-200 ${
+                              openSection === item.name ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                        <div
+                          className={`overflow-hidden transition-all duration-200 ${
+                            openSection === item.name ? "max-h-96" : "max-h-0"
+                          }`}
+                        >
+                          <div className="pl-4 py-2 space-y-2">
+                            {item.dropdownItems?.map((dropdownItem) => (
+                              <Link
+                                key={dropdownItem.name}
+                                to={dropdownItem.path}
+                                className="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                                onClick={() => {
+                                  setIsMobileMenuOpen(false);
+                                  setOpenSection(null);
+                                }}
+                              >
+                                {dropdownItem.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </>
                     ) : (
                       <Link
                         to={item.path}
