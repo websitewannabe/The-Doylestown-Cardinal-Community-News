@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Check, Smartphone, Laptop, Archive, Bell, BookOpen, Download, Newspaper, Wifi } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 const plans = [
   {
@@ -163,7 +164,7 @@ const DigitalSubscriptionsPage = () => {
           <h2 className="font-playfair text-4xl font-bold text-charcoal-gray text-center mb-12">
             Digital Subscription Benefits
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center">
                 <div className="inline-block p-4 bg-cardinal-red/10 rounded-lg mb-4">
@@ -173,6 +174,29 @@ const DigitalSubscriptionsPage = () => {
                 <p className="text-charcoal-gray/70">{benefit.description}</p>
               </div>
             ))}
+          </div>
+
+          {/* Mobile Carousel */}
+          <div className="md:hidden w-full">
+            <Carousel className="w-full max-w-sm mx-auto">
+              <CarouselContent>
+                {benefits.map((benefit, index) => (
+                  <CarouselItem key={index}>
+                    <div className="text-center p-4">
+                      <div className="inline-block p-4 bg-cardinal-red/10 rounded-lg mb-4">
+                        <benefit.icon className="w-8 h-8 text-cardinal-red" />
+                      </div>
+                      <h3 className="font-playfair text-xl font-bold mb-2">{benefit.title}</h3>
+                      <p className="text-charcoal-gray/70">{benefit.description}</p>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex items-center justify-center gap-2 mt-4">
+                <CarouselPrevious className="static translate-y-0" />
+                <CarouselNext className="static translate-y-0" />
+              </div>
+            </Carousel>
           </div>
         </div>
       </section>
