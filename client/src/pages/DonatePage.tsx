@@ -166,7 +166,7 @@ const DonatePage = () => {
             <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
               Support
             </h1>
-            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
+            <p className="hero-subtitle">
               Your donation helps us continue delivering the independent, in-depth journalism 
               that keeps our community informed and connected.
             </p>
@@ -180,7 +180,7 @@ const DonatePage = () => {
               </a>
               <Link
                 to="/about"
-                className="bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors"
+                className="hidden md:inline-flex bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors"
               >
                 Learn More
               </Link>
