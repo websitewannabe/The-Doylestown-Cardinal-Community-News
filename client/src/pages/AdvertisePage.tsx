@@ -224,7 +224,7 @@ const AdvertisePage = () => {
               </button>
               <a
                 href="#pricing"
-                className="bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors inline-flex items-center gap-2"
+                className="hidden md:inline-flex bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors items-center gap-2"
               >
                 View Pricing
                 <ChevronRight size={20} />
