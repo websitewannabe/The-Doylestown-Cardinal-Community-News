@@ -53,8 +53,8 @@ const ArticlePage = () => {
             Home
           </Link>
           <ChevronRight className="w-4 h-4" />
-          <Link to="/news" className="hover:text-gray-700">
-            News
+          <Link to="/articles" className="hover:text-gray-700">
+            Articles
           </Link>
           <ChevronRight className="w-4 h-4" />
           <span className="text-gray-900">{article.category}</span>
