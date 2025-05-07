@@ -86,13 +86,13 @@ const PrintSubscriptionsPage = () => {
             <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
               Subscribe
             </h1>
-            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
+            <p className="hero-subtitle">
               Get Doylestown's most trusted source of local news delivered to your doorstep
             </p>
             <div className="flex flex-wrap gap-4">
               <a 
                 href="#pricing"
-                className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors inline-flex items-center gap-2"
+                className="hidden md:inline-flex bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors items-center gap-2"
               >
                 View Plans
                 <ChevronRight size={20} />
