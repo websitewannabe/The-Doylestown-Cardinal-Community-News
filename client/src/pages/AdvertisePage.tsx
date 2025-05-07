@@ -210,7 +210,7 @@ const AdvertisePage = () => {
             <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
               Advertise
             </h1>
-            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
+            <p className="hero-subtitle">
               Connect with Doylestown's most engaged audience through our
               trusted platform
             </p>
