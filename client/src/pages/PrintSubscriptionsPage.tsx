@@ -84,7 +84,7 @@ const PrintSubscriptionsPage = () => {
         <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
           <div>
             <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
-              Subscribe
+              Print Access
             </h1>
             <p className="hero-subtitle">
               Get Doylestown's most trusted source of local news delivered to your doorstep
