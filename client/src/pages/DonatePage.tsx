@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { 
   ChevronRight, 
   Heart, 
@@ -7,11 +8,6 @@ import {
   Users, 
   Award, 
   Calendar,
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
   Check,
   CreditCard,
   DollarSign,
