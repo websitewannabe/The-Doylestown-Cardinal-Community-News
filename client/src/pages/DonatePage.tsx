@@ -7,6 +7,11 @@ import {
   Users, 
   Award, 
   Calendar,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
   Check,
   CreditCard,
   DollarSign,
@@ -207,7 +212,7 @@ const DonatePage = () => {
           <h2 className="font-playfair text-4xl font-bold text-charcoal-gray text-center mb-12">
             Your Impact
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {impactStats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="inline-block p-4 bg-cardinal-red/10 rounded-lg mb-4">
@@ -220,6 +225,32 @@ const DonatePage = () => {
                 <p className="text-charcoal-gray/70">{stat.description}</p>
               </div>
             ))}
+          </div>
+
+          {/* Mobile Carousel */}
+          <div className="md:hidden w-full">
+            <Carousel className="w-full max-w-sm mx-auto">
+              <CarouselContent>
+                {impactStats.map((stat, index) => (
+                  <CarouselItem key={index}>
+                    <div className="text-center p-4">
+                      <div className="inline-block p-4 bg-cardinal-red/10 rounded-lg mb-4">
+                        <stat.icon className="w-8 h-8 text-cardinal-red" />
+                      </div>
+                      <div className="font-playfair text-3xl font-bold text-cardinal-red mb-2">
+                        {stat.stat}
+                      </div>
+                      <h3 className="font-playfair text-xl font-bold mb-2">{stat.title}</h3>
+                      <p className="text-charcoal-gray/70">{stat.description}</p>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex items-center justify-center gap-2 mt-4">
+                <CarouselPrevious className="static translate-y-0" />
+                <CarouselNext className="static translate-y-0" />
+              </div>
+            </Carousel>
           </div>
         </div>
       </section>
