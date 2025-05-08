@@ -1,0 +1,76 @@
+Please update the `testimonials` array in `HomePage.tsx` to **replace all current testimonials** with the following real community quotes. Remove the `image` property from the testimonial objects — only include `quote`, `author`, and `role`. The existing carousel will display the quotes and author info without images.”
+
+---
+
+**New testimonials to include:**
+
+```js
+{
+  quote: "Your paper is AWESOME. I look forward to reading it every month. The personal stories about individuals and their businesses make the paper special. As a new transplant to Doylestown, it gives me a great perspective on the town and its community. I wish you continued success.",
+  author: "Tricia",
+  role: "Doylestown Resident"
+},
+{
+  quote: "I really LOVE this publication. You do such a great job!",
+  author: "Brad",
+  role: "Reader"
+},
+{
+  quote: "You’re doing great work and it’s much appreciated. The exposure you give us is attracting a lot of people and it’s invaluable.",
+  author: "Keith",
+  role: "Local Business Owner"
+},
+{
+  quote: "I’m an avid reader of the Doylestown Cardinal and read it cover to cover every month!",
+  author: "Jordyn",
+  role: "Avid Reader"
+},
+{
+  quote: "We received our copies today. Excellent issue!",
+  author: "Joe",
+  role: "Subscriber"
+},
+{
+  quote: "Your paper is a real class act. The issue looks great, and Doylestown is lucky to have such a great local paper.",
+  author: "Stephanie",
+  role: "Community Member"
+},
+{
+  quote: "Such a nice-looking publication! A real gift to the community.",
+  author: "Scott",
+  role: "Community Supporter"
+},
+{
+  quote: "I noticed your paper the other day and it looks great. I wish you the best of luck moving forward.",
+  author: "Jim",
+  role: "Community Member"
+},
+{
+  quote: "Thank you for the amazing promotion of our nonprofit these past couple of months. We're so grateful for your continued support and coverage!",
+  author: "Laurie",
+  role: "Nonprofit Director"
+},
+{
+  quote: "I am on the Board of Fanny Chapman and was able to make sure we advertise this year in the Cardinal. I am very much a fan of the Cardinal.",
+  author: "Rob",
+  role: "Board Member, Fanny Chapman"
+},
+{
+  quote: "You have a great little newspaper. I read the story about The Code Blue Initiative by Susan Peters and was motivated to make a $1,000 donation after reading it. Great reporting.",
+  author: "Pat",
+  role: "Donor"
+},
+{
+  quote: "I LOVE the Doylestown Cardinal publication — what a beautifully curated publication!",
+  author: "Sarah",
+  role: "Online Reader"
+}
+```
+
+---
+
+✅ **Final Notes for Developer:**
+
+* Remove all current testimonial objects from the array.
+* Remove the `image` property entirely from each testimonial.
+* Ensure the slider works smoothly without the image (you may want to hide or adjust the `img` tag and author avatar in the JSX).
