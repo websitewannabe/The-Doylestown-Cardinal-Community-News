@@ -20,29 +20,41 @@ import {
 // Mock data for team members
 const teamMembers = [
   {
-    name: 'Jay Pelc',
-    role: 'Sales',
-    bio: 'Jay Pelc, a Brooklyn native, moved to Jim Thorpe in 2019. For the past 32 years, he has had great success in selling mostly print advertising in both small and large markets. He now serves in that capacity for both The Jim Thorpe Current and The Doylestown Cardinal.',
-    image: 'https://via.placeholder.com/150'
+    name: "Sarah Mitchell",
+    role: "Editor-in-Chief",
+    bio: "With over 20 years of journalism experience, Sarah leads our newsroom with a passion for local storytelling and community engagement.",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
+    email: "sarah@thecardinal.com",
+    linkedin: "#",
   },
   {
-    name: 'Ellen',
-    role: 'Sales',
-    bio: 'Ellen is a former New Yorker who has been living in Doylestown for many years. She brings extensive experience in sales and community outreach, helping connect local businesses with The Cardinal\'s readers.',
-    image: 'https://via.placeholder.com/150'
+    name: "Michael Chen",
+    role: "Managing Editor",
+    bio: "Michael brings 15 years of digital media expertise and a deep commitment to investigative journalism that matters to our community.",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80",
+    email: "michael@thecardinal.com",
+    linkedin: "#",
   },
   {
-    name: 'Leia Riggins',
-    role: 'Writer',
-    bio: 'Leia Riggins is a school counselor, therapist, and wellness advocate based in Doylestown, PA. She combines her expertise in mental health with holistic practices, specializing in integrative approaches that honor the mind-body connection.',
-    image: 'https://via.placeholder.com/150'
+    name: "Emily Rodriguez",
+    role: "Community Outreach Director",
+    bio: "Emily's background in community organizing helps forge meaningful connections between The Cardinal and our diverse readership.",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80",
+    email: "emily@thecardinal.com",
+    linkedin: "#",
   },
   {
-    name: 'Jessica Ramoy',
-    role: 'Managing Editor',
-    bio: 'Jessica Ramoy brings a wealth of experience to The Cardinal as its Managing Editor. She is passionate about local journalism and is dedicated to highlighting the voices and stories of the Doylestown community.',
-    image: 'https://via.placeholder.com/150'
-  }
+    name: "James Wilson",
+    role: "Senior Reporter",
+    bio: "A Doylestown native, James covers local politics and community development with insight and dedication.",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80",
+    email: "james@thecardinal.com",
+    linkedin: "#",
+  },
 ];
 
 // Mock data for awards and recognition
