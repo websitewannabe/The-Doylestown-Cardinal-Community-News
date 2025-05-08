@@ -17,44 +17,62 @@ import {
   Info,
 } from "lucide-react";
 
-// Mock data for team members
+// Team members data
 const teamMembers = [
   {
-    name: "Sarah Mitchell",
-    role: "Editor-in-Chief",
-    bio: "With over 20 years of journalism experience, Sarah leads our newsroom with a passion for local storytelling and community engagement.",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
-    email: "sarah@thecardinal.com",
-    linkedin: "#",
+    name: 'Jay Pelc',
+    role: 'Sales',
+    bio: 'Jay Pelc, a Brooklyn native, moved to Jim Thorpe in 2019. For the past 32 years, he has had great success in selling mostly print advertising in both small and large markets. He now serves in that capacity for both The Jim Thorpe Current and The Doylestown Cardinal.',
+    image: '/images/Staff/Jay-Pelc.jpeg'
   },
   {
-    name: "Michael Chen",
-    role: "Managing Editor",
-    bio: "Michael brings 15 years of digital media expertise and a deep commitment to investigative journalism that matters to our community.",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80",
-    email: "michael@thecardinal.com",
-    linkedin: "#",
+    name: 'Ellen',
+    role: 'Sales',
+    bio: 'Ellen is a former New Yorker who has lived in Doylestown for 27 years. She left early childhood education after 30 years and transitioned to customer service, later joining The Cardinal after a chance encounter at Jersey Mike's. Married for 56 years to George, she has two adult children.',
+    image: '/images/Staff/Ellen.jpeg'
   },
   {
-    name: "Emily Rodriguez",
-    role: "Community Outreach Director",
-    bio: "Emily's background in community organizing helps forge meaningful connections between The Cardinal and our diverse readership.",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80",
-    email: "emily@thecardinal.com",
-    linkedin: "#",
+    name: 'Mike Roberts',
+    role: 'Director of Delivery',
+    bio: 'Mike Roberts has been married for 45 years to his high school sweetheart Joan. With three children and seven grandchildren, he retired from a 37-year USPS career and has been Director of Delivery with The Cardinal since 2023.',
+    image: '/images/Staff/Mike-Roberts.jpeg'
   },
   {
-    name: "James Wilson",
-    role: "Senior Reporter",
-    bio: "A Doylestown native, James covers local politics and community development with insight and dedication.",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80",
-    email: "james@thecardinal.com",
-    linkedin: "#",
+    name: 'Dakoda',
+    role: 'Social Media Manager',
+    bio: 'Dakoda is a local writer passionate about covering events and interviews. As Social Media Manager since January 2024, she has revamped The Cardinal's platforms. An animal lover, reader, and traveler, she also writes on Substack as "scattered journal entries."',
+    image: '/images/Staff/Dakoda.jpeg'
   },
+  {
+    name: 'Servis Events',
+    role: 'Writers',
+    bio: 'Servis Events is a hyper-local, seasonal fine dining private chef business. Writing for The Cardinal for over a year and a half, they share articles about seasonal ingredients, health benefits, and local food education.',
+    image: '/images/Staff/Nick-and-Stephen.jpeg'
+  },
+  {
+    name: 'Brian',
+    role: 'Writer',
+    bio: 'Brian is a Naval Academy graduate, Navy veteran, and current financial planner at Pultro Financial Management. He holds multiple certifications, including AIF, BFA, RFC, and Ethics Certified, and enjoys time with his fiancée, three sons, and two golden retrievers.',
+    image: '/images/Staff/Brian.jpeg'
+  },
+  {
+    name: 'Edie Weinstein',
+    role: 'Writer',
+    bio: 'Edie Weinstein, MSW, LSW, is a psychotherapist, journalist, author, speaker, and founder of Hugmobsters Armed with Love. She began writing for The Cardinal in 2022 with her column "The Kindness Korner."',
+    image: '/images/Staff/Eddie-Weinstein.jpeg'
+  },
+  {
+    name: 'Paula Carsello-Mason',
+    role: 'Writer',
+    bio: 'Paula is a dedicated esthetician passionate about skincare and confidence building. She created a teen skincare course and writes for The Cardinal while enjoying family time and kayaking.',
+    image: '/images/Staff/Paula-Carsello-Mason.jpeg'
+  },
+  {
+    name: 'Ryan Greiser',
+    role: 'Writer',
+    bio: 'Ryan Greiser, CFP®, founded Opulus in Doylestown to help Millennials cut taxes, boost income, and grow wealth. Named to InvestmentNews Best Under 40 and Investopedia Top 100, he guides clients toward financial independence.',
+    image: '/images/Staff/Ryan-Greiser.png'
+  }
 ];
 
 // Mock data for awards and recognition
@@ -262,43 +280,63 @@ const AboutPage = () => {
           <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-12 text-center">
             Meet Our Team
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          {/* Desktop View */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member) => (
-              <div key={member.name} className="group">
-                <div className="relative overflow-hidden rounded-lg mb-4">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex gap-2">
-                        <a
-                          href={`mailto:${member.email}`}
-                          className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
-                        >
-                          <Mail size={16} />
-                        </a>
-                        <a
-                          href={member.linkedin}
-                          className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
-                        >
-                          <Linkedin size={16} />
-                        </a>
-                      </div>
-                    </div>
+              <div key={member.name} className="group bg-[#F2F0EF] rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div className="flex flex-col items-center text-center">
+                  <div className="relative w-48 h-48 mb-6">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover rounded-full shadow-md"
+                    />
                   </div>
+                  <h3 className="font-playfair text-2xl font-bold text-charcoal-gray mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-cardinal-red font-medium mb-4">
+                    {member.role}
+                  </p>
+                  <p className="text-charcoal-gray/80 leading-relaxed">
+                    {member.bio}
+                  </p>
                 </div>
-                <h3 className="font-playfair text-xl font-bold mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-cardinal-red font-medium mb-2">
-                  {member.role}
-                </p>
-                <p className="text-sm text-charcoal-gray/70">{member.bio}</p>
               </div>
             ))}
+          </div>
+
+          {/* Mobile View with Carousel */}
+          <div className="md:hidden">
+            <Carousel className="w-full space-x-4">
+              <CarouselContent>
+                {teamMembers.map((member) => (
+                  <CarouselItem key={member.name} className="pl-4">
+                    <div className="bg-[#F2F0EF] rounded-lg p-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className="relative w-40 h-40 mb-4">
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-full h-full object-cover rounded-full shadow-md"
+                          />
+                        </div>
+                        <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-1">
+                          {member.name}
+                        </h3>
+                        <p className="text-cardinal-red font-medium mb-3">
+                          {member.role}
+                        </p>
+                        <div className="text-charcoal-gray/80 text-sm">
+                          {member.bio}
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </section>
