@@ -1,0 +1,114 @@
+Update the **Featured Stories** section on the homepage to pull **four articles** from the WordPress site using the REST API. The design should match the current layout, and each article card should link to the article page (`/articles/:slug`).
+
+---
+
+### ✅ Requirements
+
+1. **Fetch articles from the WordPress API**
+
+   * Use:
+
+     ```
+     https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=4
+     ```
+   * Map the results into the existing `Article` interface:
+
+     * `id`
+     * `slug`
+     * `title.rendered`
+     * `excerpt.rendered` (strip HTML tags)
+     * `mainImage` → from `_embedded['wp:featuredmedia'][0].source_url`
+     * `category` → from `_embedded['wp:term'][0][0].name`
+
+---
+
+2. **Replace local JSON fetch with live API fetch**
+
+   * In `useEffect`, change:
+
+     ```js
+     fetch("/articles.json")
+     ```
+
+     → to:
+
+     ```js
+     fetch("https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=4")
+     ```
+
+---
+
+3. **Update state to handle WordPress data**
+
+   * Map the fetched API data:
+
+     ```js
+     const mappedArticles = data.map(post => ({
+       id: post.id,
+       slug: post.slug,
+       title: post.title.rendered,
+       excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""),
+       mainImage: post._embedded['wp:featuredmedia'][0]?.source_url || "/images/article-placeholder.jpg",
+       category: post._embedded['wp:term'][0][0]?.name || "Uncategorized",
+     }));
+     ```
+
+---
+
+4. **Maintain current aesthetic**
+
+   * Keep the current **card layout, image scaling, category badge, title, and excerpt**.
+   * Ensure the `<Link>` component wraps each card and routes to:
+
+     ```js
+     /articles/${article.slug}
+     ```
+
+---
+
+5. **Handle loading and error states**
+
+   * Show:
+
+     * “Loading articles…” if data is being fetched.
+     * “Failed to load articles” if the fetch fails.
+
+---
+
+### ✅ Example snippet for `useEffect`
+
+```js
+useEffect(() => {
+  fetch("https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=4")
+    .then(response => {
+      if (!response.ok) throw new Error("Failed to fetch articles");
+      return response.json();
+    })
+    .then(data => {
+      const mappedArticles = data.map(post => ({
+        id: post.id,
+        slug: post.slug,
+        title: post.title.rendered,
+        excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""),
+        mainImage: post._embedded['wp:featuredmedia'][0]?.source_url || "/images/article-placeholder.jpg",
+        category: post._embedded['wp:term'][0][0]?.name || "Uncategorized",
+      }));
+      setArticles(mappedArticles);
+      setIsLoading(false);
+    })
+    .catch(error => {
+      console.error("Error loading articles:", error);
+      setError("Failed to load articles");
+      setIsLoading(false);
+    });
+}, []);
+```
+
+---
+
+### ✅ Final checklist
+
+✔ Show four articles from the WordPress API
+✔ Keep the card design and interactions
+✔ Link each article to `/articles/:slug`
+✔ Handle loading and error states gracefully
