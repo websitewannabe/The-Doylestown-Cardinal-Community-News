@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
@@ -22,22 +21,39 @@ const ArticlesPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  //const [page, setPage] = useState(1); // Removed as pagination is no longer needed
+  //const [hasMore, setHasMore] = useState(true); // Removed as pagination is no longer needed
 
-  const fetchPosts = async (pageNum: number) => {
+  const fetchAllPosts = async () => {
     try {
-      const response = await fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=10&page=${pageNum}`);
-      if (!response.ok) {
+      const firstPageResponse = await fetch('https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=1');
+      if (!firstPageResponse.ok) {
         throw new Error('Failed to fetch articles');
       }
-      const data = await response.json();
-      
-      // Check if we've reached the end
-      const totalPages = Number(response.headers.get('X-WP-TotalPages'));
-      setHasMore(pageNum < totalPages);
 
-      const mappedArticles = data.map((post: any) => ({
+      const totalPages = Number(firstPageResponse.headers.get('X-WP-TotalPages'));
+      const allPosts = [];
+
+      // Add first page results
+      const firstPageData = await firstPageResponse.json();
+      allPosts.push(...firstPageData);
+
+      // Fetch remaining pages
+      const remainingPages = Array.from({ length: totalPages - 1 }, (_, i) => i + 2);
+      const remainingPagesData = await Promise.all(
+        remainingPages.map(page =>
+          fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=${page}`)
+            .then(res => res.json())
+            .catch(err => {
+              console.error(`Error fetching page ${page}:`, err);
+              return [];
+            })
+        )
+      );
+
+      allPosts.push(...remainingPagesData.flat());
+
+      const mappedArticles = allPosts.map((post: any) => ({
         id: post.id,
         slug: post.slug,
         title: he.decode(post.title.rendered),
@@ -59,40 +75,21 @@ const ArticlesPage = () => {
   useEffect(() => {
     const initializeArticles = async () => {
       setIsLoading(true);
-      
-      // Try to load from cache first
-      const cachedArticles = sessionStorage.getItem('articles');
-      if (cachedArticles) {
-        setArticles(JSON.parse(cachedArticles));
-        setIsLoading(false);
-      }
-
       try {
-        const freshArticles = await fetchPosts(1);
+        const freshArticles = await fetchAllPosts();
         setArticles(freshArticles);
         sessionStorage.setItem('articles', JSON.stringify(freshArticles));
         setIsLoading(false);
       } catch (error) {
-        if (!cachedArticles) {
-          setError('Failed to load articles. Please try again later.');
-          setIsLoading(false);
-        }
+        setError('Failed to load articles. Please try again later.');
+        setIsLoading(false);
       }
     };
 
     initializeArticles();
   }, []);
 
-  const loadMore = async () => {
-    const nextPage = page + 1;
-    try {
-      const newArticles = await fetchPosts(nextPage);
-      setArticles(prev => [...prev, ...newArticles]);
-      setPage(nextPage);
-    } catch (error) {
-      console.error('Error loading more articles:', error);
-    }
-  };
+  // loadMore function removed as pagination is no longer needed
 
   const categories = [...new Set(articles.map((article) => article.category))];
 
@@ -250,17 +247,7 @@ const ArticlesPage = () => {
               ))}
             </div>
 
-            {hasMore && !searchTerm && !selectedCategory && (
-              <div className="text-center mt-8">
-                <button
-                  onClick={loadMore}
-                  className="inline-flex items-center px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-forest-green transition-colors"
-                >
-                  Load More Articles
-                  <ChevronRight size={16} className="ml-2" />
-                </button>
-              </div>
-            )}
+            {/* Removed Load More section as all articles are loaded upfront */}
           </div>
         </div>
       </div>
