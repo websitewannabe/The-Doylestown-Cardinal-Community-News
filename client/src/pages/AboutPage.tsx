@@ -28,7 +28,7 @@ const teamMembers = [
   {
     name: 'Ellen',
     role: 'Sales',
-    bio: 'Ellen is a former New Yorker who has lived in Doylestown for 27 years. She left early childhood education after 30 years and transitioned to customer service, later joining The Cardinal after a chance encounter at Jersey Mike's. Married for 56 years to George, she has two adult children.',
+    bio: "Ellen is a former New Yorker who has lived in Doylestown for 27 years. She left early childhood education after 30 years and transitioned to customer service, later joining The Cardinal after a chance encounter at Jersey Mike's. Married for 56 years to George, she has two adult children.",
     image: '/images/Staff/Ellen.jpeg'
   },
   {
