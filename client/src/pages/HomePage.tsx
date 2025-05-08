@@ -54,31 +54,76 @@ const upcomingEvents = [
 const testimonials = [
   {
     id: 1,
-    quote:
-      "The Cardinal has been my trusted source for local news for over a decade. Their in-depth coverage of community issues is unmatched.",
-    author: "Sarah Thompson",
-    role: "Local Business Owner",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
+    quote: "Your paper is AWESOME. I look forward to reading it every month. The personal stories about individuals and their businesses make the paper special. As a new transplant to Doylestown, it gives me a great perspective on the town and its community. I wish you continued success.",
+    author: "Tricia",
+    role: "Doylestown Resident"
   },
   {
     id: 2,
-    quote:
-      "As a community leader, I appreciate The Cardinal's commitment to balanced reporting and their dedication to highlighting local voices.",
-    author: "Michael Chen",
-    role: "City Council Member",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80",
+    quote: "I really LOVE this publication. You do such a great job!",
+    author: "Brad",
+    role: "Reader"
   },
   {
     id: 3,
-    quote:
-      "The Cardinal's coverage of our local arts scene has helped bring our community together and showcase the incredible talent in Doylestown.",
-    author: "Emily Rodriguez",
-    role: "Arts Foundation Director",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80",
+    quote: "You're doing great work and it's much appreciated. The exposure you give us is attracting a lot of people and it's invaluable.",
+    author: "Keith",
+    role: "Local Business Owner"
   },
+  {
+    id: 4,
+    quote: "I'm an avid reader of the Doylestown Cardinal and read it cover to cover every month!",
+    author: "Jordyn",
+    role: "Avid Reader"
+  },
+  {
+    id: 5,
+    quote: "We received our copies today. Excellent issue!",
+    author: "Joe",
+    role: "Subscriber"
+  },
+  {
+    id: 6,
+    quote: "Your paper is a real class act. The issue looks great, and Doylestown is lucky to have such a great local paper.",
+    author: "Stephanie",
+    role: "Community Member"
+  },
+  {
+    id: 7,
+    quote: "Such a nice-looking publication! A real gift to the community.",
+    author: "Scott",
+    role: "Community Supporter"
+  },
+  {
+    id: 8,
+    quote: "I noticed your paper the other day and it looks great. I wish you the best of luck moving forward.",
+    author: "Jim",
+    role: "Community Member"
+  },
+  {
+    id: 9,
+    quote: "Thank you for the amazing promotion of our nonprofit these past couple of months. We're so grateful for your continued support and coverage!",
+    author: "Laurie",
+    role: "Nonprofit Director"
+  },
+  {
+    id: 10,
+    quote: "I am on the Board of Fanny Chapman and was able to make sure we advertise this year in the Cardinal. I am very much a fan of the Cardinal.",
+    author: "Rob",
+    role: "Board Member, Fanny Chapman"
+  },
+  {
+    id: 11,
+    quote: "You have a great little newspaper. I read the story about The Code Blue Initiative by Susan Peters and was motivated to make a $1,000 donation after reading it. Great reporting.",
+    author: "Pat",
+    role: "Donor"
+  },
+  {
+    id: 12,
+    quote: "I LOVE the Doylestown Cardinal publication — what a beautifully curated publication!",
+    author: "Sarah",
+    role: "Online Reader"
+  }
 ];
 
 // Mock data for Instagram feed
@@ -468,12 +513,7 @@ const HomePage = () => {
                 </blockquote>
 
                 <div className="flex items-center justify-center">
-                  <img
-                    src={testimonials[currentTestimonial].image}
-                    alt={testimonials[currentTestimonial].author}
-                    className="w-16 h-16 rounded-full object-cover border-4 border-white shadow-md"
-                  />
-                  <div className="ml-4 text-left">
+                  <div className="text-left">
                     <div className="font-bold text-charcoal-gray">
                       {testimonials[currentTestimonial].author}
                     </div>
