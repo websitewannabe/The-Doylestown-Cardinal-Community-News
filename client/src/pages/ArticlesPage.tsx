@@ -23,16 +23,38 @@ const ArticlesPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [displayCount, setDisplayCount] = useState(9);
 
-  useEffect(() => {
-    fetch('https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100')
-      .then((response) => {
+  const fetchAllPosts = async () => {
+    let allPosts = [];
+    let page = 1;
+    let keepFetching = true;
+
+    while (keepFetching) {
+      try {
+        const response = await fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=${page}`);
         if (!response.ok) {
           throw new Error('Failed to fetch articles');
         }
-        return response.json();
-      })
-      .then((data) => {
-        const mappedArticles = data.map((post: any) => ({
+        const data = await response.json();
+
+        if (data.length === 0) {
+          keepFetching = false;
+        } else {
+          allPosts = [...allPosts, ...data];
+          page++;
+        }
+      } catch (error) {
+        console.error(`Error fetching page ${page}:`, error);
+        keepFetching = false;
+      }
+    }
+
+    return allPosts;
+  };
+
+  useEffect(() => {
+    fetchAllPosts()
+      .then((allPosts) => {
+        const mappedArticles = allPosts.map((post: any) => ({
           id: post.id,
           slug: post.slug,
           title: he.decode(post.title.rendered),
@@ -43,6 +65,7 @@ const ArticlesPage = () => {
           image: post._embedded['wp:featuredmedia']?.[0]?.source_url || '/images/article-placeholder.jpg',
           tags: post._embedded['wp:term'][1]?.map((tag: any) => tag.name) || [],
         }));
+        console.log(`Total articles loaded: ${mappedArticles.length}`);
         setArticles(mappedArticles);
         setIsLoading(false);
       })
