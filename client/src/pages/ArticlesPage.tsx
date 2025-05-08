@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Search, Share2, ChevronRight, Calendar, User2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { ChevronRight } from 'lucide-react';
+import he from 'he';
 
-// Types for articles
 interface Article {
   id: number;
   slug: string;
@@ -15,368 +15,149 @@ interface Article {
   tags: string[];
 }
 
-const categories = [
-  "All Categories",
-  "Things To Do",
-  "Hotels",
-  "Restaurants",
-  "Art/Music",
-  "Style",
-  "Fitness",
-  "Life",
-  "Business",
-  "Technology",
-  "Real Estate",
-  "Live",
-];
-
 const ArticlesPage = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All Categories");
-  const [visibleArticles, setVisibleArticles] = useState(6);
   const [articles, setArticles] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [displayCount, setDisplayCount] = useState(9);
 
   useEffect(() => {
-    fetch("/articles.json")
+    fetch('https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100')
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to fetch articles");
+          throw new Error('Failed to fetch articles');
         }
         return response.json();
       })
       .then((data) => {
-        setArticles(data.articles);
+        const mappedArticles = data.map((post: any) => ({
+          id: post.id,
+          slug: post.slug,
+          title: he.decode(post.title.rendered),
+          excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
+          category: post._embedded['wp:term'][0][0]?.name || 'Uncategorized',
+          author: post._embedded.author[0]?.name || 'Unknown',
+          date: new Date(post.date).toLocaleDateString(),
+          image: post._embedded['wp:featuredmedia']?.[0]?.source_url || '/images/article-placeholder.jpg',
+          tags: post._embedded['wp:term'][1]?.map((tag: any) => tag.name) || [],
+        }));
+        setArticles(mappedArticles);
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error("Error loading articles:", error);
-        setError("Failed to load articles. Please try again later.");
+        console.error('Error loading articles:', error);
+        setError('Failed to load articles. Please try again later.');
         setIsLoading(false);
       });
   }, []);
 
-  const filteredArticles =
-    selectedCategory === "All Categories"
-      ? articles
-      : articles.filter((article) => article.category === selectedCategory);
+  const categories = [...new Set(articles.map((article) => article.category))];
 
-  const handleLoadMore = () => {
-    setVisibleArticles((prev) => prev + 3);
-  };
+  const filteredArticles = articles.filter((article) => {
+    const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = !selectedCategory || article.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#F2F0EF] flex items-center justify-center">
-        <div className="text-2xl text-gray-600">Loading articles...</div>
+      <div className="min-h-screen bg-[#F2F0EF] pt-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">Loading articles...</div>
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#F2F0EF] flex items-center justify-center">
-        <div className="text-xl text-red-600">{error}</div>
+      <div className="min-h-screen bg-[#F2F0EF] pt-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-red-600">{error}</div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F0EF]">
-      {/* Hero Section */}
-      <div className="relative h-[45vh]">
-        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
-          <img
-            src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
-            alt="Journalism background"
-            className="w-full h-[105%] object-cover blur-[1px] scale-105"
+    <div className="min-h-screen bg-[#F2F0EF] pt-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h1 className="font-playfair text-5xl font-bold text-charcoal-gray mb-6">
+            Latest Articles
+          </h1>
+          <p className="text-xl text-charcoal-gray/80 max-w-3xl mx-auto">
+            Stay informed with the latest news, features, and stories from Doylestown and beyond.
+          </p>
+        </div>
+
+        <div className="mb-8 flex flex-col sm:flex-row gap-4">
+          <input
+            type="text"
+            placeholder="Search articles..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="flex-1 p-2 border border-gray-300 rounded"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
+          <select
+            value={selectedCategory || ''}
+            onChange={(e) => setSelectedCategory(e.target.value || null)}
+            className="p-2 border border-gray-300 rounded"
+          >
+            <option value="">All Categories</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
         </div>
-        <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
-          <div>
-            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
-              Stories That Matter
-            </h1>
-            <p className="hidden md:block text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
-              Articles That Connect Our Community
-            </p>
-          </div>
-        </div>
-      </div>
 
-      {/* Featured Articles Section */}
-      <div className="relative -mt-16 mb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl shadow-lg p-8 relative">
-            <div className="flex flex-col space-y-6">
-              <div className="flex justify-between items-center">
-                <div className="bg-cardinal-red text-white px-6 py-2 rounded-full font-medium">
-                  Featured This Month
-                </div>
-                <Link
-                  to="/current-issue"
-                  className="bg-cardinal-red text-white px-6 py-2 rounded-full font-medium hover:bg-forest-green transition-colors"
-                >
-                  <span className="hidden md:inline">View </span>Current Issue
-                </Link>
-              </div>
-
-              {articles.length > 0 && (
-                <div className="grid grid-cols-12 gap-6">
-                  <Link
-                    to={`/articles/${articles[0].slug}`}
-                    className="col-span-12 md:col-span-8"
-                  >
-                    <div className="group h-full">
-                      <div
-                        className="relative h-[500px] rounded-xl overflow-hidden"
-                        style={{
-                          backgroundImage: `url(${articles[0].image})`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                        }}
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-300" />
-                        <div className="absolute bottom-0 left-0 right-0 p-8">
-                          <span className="text-cardinal-red bg-white px-4 py-1.5 rounded-full text-sm font-medium">
-                            {articles[0].category}
-                          </span>
-                          <h3 className="font-playfair text-3xl font-bold text-white mt-4 mb-3 group-hover:text-cardinal-red transition-colors">
-                            {articles[0].title}
-                          </h3>
-                          <p className="text-white/90 text-lg">
-                            {articles[0].excerpt}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-
-                  <div className="col-span-12 md:col-span-4 flex flex-col gap-6">
-                    {articles.slice(1, 3).map((article) => (
-                      <Link
-                        key={article.id}
-                        to={`/articles/${article.slug}`}
-                        className="flex-1"
-                      >
-                        <div
-                          className="relative h-full rounded-xl overflow-hidden group"
-                          style={{
-                            backgroundImage: `url(${article.image})`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            minHeight: "235px",
-                          }}
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-300" />
-                          <div className="absolute bottom-0 left-0 right-0 p-6">
-                            <span className="text-white bg-cardinal-red px-3 py-1 rounded-full text-sm font-medium">
-                              {article.category}
-                            </span>
-                            <h3 className="font-playfair text-xl font-bold mt-3 mb-2 text-white group-hover:text-cardinal-red transition-colors">
-                              {article.title}
-                            </h3>
-                            <p className="text-white/90 text-sm line-clamp-2">
-                              {article.excerpt}
-                            </p>
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Main Content */}
-          <div className="lg:w-2/3">
-            {/* Search and Filter Bar */}
-            <div className="border border-[#333333] rounded-lg p-4 mb-8 flex flex-col sm:flex-row gap-4">
-              <div className="relative flex-grow">
-                <Search
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-charcoal-gray/60"
-                  size={20}
-                />
-                <input
-                  type="text"
-                  placeholder="Search articles..."
-                  className="w-full pl-10 pr-4 py-2 border border-[#333333] rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20 bg-[#F2F0EF]"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {filteredArticles.slice(0, displayCount).map((article) => (
+            <Link
+              key={article.id}
+              to={`/articles/${article.slug}`}
+              className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+            >
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <select
-                className="px-4 py-2 border border-[#333333] rounded-lg focus:outline-none focus:ring-2 focus:ring-cardinal-red/20 bg-[#F2F0EF]"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-              >
-                {categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Articles Grid */}
-            <div className="grid grid-cols-1 gap-8 mb-12">
-              {filteredArticles.slice(0, visibleArticles).map((article) => (
-                <article
-                  key={article.id}
-                  className="border border-[#333333] rounded-lg overflow-hidden group cursor-pointer hover:shadow-md transition-shadow min-h-[300px]"
-                >
-                  <div className="flex flex-col md:flex-row h-full">
-                    <div className="md:w-1/3">
-                      <div className="relative h-48 md:h-full">
-                        <img
-                          src={article.mainImage}
-                          alt={article.title}
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </div>
-                    <div className="md:w-2/3 p-6 flex flex-col justify-between flex-grow">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-sm font-medium text-cardinal-red">
-                          {article.category}
-                        </span>
-                        <span className="text-gray-400">•</span>
-                        <div className="flex items-center text-sm text-gray-500">
-                          <Calendar size={14} className="mr-1" />
-                          {article.date}
-                        </div>
-                      </div>
-                      <h2 className="font-playfair text-xl font-bold mb-2 group-hover:text-cardinal-red transition-colors line-clamp-2">
-                        <Link to={`/articles/${article.slug}`}>
-                          {article.title}
-                        </Link>
-                      </h2>
-                      <p className="text-gray-600 mb-4 line-clamp-3">
-                        {article.excerpt}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-sm text-gray-500">
-                          <User2 size={14} className="mr-1" />
-                          {article.author}
-                        </div>
-                        <div className="flex items-center gap-4">
-                          <button className="text-gray-500 hover:text-cardinal-red transition-colors">
-                            <Share2 size={18} />
-                          </button>
-                          <Link
-                            to={`/articles/${article.slug}`}
-                            className="flex items-center text-cardinal-red hover:text-forest-green transition-colors"
-                          >
-                            Read More
-                            <ChevronRight size={16} className="ml-1" />
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            {/* Load More Button */}
-            {visibleArticles < filteredArticles.length && (
-              <div className="text-center">
-                <button
-                  onClick={handleLoadMore}
-                  className="px-8 py-3 bg-cardinal-red text-white rounded-full font-semibold hover:bg-cardinal-red/90 transition-colors shadow-sm hover:shadow-md"
-                >
-                  Load More Articles
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* Sidebar */}
-          <div className="lg:w-1/3">
-            <div className="space-y-8 sticky top-32">
-              {/* Categories - Now First */}
-              <div className="border border-[#333333] rounded-lg p-6">
-                <h3 className="font-playfair text-xl font-bold mb-4">
-                  Categories
-                </h3>
-                <div className="space-y-2">
-                  {categories.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setSelectedCategory(category)}
-                      className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
-                        selectedCategory === category
-                          ? "bg-cardinal-red text-white"
-                          : "hover:bg-gray-100"
-                      }`}
-                    >
-                      {category}
-                    </button>
-                  ))}
+              <div className="p-6">
+                <div className="text-cardinal-red mb-2">{article.category}</div>
+                <h2 className="font-playfair text-xl font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-2">
+                  {article.title}
+                </h2>
+                <p className="text-charcoal-gray/80 mb-4 line-clamp-3">
+                  {article.excerpt}
+                </p>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-charcoal-gray/60">{article.author}</span>
+                  <span className="text-charcoal-gray/60">{article.date}</span>
                 </div>
               </div>
-
-              {/* Popular Articles - Now Second */}
-              <div className="border border-[#333333] rounded-lg p-6">
-                <h3 className="font-playfair text-xl font-bold mb-6">
-                  Popular Articles
-                </h3>
-                <div className="space-y-6">
-                  {filteredArticles.slice(0, 3).map((article) => (
-                    <Link
-                      key={article.id}
-                      to={`/articles/${article.slug}`}
-                      className="flex gap-4 group"
-                    >
-                      <div className="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
-                        <img
-                          src={article.image}
-                          alt={article.title}
-                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="flex-grow min-w-0">
-                        <h4 className="font-medium group-hover:text-cardinal-red transition-colors line-clamp-2">
-                          {article.title}
-                        </h4>
-                        <div className="flex items-center text-sm text-gray-500 mt-1">
-                          <Calendar size={14} className="mr-1 flex-shrink-0" />
-                          {article.date}
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tags Cloud */}
-              <div className="border border-[#333333] rounded-lg p-6">
-                <h3 className="font-playfair text-xl font-bold mb-4">
-                  Popular Tags
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {Array.from(
-                    new Set(articles.flatMap((article) => article.tags)),
-                  ).map((tag) => (
-                    <button
-                      key={tag}
-                      className="px-3 py-1 bg-gray-100 rounded-full text-sm hover:bg-cardinal-red hover:text-white transition-colors"
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+            </Link>
+          ))}
         </div>
+
+        {filteredArticles.length > displayCount && (
+          <div className="text-center">
+            <button
+              onClick={() => setDisplayCount(prev => prev + 9)}
+              className="inline-flex items-center px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-forest-green transition-colors"
+            >
+              Load More Articles
+              <ChevronRight size={16} className="ml-2" />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
