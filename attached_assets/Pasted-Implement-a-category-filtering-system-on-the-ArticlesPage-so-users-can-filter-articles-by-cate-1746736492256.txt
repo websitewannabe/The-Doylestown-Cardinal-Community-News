@@ -1,0 +1,87 @@
+Implement a **category filtering system** on the `ArticlesPage` so users can filter articles by category (like “Live,” “Art/Music,” “Business,” etc.).
+
+---
+
+### ✅ Requirements
+
+1. **Use the existing ****`selectedCategory`**** state**
+
+   * This is already set up in the component:
+
+     ```js
+     const [selectedCategory, setSelectedCategory] = useState("All Categories");
+     ```
+
+2. **Modify the filtering logic**
+
+   * Update the `filteredArticles` array so it filters articles based on the selected category:
+
+     ```js
+     const filteredArticles =
+       selectedCategory === "All Categories"
+         ? articles
+         : articles.filter((article) => article.category === selectedCategory);
+     ```
+
+3. **Connect the category buttons in the sidebar**
+
+   * Make sure each button in the **Categories** section calls:
+
+     ```js
+     setSelectedCategory(category);
+     ```
+
+4. **Highlight the active category**
+
+   * Apply a different style (e.g., red background, white text) to the button for the currently selected category:
+
+     ```js
+     className={`${
+       selectedCategory === category ? "bg-cardinal-red text-white" : "hover:bg-gray-100"
+     }`}
+     ```
+
+---
+
+### ✅ Bonus (if time permits)
+
+* Add a **“Clear Filter”** button at the top to reset to **All Categories**.
+* Show the **number of articles** in each category next to the category name.
+* Optionally **sort categories alphabetically** or by popularity.
+
+---
+
+### ✅ Example code snippets
+
+**Filtering setup:**
+
+```js
+const filteredArticles =
+  selectedCategory === "All Categories"
+    ? articles
+    : articles.filter((article) => article.category === selectedCategory);
+```
+
+**Category button:**
+
+```js
+<button
+  key={category}
+  onClick={() => setSelectedCategory(category)}
+  className={`w-full text-left px-4 py-2 rounded-lg ${
+    selectedCategory === category ? "bg-cardinal-red text-white" : "hover:bg-gray-100"
+  }`}
+>
+  {category}
+</button>
+```
+
+---
+
+### ✅ Final check
+
+* Verify that:
+
+  * Clicking a category filters the article grid.
+  * The active category button is highlighted.
+  * The “All Categories” option shows all articles.
