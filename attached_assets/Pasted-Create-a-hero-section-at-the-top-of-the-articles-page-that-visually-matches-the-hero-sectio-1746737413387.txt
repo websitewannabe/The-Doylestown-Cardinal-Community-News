@@ -1,0 +1,68 @@
+Create a **hero section** at the top of the `/articles` page that visually matches the **hero section on the ****`/advertise`**** page**, maintaining consistency in branding and layout.
+
+---
+
+### ✅ Requirements
+
+1. \*\*Add a hero section at the top of \*\***`ArticlesPage`**
+
+   * Include:
+
+     * A **large headline** → e.g., `Latest Articles`
+     * A **subheading/strapline** → e.g., `Stay informed with the latest news, features, and stories from Doylestown and beyond.`
+     * A **background image or background color** that matches the `/advertise` page.
+     * Centered or left-aligned text, depending on the `/advertise` page style.
+     * Optional: Add a subtle overlay or gradient for contrast.
+
+---
+
+### ✅ Steps
+
+1. **Review the ****`/advertise`**** page**
+
+   * Note the colors, typography, spacing, and any overlay effects.
+
+2. \*\*Create the hero JSX in \*\***`ArticlesPage`**
+   Example structure:
+
+   ```js
+   <section className="relative bg-cover bg-center h-[300px] flex items-center justify-center text-center text-white"
+     style={{ backgroundImage: 'url("/path-to-background-image.jpg")' }}>
+     <div className="bg-black bg-opacity-50 absolute inset-0"></div>
+     <div className="relative z-10">
+       <h1 className="text-4xl font-bold mb-2">Latest Articles</h1>
+       <p className="text-lg max-w-2xl mx-auto">
+         Stay informed with the latest news, features, and stories from Doylestown and beyond.
+       </p>
+     </div>
+   </section>
+   ```
+
+3. **Apply consistent styles**
+
+   * Match padding, height, font family, colors, and overlay from `/advertise`.
+   * Use Tailwind, CSS modules, or styled-components depending on the project.
+
+4. **Test responsiveness**
+
+   * Ensure it looks good on mobile, tablet, and desktop.
+   * Check that text scales appropriately.
+
+---
+
+### ✅ Bonus
+
+* Add a **breadcrumb** or **small navigation link** like:
+
+  ```
+  Home / Articles
+  ```
+* Add a **call-to-action button** if you want to encourage newsletter signups or social sharing.
+
+---
+
+### ✅ Final check
+
+* Does the hero match the `/advertise` page design?
+* Is the text accessible and readable on all screen sizes?
+* Are the images or gradients optimized for performance?
