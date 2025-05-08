@@ -50,7 +50,7 @@ const upcomingEvents = [
   },
 ];
 
-// Testimonials data
+// Existing testimonials data
 const testimonials = [
   {
     id: 1,
@@ -122,59 +122,6 @@ const instagramPosts = [
     comments: 15,
     date: "5 days ago",
   },
-
-{/* Testimonials Section */}
-<section className="py-16 bg-[#F2F0EF]">
-  <div className="container mx-auto px-4">
-    <div className="max-w-3xl mx-auto text-center mb-12">
-      <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
-        Community Voices
-      </h2>
-      <p className="text-charcoal-gray/70">
-        Hear what our readers have to say about The Cardinal
-      </p>
-    </div>
-
-    <Carousel
-      opts={{
-        align: "start",
-        loop: true,
-      }}
-      className="w-full max-w-5xl mx-auto"
-    >
-      <CarouselContent>
-        {testimonials.map((testimonial) => (
-          <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3">
-            <div className="h-full p-6">
-              <div className="bg-white rounded-lg shadow-sm p-6 h-full flex flex-col">
-                <Quote className="w-8 h-8 text-cardinal-red mb-4" />
-                <p className="text-charcoal-gray/80 flex-grow mb-4 text-sm">
-                  {testimonial.quote}
-                </p>
-                <p className="font-medium text-charcoal-gray">— {testimonial.author}</p>
-              </div>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <div className="flex justify-center gap-2 mt-8">
-        <CarouselPrevious />
-        <CarouselNext />
-      </div>
-    </Carousel>
-
-    <div className="text-center mt-12">
-      <Link
-        to="/contact"
-        className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
-      >
-        Share Your Story
-        <ChevronRight size={16} className="ml-1" />
-      </Link>
-    </div>
-  </div>
-</section>
-
 ];
 
 interface Article {
