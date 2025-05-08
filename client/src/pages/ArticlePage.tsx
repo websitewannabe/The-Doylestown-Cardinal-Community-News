@@ -1,41 +1,74 @@
-import React from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import {
-  Calendar,
-  Clock,
-  User2,
-  Share2,
-  Facebook,
-  Twitter,
-  Linkedin,
-  ChevronRight,
-  ArrowLeft,
-  Mail,
-} from "lucide-react";
-import articlesData from "../data/articles.json";
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
+import he from 'he';
+
+interface Article {
+  title: string;
+  content: string;
+  date: string;
+  author: string;
+  image: string;
+  excerpt: string;
+}
 
 const ArticlePage = () => {
+  const [article, setArticle] = useState<Article | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const { slug } = useParams();
-  const navigate = useNavigate();
 
-  // Find the current article by slug
-  const article = articlesData.articles.find(a => a.slug === slug);
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        const response = await fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?slug=${slug}&_embed=true`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch article');
+        }
+        const data = await response.json();
 
-  // Get related articles (exclude current article, limit to 3)
-  const relatedArticles = articlesData.articles
-    .filter(a => a.slug !== slug)
-    .slice(0, 3);
+        if (data.length > 0) {
+          const post = data[0];
+          setArticle({
+            title: he.decode(post.title.rendered),
+            content: post.content.rendered,
+            excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
+            date: new Date(post.date).toLocaleDateString(),
+            author: post._embedded.author[0]?.name || 'Unknown',
+            image: post._embedded['wp:featuredmedia']?.[0]?.source_url || '/images/article-placeholder.jpg',
+          });
+        } else {
+          setError('Article not found');
+        }
+      } catch (err) {
+        setError('Failed to load article. Please try again later.');
+        console.error('Error fetching article:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  // If no article found, show 404
-  if (!article) {
+    fetchArticle();
+  }, [slug]);
+
+  if (isLoading) {
     return (
       <div className="min-h-screen bg-[#F2F0EF] pt-32">
-        <div className="container mx-auto px-4 max-w-5xl text-center">
-          <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
-          <p className="mb-8">The article you're looking for doesn't exist.</p>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-2xl text-center">Loading article...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !article) {
+    return (
+      <div className="min-h-screen bg-[#F2F0EF] pt-32">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-xl text-red-600 text-center mb-8">{error}</div>
           <Link
             to="/articles"
-            className="inline-flex items-center text-blue-600 hover:text-blue-700"
+            className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Articles
@@ -47,153 +80,36 @@ const ArticlePage = () => {
 
   return (
     <div className="min-h-screen bg-[#F2F0EF] pt-32">
-      <div className="container mx-auto px-4 max-w-5xl">
-        <nav className="flex items-center space-x-2 text-gray-500 mb-8">
-          <Link to="/" className="hover:text-gray-700">
-            Home
-          </Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link to="/articles" className="hover:text-gray-700">
-            Articles
-          </Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900">{article.category}</span>
-        </nav>
-
-        <article className="bg-white rounded-xl shadow-md p-8 mb-12">
-          <header className="mb-8">
-            <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-              <span className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
-                {article.date}
-              </span>
-              <span className="hidden md:flex items-center gap-1">
-                <Clock className="w-4 h-4" />
-                {article.readingTime}
-              </span>
-              <Link
-                to={`/writer/${article.author.toLowerCase().replace(/\s+/g, "-")}`}
-                className="flex items-center gap-1 hover:text-gray-700"
-              >
-                <User2 className="w-4 h-4" />
-                {article.author}
-              </Link>
-            </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              {article.title}
-            </h1>
-            <p className="text-xl text-gray-600">{article.subtitle}</p>
-          </header>
-
-          <img
-            src={article.mainImage}
-            alt={article.title}
-            className="w-full h-[400px] object-cover rounded-lg mb-8"
-          />
-
-          <div
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
-
-          <footer className="mt-8 pt-8 border-t border-gray-200">
-            <div className="flex flex-wrap gap-4 mb-8">
-              {article.tags.map((tag) => (
-                <Link
-                  key={tag}
-                  to={`/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 text-sm"
-                >
-                  {tag}
-                </Link>
-              ))}
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <img
-                  src={article.authorImage}
-                  alt={article.author}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <Link
-                    to={`/writer/${article.author.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="font-medium text-gray-900 hover:text-gray-700"
-                  >
-                    {article.author}
-                  </Link>
-                  <p className="text-sm text-gray-500">{article.authorRole}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
-                  <Share2 className="w-4 h-4" />
-                  Share
-                </button>
-                <div className="flex items-center gap-2">
-                  <a href="#" className="p-2 text-gray-500 hover:text-blue-600">
-                    <Facebook className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="p-2 text-gray-500 hover:text-blue-400">
-                    <Twitter className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="p-2 text-gray-500 hover:text-blue-700">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="p-2 text-gray-500 hover:text-red-500">
-                    <Mail className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </footer>
-        </article>
-
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Related Articles
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {relatedArticles.map((relatedArticle) => (
-              <Link
-                key={relatedArticle.id}
-                to={`/articles/${relatedArticle.slug}`}
-                className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow h-full"
-              >
-                <img
-                  src={relatedArticle.mainImage}
-                  alt={relatedArticle.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6 flex flex-col h-[calc(100%-192px)]">
-                  <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 line-clamp-2">
-                    {relatedArticle.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
-                    {relatedArticle.excerpt}
-                  </p>
-                  <div className="flex items-center text-sm text-gray-500 mt-auto">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    {relatedArticle.date}
-                    <span className="mx-2">•</span>
-                    <Clock className="w-4 h-4 mr-2" />
-                    {relatedArticle.readingTime}
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           to="/articles"
-          className="inline-flex items-center text-blue-600 hover:text-blue-700"
+          className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Articles
         </Link>
+
+        <article className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img
+            src={article.image}
+            alt={article.title}
+            className="w-full h-96 object-cover"
+          />
+          <div className="p-8">
+            <h1 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
+              {article.title}
+            </h1>
+            <div className="flex items-center text-charcoal-gray/60 mb-8">
+              <span>{article.author}</span>
+              <span className="mx-2">•</span>
+              <span>{article.date}</span>
+            </div>
+            <div 
+              className="prose prose-lg max-w-none prose-headings:font-playfair prose-headings:text-charcoal-gray prose-p:text-charcoal-gray/80"
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
+          </div>
+        </article>
       </div>
     </div>
   );
