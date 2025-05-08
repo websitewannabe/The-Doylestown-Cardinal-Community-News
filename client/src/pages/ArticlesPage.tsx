@@ -83,16 +83,40 @@ const ArticlesPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F0EF] pt-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="font-playfair text-5xl font-bold text-charcoal-gray mb-6">
-            Latest Articles
-          </h1>
-          <p className="text-xl text-charcoal-gray/80 max-w-3xl mx-auto">
-            Stay informed with the latest news, features, and stories from Doylestown and beyond.
-          </p>
+    <div className="min-h-screen bg-[#F2F0EF]">
+      {/* Hero Section */}
+      <div className="relative min-h-[60vh] flex flex-col mb-24">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
+            alt="Journalism background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-cardinal-red/90 to-charcoal-gray/90" />
         </div>
+        <div className="relative flex-grow flex items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 max-w-4xl">
+              Latest Articles
+            </h1>
+            <p className="text-xl text-white/90 max-w-2xl mb-8">
+              Stay informed with the latest news, features, and stories from Doylestown and beyond.
+            </p>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg 
+            viewBox="0 0 1440 120" 
+            className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
+            preserveAspectRatio="none"
+          >
+            <path 
+              fill="currentColor"
+              d="M0,120 C240,100 480,20 720,40 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
+            />
+          </svg>
+        </div>
+      </div>
 
         <div className="mb-8 flex flex-col sm:flex-row gap-4">
           <input
