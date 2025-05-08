@@ -1,0 +1,95 @@
+Implement a hero section on the `/articles` page that **matches the visual style and layout** of the `/advertise` page hero.
+
+---
+
+### ✅ Key requirements
+
+1. **Layout and structure**
+
+   * Full-width hero section with **background image**.
+   * A **blurred overlay** effect (blur-\[1px], scale-105).
+   * A **gradient overlay**:
+
+     ```
+     from-[#FF6B6B]/80 to-charcoal-gray/50
+     ```
+   * Content positioned inside a **max-w-7xl container** with:
+
+     * Headline (`Latest Articles`) → same size as Advertise page.
+     * Subheadline → e.g., “Stay informed with the latest news, features, and stories from Doylestown and beyond.”
+     * Two buttons:
+
+       * **Get Started** → links to `/`
+       * **Subscribe** → links to `/subscribe`
+
+---
+
+### ✅ Implementation details
+
+1. Copy the hero wrapper from **AdvertisePage.tsx**:
+
+   ```jsx
+   <div className="relative h-[55vh]">
+     <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
+       <img
+         src="URL_TO_ARTICLES_BACKGROUND_IMAGE"
+         alt="Articles background"
+         className="w-full h-[105%] object-cover blur-[1px] scale-105"
+       />
+       <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
+     </div>
+     <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
+       <div>
+         <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
+           Latest Articles
+         </h1>
+         <p className="hero-subtitle">
+           Stay informed with the latest news, features, and stories from Doylestown and beyond.
+         </p>
+         <div className="flex flex-wrap gap-4">
+           <a
+             href="/"
+             className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors inline-flex items-center gap-2"
+           >
+             Get Started
+           </a>
+           <a
+             href="/subscribe"
+             className="hidden md:inline-flex bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors items-center gap-2"
+           >
+             Subscribe
+           </a>
+         </div>
+       </div>
+     </div>
+   </div>
+   ```
+
+2. **Update the image**
+
+   * Replace the `src` URL with a background image that fits the Articles theme.
+
+3. **Match classes**
+
+   * Use Tailwind classes like `bg-off-white`, `font-playfair`, `text-off-white` to match font, color, and padding from Advertise page.
+
+4. **Ensure responsiveness**
+
+   * Test on mobile, tablet, and desktop to confirm it looks great on all screen sizes.
+
+---
+
+### ✅ Bonus (optional)
+
+* Add a **breadcrumb** (`Home / Articles`) above the hero title.
+* Use **`ChevronRight`** icon on buttons, just like on Advertise.
+* Dynamically load the background image from a featured article.
+
+---
+
+### ✅ Final check
+
+✔ Headline and subheadline match the Advertise hero.
+✔ Buttons match color, size, and hover state.
+✔ Gradient + blur overlay applied to image.
+✔ Layout is fully responsive.
