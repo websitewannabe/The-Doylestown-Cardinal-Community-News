@@ -94,29 +94,52 @@ const ArticlesPage = () => {
           </p>
         </div>
 
-        <div className="mb-8 flex flex-col sm:flex-row gap-4">
-          <input
-            type="text"
-            placeholder="Search articles..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 p-2 border border-gray-300 rounded"
-          />
-          <select
-            value={selectedCategory || ''}
-            onChange={(e) => setSelectedCategory(e.target.value || null)}
-            className="p-2 border border-gray-300 rounded"
-          >
-            <option value="">All Categories</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </div>
+        <div className="flex flex-col lg:flex-row gap-8 mb-12">
+          {/* Categories Sidebar */}
+          <div className="lg:w-64 shrink-0">
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <h2 className="font-playfair text-xl font-bold text-charcoal-gray mb-4">Categories</h2>
+              <div className="space-y-2">
+                <button
+                  onClick={() => setSelectedCategory(null)}
+                  className={`w-full text-left px-4 py-2 rounded-lg ${
+                    !selectedCategory ? "bg-cardinal-red text-white" : "hover:bg-gray-100"
+                  }`}
+                >
+                  All Categories
+                  <span className="float-right">{articles.length}</span>
+                </button>
+                {categories.sort().map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`w-full text-left px-4 py-2 rounded-lg ${
+                      selectedCategory === category ? "bg-cardinal-red text-white" : "hover:bg-gray-100"
+                    }`}
+                  >
+                    {category}
+                    <span className="float-right">
+                      {articles.filter(a => a.category === category).length}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {/* Main Content */}
+          <div className="flex-1">
+            <div className="mb-8">
+              <input
+                type="text"
+                placeholder="Search articles..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {filteredArticles.slice(0, displayCount).map((article) => (
             <Link
               key={article.id}
@@ -147,7 +170,7 @@ const ArticlesPage = () => {
           ))}
         </div>
 
-        {filteredArticles.length > displayCount && (
+            {filteredArticles.length > displayCount && (
           <div className="text-center">
             <button
               onClick={() => setDisplayCount(prev => prev + 9)}
@@ -157,7 +180,8 @@ const ArticlesPage = () => {
               <ChevronRight size={16} className="ml-2" />
             </button>
           </div>
-        )}
+          </div>
+        </div>
       </div>
     </div>
   );
