@@ -106,16 +106,30 @@ const ArticlesPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F0EF] pt-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="font-playfair text-5xl font-bold text-charcoal-gray mb-6">
+    <div className="min-h-screen bg-[#F2F0EF]">
+      {/* Hero Section */}
+      <section className="relative h-[400px] flex items-center justify-center text-white bg-charcoal-gray">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-20" 
+          style={{ backgroundImage: 'url("/images/paper-overlay4.jpg")' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex items-center justify-center gap-2 text-sm mb-4">
+            <Link to="/" className="hover:text-cardinal-red transition-colors">Home</Link>
+            <span>/</span>
+            <span>Articles</span>
+          </div>
+          <h1 className="font-playfair text-5xl md:text-6xl font-bold mb-6">
             Latest Articles
           </h1>
-          <p className="text-xl text-charcoal-gray/80 max-w-3xl mx-auto">
+          <p className="text-xl max-w-3xl mx-auto">
             Stay informed with the latest news, features, and stories from Doylestown and beyond.
           </p>
         </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
         <div className="flex flex-col lg:flex-row gap-8 mb-12">
           {/* Categories Sidebar */}
