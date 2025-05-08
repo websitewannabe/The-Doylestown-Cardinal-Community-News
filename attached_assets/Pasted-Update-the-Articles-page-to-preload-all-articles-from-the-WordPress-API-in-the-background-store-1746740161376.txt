@@ -1,0 +1,109 @@
+Update the Articles page to **preload all articles from the WordPress API in the background**, store them in state, and display only a limited number at first (e.g., 10–20). The category filter and search should work across the **entire dataset**, not just the visible articles.
+
+---
+
+### ✅ Requirements
+
+1. **Fetch all articles upfront**
+
+   * Use your existing `fetchAllPosts()` function to loop through all pages and pull all posts:
+
+     ```
+     /wp-json/wp/v2/posts?_embed=true&per_page=100&page=1,2,3...
+     ```
+   * Store the **full dataset** in state:
+
+     ```js
+     const [allArticles, setAllArticles] = useState([]);
+     ```
+
+---
+
+2. **Display only a limited set initially**
+
+   * Add another state:
+
+     ```js
+     const [visibleCount, setVisibleCount] = useState(10);
+     ```
+   * In the render:
+
+     ```js
+     const visibleArticles = filteredArticles.slice(0, visibleCount);
+     ```
+
+---
+
+3. **Keep filters and search running on the full dataset**
+
+   * When filtering and searching, **run them on \*\*\*\*`allArticles`**, not just the visible ones:
+
+     ```js
+     const filteredArticles = allArticles.filter(article => {
+       const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) || article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+       const matchesCategory = !selectedCategory || article.category === selectedCategory;
+       return matchesSearch && matchesCategory;
+     });
+     ```
+
+---
+
+4. **Implement the “Load More” button**
+
+   * Increase the visible count when clicked:
+
+     ```js
+     <button onClick={() => setVisibleCount(prev => prev + 10)}>
+       Load More Articles
+     </button>
+     ```
+
+---
+
+5. **Show loading indicator**
+
+   * While loading all articles, display a spinner or “Loading articles…” message.
+   * Example:
+
+     ```js
+     if (isLoading) return <div>Loading articles...</div>;
+     ```
+
+---
+
+### ✅ Bonus improvements
+
+* Use a `useMemo()` hook to memoize `filteredArticles` for performance.
+* Add a **“Back to Top”** button when the list grows long.
+* Log the total articles and visible count to the console for debugging.
+
+---
+
+### ✅ Example React code block
+
+```js
+useEffect(() => {
+  fetchAllPosts().then(data => {
+    setAllArticles(data);
+    setIsLoading(false);
+  });
+}, []);
+
+const filteredArticles = allArticles.filter(article => {
+  const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase());
+  const matchesCategory = !selectedCategory || article.category === selectedCategory;
+  return matchesSearch && matchesCategory;
+});
+
+const visibleArticles = filteredArticles.slice(0, visibleCount);
+```
+
+---
+
+### ✅ Final checklist
+
+✔ All articles are preloaded in the background.
+✔ Filters and search work on the full dataset.
+✔ Only a limited batch (10–20) is shown at first.
+✔ “Load More” button appends more articles to the list.
+✔ Loading states are handled smoothly.
