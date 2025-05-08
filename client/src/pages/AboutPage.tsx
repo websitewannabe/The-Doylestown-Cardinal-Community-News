@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNewsletterContext } from "../context/NewsletterContext";
+import { Carousel, CarouselContent, CarouselItem } from "../components/ui/carousel";
 import {
   Mail,
   Phone,
