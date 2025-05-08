@@ -40,7 +40,7 @@ const teamMembers = [
   {
     name: 'Dakoda',
     role: 'Social Media Manager',
-    bio: 'Dakoda is a local writer passionate about covering events and interviews. As Social Media Manager since January 2024, she has revamped The Cardinal's platforms. An animal lover, reader, and traveler, she also writes on Substack as "scattered journal entries."',
+    bio: "Dakoda is a local writer passionate about covering events and interviews. As Social Media Manager since January 2024, she has revamped The Cardinal's platforms. An animal lover, reader, and traveler, she also writes on Substack as 'scattered journal entries.'",
     image: '/images/Staff/Dakoda.jpeg'
   },
   {
