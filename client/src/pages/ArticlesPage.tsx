@@ -106,17 +106,51 @@ const ArticlesPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F0EF] pt-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="font-playfair text-5xl font-bold text-charcoal-gray mb-6">
-            Latest Articles
-          </h1>
-          <p className="text-xl text-charcoal-gray/80 max-w-3xl mx-auto">
-            Stay informed with the latest news, features, and stories from Doylestown and beyond.
-          </p>
+    <div className="min-h-screen bg-[#F2F0EF]">
+      {/* Hero Section */}
+      <div className="relative h-[55vh]">
+        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
+          <img
+            src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
+            alt="Articles background"
+            className="w-full h-[105%] object-cover blur-[1px] scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
         </div>
+        <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
+          <div>
+            <div className="flex items-center gap-2 text-sm text-off-white/90 mb-4">
+              <Link to="/" className="hover:text-forest-green transition-colors">Home</Link>
+              <span>/</span>
+              <span>Articles</span>
+            </div>
+            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
+              Latest Articles
+            </h1>
+            <p className="text-xl text-off-white/90 max-w-2xl mb-8">
+              Stay informed with the latest news, features, and stories from Doylestown and beyond.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                to="/"
+                className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors inline-flex items-center gap-2"
+              >
+                Get Started
+                <ChevronRight size={20} />
+              </Link>
+              <Link
+                to="/subscribe"
+                className="hidden md:inline-flex bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors items-center gap-2"
+              >
+                Subscribe
+                <ChevronRight size={20} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex flex-col lg:flex-row gap-8 mb-12">
           {/* Categories Sidebar */}
           <div className="lg:w-64 shrink-0">
