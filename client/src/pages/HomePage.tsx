@@ -50,7 +50,69 @@ const upcomingEvents = [
   },
 ];
 
-// Existing testimonials data
+// Testimonials data
+const testimonials = [
+  {
+    id: 1,
+    quote: "Your paper is AWESOME. I look forward to reading about it every month. The personal stories about individuals and their businesses or just nice engaged people make the paper special. It illuminates a community that is often hidden from plain view. As a new transplant to Doylestown, it gives me a great perspective on the town and its community. I wish you continued success.",
+    author: "Tricia"
+  },
+  {
+    id: 2,
+    quote: "I really LOVE this publication. You'll do such a great job!",
+    author: "Brad"
+  },
+  {
+    id: 3,
+    quote: "You're doing great work and it's much appreciated. The exposure you give us is attracting a lot of people to us and it's invaluable.",
+    author: "Keith"
+  },
+  {
+    id: 4,
+    quote: "I'm an avid reader of the Doylestown Cardinal and read it cover to cover every month!",
+    author: "Jordyn"
+  },
+  {
+    id: 5,
+    quote: "We received our copies today. Excellent issue!",
+    author: "Joe"
+  },
+  {
+    id: 6,
+    quote: "Your paper is a real class act and I truly appreciate you publishing the press release as well. The issue looks great. Doylestown is very lucky to have such a great local paper.",
+    author: "Stephanie"
+  },
+  {
+    id: 7,
+    quote: "Such a nice-looking publication! A real gift to the community.",
+    author: "Scott"
+  },
+  {
+    id: 8,
+    quote: "I noticed your paper the other day and it looks great. I wish you the best of luck moving forward.",
+    author: "Jim"
+  },
+  {
+    id: 9,
+    quote: "Thank you for the amazing promotion of our nonprofit these past couple of months. It's invaluable with all of our fundraising events occurring back to back. We're so grateful for your continued support and coverage!",
+    author: "Laurie"
+  },
+  {
+    id: 10,
+    quote: "I am on the Board of Fanny Chapman and was able to make sure we advertise this year in the Cardinal. I am very much a fan of the Cardinal.",
+    author: "Rob"
+  },
+  {
+    id: 11,
+    quote: "You have a great little newspaper. Good luck going forward. I wanted you to know that I read the story about The Code Blue Initiative by Susan Peters. It was informative and I was motivated to make a $1,000 donation to co2ssh.org after I read the story. Great reporting.",
+    author: "Pat"
+  },
+  {
+    id: 12,
+    quote: "I LOVE the Doylestown Cardinal publication. I had a chance to hop online and pursue current and previous articles — what a beautifully curated publication!",
+    author: "Sarah"
+  }
+];
 const testimonials = [
   {
     id: 1,
@@ -122,6 +184,59 @@ const instagramPosts = [
     comments: 15,
     date: "5 days ago",
   },
+
+{/* Testimonials Section */}
+<section className="py-16 bg-[#F2F0EF]">
+  <div className="container mx-auto px-4">
+    <div className="max-w-3xl mx-auto text-center mb-12">
+      <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
+        Community Voices
+      </h2>
+      <p className="text-charcoal-gray/70">
+        Hear what our readers have to say about The Cardinal
+      </p>
+    </div>
+
+    <Carousel
+      opts={{
+        align: "start",
+        loop: true,
+      }}
+      className="w-full max-w-5xl mx-auto"
+    >
+      <CarouselContent>
+        {testimonials.map((testimonial) => (
+          <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3">
+            <div className="h-full p-6">
+              <div className="bg-white rounded-lg shadow-sm p-6 h-full flex flex-col">
+                <Quote className="w-8 h-8 text-cardinal-red mb-4" />
+                <p className="text-charcoal-gray/80 flex-grow mb-4 text-sm">
+                  {testimonial.quote}
+                </p>
+                <p className="font-medium text-charcoal-gray">— {testimonial.author}</p>
+              </div>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <div className="flex justify-center gap-2 mt-8">
+        <CarouselPrevious />
+        <CarouselNext />
+      </div>
+    </Carousel>
+
+    <div className="text-center mt-12">
+      <Link
+        to="/contact"
+        className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
+      >
+        Share Your Story
+        <ChevronRight size={16} className="ml-1" />
+      </Link>
+    </div>
+  </div>
+</section>
+
 ];
 
 interface Article {
