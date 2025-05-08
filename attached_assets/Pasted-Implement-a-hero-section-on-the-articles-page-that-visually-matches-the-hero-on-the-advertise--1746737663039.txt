@@ -1,0 +1,82 @@
+Implement a hero section on the `/articles` page that visually matches the hero on the `/advertise` page, including headline, subtitle, background image, gradient overlay, and buttons.
+
+---
+
+### ✅ Requirements
+
+1. **Hero structure**
+
+   * Background image with a soft red gradient overlay.
+   * Headline:
+
+     ```
+     Latest Articles
+     ```
+   * Subtitle / tagline:
+
+     ```
+     Stay informed with the latest news, features, and stories from Doylestown and beyond.
+     ```
+   * Two buttons:
+
+     * **Get Started** → links to `/`
+     * **Subscribe** → links to `/subscribe`
+
+---
+
+### ✅ Steps
+
+1. Create a **section** or **div** at the top of `ArticlesPage`:
+
+```jsx
+<section
+  className="relative bg-cover bg-center h-[400px] flex items-center justify-center text-center text-white"
+  style={{ backgroundImage: 'url("/path-to-hero-image.jpg")' }}
+>
+  <div className="absolute inset-0 bg-gradient-to-r from-cardinal-red/60 to-transparent"></div>
+  <div className="relative z-10">
+    <h1 className="text-5xl font-bold mb-4">Latest Articles</h1>
+    <p className="text-lg mb-6 italic">
+      Stay informed with the latest news, features, and stories from Doylestown and beyond.
+    </p>
+    <div className="flex justify-center gap-4">
+      <a
+        href="/"
+        className="bg-forest-green text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition"
+      >
+        Get Started
+      </a>
+      <a
+        href="/subscribe"
+        className="bg-white text-cardinal-red px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition"
+      >
+        Subscribe
+      </a>
+    </div>
+  </div>
+</section>
+```
+
+---
+
+### ✅ Styling notes
+
+* Use Tailwind classes to match the rounded corners, padding, and shadows.
+* Match the **font family** and **font size** with the `/advertise` page.
+* Add a subtle **blur or dark overlay** if the image is too busy.
+
+---
+
+### ✅ Final check
+
+* Does the hero match the visual tone of the `/advertise` page?
+* Do the buttons behave consistently (hover, focus)?
+* Is the layout responsive on mobile, tablet, and desktop?
+
+---
+
+### ✨ Bonus (if desired)
+
+* Make the background image dynamic (rotate featured article images).
+* Add a breadcrumb above the headline (`Home / Articles`).
+* Include a subtle scroll-down arrow icon.
