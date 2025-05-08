@@ -1,0 +1,138 @@
+Thanks — this is now very clear! Here’s a **Replit prompt** to guide the implementation so that when a user clicks an article box on the **Articles page**, they are taken to the **Article page**, and that page shows the full WordPress API content of that article.
+
+---
+
+### 💬 Replit Prompt
+
+**Task:**
+Connect the Articles page (`ArticlesPage.tsx`) and Article page (`ArticlePage.tsx`) so that clicking an article box routes the user to a detailed article page and displays the correct content pulled from the WordPress API.
+
+---
+
+### ✅ Steps to implement
+
+1. **✅ Set up React Router**
+
+   * In your `App.tsx` or main router file, make sure you have:
+
+     ```js
+     <Route path="/articles/:slug" element={<ArticlePage />} />
+     ```
+
+---
+
+2. **✅ ArticlesPage: Link article cards to ArticlePage**
+
+   * Inside `ArticlesPage.tsx` (which already uses React Router `<Link>`), make sure each card links to the slug:
+
+     ```js
+     <Link to={`/articles/${article.slug}`}>
+       {/* article card markup */}
+     </Link>
+     ```
+
+   ✅ **Good news:** Your current ArticlesPage code already does this correctly! 🎉
+
+---
+
+3. **✅ ArticlePage: Load article from API instead of local JSON**
+
+   * Right now, `ArticlePage.tsx` loads articles from `articles.json`.
+   * Update it to **fetch the specific article from the WordPress API using the slug.**
+
+   Example:
+
+   ```js
+   import { useEffect, useState } from "react";
+   import { useParams } from "react-router-dom";
+
+   const [article, setArticle] = useState(null);
+   const [isLoading, setIsLoading] = useState(true);
+   const { slug } = useParams();
+
+   useEffect(() => {
+     fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?slug=${slug}&_embed=true`)
+       .then(response => response.json())
+       .then(data => {
+         if (data.length > 0) {
+           const post = data[0];
+           setArticle({
+             title: post.title.rendered,
+             content: post.content.rendered,
+             date: new Date(post.date).toLocaleDateString(),
+             author: post._embedded.author[0]?.name || "Unknown",
+             image: post._embedded['wp:featuredmedia']?.[0]?.source_url || "/images/article-placeholder.jpg",
+           });
+         } else {
+           setArticle(null);
+         }
+         setIsLoading(false);
+       });
+   }, [slug]);
+   ```
+
+---
+
+4. **✅ Update ArticlePage render logic**
+
+   * Replace the current JSON lookup (`articlesData.articles.find(...)`) with the fetched article from API.
+   * Show a loading state:
+
+     ```js
+     if (isLoading) return <div>Loading...</div>;
+     if (!article) return <div>Article not found</div>;
+     ```
+
+---
+
+5. **✅ Test the flow**
+
+   * Go to the Articles page.
+   * Click an article card → should navigate to `/articles/{slug}`.
+   * Confirm the Article page shows full content, author, image, and date.
+
+---
+
+### ✅ Bonus improvements (optional)
+
+* Add a “Back to Articles” link.
+* Render related articles by hitting:
+
+  ```
+  /wp-json/wp/v2/posts?per_page=3&_embed=true&exclude={currentPostId}
+  ```
+* Add error handling if the API call fails.
+
+---
+
+### ✅ Example router entry
+
+In `App.tsx`:
+
+```js
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ArticlesPage from "./ArticlesPage";
+import ArticlePage from "./ArticlePage";
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/articles/:slug" element={<ArticlePage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+---
+
+If you want, I can:
+✅ Write the **full updated ArticlePage code**,
+✅ Help you implement related articles,
+✅ Provide a Replit-ready version to paste in.
+
+Would you like me to prepare one of those next? 🚀 Let me know!
