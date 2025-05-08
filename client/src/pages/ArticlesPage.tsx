@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
@@ -21,60 +22,77 @@ const ArticlesPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [displayCount, setDisplayCount] = useState(9);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
-  const fetchAllPosts = async () => {
-    let allPosts = [];
-    let page = 1;
-    let keepFetching = true;
-
-    while (keepFetching) {
-      try {
-        const response = await fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=${page}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch articles');
-        }
-        const data = await response.json();
-
-        if (data.length === 0) {
-          keepFetching = false;
-        } else {
-          allPosts = [...allPosts, ...data];
-          page++;
-        }
-      } catch (error) {
-        console.error(`Error fetching page ${page}:`, error);
-        keepFetching = false;
+  const fetchPosts = async (pageNum: number) => {
+    try {
+      const response = await fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=10&page=${pageNum}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch articles');
       }
-    }
+      const data = await response.json();
+      
+      // Check if we've reached the end
+      const totalPages = Number(response.headers.get('X-WP-TotalPages'));
+      setHasMore(pageNum < totalPages);
 
-    return allPosts;
+      const mappedArticles = data.map((post: any) => ({
+        id: post.id,
+        slug: post.slug,
+        title: he.decode(post.title.rendered),
+        excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
+        category: post._embedded['wp:term'][0][0]?.name || 'Uncategorized',
+        author: post._embedded.author[0]?.name || 'Unknown',
+        date: new Date(post.date).toLocaleDateString(),
+        image: post._embedded['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium?.source_url || '/images/article-placeholder.jpg',
+        tags: post._embedded['wp:term'][1]?.map((tag: any) => tag.name) || [],
+      }));
+
+      return mappedArticles;
+    } catch (error) {
+      console.error('Error fetching articles:', error);
+      throw error;
+    }
   };
 
   useEffect(() => {
-    fetchAllPosts()
-      .then((allPosts) => {
-        const mappedArticles = allPosts.map((post: any) => ({
-          id: post.id,
-          slug: post.slug,
-          title: he.decode(post.title.rendered),
-          excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
-          category: post._embedded['wp:term'][0][0]?.name || 'Uncategorized',
-          author: post._embedded.author[0]?.name || 'Unknown',
-          date: new Date(post.date).toLocaleDateString(),
-          image: post._embedded['wp:featuredmedia']?.[0]?.source_url || '/images/article-placeholder.jpg',
-          tags: post._embedded['wp:term'][1]?.map((tag: any) => tag.name) || [],
-        }));
-        console.log(`Total articles loaded: ${mappedArticles.length}`);
-        setArticles(mappedArticles);
+    const initializeArticles = async () => {
+      setIsLoading(true);
+      
+      // Try to load from cache first
+      const cachedArticles = sessionStorage.getItem('articles');
+      if (cachedArticles) {
+        setArticles(JSON.parse(cachedArticles));
         setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error loading articles:', error);
-        setError('Failed to load articles. Please try again later.');
+      }
+
+      try {
+        const freshArticles = await fetchPosts(1);
+        setArticles(freshArticles);
+        sessionStorage.setItem('articles', JSON.stringify(freshArticles));
         setIsLoading(false);
-      });
+      } catch (error) {
+        if (!cachedArticles) {
+          setError('Failed to load articles. Please try again later.');
+          setIsLoading(false);
+        }
+      }
+    };
+
+    initializeArticles();
   }, []);
+
+  const loadMore = async () => {
+    const nextPage = page + 1;
+    try {
+      const newArticles = await fetchPosts(nextPage);
+      setArticles(prev => [...prev, ...newArticles]);
+      setPage(nextPage);
+    } catch (error) {
+      console.error('Error loading more articles:', error);
+    }
+  };
 
   const categories = [...new Set(articles.map((article) => article.category))];
 
@@ -89,17 +107,22 @@ const ArticlesPage = () => {
     return (
       <div className="min-h-screen bg-[#F2F0EF] pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">Loading articles...</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-[#F2F0EF] pt-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-red-600">{error}</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="bg-white rounded-lg overflow-hidden animate-pulse">
+                <div className="h-48 bg-gray-200"/>
+                <div className="p-6">
+                  <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"/>
+                  <div className="h-6 bg-gray-200 rounded mb-2"/>
+                  <div className="h-4 bg-gray-200 rounded mb-4"/>
+                  <div className="flex justify-between">
+                    <div className="h-3 bg-gray-200 rounded w-1/4"/>
+                    <div className="h-3 bg-gray-200 rounded w-1/4"/>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -107,7 +130,7 @@ const ArticlesPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
-      {/* Hero Section */}
+      {/* Hero Section - keeping existing hero code */}
       <div className="relative h-[55vh]">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img
@@ -197,40 +220,40 @@ const ArticlesPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {filteredArticles.slice(0, displayCount).map((article) => (
-            <Link
-              key={article.id}
-              to={`/articles/${article.slug}`}
-              className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
-            >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6">
-                <div className="text-cardinal-red mb-2">{article.category}</div>
-                <h2 className="font-playfair text-xl font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-2">
-                  {article.title}
-                </h2>
-                <p className="text-charcoal-gray/80 mb-4 line-clamp-3">
-                  {article.excerpt}
-                </p>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-charcoal-gray/60">{article.author}</span>
-                  <span className="text-charcoal-gray/60">{article.date}</span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+              {filteredArticles.map((article) => (
+                <Link
+                  key={article.id}
+                  to={`/articles/${article.slug}`}
+                  className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="text-cardinal-red mb-2">{article.category}</div>
+                    <h2 className="font-playfair text-xl font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-2">
+                      {article.title}
+                    </h2>
+                    <p className="text-charcoal-gray/80 mb-4 line-clamp-3">
+                      {article.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-charcoal-gray/60">{article.author}</span>
+                      <span className="text-charcoal-gray/60">{article.date}</span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
 
-            {filteredArticles.length > displayCount && (
-              <div className="text-center">
+            {hasMore && !searchTerm && !selectedCategory && (
+              <div className="text-center mt-8">
                 <button
-                  onClick={() => setDisplayCount(prev => prev + 9)}
+                  onClick={loadMore}
                   className="inline-flex items-center px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-forest-green transition-colors"
                 >
                   Load More Articles
