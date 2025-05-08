@@ -1,0 +1,94 @@
+**Task: Integrate WordPress REST API into the ArticlesPage**
+
+---
+
+✅ **Goal:**
+Replace the current `fetch("/articles.json")` call with a fetch to the WordPress REST API:
+
+```
+https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100
+```
+
+---
+
+✅ **Requirements:**
+
+1. **Update ********`useEffect()`******** in ArticlesPage**
+
+   * Use the WordPress API URL.
+   * Parse the API response and map it to the existing `Article` type:
+
+     * `id`: `post.id`
+     * `slug`: `post.slug`
+     * `title`: `post.title.rendered` (strip HTML if needed)
+     * `excerpt`: `post.excerpt.rendered` (strip HTML if needed)
+     * `category`: extract from `post._embedded['wp:term'][0][0].name`
+     * `author`: extract from `post._embedded['author'][0].name`
+     * `date`: format `post.date` (e.g., with `new Date(post.date).toLocaleDateString()`)
+     * `image`: extract from `post._embedded['wp:featuredmedia'][0].source_url` or fallback
+     * `tags`: extract from `post._embedded['wp:term'][1].map(tag => tag.name)` or fallback `[]`
+
+---
+
+✅ **Steps for the developer:**
+
+1. Install any helper libraries if needed (e.g., `he` to decode HTML entities).
+
+2. Replace the `fetch` in the `useEffect()` with:
+
+   ```js
+   fetch('https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100')
+   ```
+
+3. Map the response to the `Article` interface.
+
+4. Handle loading, error, and fallback states.
+
+5. Replace `article.mainImage` with `article.image` in the JSX.
+
+6. Test the search, filter, and category features — they should work because the data structure stays compatible.
+
+---
+
+✅ **Example code snippet for useEffect:**
+
+```js
+useEffect(() => {
+  fetch('https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch articles');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const mappedArticles = data.map((post) => ({
+        id: post.id,
+        slug: post.slug,
+        title: post.title.rendered,
+        excerpt: post.excerpt.rendered,
+        category: post._embedded['wp:term'][0][0]?.name || 'Uncategorized',
+        author: post._embedded['author'][0]?.name || 'Unknown',
+        date: new Date(post.date).toLocaleDateString(),
+        image: post._embedded['wp:featuredmedia']?.[0]?.source_url || '',
+        tags: post._embedded['wp:term'][1]?.map((tag) => tag.name) || [],
+      }));
+      setArticles(mappedArticles);
+      setIsLoading(false);
+    })
+    .catch((error) => {
+      console.error('Error loading articles:', error);
+      setError('Failed to load articles. Please try again later.');
+      setIsLoading(false);
+    });
+}, []);
+```
+
+---
+
+✅ **Final check:**
+
+* Confirm featured images show up.
+* Check category filters.
+* Test the search bar.
+* Verify “Load More Articles” button works.
