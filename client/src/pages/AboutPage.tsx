@@ -285,8 +285,8 @@ const AboutPage = () => {
           {/* Desktop View */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member) => (
-              <div key={member.name} className="group bg-[#F2F0EF] rounded-lg p-6 hover:shadow-lg transition-shadow h-full flex flex-col">
-                <div className="flex flex-col items-center text-center flex-grow">
+              <div key={member.name} className="group bg-[#F2F0EF] rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div className="flex flex-col items-center text-center">
                   <div className="relative w-48 h-48 mb-6">
                     <img
                       src={member.image}
@@ -300,18 +300,9 @@ const AboutPage = () => {
                   <p className="text-cardinal-red font-medium mb-4">
                     {member.role}
                   </p>
-                  <p className="text-charcoal-gray/80 leading-relaxed line-clamp-4 mb-4">
+                  <p className="text-charcoal-gray/80 leading-relaxed">
                     {member.bio}
                   </p>
-                </div>
-                <div className="mt-auto pt-4 border-t border-charcoal-gray/10">
-                  <Link
-                    to={`/articles?author=${encodeURIComponent(member.name)}`}
-                    className="inline-flex items-center justify-center w-full px-4 py-2 bg-cardinal-red text-white rounded-lg hover:bg-forest-green transition-colors"
-                  >
-                    Popular Articles
-                    <ChevronRight size={16} className="ml-2" />
-                  </Link>
                 </div>
               </div>
             ))}
