@@ -1,0 +1,90 @@
+Enable navigation from the `/articles` page to the `/articles/:slug` page, so when a user clicks on any article card, they are routed to the corresponding detailed Article page showing the full content.
+
+---
+
+### ✅ Requirements
+
+1. **Set up React Router in your app**
+
+   * Make sure you have this route in your `App.tsx` or `App.jsx`:
+
+     ```js
+     <Route path="/articles/:slug" element={<ArticlePage />} />
+     ```
+   * Confirm that the **ArticlesPage** is already routing to `/articles`.
+
+---
+
+2. **Wrap article boxes in ****`<Link>`**** components**
+
+   * In `ArticlesPage`, update each article card (grid or featured) like:
+
+     ```js
+     <Link to={`/articles/${article.slug}`}>
+       <div className="article-card">
+         {/* Article content */}
+       </div>
+     </Link>
+     ```
+   * Use the `slug` property from each article to form the URL.
+
+---
+
+3. **Load article data dynamically**
+
+   * The `ArticlePage` you provided already:
+     ✅ Grabs the `slug` from `useParams()`
+     ✅ Finds the matching article in `articlesData`
+     ✅ Renders the article content or shows a 404 if not found
+
+---
+
+4. **Pass the correct slug**
+
+   * Ensure that each article card in `ArticlesPage` has access to the `slug`:
+
+     ```js
+     <Link to={`/articles/${article.slug}`} key={article.id}>
+       {/* Card content */}
+     </Link>
+     ```
+
+---
+
+5. **Test the flow**
+
+   * Go to `/articles`.
+   * Click any article card.
+   * Verify it routes to `/articles/:slug` and displays the article.
+   * Check if the back button (`Back to Articles`) works.
+
+---
+
+### ✅ Example code snippet (inside ArticlesPage)
+
+```js
+{filteredArticles.slice(0, visibleArticles).map((article) => (
+  <Link to={`/articles/${article.slug}`} key={article.id}>
+    <article className="border border-[#333333] rounded-lg overflow-hidden group cursor-pointer hover:shadow-md transition-shadow">
+      {/* Render image, title, excerpt, etc. */}
+    </article>
+  </Link>
+))}
+```
+
+---
+
+### ✅ Final check
+
+✔ React Router routes are set up.
+✔ Clicking an article card navigates to `/articles/:slug`.
+✔ Article page loads correct content based on slug.
+✔ Related articles and back links work.
+
+---
+
+### ✨ Bonus (optional)
+
+* Animate page transitions.
+* Scroll to top when navigating.
+* Add a fallback or skeleton loader on the Article page.
