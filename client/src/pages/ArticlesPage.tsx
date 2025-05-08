@@ -171,15 +171,16 @@ const ArticlesPage = () => {
         </div>
 
             {filteredArticles.length > displayCount && (
-          <div className="text-center">
-            <button
-              onClick={() => setDisplayCount(prev => prev + 9)}
-              className="inline-flex items-center px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-forest-green transition-colors"
-            >
-              Load More Articles
-              <ChevronRight size={16} className="ml-2" />
-            </button>
-          </div>
+              <div className="text-center">
+                <button
+                  onClick={() => setDisplayCount(prev => prev + 9)}
+                  className="inline-flex items-center px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-forest-green transition-colors"
+                >
+                  Load More Articles
+                  <ChevronRight size={16} className="ml-2" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
