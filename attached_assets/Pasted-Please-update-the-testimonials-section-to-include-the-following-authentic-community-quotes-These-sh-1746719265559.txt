@@ -1,0 +1,37 @@
+Please update the testimonials section to include the following authentic community quotes. These should be formatted in a visually engaging layout (such as a carousel or grid) and include the names provided, styled as community endorsements.”
+
+---
+
+**Testimonials to Include:**
+
+* *“Your paper is AWESOME. I look forward to reading about it every month. The personal stories about individuals and their businesses or just nice engaged people make the paper special. It illuminates a community that is often hidden from plain view. As a new transplant to Doylestown, it gives me a great perspective on the town and its community. I wish you continued success. All the best, Tricia”*
+
+* *“I really LOVE this publication. You’ll do such a great job!” — Brad*
+
+* *“You’re doing great work and it’s much appreciated. The exposure you give us is attracting a lot of people to us and it’s invaluable.” — Keith*
+
+* *“I’m an avid reader of the Doylestown Cardinal and read it cover to cover every month!” — Jordyn*
+
+* *“We received our copies today. Excellent issue!” — Joe*
+
+* *“Your paper is a real class act and I truly appreciate you publishing the press release as well. The issue looks great. Doylestown is very lucky to have such a great local paper.” — Stephanie*
+
+* *“Such a nice-looking publication! A real gift to the community.” — Scott*
+
+* *“I noticed your paper the other day and it looks great. I wish you the best of luck moving forward.” — Jim*
+
+* *“Thank you for the amazing promotion of our nonprofit these past couple of months. It’s invaluable with all of our fundraising events occurring back to back. We’re so grateful for your continued support and coverage!” — Laurie*
+
+* *“I am on the Board of Fanny Chapman and was able to make sure we advertise this year in the Cardinal. I am very much a fan of the Cardinal.” — Rob*
+
+* *“You have a great little newspaper. Good luck going forward. I wanted you to know that I read the story about The Code Blue Initiative by Susan Peters. It was informative and I was motivated to make a \$1,000 donation to co2ssh.org after I read the story. Great reporting.” — Pat*
+
+* *“I LOVE the Doylestown Cardinal publication. I had a chance to hop online and pursue current and previous articles — what a beautifully curated publication!” — Sarah*
+
+---
+
+**Notes for Implementation:**
+
+✅ Highlight authenticity and diversity of voices.
+✅ Ensure readability on both desktop and mobile.
+✅ Consider adding a call-to-action like “Share Your Story” below the testimonials.
