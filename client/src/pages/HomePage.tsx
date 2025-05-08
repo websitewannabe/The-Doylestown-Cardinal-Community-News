@@ -191,7 +191,7 @@ const HomePage = () => {
   const { forceShowPopup } = useNewsletterContext();
 
   useEffect(() => {
-    fetch("/articles.json")
+    fetch("https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=4")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch articles");
@@ -199,7 +199,15 @@ const HomePage = () => {
         return response.json();
       })
       .then((data) => {
-        setArticles(data.articles);
+        const mappedArticles = data.map((post: any) => ({
+          id: post.id,
+          slug: post.slug,
+          title: post.title.rendered,
+          excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""),
+          mainImage: post._embedded['wp:featuredmedia']?.[0]?.source_url || "/images/article-placeholder.jpg",
+          category: post._embedded['wp:term']?.[0]?.[0]?.name || "Uncategorized",
+        }));
+        setArticles(mappedArticles);
         setIsLoading(false);
       })
       .catch((error) => {
