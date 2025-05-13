@@ -21,6 +21,24 @@ import {
 // Team members data
 const teamMembers = [
   {
+    name: "Natalya Bucuy",
+    role: "Managing Editor",
+    bio: "Natalya Bucuy is a journalist, fiction and non-fiction writer, and the managing editor of the Cardinal. She believes that if a story doesn't come to you, you just have to go find it and live it. That's pretty much why she usually ends up in some kind of shenanigans. You can often find her roaming the streets of her beloved Doylestown in search of writing material, adventure, or both.",
+    image: "/images/natalya-Bucuy.jpg"
+  },
+  {
+    name: "Leia Riggins",
+    role: "Writer",
+    bio: "Leia Riggins is a school counselor, therapist, and wellness advocate based in Doylestown, PA. With a deep passion for supporting personal growth, she combines her expertise in mental health with holistic practices to help individuals navigate life's transitions with clarity and confidence.",
+    image: "/images/leiaRiggins.jpg"
+  },
+  {
+    name: "Annika Verma",
+    role: "Writer",
+    bio: "Annika Verma is a sophomore at Bucks County Community College who started with The Cardinal in August 2023. She writes the monthly Artist Spotlight column, where she platforms the person behind, or perhaps even before, the art. In her free time, she enjoys long walks on the beach (aka Doylestown in the finger-freezing cold), hoping she hasn't developed caffeine dependency, and being a can-dropping upstairs neighbor.",
+    image: "/images/annikaVerma.jpg"
+  },
+  {
     name: 'Jay Pelc',
     role: 'Sales',
     bio: 'Jay Pelc, a Brooklyn native, moved to Jim Thorpe in 2019. For the past 32 years, he has had great success in selling mostly print advertising in both small and large markets. He now serves in that capacity for both The Jim Thorpe Current and The Doylestown Cardinal.',
