@@ -78,7 +78,11 @@ const monthOptions = [
     const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = !selectedCategory || article.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+
+    const articleMonth = `${new Date(article.date).getFullYear()}-${String(new Date(article.date).getMonth() + 1).padStart(2, '0')}`;
+    const matchesMonth = !selectedMonth || articleMonth === selectedMonth;
+
+    return matchesSearch && matchesCategory && matchesMonth;
   });
 
   if (isLoading) {
