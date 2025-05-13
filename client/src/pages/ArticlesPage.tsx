@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
-import he from 'he';
+import { ChevronRight, Calendar } from 'lucide-react';
 
 interface Article {
   id: number;
@@ -21,84 +20,32 @@ const ArticlesPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
-  //const [page, setPage] = useState(1); // Removed as pagination is no longer needed
-  //const [hasMore, setHasMore] = useState(true); // Removed as pagination is no longer needed
-
-  const fetchInitialPosts = async () => {
-    try {
-      const [page1, page2] = await Promise.all([
-        fetch('https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=1').then(res => res.json()),
-        fetch('https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=2').then(res => res.json())
-      ]);
-
-      const allPosts = [...page1, ...page2];
-
-      const mappedArticles = allPosts.map((post: any) => ({
-        id: post.id,
-        slug: post.slug,
-        title: he.decode(post.title.rendered),
-        excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
-        category: post._embedded['wp:term'][0][0]?.name || 'Uncategorized',
-        author: post._embedded.author[0]?.name || 'Unknown',
-        date: new Date(post.date).toLocaleDateString(),
-        image: post._embedded['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium?.source_url || '/images/article-placeholder.jpg',
-        tags: post._embedded['wp:term'][1]?.map((tag: any) => tag.name) || [],
-      }));
-
-      return mappedArticles;
-    } catch (error) {
-      console.error('Error fetching articles:', error);
-      throw error;
-    }
-  };
-
-  const loadMoreArticles = async () => {
-    try {
-      const nextPage = currentPage + 1;
-      const nextNextPage = currentPage + 2;
-      
-      const [page1, page2] = await Promise.all([
-        fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=${nextPage}`).then(res => res.json()),
-        fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=${nextNextPage}`).then(res => res.json())
-      ]);
-
-      const newPosts = [...page1, ...page2];
-      
-      if (newPosts.length === 0) {
-        setHasMore(false);
-        return;
-      }
-
-      const mappedNewArticles = newPosts.map((post: any) => ({
-        id: post.id,
-        slug: post.slug,
-        title: he.decode(post.title.rendered),
-        excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
-        category: post._embedded['wp:term'][0][0]?.name || 'Uncategorized',
-        author: post._embedded.author[0]?.name || 'Unknown',
-        date: new Date(post.date).toLocaleDateString(),
-        image: post._embedded['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium?.source_url || '/images/article-placeholder.jpg',
-        tags: post._embedded['wp:term'][1]?.map((tag: any) => tag.name) || [],
-      }));
-
-      setArticles(prev => {
-        const combined = [...prev, ...mappedNewArticles];
-        return combined.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-      });
-      setCurrentPage(nextNextPage);
-    } catch (error) {
-      console.error('Error loading more articles:', error);
-    }
-  };
-
   const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const loadArticles = async () => {
+      try {
+        const response = await fetch('/data/articles.json');
+        if (!response.ok) throw new Error("Failed to load article list");
+        const data = await response.json();
+        const sorted = data.sort((a: Article, b: Article) => 
+          new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+        setArticles(sorted);
+      } catch (err) {
+        console.error("Failed to load articles:", err);
+        setError("Failed to load articles.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadArticles();
+  }, []);
 
   useEffect(() => {
     const categoryFromURL = searchParams.get("category");
     if (categoryFromURL) {
-      // Convert URL category to display format (e.g., 'fit' to 'Fitness')
       const categoryMap: { [key: string]: string } = {
         'fit': 'Fitness',
         'style': 'Style',
@@ -115,31 +62,12 @@ const ArticlesPage = () => {
     }
   }, [searchParams]);
 
-  useEffect(() => {
-    const initializeArticles = async () => {
-      setIsLoading(true);
-      try {
-        const freshArticles = await fetchInitialPosts();
-        setArticles(freshArticles);
-        setCurrentPage(2);
-        setIsLoading(false);
-      } catch (error) {
-        setError('Failed to load articles. Please try again later.');
-        setIsLoading(false);
-      }
-    };
-
-    initializeArticles();
-  }, []);
-
-  // loadMore function removed as pagination is no longer needed
-
   const categories = [...new Set(articles.map((article) => article.category))];
 
   const filteredArticles = articles.filter((article) => {
     const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = !selectedCategory || article.category.toLowerCase() === selectedCategory.toLowerCase();
+    const matchesCategory = !selectedCategory || article.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -170,7 +98,6 @@ const ArticlesPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
-      {/* Hero Section - keeping existing hero code */}
       <div className="relative h-[55vh]">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img
@@ -215,7 +142,6 @@ const ArticlesPage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex flex-col lg:flex-row gap-8 mb-12">
-          {/* Categories Sidebar */}
           <div className="lg:w-64 shrink-0">
             <div className="bg-white rounded-lg p-4 shadow-sm">
               <h2 className="font-playfair text-xl font-bold text-charcoal-gray mb-4">Categories</h2>
@@ -247,7 +173,6 @@ const ArticlesPage = () => {
             </div>
           </div>
 
-          {/* Main Content */}
           <div className="flex-1">
             <div className="mb-8">
               <input
@@ -283,23 +208,12 @@ const ArticlesPage = () => {
                     </p>
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-charcoal-gray/60">{article.author}</span>
-                      <span className="text-charcoal-gray/60">{article.date}</span>
+                      <span className="text-charcoal-gray/60">{new Date(article.date).toLocaleDateString()}</span>
                     </div>
                   </div>
                 </Link>
               ))}
             </div>
-
-            {hasMore && !isLoading && (
-              <div className="text-center mt-8">
-                <button
-                  onClick={loadMoreArticles}
-                  className="px-8 py-3 bg-cardinal-red text-white rounded-lg font-semibold hover:bg-cardinal-red/90 transition-colors"
-                >
-                  Load More Articles
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>
