@@ -30,13 +30,13 @@ const IssuePage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Current Issue Placeholder */}
-          <div className="min-h-screen bg-[#F2F0EF] pt-32 px-4">
+          <div className="min-h-[800px] bg-[#F2F0EF] px-4">
             <div className="max-w-6xl mx-auto">
               <h1 className="text-4xl font-playfair font-bold text-charcoal-gray mb-8 text-center">
                 This Month's Edition
               </h1>
 
-              <div className="w-full aspect-[4/3] md:aspect-[16/9]">
+              <div className="w-full aspect-[3/4] md:aspect-[4/3] lg:aspect-[16/9] h-[600px] md:h-[700px] lg:h-[800px]">
                 <iframe
                   src="https://online.fliphtml5.com/onuot/wqtv/"
                   title="The Doylestown Cardinal - Flipbook"
