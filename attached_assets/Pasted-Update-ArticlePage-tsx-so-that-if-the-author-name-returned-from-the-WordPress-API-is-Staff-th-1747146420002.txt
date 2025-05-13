@@ -1,0 +1,79 @@
+Update `ArticlePage.tsx` so that if the author name returned from the WordPress API is `"Staff"`, the app will scan the article content for known writer names (from `writerDirectory`).
+If a match is found, use that name instead of `"Staff"` and link it to their profile.
+
+---
+
+### ✅ Requirements
+
+1. \*\*Import \*\***`writerDirectory`**
+
+Make sure this already exists in your file:
+
+```tsx
+import { writerDirectory } from "../data/writerDirectory";
+```
+
+---
+
+2. **Create a fallback author resolver**
+
+Right after setting `article` inside the API response block:
+
+```tsx
+const resolvedAuthor =
+  post._embedded.author[0]?.name === "Staff"
+    ? Object.keys(writerDirectory).find(name =>
+        post.content.rendered.includes(name)
+      ) || "Staff"
+    : post._embedded.author[0]?.name;
+```
+
+Update the article state:
+
+```tsx
+setArticle({
+  title: he.decode(post.title.rendered),
+  content: post.content.rendered,
+  excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, "")),
+  date: new Date(post.date).toLocaleDateString(),
+  author: resolvedAuthor,
+  image: post._embedded["wp:featuredmedia"]?.[0]?.source_url || "/images/article-placeholder.jpg",
+});
+```
+
+---
+
+3. **No changes needed to the JSX**
+
+Because your render logic already uses:
+
+```tsx
+{writerDirectory[article.author] ? (
+  <Link to={`/writer/${writerDirectory[article.author]}`}>
+    {article.author}
+  </Link>
+) : (
+  <span>{article.author}</span>
+)}
+```
+
+This will now dynamically convert `"Staff"` → `"Jill Sonlin"` (or whoever matches the article content), and link it when applicable.
+
+---
+
+### ✅ Bonus Option
+
+If you want to make it even more robust, add `.toLowerCase()` for both sides to avoid case mismatches:
+
+```tsx
+Object.keys(writerDirectory).find(name =>
+  post.content.rendered.toLowerCase().includes(name.toLowerCase())
+)
+```
+
+---
+
+### ✅ Final Outcome
+
+* If WordPress shows `"Staff"` but the body says “By Jill Sonlin” → it replaces `"Staff"` with `"Jill Sonlin"` and links it.
+* If no match is found → it just displays `"Staff"` as a fallback
