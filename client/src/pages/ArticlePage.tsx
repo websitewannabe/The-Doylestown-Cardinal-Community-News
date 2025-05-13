@@ -58,6 +58,33 @@ const ArticlePage = () => {
     fetchArticle();
   }, [slug]);
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#F2F0EF] pt-32">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-2xl text-center">Loading article...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !article) {
+    return (
+      <div className="min-h-screen bg-[#F2F0EF] pt-32">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-xl text-red-600 text-center mb-8">{error}</div>
+          <Link
+            to="/articles"
+            className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Articles
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#F2F0EF] pt-32">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,46 +96,36 @@ const ArticlePage = () => {
           Back to Articles
         </Link>
 
-        {isLoading && (
-          <div className="text-2xl text-center">Loading article...</div>
-        )}
-
-        {error && (
-          <div className="text-xl text-red-600 text-center mb-8">{error}</div>
-        )}
-
-        {!isLoading && !error && article && (
-          <article className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img
-              src={article.image}
-              alt={article.title}
-              className="w-full h-96 object-cover"
-            />
-            <div className="p-8">
-              <h1 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
-                {article.title}
-              </h1>
-              <div className="flex items-center text-charcoal-gray/60 mb-8">
-                {writerDirectory[article.author] ? (
-                  <Link
-                    to={`/writer/${writerDirectory[article.author]}`}
-                    className="text-cardinal-red hover:text-forest-green font-semibold"
-                  >
-                    {article.author}
-                  </Link>
-                ) : (
-                  <span>{article.author}</span>
-                )}
-                <span className="mx-2">•</span>
-                <span>{article.date}</span>
-              </div>
-              <div 
-                className="prose prose-lg max-w-none prose-headings:font-playfair prose-headings:text-charcoal-gray prose-p:text-charcoal-gray/80"
-                dangerouslySetInnerHTML={{ __html: article.content }}
-              />
+        <article className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img
+            src={article.image}
+            alt={article.title}
+            className="w-full h-96 object-cover"
+          />
+          <div className="p-8">
+            <h1 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
+              {article.title}
+            </h1>
+            <div className="flex items-center text-charcoal-gray/60 mb-8">
+              {writerDirectory[article.author] ? (
+                <Link
+                  to={`/writer/${writerDirectory[article.author]}`}
+                  className="text-cardinal-red hover:text-forest-green font-semibold"
+                >
+                  {article.author}
+                </Link>
+              ) : (
+                <span>{article.author}</span>
+              )}
+              <span className="mx-2">•</span>
+              <span>{article.date}</span>
             </div>
-          </article>
-        )}
+            <div 
+              className="prose prose-lg max-w-none prose-headings:font-playfair prose-headings:text-charcoal-gray prose-p:text-charcoal-gray/80"
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
+          </div>
+        </article>
       </div>
     </div>
   );
