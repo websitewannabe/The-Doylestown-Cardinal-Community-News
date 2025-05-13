@@ -27,12 +27,25 @@ const ArticlePage = () => {
         }
         const data = await response.json();
 
+        let resolvedAuthor = data.author;
+
+        // If author is "Staff", scan content for known names
+        if (resolvedAuthor === "Staff") {
+          const lowerContent = data.content.toLowerCase();
+          const match = Object.keys(writerDirectory).find(name =>
+            lowerContent.includes(name.toLowerCase())
+          );
+          if (match) {
+            resolvedAuthor = match;
+          }
+        }
+
         setArticle({
           title: data.title,
           content: data.content,
           excerpt: data.excerpt,
           date: new Date(data.date).toLocaleDateString(),
-          author: data.author,
+          author: resolvedAuthor,
           image: data.thumbnail || '/images/article-placeholder.jpg',
         });
       } catch (err) {
