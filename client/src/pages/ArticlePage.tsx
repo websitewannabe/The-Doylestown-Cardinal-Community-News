@@ -30,12 +30,19 @@ const ArticlePage = () => {
 
         if (data.length > 0) {
           const post = data[0];
-          const resolvedAuthor = 
-            post._embedded.author[0]?.name === "Staff"
-              ? Object.keys(writerDirectory).find(name =>
-                  post.content.rendered.toLowerCase().includes(name.toLowerCase())
-                ) || "Staff"
-              : post._embedded.author[0]?.name;
+          let resolvedAuthor = post._embedded.author[0]?.name || "Staff";
+          
+          // If author is Staff, scan content for known writer names
+          if (resolvedAuthor === "Staff") {
+            const content = post.content.rendered.toLowerCase();
+            const foundAuthor = Object.keys(writerDirectory).find(name =>
+              content.includes(name.toLowerCase())
+            );
+            if (foundAuthor) {
+              resolvedAuthor = foundAuthor;
+            }
+          }
+          
           setArticle({
             title: he.decode(post.title.rendered),
             content: post.content.rendered,
@@ -107,7 +114,7 @@ const ArticlePage = () => {
               {article.title}
             </h1>
             <div className="flex items-center text-charcoal-gray/60 mb-8">
-              {writerDirectory[article.author] ? (
+              {article.author && writerDirectory[article.author] ? (
                 <Link
                   to={`/writer/${writerDirectory[article.author]}`}
                   className="text-cardinal-red hover:text-forest-green font-semibold"
@@ -115,7 +122,7 @@ const ArticlePage = () => {
                   {article.author}
                 </Link>
               ) : (
-                <span>{article.author}</span>
+                <span>{article.author || "Staff"}</span>
               )}
               <span className="mx-2">•</span>
               <span>{article.date}</span>
