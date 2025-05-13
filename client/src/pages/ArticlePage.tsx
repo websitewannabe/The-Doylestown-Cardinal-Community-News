@@ -101,7 +101,16 @@ const ArticlePage = () => {
               {article.title}
             </h1>
             <div className="flex items-center text-charcoal-gray/60 mb-8">
-              <span>{article.author}</span>
+              {writerDirectory[article.author] ? (
+                <Link
+                  to={`/writer/${writerDirectory[article.author]}`}
+                  className="text-cardinal-red hover:text-forest-green font-semibold"
+                >
+                  {article.author}
+                </Link>
+              ) : (
+                <span>{article.author}</span>
+              )}
               <span className="mx-2">•</span>
               <span>{article.date}</span>
             </div>
