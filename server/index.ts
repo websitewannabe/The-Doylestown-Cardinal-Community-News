@@ -1,3 +1,4 @@
+
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
@@ -6,15 +7,6 @@ import { setupAuth } from "./auth";
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-// Health check endpoints
-app.get('/', (_req: Request, res: Response) => {
-  res.status(200).send('OK');
-});
-
-app.get('/health', (_req: Request, res: Response) => {
-  res.json({ status: 'ok', time: new Date().toISOString() });
-});
 
 // Request logging middleware
 app.use((req, res, next) => {
@@ -75,7 +67,6 @@ log('Authentication setup complete');
       log('Static file serving setup complete');
     }
 
-    // Use port 5000 for production compatibility
     const PORT = 5000;
     log(`Starting server on port ${PORT}...`);
     server.listen(PORT, "0.0.0.0", () => {
@@ -83,7 +74,6 @@ log('Authentication setup complete');
     }).on('error', (err: any) => {
       if (err.code === 'EADDRINUSE') {
         log(`Port ${PORT} is already in use. Attempting to kill the process...`);
-        // Let the process manager handle the restart
         process.exit(1);
       } else {
         console.error('Server error:', err);
