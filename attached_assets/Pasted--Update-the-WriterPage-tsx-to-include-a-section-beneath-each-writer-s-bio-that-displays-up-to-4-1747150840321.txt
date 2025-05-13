@@ -1,0 +1,72 @@
+> Update the `WriterPage.tsx` to include a section beneath each writer’s bio that displays **up to 4 recent articles** they've written.
+>
+> Since the WordPress API does **not have an author field**, we'll need to:
+>
+> * Perform a **search query using the writer’s name** via the API
+> * Display the top 4 article results below the bio
+>
+> ---
+>
+> ### Requirements:
+>
+> ✅ **1. Use the WordPress search endpoint**
+> Use:
+>
+> ```ts
+> fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?search=${encodeURIComponent(writer.name)}&_embed=true&per_page=4`)
+> ```
+>
+> * Replace `writer.name` with the full name from the current profile page.
+> * Use `encodeURIComponent()` to handle names with spaces.
+>
+> ✅ **2. Store articles in component state**
+> Add a `useState()` hook to store results:
+>
+> ```tsx
+> const [articles, setArticles] = useState([]);
+> ```
+>
+> Fetch on load (inside `useEffect`):
+>
+> ```tsx
+> useEffect(() => {
+>   fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?search=${encodeURIComponent(writer.name)}&_embed=true&per_page=4`)
+>     .then(res => res.json())
+>     .then(data => setArticles(data))
+>     .catch(err => console.error("Failed to fetch articles:", err));
+> }, [writer.name]);
+> ```
+>
+> ✅ **3. Render matching articles below the bio**
+> Add a new section:
+>
+> ```tsx
+> {articles.length > 0 && (
+>   <div className="mt-10">
+>     <h2 className="text-xl font-semibold mb-4">Recent Articles by {writer.name}</h2>
+>     <ul className="grid md:grid-cols-2 gap-6">
+>       {articles.map(article => (
+>         <li key={article.id} className="border p-4 rounded-lg hover:shadow transition">
+>           <Link to={`/articles/${article.slug}`}>
+>             <h3 className="font-bold text-lg mb-2">{article.title.rendered}</h3>
+>             <p className="text-sm text-gray-600">{new Date(article.date).toLocaleDateString()}</p>
+>             <p className="mt-2 text-sm text-gray-700 line-clamp-3" dangerouslySetInnerHTML={{ __html: article.excerpt.rendered }} />
+>           </Link>
+>         </li>
+>       ))}
+>     </ul>
+>   </div>
+> )}
+> ```
+>
+> ✅ **4. Style it consistently**
+>
+> * Use the same font and spacing conventions used in the Articles grid.
+> * Truncate overly long excerpts using Tailwind `line-clamp-3`.
+>
+> ---
+>
+> ### Outcome:
+>
+> * Each writer page shows a curated list of up to 4 articles where their name appears in the content or title.
+> * Even without native author field support in WordPress, visitors still see real writing samples for each contributor.

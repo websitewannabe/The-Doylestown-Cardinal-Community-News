@@ -132,6 +132,13 @@ const WriterPage = () => {
   return (
     <div className="min-h-screen bg-[#F2F0EF] pt-32 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Link
+          to="/writers"
+          className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors mb-6"
+        >
+          <ChevronRight size={20} className="mr-1 rotate-180" />
+          Back to Writers
+        </Link>
         <div className="bg-white rounded-xl shadow-md overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 p-8">
             {/* Image Column */}
