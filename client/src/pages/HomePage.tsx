@@ -516,11 +516,13 @@ const HomePage = () => {
 
               {/* Testimonial Content */}
               <div className="max-w-3xl mx-auto">
-                <blockquote className="text-xl md:text-2xl text-charcoal-gray text-center mb-8 font-playfair">
-                  "{testimonials[currentTestimonial].quote}"
-                </blockquote>
+                <div className="h-[200px] flex items-center justify-center">
+                  <blockquote className="text-xl md:text-2xl text-charcoal-gray text-center font-playfair">
+                    "{testimonials[currentTestimonial].quote}"
+                  </blockquote>
+                </div>
 
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center mt-8">
                   <div className="text-left">
                     <div className="font-bold text-charcoal-gray">
                       {testimonials[currentTestimonial].author}
