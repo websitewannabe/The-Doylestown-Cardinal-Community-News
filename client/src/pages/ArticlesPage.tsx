@@ -171,6 +171,32 @@ const ArticlesPage = () => {
                 ))}
               </div>
             </div>
+
+            <div className="bg-white rounded-lg p-4 shadow-sm mt-6">
+              <label htmlFor="month-select" className="block text-sm font-semibold text-charcoal-gray mb-2">
+                Filter by Month
+              </label>
+              <select
+                id="month-select"
+                value={selectedMonth || ''}
+                onChange={(e) => setSelectedMonth(e.target.value || null)}
+                className="w-full border border-gray-300 rounded-lg p-2"
+              >
+                <option value="">All Dates</option>
+                {monthOptions.map((month) => {
+                  const [year, rawMonth] = month.split('-');
+                  const label = new Date(`${year}-${rawMonth}-01`).toLocaleString('default', {
+                    month: 'long',
+                    year: 'numeric',
+                  });
+                  return (
+                    <option key={month} value={month}>
+                      {label}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
           </div>
 
           <div className="flex-1">
