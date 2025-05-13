@@ -191,30 +191,35 @@ const HomePage = () => {
   const { forceShowPopup } = useNewsletterContext();
 
   useEffect(() => {
-    fetch("https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=4")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch articles");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        const mappedArticles = data.map((post: any) => ({
-          id: post.id,
-          slug: post.slug,
-          title: post.title.rendered,
-          excerpt: post.excerpt.rendered.replace(/<[^>]+>/g, ""),
-          mainImage: post._embedded['wp:featuredmedia']?.[0]?.source_url || "/images/article-placeholder.jpg",
-          category: post._embedded['wp:term']?.[0]?.[0]?.name || "Uncategorized",
-        }));
-        setArticles(mappedArticles);
+    const loadFeatured = async () => {
+      try {
+        const response = await fetch('/data/articles.json');
+        if (!response.ok) throw new Error("Failed to load featured articles");
+        const data = await response.json();
+        
+        // Get latest 4 articles
+        const featured = data
+          .sort((a: Article, b: Article) => new Date(b.date).getTime() - new Date(a.date).getTime())
+          .slice(0, 4)
+          .map(article => ({
+            id: article.id,
+            slug: article.slug,
+            title: article.title,
+            excerpt: article.excerpt?.replace(/<[^>]+>/g, "") || "",
+            mainImage: article.image || "/images/article-placeholder.jpg",
+            category: article.category || "Uncategorized"
+          }));
+
+        setArticles(featured);
         setIsLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error loading articles:", error);
         setError("Failed to load articles");
         setIsLoading(false);
-      });
+      }
+    };
+
+    loadFeatured();
   }, []);
 
   useEffect(() => {
