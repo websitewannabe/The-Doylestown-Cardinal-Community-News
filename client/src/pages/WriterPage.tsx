@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Mail, Twitter, Linkedin, ChevronRight, Instagram } from "lucide-react";
 
 // Import writers data from MeetTheWritersPage
@@ -131,20 +131,23 @@ const WriterPage = () => {
     }
   }, [writer?.name]);
 
+  const navigate = useNavigate();
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
+  useEffect(() => {
+    if (!writer) {
+      setIsRedirecting(true);
+      navigate("/writers", { replace: true });
+    }
+  }, [writer, navigate]);
+
   if (!writer) {
     return (
       <div className="min-h-screen bg-[#F2F0EF] pt-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-bold text-charcoal-gray mb-4">
-            Writer not found
-          </h1>
-          <Link
-            to="/writers"
-            className="text-cardinal-red hover:text-forest-green transition-colors flex items-center"
-          >
-            <ChevronRight size={16} className="mr-1 rotate-180" />
-            Return to Writers
-          </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="text-charcoal-gray mb-4">
+            {isRedirecting ? "Redirecting to Writers page..." : "Writer not found"}
+          </div>
         </div>
       </div>
     );
