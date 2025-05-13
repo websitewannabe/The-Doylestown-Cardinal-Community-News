@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link } from "react-router-dom";
+import { writerDirectory } from "../data/writerDirectory";
 import { ArrowLeft } from 'lucide-react';
 import he from 'he';
 
