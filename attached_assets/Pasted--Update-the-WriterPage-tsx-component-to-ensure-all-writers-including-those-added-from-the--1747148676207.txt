@@ -1,0 +1,60 @@
+> Update the `WriterPage.tsx` component to ensure **all writers**, including those added from the `/about` page (e.g., Dakoda, Servis Events, Brian, Edie Weinstein), properly populate their **bio**, **image**, **name**, and **role** on the `/writer/:id` page.
+>
+> ### Current Issue:
+>
+> When clicking on one of the new writers from `/writers`, the app routes correctly to `/writer/:id`, but the page returns **"Writer not found"** and shows no content.
+>
+> ### Goal:
+>
+> Display the writer's full bio and information just like Leia Riggins’ profile page (image, name, tags, and paragraph bio).
+>
+> ---
+>
+> ### What to check and fix:
+>
+> ✅ **1. Centralized writer data file**
+>
+> * Make sure all writers (old and new) are listed in the file used to drive `WriterPage.tsx`.
+> * This might be something like:
+>
+>   ```ts
+>   export const writers = [
+>     {
+>       id: "leia-riggins",
+>       name: "Leia Riggins",
+>       image: "/images/writers/leia.jpg",
+>       role: "Writer",
+>       tags: ["Mental Health", "Wellness", "Community Support"],
+>       bio: "...",
+>     },
+>     {
+>       id: "dakoda",
+>       name: "Dakoda",
+>       role: "Social Media Manager",
+>       image: "...",
+>       tags: ["Community Coverage", "Events"],
+>       bio: "Dakoda is a local writer passionate about covering events...",
+>     },
+>     // Add all remaining writers here
+>   ]
+>   ```
+>
+> ✅ **2. Match the writer ****`id`**** from the URL**
+>
+> * The `WriterPage.tsx` component should:
+>
+>   * Use `useParams()` to get the `:id`.
+>   * Look up the correct writer using `writers.find(w => w.id === id)`.
+>   * Render the card using the same structure as Leia Riggins.
+>
+> ✅ **3. Add fallback content**
+>
+> * If a writer is not found, show `"Writer not found"` gracefully with a link back to `/writers`.
+>
+> ---
+>
+> ### Outcome:
+>
+> * All new writers show full profiles when clicked.
+> * Each writer page matches the design and layout used for existing profiles.
+> * No missing content or “not found” errors unless the ID truly doesn’t exist.
