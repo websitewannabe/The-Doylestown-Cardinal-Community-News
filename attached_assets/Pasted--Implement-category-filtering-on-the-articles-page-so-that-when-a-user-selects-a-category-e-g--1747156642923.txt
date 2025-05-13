@@ -1,0 +1,64 @@
+> Implement category filtering on the `/articles` page so that when a user selects a category (e.g., "Restaurants", "Style", "Business") from the **Articles Dropdown menu**, the page updates to display only articles that include that **category tag**.
+>
+> ---
+>
+> ### Requirements:
+>
+> ✅ **1. Update dropdown menu to trigger a filter**
+>
+> * When an item in the dropdown is clicked, it should:
+>
+>   * Update a `selectedCategory` state.
+>   * Optionally, update the URL query string (e.g., `?category=Fitness`).
+>
+> ```tsx
+> const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+>
+> const handleCategorySelect = (category: string) => {
+>   setSelectedCategory(category);
+> };
+> ```
+>
+> ✅ **2. Filter articles based on category tag**
+>
+> * Use the category/tag that exists on the `article.categories` or `article._embedded["wp:term"]` array (depending on how the WordPress data is structured).
+> * In the render logic:
+>
+> ```tsx
+> const filteredArticles = selectedCategory
+>   ? articles.filter(article =>
+>       article._embedded["wp:term"][0]?.some(tag =>
+>         tag.name === selectedCategory
+>       )
+>     )
+>   : articles;
+> ```
+>
+> ✅ **3. Update the displayed list**
+>
+> * Pass `filteredArticles` to the article card grid rather than the full `articles` array.
+> * Keep the Load More logic in place for pagination within that category.
+>
+> ✅ **4. (Optional)** Sync with URL
+>
+> * So that `/articles?category=Fitness` shows filtered results on direct link or refresh:
+>
+> ```tsx
+> useEffect(() => {
+>   const categoryFromURL = new URLSearchParams(window.location.search).get("category");
+>   if (categoryFromURL) setSelectedCategory(categoryFromURL);
+> }, []);
+> ```
+>
+> ✅ **5. Maintain existing layout**
+>
+> * Do not remove the hero, search bar, or sidebar filters.
+> * Display a heading that reflects the selected category if one is chosen.
+
+---
+
+### ✅ Outcome
+
+* The **Articles Dropdown menu** becomes an interactive filter.
+* Selecting "Restaurants" shows only articles with that category.
+* The rest of the page (hero, filters, search) remains fully functional.
