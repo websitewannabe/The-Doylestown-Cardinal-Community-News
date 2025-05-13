@@ -30,36 +30,22 @@ const IssuePage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Current Issue Placeholder */}
-          <div className="lg:col-span-2">
-            <div className="border border-[#333333] rounded-lg p-8">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-2">
-                    Current Edition
-                  </h2>
-                  <div className="flex items-center text-charcoal-gray/60">
-                    <Calendar size={16} className="mr-2" />
-                    March 20, 2024
-                  </div>
-                </div>
-                <a
-                  href="https://online.fliphtml5.com/onuot/wqtv/#p=1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-2 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors flex items-center gap-2"
-                >
-                  View Full Screen
-                  <ChevronRight size={16} />
-                </a>
-              </div>
+          <div className="min-h-screen bg-[#F2F0EF] pt-32 px-4">
+            <div className="max-w-6xl mx-auto">
+              <h1 className="text-4xl font-playfair font-bold text-charcoal-gray mb-8 text-center">
+                This Month's Edition
+              </h1>
 
-              {/* Current Issue Preview */}
-              <div className="aspect-[4/3] bg-[#F2F0EF] rounded-lg overflow-hidden">
-                <img
-                  src="/images/The_Cardinal_Paper.png"
-                  alt="Current Issue - The Cardinal"
-                  className="w-full h-full object-contain"
-                />
+              <div className="w-full aspect-[4/3] md:aspect-[16/9]">
+                <iframe
+                  src="https://online.fliphtml5.com/onuot/wqtv/"
+                  title="The Doylestown Cardinal - Flipbook"
+                  width="100%"
+                  height="100%"
+                  style={{ border: "none" }}
+                  allowFullScreen
+                  loading="lazy"
+                ></iframe>
               </div>
             </div>
           </div>
