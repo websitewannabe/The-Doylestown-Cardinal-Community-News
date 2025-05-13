@@ -208,9 +208,11 @@ const MeetTheWritersPage = () => {
                 </div>
 
                 <div className="p-6">
-                  <h2 className="font-playfair text-2xl font-bold text-charcoal-gray hover:text-cardinal-red transition-colors mb-1">
-                    {writer.name}
-                  </h2>
+                  <Link to={`/writer/${writer.id}`}>
+                    <h2 className="font-playfair text-2xl font-bold text-charcoal-gray hover:text-cardinal-red transition-colors mb-1 cursor-pointer">
+                      {writer.name}
+                    </h2>
+                  </Link>
                   <div className="text-cardinal-red font-medium mb-3">
                     {writer.role}
                   </div>
