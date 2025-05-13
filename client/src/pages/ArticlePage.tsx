@@ -30,12 +30,18 @@ const ArticlePage = () => {
 
         if (data.length > 0) {
           const post = data[0];
+          const resolvedAuthor = 
+            post._embedded.author[0]?.name === "Staff"
+              ? Object.keys(writerDirectory).find(name =>
+                  post.content.rendered.toLowerCase().includes(name.toLowerCase())
+                ) || "Staff"
+              : post._embedded.author[0]?.name;
           setArticle({
             title: he.decode(post.title.rendered),
             content: post.content.rendered,
             excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
             date: new Date(post.date).toLocaleDateString(),
-            author: post._embedded.author[0]?.name || 'Unknown',
+            author: resolvedAuthor,
             image: post._embedded['wp:featuredmedia']?.[0]?.source_url || '/images/article-placeholder.jpg',
           });
         } else {
