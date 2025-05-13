@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { Mail, Twitter, Linkedin, ChevronRight } from "lucide-react";
@@ -9,7 +8,8 @@ const writers = [
     id: "natalya-bucuy",
     name: "Natalya Bucuy",
     role: "Managing Editor",
-    bio: "Natalya Bucuy is a journalist, fiction and non-fiction writer, and the managing editor of the Cardinal. She believes that if a story doesn't come to you, you just have to go find it and live it. That's pretty much why she usually ends up in some kind of shenanigans. You can often find her roaming the streets of her beloved Doylestown in search of writing material, adventure, or both.",
+    bio: "Natalya Bucuy is a journalist, fiction and non-fiction writer, and the managing editor of the Cardinal. She believes that if a story doesn’t come to you, you just have to go find it and live it. That’s pretty much why she usually ends up in some kind of shenanigans. You can often find her roaming the streets of her beloved Doylestown in search of writing material, adventure, or both. Connections within the community are her driving force in journalism and in life.\n\nTo view more of her work, visit her website: nowwehaveastory.com and nowwehaveastory.substack.com",
+
     image: "/images/natalya-Bucuy.jpg",
     email: "natalya@thecardinal.com",
     twitter: "https://twitter.com/natalyabucuy",
@@ -20,7 +20,7 @@ const writers = [
     id: "leia-riggins",
     name: "Leia Riggins",
     role: "Writer",
-    bio: "Leia Riggins is a school counselor, therapist, and wellness advocate based in Doylestown, PA. With a deep passion for supporting personal growth, she combines her expertise in mental health with holistic practices to help individuals navigate life's transitions with clarity and confidence.",
+    bio: "Leia Riggins is a school counselor, therapist, and wellness advocate based in Doylestown, PA. With a deep passion for supporting personal growth, she combines her expertise in mental health with holistic practices to help individuals navigate life’s transitions with clarity and confidence. Leia specializes in integrative approaches that honor the mind-body connection, drawing from her background in counseling, movement, and mindfulness. Whether guiding children, teens or adults, she creates a safe space for healing, self-discovery, and empowerment. She also supports individuals navigating ADHD, anxiety, depression, executive functioning challenges, and neurodiverse experiences. Leia is the founder of Bolder Wellness, where she shares tools for sustainable well-being.",
     image: "/images/leiaRiggins.jpg",
     email: "leia@thecardinal.com",
     twitter: "https://twitter.com/leiariggins",
@@ -75,7 +75,7 @@ const writers = [
     id: "edie-weinstein",
     name: "Edie Weinstein",
     role: "Writer",
-    bio: "Edie Weinstein, MSW, LSW, is a psychotherapist, journalist, author, speaker, and founder of Hugmobsters Armed with Love. She began writing for The Cardinal in 2022 with her column \"The Kindness Korner.\"",
+    bio: 'Edie Weinstein, MSW, LSW, is a psychotherapist, journalist, author, speaker, and founder of Hugmobsters Armed with Love. She began writing for The Cardinal in 2022 with her column "The Kindness Korner."',
     image: "/images/Staff/Eddie-Weinstein.jpeg",
     email: "edie@thecardinal.com",
     twitter: "https://twitter.com/edieweinstein",
@@ -114,7 +114,9 @@ const WriterPage = () => {
     return (
       <div className="min-h-screen bg-[#F2F0EF] pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-bold text-charcoal-gray mb-4">Writer not found</h1>
+          <h1 className="text-2xl font-bold text-charcoal-gray mb-4">
+            Writer not found
+          </h1>
           <Link
             to="/writers"
             className="text-cardinal-red hover:text-forest-green transition-colors flex items-center"
@@ -175,7 +177,9 @@ const WriterPage = () => {
                 <h1 className="font-playfair text-4xl font-bold text-charcoal-gray mb-2">
                   {writer.name}
                 </h1>
-                <div className="text-cardinal-red font-medium mb-4">{writer.role}</div>
+                <div className="text-cardinal-red font-medium mb-4">
+                  {writer.role}
+                </div>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {writer.expertise.map((skill, index) => (
                     <span
