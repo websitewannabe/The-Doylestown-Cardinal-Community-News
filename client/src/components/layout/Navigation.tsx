@@ -104,7 +104,6 @@ const Navigation = () => {
         { name: "About Us", path: "/about" },
         { name: "Meet the Writers", path: "/writers" },
         { name: "Editorial Submissions", path: "/editorial-submissions" },
-        { name: "Past Issues", path: "https://issuu.com/doylestowncardinal", isExternal: true },
         { name: "Find The Cardinal", path: "/locations" },
         { name: "Contact Us", path: "/contact" },
       ],
