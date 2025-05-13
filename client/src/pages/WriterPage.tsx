@@ -9,7 +9,6 @@ const writers = [
     name: "Natalya Bucuy",
     role: "Managing Editor",
     bio: "Natalya Bucuy is a journalist, fiction and non-fiction writer, and the managing editor of the Cardinal. She believes that if a story doesn’t come to you, you just have to go find it and live it. That’s pretty much why she usually ends up in some kind of shenanigans. You can often find her roaming the streets of her beloved Doylestown in search of writing material, adventure, or both. Connections within the community are her driving force in journalism and in life.\n\nTo view more of her work, visit her website: nowwehaveastory.com and nowwehaveastory.substack.com",
-
     image: "/images/natalya-Bucuy.jpg",
     email: "natalya@thecardinal.com",
     twitter: "https://twitter.com/natalyabucuy",
@@ -131,51 +130,53 @@ const WriterPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F0EF] pt-32">
+    <div className="min-h-screen bg-[#F2F0EF] pt-32 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="md:flex">
-            <div className="md:w-1/3">
-              <div className="relative h-96">
+        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 p-8">
+            {/* Image Column */}
+            <div className="relative">
+              <div className="aspect-[3/4] rounded-lg overflow-hidden bg-gray-100">
                 <img
                   src={writer.image}
                   alt={writer.name}
                   className="w-full h-full object-cover object-top"
                 />
-                <div className="absolute bottom-4 left-4">
-                  <div className="flex gap-2">
+              </div>
+              <div className="absolute bottom-4 left-4">
+                <div className="flex gap-2">
+                  <a
+                    href={`mailto:${writer.email}`}
+                    className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors shadow-sm"
+                    title="Email"
+                  >
+                    <Mail size={20} />
+                  </a>
+                  {writer.instagram && (
                     <a
-                      href={`mailto:${writer.email}`}
-                      className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
-                      title="Email"
+                      href={writer.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors shadow-sm"
+                      title="Instagram"
                     >
-                      <Mail size={20} />
+                      <Instagram size={20} />
                     </a>
-
-                    {writer.instagram && (
-                      <a
-                        href={writer.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
-                        title="Instagram"
-                      >
-                        <Instagram size={20} />
-                      </a>
-                    )}
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
-            <div className="md:w-2/3 p-8">
-              <div className="mb-6">
-                <h1 className="font-playfair text-4xl font-bold text-charcoal-gray mb-2">
+
+            {/* Content Column */}
+            <div className="flex flex-col min-h-[300px]">
+              <div className="mb-8">
+                <h1 className="font-playfair text-4xl font-bold text-charcoal-gray mb-3">
                   {writer.name}
                 </h1>
-                <div className="text-cardinal-red font-medium mb-4">
+                <div className="text-cardinal-red font-medium mb-6">
                   {writer.role}
                 </div>
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-8">
                   {writer.expertise.map((skill, index) => (
                     <span
                       key={index}
@@ -186,8 +187,8 @@ const WriterPage = () => {
                   ))}
                 </div>
               </div>
-              <div className="prose max-w-none">
-                <p className="text-charcoal-gray/80 whitespace-pre-line">
+              <div className="prose max-w-none flex-grow">
+                <p className="text-charcoal-gray/80 whitespace-pre-line leading-relaxed">
                   {writer.bio}
                 </p>
               </div>
