@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import he from 'he';
 
@@ -93,6 +93,28 @@ const ArticlesPage = () => {
     }
   };
 
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const categoryFromURL = searchParams.get("category");
+    if (categoryFromURL) {
+      // Convert URL category to display format (e.g., 'fit' to 'Fitness')
+      const categoryMap: { [key: string]: string } = {
+        'fit': 'Fitness',
+        'style': 'Style',
+        'business': 'Business',
+        'technology': 'Technology',
+        'life': 'Life',
+        'art-music': 'Art/Music',
+        'stay': 'Hotels',
+        'taste': 'Restaurants',
+        'play': 'Things To Do',
+        'real-estate': 'Real Estate'
+      };
+      setSelectedCategory(categoryMap[categoryFromURL] || categoryFromURL);
+    }
+  }, [searchParams]);
+
   useEffect(() => {
     const initializeArticles = async () => {
       setIsLoading(true);
@@ -117,7 +139,7 @@ const ArticlesPage = () => {
   const filteredArticles = articles.filter((article) => {
     const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = !selectedCategory || article.category === selectedCategory;
+    const matchesCategory = !selectedCategory || article.category.toLowerCase() === selectedCategory.toLowerCase();
     return matchesSearch && matchesCategory;
   });
 
