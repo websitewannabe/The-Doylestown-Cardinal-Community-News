@@ -21,37 +21,19 @@ const ArticlesPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
   //const [page, setPage] = useState(1); // Removed as pagination is no longer needed
   //const [hasMore, setHasMore] = useState(true); // Removed as pagination is no longer needed
 
-  const fetchAllPosts = async () => {
+  const fetchInitialPosts = async () => {
     try {
-      const firstPageResponse = await fetch('https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=1');
-      if (!firstPageResponse.ok) {
-        throw new Error('Failed to fetch articles');
-      }
+      const [page1, page2] = await Promise.all([
+        fetch('https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=1').then(res => res.json()),
+        fetch('https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=2').then(res => res.json())
+      ]);
 
-      const totalPages = Number(firstPageResponse.headers.get('X-WP-TotalPages'));
-      const allPosts = [];
-
-      // Add first page results
-      const firstPageData = await firstPageResponse.json();
-      allPosts.push(...firstPageData);
-
-      // Fetch remaining pages
-      const remainingPages = Array.from({ length: totalPages - 1 }, (_, i) => i + 2);
-      const remainingPagesData = await Promise.all(
-        remainingPages.map(page =>
-          fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=${page}`)
-            .then(res => res.json())
-            .catch(err => {
-              console.error(`Error fetching page ${page}:`, err);
-              return [];
-            })
-        )
-      );
-
-      allPosts.push(...remainingPagesData.flat());
+      const allPosts = [...page1, ...page2];
 
       const mappedArticles = allPosts.map((post: any) => ({
         id: post.id,
@@ -72,13 +54,52 @@ const ArticlesPage = () => {
     }
   };
 
+  const loadMoreArticles = async () => {
+    try {
+      const nextPage = currentPage + 1;
+      const nextNextPage = currentPage + 2;
+      
+      const [page1, page2] = await Promise.all([
+        fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=${nextPage}`).then(res => res.json()),
+        fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=${nextNextPage}`).then(res => res.json())
+      ]);
+
+      const newPosts = [...page1, ...page2];
+      
+      if (newPosts.length === 0) {
+        setHasMore(false);
+        return;
+      }
+
+      const mappedNewArticles = newPosts.map((post: any) => ({
+        id: post.id,
+        slug: post.slug,
+        title: he.decode(post.title.rendered),
+        excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
+        category: post._embedded['wp:term'][0][0]?.name || 'Uncategorized',
+        author: post._embedded.author[0]?.name || 'Unknown',
+        date: new Date(post.date).toLocaleDateString(),
+        image: post._embedded['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium?.source_url || '/images/article-placeholder.jpg',
+        tags: post._embedded['wp:term'][1]?.map((tag: any) => tag.name) || [],
+      }));
+
+      setArticles(prev => {
+        const combined = [...prev, ...mappedNewArticles];
+        return combined.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      });
+      setCurrentPage(nextNextPage);
+    } catch (error) {
+      console.error('Error loading more articles:', error);
+    }
+  };
+
   useEffect(() => {
     const initializeArticles = async () => {
       setIsLoading(true);
       try {
-        const freshArticles = await fetchAllPosts();
+        const freshArticles = await fetchInitialPosts();
         setArticles(freshArticles);
-        sessionStorage.setItem('articles', JSON.stringify(freshArticles));
+        setCurrentPage(2);
         setIsLoading(false);
       } catch (error) {
         setError('Failed to load articles. Please try again later.');
@@ -247,7 +268,16 @@ const ArticlesPage = () => {
               ))}
             </div>
 
-            {/* Removed Load More section as all articles are loaded upfront */}
+            {hasMore && !isLoading && (
+              <div className="text-center mt-8">
+                <button
+                  onClick={loadMoreArticles}
+                  className="px-8 py-3 bg-cardinal-red text-white rounded-lg font-semibold hover:bg-cardinal-red/90 transition-colors"
+                >
+                  Load More Articles
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
