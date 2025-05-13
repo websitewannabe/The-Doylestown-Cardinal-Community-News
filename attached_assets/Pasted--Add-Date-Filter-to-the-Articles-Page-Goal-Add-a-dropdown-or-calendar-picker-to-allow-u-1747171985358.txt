@@ -1,0 +1,106 @@
+## Add Date Filter to the Articles Page
+
+### 🎯 Goal
+
+Add a dropdown (or calendar picker) to allow users to filter articles by **publication month/year**, while preserving:
+
+* ✅ Category filter
+* ✅ Search bar
+* ✅ Responsive article grid
+
+---
+
+### ✳️ Step 1: Add New State for Date Filtering
+
+In `ArticlesPage.tsx`, add this to your state declarations:
+
+```tsx
+const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+```
+
+---
+
+### ✳️ Step 2: Extract Month Options from Article Dates
+
+Below this line:
+
+```tsx
+const categories = [...new Set(articles.map((article) => article.category))];
+```
+
+Add this:
+
+```tsx
+const monthOptions = [
+  ...new Set(
+    articles.map(article => {
+      const date = new Date(article.date);
+      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`; // "2024-04"
+    })
+  )
+].sort((a, b) => b.localeCompare(a)); // newest first
+```
+
+---
+
+### ✳️ Step 3: Update the Filter Logic
+
+Update your `filteredArticles` filter to include month logic:
+
+```tsx
+const filteredArticles = articles.filter((article) => {
+  const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+  const matchesCategory = !selectedCategory || article.category === selectedCategory;
+  const matchesMonth = !selectedMonth || `${new Date(article.date).getFullYear()}-${String(new Date(article.date).getMonth() + 1).padStart(2, '0')}` === selectedMonth;
+
+  return matchesSearch && matchesCategory && matchesMonth;
+});
+```
+
+---
+
+### ✳️ Step 4: Add Date Filter UI to the Sidebar
+
+Right below the Categories filter, insert this JSX:
+
+```tsx
+<div className="bg-white rounded-lg p-4 shadow-sm mt-8">
+  <h2 className="font-playfair text-xl font-bold text-charcoal-gray mb-4">By Month</h2>
+  <div className="space-y-2">
+    <button
+      onClick={() => setSelectedMonth(null)}
+      className={`w-full text-left px-4 py-2 rounded-lg ${
+        !selectedMonth ? "bg-cardinal-red text-white" : "hover:bg-gray-100"
+      }`}
+    >
+      All Dates
+    </button>
+    {monthOptions.map((month) => {
+      const [year, rawMonth] = month.split('-');
+      const label = new Date(`${year}-${rawMonth}-01`).toLocaleString('default', { month: 'long', year: 'numeric' });
+      return (
+        <button
+          key={month}
+          onClick={() => setSelectedMonth(month)}
+          className={`w-full text-left px-4 py-2 rounded-lg ${
+            selectedMonth === month ? "bg-cardinal-red text-white" : "hover:bg-gray-100"
+          }`}
+        >
+          {label}
+        </button>
+      );
+    })}
+  </div>
+</div>
+```
+
+---
+
+### ✅ Result
+
+Users can now:
+
+* Filter articles by **month and year**
+* Combine date filter with **category and search**
+* Enjoy a clean, sidebar-integrated UX
