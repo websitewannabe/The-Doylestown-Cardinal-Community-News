@@ -1,0 +1,85 @@
+## Convert Article Date Filter into a Compact Dropdown
+
+### 🎯 Goal
+
+Replace the long "By Month" list with a **dropdown selector**, ideally placed:
+
+* Under the "Categories" box
+* With a clean UI (dropdown + label)
+* Preserving the ability to combine with category + search filters
+
+---
+
+### ✳️ Step 1: Replace Month Filter Button Group with a `<select>`
+
+Inside your sidebar (where categories are listed), add this **below the categories block**:
+
+```tsx
+<div className="bg-white rounded-lg p-4 shadow-sm mt-6">
+  <label htmlFor="month-select" className="block text-sm font-semibold text-charcoal-gray mb-2">
+    Filter by Month
+  </label>
+  <select
+    id="month-select"
+    value={selectedMonth || ''}
+    onChange={(e) => setSelectedMonth(e.target.value || null)}
+    className="w-full border border-gray-300 rounded-lg p-2"
+  >
+    <option value="">All Dates</option>
+    {monthOptions.map((month) => {
+      const [year, rawMonth] = month.split('-');
+      const label = new Date(`${year}-${rawMonth}-01`).toLocaleString('default', {
+        month: 'long',
+        year: 'numeric',
+      });
+      return (
+        <option key={month} value={month}>
+          {label}
+        </option>
+      );
+    })}
+  </select>
+</div>
+```
+
+---
+
+### ✳️ Step 2: Confirm You Still Have These in State
+
+Make sure these are in your `useState` declarations:
+
+```tsx
+const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+```
+
+And the month options generator:
+
+```tsx
+const monthOptions = [
+  ...new Set(
+    articles.map(article => {
+      const date = new Date(article.date);
+      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+    })
+  )
+].sort((a, b) => b.localeCompare(a));
+```
+
+---
+
+### ✳️ Step 3: Keep Month Logic in Filter
+
+Ensure your filter logic includes the selected month:
+
+```tsx
+onst filteredArticles = articles.filter((article) => {
+  const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+  const matchesCategory = !selectedCategory || article.category === selectedCategory;
+  const matchesMonth = !selectedMonth || `${new Date(article.date).getFullYear()}-${String(new Date(article.date).getMonth() + 1).padStart(2, '0')}` === selectedMonth;
+
+  return matchesSearch && matchesCategory && matchesMonth;
+});
+```
+
+---
