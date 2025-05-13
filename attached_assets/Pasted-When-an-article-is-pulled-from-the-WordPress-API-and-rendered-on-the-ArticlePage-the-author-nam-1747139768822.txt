@@ -1,0 +1,90 @@
+When an article is pulled from the WordPress API and rendered on the `ArticlePage`, the **author name should link to their full bio** on `/writer/:id`, using the existing writer data already defined locally.
+
+---
+
+### ✅ Implementation Steps
+
+---
+
+#### 1. **Create a central ****`writerDirectory.ts`**** mapping file**
+
+This file maps **WordPress author names** to your local `writerId` values (used in URL slugs):
+
+```ts
+export const writerDirectory: Record<string, string> = {
+  "Natalya Bucuy": "natalya-bucuy",
+  "Leia Riggins": "leia-riggins",
+  "Annika Verma": "annika-verma",
+  // Add more as needed
+};
+```
+
+Save it in:
+`src/data/writerDirectory.ts`
+
+---
+
+#### 2. \*\*Update \*\***`ArticlePage.tsx`**
+
+Inside your component, **import the mapping** and use it to generate author profile links.
+
+Add to the top:
+
+```tsx
+import { writerDirectory } from "../data/writerDirectory";
+```
+
+Replace the author line:
+
+```tsx
+<span>{article.author}</span>
+```
+
+With:
+
+```tsx
+{writerDirectory[article.author] ? (
+  <Link
+    to={`/writer/${writerDirectory[article.author]}`}
+    className="text-cardinal-red hover:text-forest-green font-semibold"
+  >
+    {article.author}
+  </Link>
+) : (
+  <span>{article.author}</span>
+)}
+```
+
+---
+
+#### 3. **Verify routes and slugs**
+
+Your `WriterPage.tsx` is already wired to use `/writer/:writerId`, and slugs like `"natalya-bucuy"` are already being used.
+
+✅ That means the links will route correctly.
+
+---
+
+#### 4. **Test fallback handling**
+
+If a new author writes a post and they’re not in `writerDirectory`, it will render their name as plain text — no broken links.
+
+✅ Optional: Log a warning in dev mode so you remember to add them to the directory.
+
+---
+
+### 🧩 Optional Enhancements
+
+* Show the **writer’s profile image and role** below the article.
+* Add a “More from this writer” section below the article content.
+
+---
+
+### ✅ Summary
+
+| Task                         | Implementation                     |
+| ---------------------------- | ---------------------------------- |
+| Link article author to bio   | Use `writerDirectory` to map names |
+| Show local bio page          | Link to `/writer/:writerId`        |
+| Fallback for unknown authors | Show name without link             |
+| Safe and scalable            | No need to modify WordPress setup  |
