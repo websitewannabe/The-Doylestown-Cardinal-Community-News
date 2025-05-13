@@ -31,7 +31,7 @@ const ArticlePage = () => {
         if (data.length > 0) {
           const post = data[0];
           let resolvedAuthor = post._embedded.author[0]?.name || "Staff";
-          
+
           // If author is Staff, scan content for known writer names
           if (resolvedAuthor === "Staff") {
             const content = post.content.rendered.toLowerCase();
@@ -41,16 +41,29 @@ const ArticlePage = () => {
             if (foundAuthor) {
               resolvedAuthor = foundAuthor;
             }
+
+            console.log('Resolved author:', resolvedAuthor);
+
+            setArticle({
+              title: he.decode(post.title.rendered),
+              content: post.content.rendered,
+              excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
+              date: new Date(post.date).toLocaleDateString(),
+              author: resolvedAuthor,
+              image: post._embedded['wp:featuredmedia']?.[0]?.source_url || '/images/article-placeholder.jpg',
+            });
+          } else {
+             console.log('Resolved author:', resolvedAuthor);
+
+            setArticle({
+              title: he.decode(post.title.rendered),
+              content: post.content.rendered,
+              excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
+              date: new Date(post.date).toLocaleDateString(),
+              author: resolvedAuthor,
+              image: post._embedded['wp:featuredmedia']?.[0]?.source_url || '/images/article-placeholder.jpg',
+            });
           }
-          
-          setArticle({
-            title: he.decode(post.title.rendered),
-            content: post.content.rendered,
-            excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
-            date: new Date(post.date).toLocaleDateString(),
-            author: resolvedAuthor,
-            image: post._embedded['wp:featuredmedia']?.[0]?.source_url || '/images/article-placeholder.jpg',
-          });
         } else {
           setError('Article not found');
         }
