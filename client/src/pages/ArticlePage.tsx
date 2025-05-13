@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from "react-router-dom";
 import { writerDirectory } from "../data/writerDirectory";
 import { ArrowLeft } from 'lucide-react';
-import he from 'he';
 
 interface Article {
   title: string;
@@ -20,62 +19,31 @@ const ArticlePage = () => {
   const { slug } = useParams();
 
   useEffect(() => {
-    const fetchArticle = async () => {
+    const fetchLocalArticle = async () => {
       try {
-        const response = await fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?slug=${slug}&_embed=true`);
+        const response = await fetch(`/data/articles/${slug}.json`);
         if (!response.ok) {
-          throw new Error('Failed to fetch article');
+          throw new Error("Article not found");
         }
         const data = await response.json();
 
-        if (data.length > 0) {
-          const post = data[0];
-          let resolvedAuthor = post._embedded.author[0]?.name || "Staff";
-
-          // If author is Staff, scan content for known writer names
-          if (resolvedAuthor === "Staff") {
-            const content = post.content.rendered.toLowerCase();
-            const foundAuthor = Object.keys(writerDirectory).find(name =>
-              content.includes(name.toLowerCase())
-            );
-            if (foundAuthor) {
-              resolvedAuthor = foundAuthor;
-            }
-
-            console.log('Resolved author:', resolvedAuthor);
-
-            setArticle({
-              title: he.decode(post.title.rendered),
-              content: post.content.rendered,
-              excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
-              date: new Date(post.date).toLocaleDateString(),
-              author: resolvedAuthor,
-              image: post._embedded['wp:featuredmedia']?.[0]?.source_url || '/images/article-placeholder.jpg',
-            });
-          } else {
-             console.log('Resolved author:', resolvedAuthor);
-
-            setArticle({
-              title: he.decode(post.title.rendered),
-              content: post.content.rendered,
-              excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
-              date: new Date(post.date).toLocaleDateString(),
-              author: resolvedAuthor,
-              image: post._embedded['wp:featuredmedia']?.[0]?.source_url || '/images/article-placeholder.jpg',
-            });
-          }
-        } else {
-          setError('Article not found');
-        }
+        setArticle({
+          title: data.title,
+          content: data.content,
+          excerpt: data.excerpt,
+          date: new Date(data.date).toLocaleDateString(),
+          author: data.author,
+          image: data.thumbnail || '/images/article-placeholder.jpg',
+        });
       } catch (err) {
-        setError('Failed to load article. Please try again later.');
-        console.error('Error fetching article:', err);
+        setError("Failed to load article. Please try again later.");
+        console.error("Error loading local article:", err);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchArticle();
+    fetchLocalArticle();
   }, [slug]);
 
   if (isLoading) {
