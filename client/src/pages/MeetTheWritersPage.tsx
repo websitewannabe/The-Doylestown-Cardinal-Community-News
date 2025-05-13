@@ -233,28 +233,6 @@ const MeetTheWritersPage = () => {
               </div>
 
               <div className="mt-auto p-6 border-t border-[#333333]/10 bg-[#F8F8F8]">
-                <h3 className="font-medium text-charcoal-gray mb-3">
-                  Popular Articles
-                </h3>
-                <div className="space-y-2 mb-4">
-                  {writer.popularArticles.map((article) => (
-                    <Link
-                      key={article.id}
-                      to={`/articles/${article.id}`}
-                      className="block group"
-                    >
-                      <div className="flex justify-between items-center">
-                        <span className="text-charcoal-gray/80 group-hover:text-cardinal-red transition-colors">
-                          {article.title}
-                        </span>
-                        <span className="text-sm text-charcoal-gray/60">
-                          {article.date}
-                        </span>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-
                 <Link
                   to={`/writer/${writer.id}`}
                   className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
