@@ -1,0 +1,72 @@
+> Update the `ArticlesPage.tsx` so that it:
+>
+> * **Initially loads the first 200 articles** from the WordPress API.
+> * **Displays them sorted by most recent first**.
+> * **Provides a "Load More" button** that, when clicked, fetches **200 more articles** (up to a limit or until no more remain).
+>
+> ---
+>
+> ### Requirements:
+>
+> ✅ **1. Load the first 200 articles on initial page load**
+>
+> * Fetch 2 pages from the WordPress REST API (`per_page=100`, `page=1` and `page=2`):
+>
+> ```tsx
+> const [page1, page2] = await Promise.all([
+>   fetch("https://doylestowncardinal.com/wp-json/wp/v2/posts?per_page=100&_embed=true&page=1").then(res => res.json()),
+>   fetch("https://doylestowncardinal.com/wp-json/wp/v2/posts?per_page=100&_embed=true&page=2").then(res => res.json())
+> ]);
+> const initialArticles = [...page1, ...page2];
+> ```
+>
+> ✅ **2. Organize the 200 articles**
+>
+> * Sort the results by date (descending):
+>
+> ```tsx
+> const sorted = initialArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
+> setArticles(sorted);
+> ```
+>
+> ✅ **3. Add a "Load More" button**
+>
+> * Add a state to track current page and append new articles:
+>
+> ```tsx
+> const [page, setPage] = useState(2); // already loaded 1 & 2
+> const [allArticles, setArticles] = useState<Article[]>([]);
+>
+> const loadMore = async () => {
+>   const next1 = await fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?per_page=100&_embed=true&page=${page + 1}`).then(res => res.json());
+>   const next2 = await fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?per_page=100&_embed=true&page=${page + 2}`).then(res => res.json());
+>   const nextBatch = [...next1, ...next2];
+>   const updated = [...allArticles, ...nextBatch].sort((a, b) => new Date(b.date) - new Date(a.date));
+>   setArticles(updated);
+>   setPage(page + 2);
+> };
+> ```
+>
+> * Add a button below the article grid:
+>
+> ```tsx
+> <button
+>   onClick={loadMore}
+>   className="mt-8 px-6 py-2 bg-cardinal-red text-white rounded hover:bg-forest-green"
+> >
+>   Load More Articles
+> </button>
+> ```
+>
+> ✅ **4. Optional enhancements**
+>
+> * Hide the "Load More" button if fewer than 200 articles are returned.
+> * Show a loading spinner while fetching more.
+>
+> ---
+>
+> ### Outcome:
+>
+> * The user initially sees **200 articles**.
+> * When they reach the bottom of the page, they can click **"Load More Articles"** to load the next 200.
+> * Articles remain **sorted by date** throughout.

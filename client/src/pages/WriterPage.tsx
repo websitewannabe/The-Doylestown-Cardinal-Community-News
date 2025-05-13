@@ -44,7 +44,7 @@ const writers = [
   {
     id: "dakoda",
     search: "dakoda",
-    name: "Dakoda",
+    name: "Dakoda Carlson",
     role: "Social Media Manager",
     bio: "Dakoda is a local writer who has lived in Bucks County her entire life. She has been writing for the Cardinal since early 2023, focusing on monthly events and interviews with our team of writers. Dakoda has had a passion for writing since she was a little girl. Writing short stories and book reports in her spare time, hoping to one day become a Journalist. She also became the Cardinal Social Media Manager in January of 2024 and has completely revamped their platforms.  An avid animal lover, reader, and traveler, Dakoda truly loves her Bucks County Community. During her free time, you might just spot her at her favorite café reading, writing, and chatting with the employees. You can read more of her work on her Substack, “scattered journal entries” or occasionally, in the Bucks County Herald newspaper.https://substack.com/@scatteredjournalentries/posts",
     image: "/images/Staff/Dakoda.jpeg",
@@ -146,7 +146,9 @@ const WriterPage = () => {
       <div className="min-h-screen bg-[#F2F0EF] pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="text-charcoal-gray mb-4">
-            {isRedirecting ? "Redirecting to Writers page..." : "Writer not found"}
+            {isRedirecting
+              ? "Redirecting to Writers page..."
+              : "Writer not found"}
           </div>
         </div>
       </div>
