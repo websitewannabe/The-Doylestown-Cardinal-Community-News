@@ -9,7 +9,6 @@ const writers = [
     name: "Natalya Bucuy",
     role: "Managing Editor",
     bio: "Natalya Bucuy is a journalist, fiction and non-fiction writer, and the managing editor of the Cardinal. She believes that if a story doesn’t come to you, you just have to go find it and live it. That’s pretty much why she usually ends up in some kind of shenanigans. You can often find her roaming the streets of her beloved Doylestown in search of writing material, adventure, or both. Connections within the community are her driving force in journalism and in life.\n\nTo view more of her work, visit her website: nowwehaveastory.com and nowwehaveastory.substack.com",
-    postSlugs: ["not-if-i-can-help-it", "organizational-wisdoms-wingmoms"],
     image: "/images/natalya-Bucuy.jpg",
     email: "natalya@thecardinal.com",
     twitter: "https://twitter.com/natalyabucuy",
@@ -114,13 +113,12 @@ const WriterPage = () => {
 
   useEffect(() => {
     if (writer) {
-      const query = writer.postSlugs.map(slug => `slug=${slug}`).join("&");
-      fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&${query}`)
+      fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?search=${encodeURIComponent(writer.name)}&_embed=true&per_page=4`)
         .then(res => res.json())
         .then(data => setArticles(data))
         .catch(err => console.error("Failed to fetch articles:", err));
     }
-  }, [writer?.id]);
+  }, [writer?.name]);
 
   if (!writer) {
     return (
