@@ -20,6 +20,7 @@ const ArticlesPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
@@ -64,11 +65,20 @@ const ArticlesPage = () => {
 
   const categories = [...new Set(articles.map((article) => article.category))];
 
+  const monthOptions = [...new Set(articles.map(article => {
+    const date = new Date(article.date);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    return `${year}-${month}`;
+  }))].sort((a, b) => a.localeCompare(b));
+
   const filteredArticles = articles.filter((article) => {
     const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = !selectedCategory || article.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    const matchesMonth = !selectedMonth || `${new Date(article.date).getFullYear()}-${String(new Date(article.date).getMonth() + 1).padStart(2, '0')}` === selectedMonth;
+
+    return matchesSearch && matchesCategory && matchesMonth;
   });
 
   if (isLoading) {
@@ -172,6 +182,37 @@ const ArticlesPage = () => {
               </div>
             </div>
           </div>
+
+          {/* Date Filter */}
+          <div className="bg-white rounded-lg p-4 shadow-sm mt-8">
+            <h2 className="font-playfair text-xl font-bold text-charcoal-gray mb-4">By Month</h2>
+            <div className="space-y-2">
+              <button
+                onClick={() => setSelectedMonth(null)}
+                className={`w-full text-left px-4 py-2 rounded-lg ${
+                  !selectedMonth ? "bg-cardinal-red text-white" : "hover:bg-gray-100"
+                }`}
+              >
+                All Dates
+              </button>
+              {monthOptions.map((month) => {
+                const [year, rawMonth] = month.split('-');
+                const label = new Date(`${year}-${rawMonth}-01`).toLocaleString('default', { month: 'long', year: 'numeric' });
+                return (
+                  <button
+                    key={month}
+                    onClick={() => setSelectedMonth(month)}
+                    className={`w-full text-left px-4 py-2 rounded-lg ${
+                      selectedMonth === month ? "bg-cardinal-red text-white" : "hover:bg-gray-100"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {/* Article Grid */}
 
           <div className="flex-1">
             <div className="mb-8">
