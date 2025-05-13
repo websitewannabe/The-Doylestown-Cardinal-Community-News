@@ -43,7 +43,7 @@ const writers = [
     id: "dakoda",
     name: "Dakoda",
     role: "Social Media Manager",
-    bio: "As The Cardinal's Social Media Manager, Dakoda brings our stories to life across digital platforms. With a keen eye for engaging content and community building, she ensures our local journalism reaches and resonates with readers wherever they are.",
+    bio: "Dakoda is a local writer who has lived in Bucks County her entire life. She has been writing for the Cardinal since early 2023, focusing on monthly events and interviews with our team of writers. Dakoda has had a passion for writing since she was a little girl. Writing short stories and book reports in her spare time, hoping to one day become a Journalist. She also became the Cardinal Social Media Manager in January of 2024 and has completely revamped their platforms.  An avid animal lover, reader, and traveler, Dakoda truly loves her Bucks County Community. During her free time, you might just spot her at her favorite café reading, writing, and chatting with the employees. You can read more of her work on her Substack, “scattered journal entries” or occasionally, in the Bucks County Herald newspaper.https://substack.com/@scatteredjournalentries/posts",
     image: "/images/Staff/Dakoda.jpeg",
     email: "dakoda@thecardinal.com",
     twitter: "https://twitter.com/thecardinal",
@@ -153,16 +153,16 @@ const WriterPage = () => {
                     </a>
 
                     {writer.instagram && (
-                        <a
-                          href={writer.instagram}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
-                          title="Instagram"
-                        >
-                          <Instagram size={20} />
-                        </a>
-                      )}
+                      <a
+                        href={writer.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
+                        title="Instagram"
+                      >
+                        <Instagram size={20} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
