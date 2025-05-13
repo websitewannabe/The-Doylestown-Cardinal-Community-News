@@ -21,6 +21,60 @@ import {
 // Team members data
 const teamMembers = [
   {
+    name: 'Jay Pelc',
+    role: 'Sales',
+    bio: 'Jay Pelc, a Brooklyn native, moved to Jim Thorpe in 2019. For the past 32 years, he has had great success in selling mostly print advertising in both small and large markets. He now serves in that capacity for both The Jim Thorpe Current and The Doylestown Cardinal.',
+    image: '/images/Staff/Jay-Pelc.jpeg'
+  },
+  {
+    name: 'Ellen',
+    role: 'Sales',
+    bio: "Ellen is a former New Yorker who has lived in Doylestown for 27 years. She left early childhood education after 30 years and transitioned to customer service, later joining The Cardinal after a chance encounter at Jersey Mike's. Married for 56 years to George, she has two adult children.",
+    image: '/images/Staff/Ellen.jpeg'
+  },
+  {
+    name: 'Mike Roberts',
+    role: 'Director of Delivery',
+    bio: 'Mike Roberts has been married for 45 years to his high school sweetheart Joan. With three children and seven grandchildren, he retired from a 37-year USPS career and has been Director of Delivery with The Cardinal since 2023.',
+    image: '/images/Staff/Mike-Roberts.jpeg'
+  },
+  {
+    name: 'Dakoda',
+    role: 'Social Media Manager',
+    bio: "Dakoda is a local writer passionate about covering events and interviews. As Social Media Manager since January 2024, she has revamped The Cardinal's platforms. An animal lover, reader, and traveler, she also writes on Substack as 'scattered journal entries.'",
+    image: '/images/Staff/Dakoda.jpeg'
+  },
+  {
+    name: 'Servis Events',
+    role: 'Writers',
+    bio: 'Servis Events is a hyper-local, seasonal fine dining private chef business. Writing for The Cardinal for over a year and a half, they share articles about seasonal ingredients, health benefits, and local food education.',
+    image: '/images/Staff/Nick-and-Stephen.jpeg'
+  },
+  {
+    name: 'Brian',
+    role: 'Writer',
+    bio: 'Brian is a Naval Academy graduate, Navy veteran, and current financial planner at Pultro Financial Management. He holds multiple certifications, including AIF, BFA, RFC, and Ethics Certified, and enjoys time with his fiancée, three sons, and two golden retrievers.',
+    image: '/images/Staff/Brian.jpeg'
+  },
+  {
+    name: 'Edie Weinstein',
+    role: 'Writer',
+    bio: 'Edie Weinstein, MSW, LSW, is a psychotherapist, journalist, author, speaker, and founder of Hugmobsters Armed with Love. She began writing for The Cardinal in 2022 with her column "The Kindness Korner."',
+    image: '/images/Staff/Eddie-Weinstein.jpeg'
+  },
+  {
+    name: 'Paula Carsello-Mason',
+    role: 'Writer',
+    bio: 'Paula is a dedicated esthetician passionate about skincare and confidence building. She created a teen skincare course and writes for The Cardinal while enjoying family time and kayaking.',
+    image: '/images/Staff/Paula-Carsello-Mason.jpeg'
+  },
+  {
+    name: 'Ryan Greiser',
+    role: 'Writer',
+    bio: 'Ryan Greiser, CFP®, founded Opulus in Doylestown to help Millennials cut taxes, boost income, and grow wealth. Named to InvestmentNews Best Under 40 and Investopedia Top 100, he guides clients toward financial independence.',
+    image: '/images/Staff/Ryan-Greiser.png'
+  },
+  {
     name: "Natalya Bucuy",
     role: "Managing Editor",
     bio: "Natalya Bucuy is a journalist, fiction and non-fiction writer, and the managing editor of the Cardinal. She believes that if a story doesn't come to you, you just have to go find it and live it. That's pretty much why she usually ends up in some kind of shenanigans. You can often find her roaming the streets of her beloved Doylestown in search of writing material, adventure, or both.",
