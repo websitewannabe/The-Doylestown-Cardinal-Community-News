@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Mail, Twitter, Linkedin, ChevronRight, Instagram } from "lucide-react";
 
@@ -109,6 +109,16 @@ const writers = [
 const WriterPage = () => {
   const { writerId } = useParams();
   const writer = writers.find((w) => w.id === writerId);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    if (writer) {
+      fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?search=${encodeURIComponent(writer.name)}&_embed=true&per_page=4`)
+        .then(res => res.json())
+        .then(data => setArticles(data))
+        .catch(err => console.error("Failed to fetch articles:", err));
+    }
+  }, [writer?.name]);
 
   if (!writer) {
     return (
@@ -201,6 +211,33 @@ const WriterPage = () => {
               </div>
             </div>
           </div>
+          {articles.length > 0 && (
+            <div className="mt-10 px-8 pb-8">
+              <h2 className="font-playfair text-2xl font-bold text-charcoal-gray mb-6">
+                Recent Articles by {writer.name}
+              </h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                {articles.map(article => (
+                  <Link
+                    key={article.id}
+                    to={`/articles/${article.slug}`}
+                    className="block bg-white border border-charcoal-gray/10 rounded-lg p-6 hover:shadow-md transition-shadow"
+                  >
+                    <h3 className="font-playfair text-lg font-bold text-charcoal-gray mb-2">
+                      {article.title.rendered}
+                    </h3>
+                    <p className="text-sm text-cardinal-red mb-3">
+                      {new Date(article.date).toLocaleDateString()}
+                    </p>
+                    <div 
+                      className="text-sm text-charcoal-gray/80 line-clamp-3"
+                      dangerouslySetInnerHTML={{ __html: article.excerpt.rendered }}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
