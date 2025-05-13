@@ -6,6 +6,7 @@ import { Mail, Twitter, Linkedin, ChevronRight, Instagram } from "lucide-react";
 const writers = [
   {
     id: "natalya-bucuy",
+    search: "Natalya Bucuy",
     name: "Natalya Bucuy",
     role: "Managing Editor",
     bio: "Natalya Bucuy is a journalist, fiction and non-fiction writer, and the managing editor of the Cardinal. She believes that if a story doesn’t come to you, you just have to go find it and live it. That’s pretty much why she usually ends up in some kind of shenanigans. You can often find her roaming the streets of her beloved Doylestown in search of writing material, adventure, or both. Connections within the community are her driving force in journalism and in life.\n\nTo view more of her work, visit her website: nowwehaveastory.com and nowwehaveastory.substack.com",
@@ -17,6 +18,7 @@ const writers = [
   },
   {
     id: "leia-riggins",
+    search: "leia",
     name: "Leia Riggins",
     role: "Writer",
     bio: "Leia Riggins is a school counselor, therapist, and wellness advocate based in Doylestown, PA. With a deep passion for supporting personal growth, she combines her expertise in mental health with holistic practices to help individuals navigate life’s transitions with clarity and confidence. Leia specializes in integrative approaches that honor the mind-body connection, drawing from her background in counseling, movement, and mindfulness. Whether guiding children, teens or adults, she creates a safe space for healing, self-discovery, and empowerment. She also supports individuals navigating ADHD, anxiety, depression, executive functioning challenges, and neurodiverse experiences. Leia is the founder of Bolder Wellness, where she shares tools for sustainable well-being.",
@@ -29,6 +31,7 @@ const writers = [
   },
   {
     id: "annika-verma",
+    search: "Annika Verma",
     name: "Annika Verma",
     role: "Writer",
     bio: "Annika Verma is a sophomore at Bucks County Community College who started with The Cardinal in August 2023. She writes the monthly Artist Spotlight column, where she platforms the person behind, or perhaps even before, the art. In her free time, she enjoys long walks on the beach (aka Doylestown in the finger-freezing cold), hoping she hasn’t developed caffeine dependency, and being a can-dropping upstairs neighbor.\nTo be serious, though: her interests include justice, art history, and pure communication. To learn more about my experience, please visit my LinkedIn.\nTo reach out for personal or professional inquiries, please email me at nnika.verma@gmail.com.",
@@ -40,6 +43,7 @@ const writers = [
   },
   {
     id: "dakoda",
+    search: "dakoda",
     name: "Dakoda",
     role: "Social Media Manager",
     bio: "Dakoda is a local writer who has lived in Bucks County her entire life. She has been writing for the Cardinal since early 2023, focusing on monthly events and interviews with our team of writers. Dakoda has had a passion for writing since she was a little girl. Writing short stories and book reports in her spare time, hoping to one day become a Journalist. She also became the Cardinal Social Media Manager in January of 2024 and has completely revamped their platforms.  An avid animal lover, reader, and traveler, Dakoda truly loves her Bucks County Community. During her free time, you might just spot her at her favorite café reading, writing, and chatting with the employees. You can read more of her work on her Substack, “scattered journal entries” or occasionally, in the Bucks County Herald newspaper.https://substack.com/@scatteredjournalentries/posts",
@@ -51,6 +55,7 @@ const writers = [
   },
   {
     id: "servis-events",
+    search: "servis-events",
     name: "Servis Events",
     role: "Writers",
     bio: "Servis Events- We are a hyper local and seasonal full service fine dining private chef business. focusing on providing a fine dining restaurant experience in your own home, we provide everything neccesary as well as educating our guests on the importance of supporting local as well as the immense health benefits.\n\nWe have been writing for the cardinal for over a year and a half now in the food and restaurant section. we write about seasonal ingredients highlighting health benefits and showcasing how we would use said ingredients. we hope our articles are found to he helpful and educational. we take immense pride in being apart of this community and this paper.",
@@ -62,7 +67,8 @@ const writers = [
   },
   {
     id: "brian",
-    name: "Brian",
+    search: "Brian Pultro",
+    name: "Brian Pultro",
     role: "Writer",
     bio: "Brian graduated from Auburn University on May 11,2006 with a degree in Political Science and was commissioned as an Ensign into the United States Navy on the same day.  ring his 10 years on active duty he served on three different classes of ship, deploying twice to the Persian Gulf and once to Southeast Asia.  Brian also served on the faculty of Villanova University as an instructor of Naval Service where he earned a nomination as Naval Science Training Command’s Instructor of the Year.  He also earned his Master of Arts in Political Science from Villanova in 2012.  In 2015 Brian left active duty and joined the Navy Reserve.  He partnered with his uncle at Pultro Financial Management as a Financial Planner and obtained advanced certifications as an Accredited Investment Fiduciary (AIF), Behavior Financial Advisor(BFA), and Registered Financial Consultant(RFC).  Brian Also earned the coveted “Ethics Certified” designation from the International Association of Registered Financial Consultants.  In his free time, he spends as much time as possible with fiancé, three sons and two golden retriever rescues.",
     image: "/images/Staff/Brian.jpeg",
@@ -73,6 +79,7 @@ const writers = [
   },
   {
     id: "edie-weinstein",
+    search: "Edie Weinstein",
     name: "Edie Weinstein",
     role: "Writer",
     bio: 'Edie Weinstein, MSW, LSW is a licensed social worker, psychotherapist, journalist, book author and editor, ordained interfaith minister, speaker, PR and marketing professional. She is the founder of Hugmobsters Armed with Love which offers FREE HUGS worldwide. She offered her first TEDx Talk in 2022 called Overcoming the Taboo of Touch.\n\nShe began writing for the Cardinal in 2022 after she and Joanne Petrun (co-founders of Bucks County Kind) were interviewed. Her column is called The Kindness Korner in which she highlights local folks who engage in acts of kindness."',
@@ -84,6 +91,7 @@ const writers = [
   },
   {
     id: "paula-carsello-mason",
+    search: "Paula Carsello-Mason",
     name: "Paula Carsello-Mason",
     role: "Writer",
     bio: "Paula Carsello-Mason is a dedicated esthetician and skincare professional with a passion for helping others feel confident in their skin. With years of hands-on experience, Paula has built a reputation for providing personalized care and expert guidance to clients of all ages. A strong believer in education, she created a skincare course specifically designed for teenagers, helping them build healthy habits early on. When she’s not working with clients or writing for the Doylestown Cardinal, Paula enjoys spending time with her family, and kayaking whenever she gets the chance.",
@@ -95,6 +103,7 @@ const writers = [
   },
   {
     id: "ryan-greiser",
+    search: "Ryan-Greiser",
     name: "Ryan Greiser",
     role: "Writer",
     bio: "Ryan Greiser, CFP® founded Opulus in Doylestown to help Millennials cut taxes, boost income, and grow lasting wealth. Named to InvestmentNews' Best Wealth Managers Under 40 and Investopedia's Top 100 Financial Advisors, he guides his clients toward financial independence and living life on their own terms.",
@@ -113,10 +122,12 @@ const WriterPage = () => {
 
   useEffect(() => {
     if (writer) {
-      fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?search=${encodeURIComponent(writer.name)}&_embed=true&per_page=4`)
-        .then(res => res.json())
-        .then(data => setArticles(data))
-        .catch(err => console.error("Failed to fetch articles:", err));
+      fetch(
+        `https://doylestowncardinal.com/wp-json/wp/v2/posts?search=${encodeURIComponent(writer.search)}&_embed=true&per_page=4`,
+      )
+        .then((res) => res.json())
+        .then((data) => setArticles(data))
+        .catch((err) => console.error("Failed to fetch articles:", err));
     }
   }, [writer?.name]);
 
@@ -217,7 +228,7 @@ const WriterPage = () => {
                 Recent Articles by {writer.name}
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
-                {articles.map(article => (
+                {articles.map((article) => (
                   <Link
                     key={article.id}
                     to={`/articles/${article.slug}`}
@@ -229,9 +240,11 @@ const WriterPage = () => {
                     <p className="text-sm text-cardinal-red mb-3">
                       {new Date(article.date).toLocaleDateString()}
                     </p>
-                    <div 
+                    <div
                       className="text-sm text-charcoal-gray/80 line-clamp-3"
-                      dangerouslySetInnerHTML={{ __html: article.excerpt.rendered }}
+                      dangerouslySetInnerHTML={{
+                        __html: article.excerpt.rendered,
+                      }}
                     />
                   </Link>
                 ))}
