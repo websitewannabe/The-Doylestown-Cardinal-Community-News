@@ -87,14 +87,8 @@ const Navigation = () => {
     },
     {
       name: "Support Us",
-      path: "#",
-      hasDropdown: true,
-      dropdownItems: [
-        { name: "Advertise with Us", path: "/advertise" },
-        { name: "Print Subscriptions", path: "/print-subscriptions" },
-        { name: "Digital Subscriptions", path: "/digital-subscriptions" },
-        { name: "Donate", path: "/donate" },
-      ],
+      path: "/donate",
+      hasDropdown: false,
     },
     {
       name: "More",
