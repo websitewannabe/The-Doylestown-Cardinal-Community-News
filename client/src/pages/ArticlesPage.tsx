@@ -1,255 +1,134 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
-import he from 'he';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { writerDirectory } from "../data/writerDirectory";
+import { Calendar, ChevronRight } from "lucide-react";
 
 interface Article {
   id: number;
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  author: string;
   date: string;
-  image: string;
-  tags: string[];
+  title: { rendered: string };
+  excerpt: { rendered: string };
+  slug: string;
+  _embedded?: {
+    author?: Array<{ name: string }>;
+  };
 }
 
 const ArticlesPage = () => {
   const [articles, setArticles] = useState<Article[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  //const [page, setPage] = useState(1); // Removed as pagination is no longer needed
-  //const [hasMore, setHasMore] = useState(true); // Removed as pagination is no longer needed
-
-  const fetchAllPosts = async () => {
-    try {
-      const firstPageResponse = await fetch('https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=1');
-      if (!firstPageResponse.ok) {
-        throw new Error('Failed to fetch articles');
-      }
-
-      const totalPages = Number(firstPageResponse.headers.get('X-WP-TotalPages'));
-      const allPosts = [];
-
-      // Add first page results
-      const firstPageData = await firstPageResponse.json();
-      allPosts.push(...firstPageData);
-
-      // Fetch remaining pages
-      const remainingPages = Array.from({ length: totalPages - 1 }, (_, i) => i + 2);
-      const remainingPagesData = await Promise.all(
-        remainingPages.map(page =>
-          fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=${page}`)
-            .then(res => res.json())
-            .catch(err => {
-              console.error(`Error fetching page ${page}:`, err);
-              return [];
-            })
-        )
-      );
-
-      allPosts.push(...remainingPagesData.flat());
-
-      const mappedArticles = allPosts.map((post: any) => ({
-        id: post.id,
-        slug: post.slug,
-        title: he.decode(post.title.rendered),
-        excerpt: he.decode(post.excerpt.rendered.replace(/<[^>]*>/g, '')),
-        category: post._embedded['wp:term'][0][0]?.name || 'Uncategorized',
-        author: post._embedded.author[0]?.name || 'Unknown',
-        date: new Date(post.date).toLocaleDateString(),
-        image: post._embedded['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium?.source_url || '/images/article-placeholder.jpg',
-        tags: post._embedded['wp:term'][1]?.map((tag: any) => tag.name) || [],
-      }));
-
-      return mappedArticles;
-    } catch (error) {
-      console.error('Error fetching articles:', error);
-      throw error;
-    }
-  };
+  const [page, setPage] = useState(2); // Start at 2 since we load pages 1 & 2 initially
+  const [loading, setLoading] = useState(true);
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
-    const initializeArticles = async () => {
-      setIsLoading(true);
+    const fetchInitialArticles = async () => {
       try {
-        const freshArticles = await fetchAllPosts();
-        setArticles(freshArticles);
-        sessionStorage.setItem('articles', JSON.stringify(freshArticles));
-        setIsLoading(false);
+        const [page1, page2] = await Promise.all([
+          fetch("https://doylestowncardinal.com/wp-json/wp/v2/posts?per_page=100&_embed=true&page=1").then(res => res.json()),
+          fetch("https://doylestowncardinal.com/wp-json/wp/v2/posts?per_page=100&_embed=true&page=2").then(res => res.json())
+        ]);
+
+        const initialArticles = [...page1, ...page2];
+        const sorted = initialArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        setArticles(sorted);
+        setHasMore(page1.length === 100 && page2.length === 100);
       } catch (error) {
-        setError('Failed to load articles. Please try again later.');
-        setIsLoading(false);
+        console.error("Failed to fetch articles:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
-    initializeArticles();
+    fetchInitialArticles();
   }, []);
 
-  // loadMore function removed as pagination is no longer needed
+  const loadMore = async () => {
+    setLoading(true);
+    try {
+      const [next1, next2] = await Promise.all([
+        fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?per_page=100&_embed=true&page=${page + 1}`).then(res => res.json()),
+        fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?per_page=100&_embed=true&page=${page + 2}`).then(res => res.json())
+      ]);
 
-  const categories = [...new Set(articles.map((article) => article.category))];
+      const nextBatch = [...next1, ...next2];
+      const updated = [...articles, ...nextBatch].sort((a, b) => 
+        new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
 
-  const filteredArticles = articles.filter((article) => {
-    const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = !selectedCategory || article.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-[#F2F0EF] pt-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-white rounded-lg overflow-hidden animate-pulse">
-                <div className="h-48 bg-gray-200"/>
-                <div className="p-6">
-                  <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"/>
-                  <div className="h-6 bg-gray-200 rounded mb-2"/>
-                  <div className="h-4 bg-gray-200 rounded mb-4"/>
-                  <div className="flex justify-between">
-                    <div className="h-3 bg-gray-200 rounded w-1/4"/>
-                    <div className="h-3 bg-gray-200 rounded w-1/4"/>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
+      setArticles(updated);
+      setPage(page + 2);
+      setHasMore(next1.length === 100 && next2.length === 100);
+    } catch (error) {
+      console.error("Failed to load more articles:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-[#F2F0EF]">
-      {/* Hero Section - keeping existing hero code */}
-      <div className="relative h-[55vh]">
-        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
-          <img
-            src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
-            alt="Articles background"
-            className="w-full h-[105%] object-cover blur-[1px] scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
+    <div className="min-h-screen bg-[#F2F0EF] pt-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h1 className="font-playfair text-5xl font-bold text-charcoal-gray mb-6">
+            Articles
+          </h1>
+          <p className="text-xl text-charcoal-gray/80 max-w-3xl mx-auto">
+            Explore our collection of stories that matter to the Doylestown
+            community.
+          </p>
         </div>
-        <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
-          <div>
-            <div className="flex items-center gap-2 text-sm text-off-white/90 mb-4">
-              <Link to="/" className="hover:text-forest-green transition-colors">Home</Link>
-              <span>/</span>
-              <span>Articles</span>
-            </div>
-            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
-              Latest Articles
-            </h1>
-            <p className="text-xl text-off-white/90 max-w-2xl mb-8">
-              Stay informed with the latest news, features, and stories from Doylestown and beyond.
-            </p>
-            <div className="flex flex-wrap gap-4">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {articles.map((article) => {
+            const authorName = article._embedded?.author?.[0]?.name || "Staff";
+            const writerId = writerDirectory[authorName];
+
+            return (
               <Link
-                to="/"
-                className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors inline-flex items-center gap-2"
+                key={article.id}
+                to={`/articles/${article.slug}`}
+                className="flex flex-col h-full bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-[#333333]/10"
               >
-                Get Started
-                <ChevronRight size={20} />
-              </Link>
-              <Link
-                to="/subscribe"
-                className="hidden md:inline-flex bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors items-center gap-2"
-              >
-                Subscribe
-                <ChevronRight size={20} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex flex-col lg:flex-row gap-8 mb-12">
-          {/* Categories Sidebar */}
-          <div className="lg:w-64 shrink-0">
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <h2 className="font-playfair text-xl font-bold text-charcoal-gray mb-4">Categories</h2>
-              <div className="space-y-2">
-                <button
-                  onClick={() => setSelectedCategory(null)}
-                  className={`w-full text-left px-4 py-2 rounded-lg ${
-                    !selectedCategory ? "bg-cardinal-red text-white" : "hover:bg-gray-100"
-                  }`}
-                >
-                  All Categories
-                  <span className="float-right">{articles.length}</span>
-                </button>
-                {categories.sort().map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`w-full text-left px-4 py-2 rounded-lg ${
-                      selectedCategory === category ? "bg-cardinal-red text-white" : "hover:bg-gray-100"
-                    }`}
-                  >
-                    {category}
-                    <span className="float-right">
-                      {articles.filter(a => a.category === category).length}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Main Content */}
-          <div className="flex-1">
-            <div className="mb-8">
-              <input
-                type="text"
-                placeholder="Search articles..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-              {filteredArticles.map((article) => (
-                <Link
-                  key={article.id}
-                  to={`/articles/${article.slug}`}
-                  className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
+                <div className="p-6 flex-grow">
+                  <div className="flex items-center gap-2 text-sm text-cardinal-red mb-4">
+                    <Calendar size={16} />
+                    {new Date(article.date).toLocaleDateString()}
                   </div>
-                  <div className="p-6">
-                    <div className="text-cardinal-red mb-2">{article.category}</div>
-                    <h2 className="font-playfair text-xl font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-2">
-                      {article.title}
-                    </h2>
-                    <p className="text-charcoal-gray/80 mb-4 line-clamp-3">
-                      {article.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-charcoal-gray/60">{article.author}</span>
-                      <span className="text-charcoal-gray/60">{article.date}</span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            {/* Removed Load More section as all articles are loaded upfront */}
-          </div>
+                  <h2
+                    className="font-playfair text-2xl font-bold text-charcoal-gray hover:text-cardinal-red transition-colors mb-4"
+                    dangerouslySetInnerHTML={{ __html: article.title.rendered }}
+                  />
+                  <div
+                    className="text-charcoal-gray/80 line-clamp-3 mb-4"
+                    dangerouslySetInnerHTML={{ __html: article.excerpt.rendered }}
+                  />
+                  {writerId && (
+                    <Link
+                      to={`/writer/${writerId}`}
+                      className="text-cardinal-red hover:text-forest-green transition-colors"
+                    >
+                      By {authorName}
+                    </Link>
+                  )}
+                </div>
+              </Link>
+            );
+          })}
         </div>
+
+        {hasMore && (
+          <div className="flex justify-center mb-16">
+            <button
+              onClick={loadMore}
+              disabled={loading}
+              className={`px-6 py-2 bg-cardinal-red text-white rounded hover:bg-forest-green transition-colors ${
+                loading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+            >
+              {loading ? 'Loading...' : 'Load More Articles'}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
