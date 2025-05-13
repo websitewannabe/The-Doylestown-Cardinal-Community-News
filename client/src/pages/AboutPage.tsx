@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNewsletterContext } from "../context/NewsletterContext";
-import { Carousel, CarouselContent, CarouselItem } from "../components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "../components/ui/carousel";
 import {
   Mail,
   Phone,
@@ -21,77 +25,77 @@ import {
 // Team members data
 const teamMembers = [
   {
+    name: "Jay Pelc",
+    role: "Sales",
+    bio: "Jay Pelc, a Brooklyn native, moved to Jim Thorpe in 2019. For the past 32 years, he has had great success in selling mostly print advertising in both small and large markets. He now serves in that capacity for both The Jim Thorpe Current and The Doylestown Cardinal.",
+    image: "/images/Staff/Jay-Pelc.jpeg",
+  },
+  {
+    name: "Ellen",
+    role: "Sales",
+    bio: "Ellen is a former New Yorker who has lived in Doylestown for 27 years. She left early childhood education after 30 years and transitioned to customer service, later joining The Cardinal after a chance encounter at Jersey Mike's. Married for 56 years to George, she has two adult children.",
+    image: "/images/Staff/Ellen.jpeg",
+  },
+  {
+    name: "Mike Roberts",
+    role: "Director of Delivery",
+    bio: "Mike Roberts has been married for 45 years to his high school sweetheart Joan. With three children and seven grandchildren, he retired from a 37-year USPS career and has been Director of Delivery with The Cardinal since 2023.",
+    image: "/images/Staff/Mike-Roberts.jpeg",
+  },
+  {
+    name: "Dakoda",
+    role: "Social Media Manager",
+    bio: "Dakoda is a local writer passionate about covering events and interviews. As Social Media Manager since January 2024, she has revamped The Cardinal's platforms. An animal lover, reader, and traveler, she also writes on Substack as 'scattered journal entries.'",
+    image: "/images/Staff/Dakoda.jpeg",
+  },
+  {
+    name: "Servis Events",
+    role: "Writers",
+    bio: "Servis Events is a hyper-local, seasonal fine dining private chef business. Writing for The Cardinal for over a year and a half, they share articles about seasonal ingredients, health benefits, and local food education.",
+    image: "/images/Staff/Nick-and-Stephen.jpeg",
+  },
+  {
+    name: "Brian",
+    role: "Writer",
+    bio: "Brian is a Naval Academy graduate, Navy veteran, and current financial planner at Pultro Financial Management. He holds multiple certifications, including AIF, BFA, RFC, and Ethics Certified, and enjoys time with his fiancée, three sons, and two golden retrievers.",
+    image: "/images/Staff/Brian.jpeg",
+  },
+  {
     name: "Natalya Bucuy",
     role: "Managing Editor",
     bio: "Natalya Bucuy is a journalist, fiction and non-fiction writer, and the managing editor of the Cardinal. She believes that if a story doesn't come to you, you just have to go find it and live it. That's pretty much why she usually ends up in some kind of shenanigans. You can often find her roaming the streets of her beloved Doylestown in search of writing material, adventure, or both.",
-    image: "/images/natalya-Bucuy.jpg"
+    image: "/images/natalya-Bucuy.jpg",
   },
   {
     name: "Leia Riggins",
     role: "Writer",
     bio: "Leia Riggins is a school counselor, therapist, and wellness advocate based in Doylestown, PA. With a deep passion for supporting personal growth, she combines her expertise in mental health with holistic practices to help individuals navigate life's transitions with clarity and confidence.",
-    image: "/images/leiaRiggins.jpg"
+    image: "/images/leiaRiggins.jpg",
   },
   {
     name: "Annika Verma",
     role: "Writer",
     bio: "Annika Verma is a sophomore at Bucks County Community College who started with The Cardinal in August 2023. She writes the monthly Artist Spotlight column, where she platforms the person behind, or perhaps even before, the art. In her free time, she enjoys long walks on the beach (aka Doylestown in the finger-freezing cold), hoping she hasn't developed caffeine dependency, and being a can-dropping upstairs neighbor.",
-    image: "/images/annikaVerma.jpg"
+    image: "/images/annikaVerma.jpg",
   },
   {
-    name: 'Jay Pelc',
-    role: 'Sales',
-    bio: 'Jay Pelc, a Brooklyn native, moved to Jim Thorpe in 2019. For the past 32 years, he has had great success in selling mostly print advertising in both small and large markets. He now serves in that capacity for both The Jim Thorpe Current and The Doylestown Cardinal.',
-    image: '/images/Staff/Jay-Pelc.jpeg'
-  },
-  {
-    name: 'Ellen',
-    role: 'Sales',
-    bio: "Ellen is a former New Yorker who has lived in Doylestown for 27 years. She left early childhood education after 30 years and transitioned to customer service, later joining The Cardinal after a chance encounter at Jersey Mike's. Married for 56 years to George, she has two adult children.",
-    image: '/images/Staff/Ellen.jpeg'
-  },
-  {
-    name: 'Mike Roberts',
-    role: 'Director of Delivery',
-    bio: 'Mike Roberts has been married for 45 years to his high school sweetheart Joan. With three children and seven grandchildren, he retired from a 37-year USPS career and has been Director of Delivery with The Cardinal since 2023.',
-    image: '/images/Staff/Mike-Roberts.jpeg'
-  },
-  {
-    name: 'Dakoda',
-    role: 'Social Media Manager',
-    bio: "Dakoda is a local writer passionate about covering events and interviews. As Social Media Manager since January 2024, she has revamped The Cardinal's platforms. An animal lover, reader, and traveler, she also writes on Substack as 'scattered journal entries.'",
-    image: '/images/Staff/Dakoda.jpeg'
-  },
-  {
-    name: 'Servis Events',
-    role: 'Writers',
-    bio: 'Servis Events is a hyper-local, seasonal fine dining private chef business. Writing for The Cardinal for over a year and a half, they share articles about seasonal ingredients, health benefits, and local food education.',
-    image: '/images/Staff/Nick-and-Stephen.jpeg'
-  },
-  {
-    name: 'Brian',
-    role: 'Writer',
-    bio: 'Brian is a Naval Academy graduate, Navy veteran, and current financial planner at Pultro Financial Management. He holds multiple certifications, including AIF, BFA, RFC, and Ethics Certified, and enjoys time with his fiancée, three sons, and two golden retrievers.',
-    image: '/images/Staff/Brian.jpeg'
-  },
-  {
-    name: 'Edie Weinstein',
-    role: 'Writer',
+    name: "Edie Weinstein",
+    role: "Writer",
     bio: 'Edie Weinstein, MSW, LSW, is a psychotherapist, journalist, author, speaker, and founder of Hugmobsters Armed with Love. She began writing for The Cardinal in 2022 with her column "The Kindness Korner."',
-    image: '/images/Staff/Eddie-Weinstein.jpeg'
+    image: "/images/Staff/Eddie-Weinstein.jpeg",
   },
   {
-    name: 'Paula Carsello-Mason',
-    role: 'Writer',
-    bio: 'Paula is a dedicated esthetician passionate about skincare and confidence building. She created a teen skincare course and writes for The Cardinal while enjoying family time and kayaking.',
-    image: '/images/Staff/Paula-Carsello-Mason.jpeg'
+    name: "Paula Carsello-Mason",
+    role: "Writer",
+    bio: "Paula is a dedicated esthetician passionate about skincare and confidence building. She created a teen skincare course and writes for The Cardinal while enjoying family time and kayaking.",
+    image: "/images/Staff/Paula-Carsello-Mason.jpeg",
   },
   {
-    name: 'Ryan Greiser',
-    role: 'Writer',
-    bio: 'Ryan Greiser, CFP®, founded Opulus in Doylestown to help Millennials cut taxes, boost income, and grow wealth. Named to InvestmentNews Best Under 40 and Investopedia Top 100, he guides clients toward financial independence.',
-    image: '/images/Staff/Ryan-Greiser.png'
-  }
+    name: "Ryan Greiser",
+    role: "Writer",
+    bio: "Ryan Greiser, CFP®, founded Opulus in Doylestown to help Millennials cut taxes, boost income, and grow wealth. Named to InvestmentNews Best Under 40 and Investopedia Top 100, he guides clients toward financial independence.",
+    image: "/images/Staff/Ryan-Greiser.png",
+  },
 ];
 
 // Mock data for awards and recognition
@@ -299,11 +303,14 @@ const AboutPage = () => {
           <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-12 text-center">
             Meet Our Team
           </h2>
-          
+
           {/* Desktop View */}
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member) => (
-              <div key={member.name} className="group bg-[#F2F0EF] rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <div
+                key={member.name}
+                className="group bg-[#F2F0EF] rounded-lg p-6 hover:shadow-lg transition-shadow"
+              >
                 <div className="flex flex-col items-center text-center">
                   <div className="relative w-48 h-48 mb-6">
                     <img
