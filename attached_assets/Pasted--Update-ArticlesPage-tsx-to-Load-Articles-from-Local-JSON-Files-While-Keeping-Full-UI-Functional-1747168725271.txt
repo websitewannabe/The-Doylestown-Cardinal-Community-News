@@ -1,0 +1,98 @@
+## Update `ArticlesPage.tsx` to Load Articles from Local JSON Files While Keeping Full UI Functionality
+
+### 🔧 Goal
+
+Replace WordPress API calls with a local data-loading flow using `public/data/articles/*.json`, while **preserving the existing layout**, including:
+
+* ✅ The full **hero header section**
+* ✅ Functional **categories sidebar**
+* ✅ Working **search filter**
+* ✅ Maintained **article grid layout**
+
+---
+
+### ✳️ Step 1: Create or Update Script to Generate `articles.json`
+
+📄 File: `scripts/generateArticlesIndex.mjs`
+
+```js
+import fs from 'fs';
+import path from 'path';
+
+const ARTICLES_DIR = './public/data/articles';
+const OUTPUT_FILE = './public/data/articles.json';
+
+const files = fs.readdirSync(ARTICLES_DIR).filter(f => f.endsWith('.json'));
+
+const index = files.map(filename => {
+  const raw = fs.readFileSync(path.join(ARTICLES_DIR, filename), 'utf-8');
+  const data = JSON.parse(raw);
+  return {
+    id: data.id,
+    slug: data.slug,
+    title: data.title,
+    excerpt: data.excerpt?.replace(/<[^>]*>/g, '') || '',
+    category: data.category?.[0] || 'Uncategorized',
+    author: data.author || 'Staff',
+    date: data.date,
+    image: data.thumbnail || '/images/article-placeholder.jpg',
+    tags: data.tags || [],
+  };
+});
+
+fs.writeFileSync(OUTPUT_FILE, JSON.stringify(index, null, 2));
+console.log(`✅ Wrote ${index.length} articles to ${OUTPUT_FILE}`);
+```
+
+📦 **Run it from Replit shell**:
+
+```bash
+node scripts/generateArticlesIndex.mjs
+```
+
+✅ This creates (or updates) `/public/data/articles.json` based on all article files in `/public/data/articles`.
+
+---
+
+### ✳️ Step 2: Update the `ArticlesPage.tsx` Component
+
+📄 Replace the data-fetching section in your `ArticlesPage.tsx`:
+
+```tsx
+useEffect(() => {
+  const loadArticles = async () => {
+    try {
+      const response = await fetch('/data/articles.json');
+      if (!response.ok) throw new Error("Failed to load article list");
+      const data = await response.json();
+      const sorted = data.sort((a: Article, b: Article) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      setArticles(sorted);
+    } catch (err) {
+      console.error("Failed to load articles:", err);
+      setError("Failed to load articles.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  loadArticles();
+}, []);
+```
+
+💡 You should also remove or disable any existing `fetchInitialPosts()` and `loadMoreArticles()` logic that still references the WordPress API.
+
+---
+
+### ✅ What Remains Functional
+
+✔️ **Hero Header** stays unchanged
+✔️ **Category filter** remains (with dynamic counts)
+✔️ **Search** still works across titles + excerpts
+✔️ **Click-through** to article detail pages stays as-is
+
+---
+
+### 📌 Final Notes
+
+* You no longer need pagination (load everything at once from the static index).
+* If performance ever becomes an issue, you can break `articles.json` into paginated chunks or lazy-load by folder.
