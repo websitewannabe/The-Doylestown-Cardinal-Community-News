@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { Mail, Twitter, Linkedin, ChevronRight } from "lucide-react";
+import { Mail, Twitter, Linkedin, ChevronRight, Instagram } from "lucide-react";
 
 // Import writers data from MeetTheWritersPage
 const writers = [
@@ -25,6 +25,7 @@ const writers = [
     email: "leia@thecardinal.com",
     twitter: "https://twitter.com/leiariggins",
     linkedin: "https://linkedin.com/in/leiariggins",
+    instagram: "https://instagram.com/BolderWellness",
     expertise: ["Mental Health", "Wellness", "Community Support"],
   },
   {
@@ -150,24 +151,18 @@ const WriterPage = () => {
                     >
                       <Mail size={20} />
                     </a>
-                    <a
-                      href={writer.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
-                      title="Twitter"
-                    >
-                      <Twitter size={20} />
-                    </a>
-                    <a
-                      href={writer.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
-                      title="LinkedIn"
-                    >
-                      <Linkedin size={20} />
-                    </a>
+
+                    {writer.instagram && (
+                        <a
+                          href={writer.instagram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
+                          title="Instagram"
+                        >
+                          <Instagram size={20} />
+                        </a>
+                      )}
                   </div>
                 </div>
               </div>
