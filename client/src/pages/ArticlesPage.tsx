@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { ChevronRight } from 'lucide-react';
 import he from 'he';
 
@@ -19,12 +19,33 @@ const ArticlesPage = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(2);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
   const [hasMore, setHasMore] = useState(true);
-  //const [page, setPage] = useState(1); // Removed as pagination is no longer needed
-  //const [hasMore, setHasMore] = useState(true); // Removed as pagination is no longer needed
+
+  // Sync with URL params
+  useEffect(() => {
+    const categoryFromURL = searchParams.get("category");
+    if (categoryFromURL) {
+      setSelectedCategory(categoryFromURL);
+    }
+  }, [searchParams]);
+
+  const handleCategorySelect = (category: string) => {
+    setSelectedCategory(category);
+    setSearchParams({ category });
+  };
+
+  // Filter articles based on selected category
+  const filteredArticles = articles.filter((article) => {
+    const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = !selectedCategory || article.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   const fetchInitialPosts = async () => {
     try {
@@ -58,14 +79,14 @@ const ArticlesPage = () => {
     try {
       const nextPage = currentPage + 1;
       const nextNextPage = currentPage + 2;
-      
+
       const [page1, page2] = await Promise.all([
         fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=${nextPage}`).then(res => res.json()),
         fetch(`https://doylestowncardinal.com/wp-json/wp/v2/posts?_embed=true&per_page=100&page=${nextNextPage}`).then(res => res.json())
       ]);
 
       const newPosts = [...page1, ...page2];
-      
+
       if (newPosts.length === 0) {
         setHasMore(false);
         return;
@@ -113,13 +134,6 @@ const ArticlesPage = () => {
   // loadMore function removed as pagination is no longer needed
 
   const categories = [...new Set(articles.map((article) => article.category))];
-
-  const filteredArticles = articles.filter((article) => {
-    const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = !selectedCategory || article.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
 
   if (isLoading) {
     return (
@@ -236,7 +250,11 @@ const ArticlesPage = () => {
                 className="w-full p-3 border border-gray-300 rounded-lg"
               />
             </div>
-
+            {selectedCategory && (
+              <h2 className="text-2xl font-playfair font-bold mb-8">
+                {selectedCategory} Articles
+              </h2>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
               {filteredArticles.map((article) => (
                 <Link
