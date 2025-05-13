@@ -20,6 +20,16 @@ const ArticlesPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+
+const monthOptions = [
+  ...new Set(
+    articles.map(article => {
+      const date = new Date(article.date);
+      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+    })
+  )
+].sort((a, b) => b.localeCompare(a));
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
