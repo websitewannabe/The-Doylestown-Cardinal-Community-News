@@ -72,7 +72,6 @@ const Navigation = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: "Current Issue", path: "/current-issue" },
-        { name: "Digital Edition", path: "/current-edition" },
         { name: "Past Issues", path: "https://issuu.com/doylestowncardinal", isExternal: true },
         { name: "Things To Do", path: "/articles?category=play" },
         { name: "Hotels", path: "/articles?category=stay" },

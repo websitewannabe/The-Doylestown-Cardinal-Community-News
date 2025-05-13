@@ -24,7 +24,6 @@ import BusinessSpotlightPage from './pages/BusinessSpotlightPage';
 import PersonSpotlightPage from './pages/PersonSpotlightPage';
 import EventSpotlightPage from './pages/EventSpotlightPage';
 import BuildingSpotlightPage from './pages/BuildingSpotlightPage';
-import CurrentEdition from './pages/CurrentEdition';
 import AdvertiserOfTheMonthPage from './pages/AdvertiserOfTheMonthPage';
 import BusinessDirectoryPage from './pages/BusinessDirectoryPage';
 import TownGuidesPage from './pages/TownGuidesPage';
@@ -75,7 +74,6 @@ const AppContent = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/editorial-submissions" element={<EditorialSubmissionsPage />} />
           <Route path="/current-issue" element={<IssuePage />} />
-          <Route path="/current-edition" element={<CurrentEdition />} />
           <Route path="/archive" element={<ArchivePage />} />
           <Route path="/advertise" element={<AdvertisePage />} />
           <Route path="/print-subscriptions" element={<PrintSubscriptionsPage />} />
