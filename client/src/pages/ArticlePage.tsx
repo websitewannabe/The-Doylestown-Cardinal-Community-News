@@ -110,11 +110,11 @@ const ArticlePage = () => {
           Back to Articles
         </Link>
 
-        <div className="w-full aspect-[4/3] md:aspect-[16/9] overflow-hidden mb-8">
+        <div className="w-full bg-white flex justify-center py-6 mb-8">
           <img
             src={article.image || '/images/article-placeholder.jpg'}
             alt={article.title}
-            className="w-full h-full object-cover"
+            className="max-w-4xl w-full h-auto"
           />
         </div>
 
