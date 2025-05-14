@@ -588,7 +588,6 @@ const HomePage = () => {
 
           {/* Instagram Grid */}
           <InstagramFeed username="doylestown_cardinal" />
-        </div>
 
           {/* API Integration Note */}
           <div className="mt-8 p-6 bg-[#F2F0EF] rounded-lg">
