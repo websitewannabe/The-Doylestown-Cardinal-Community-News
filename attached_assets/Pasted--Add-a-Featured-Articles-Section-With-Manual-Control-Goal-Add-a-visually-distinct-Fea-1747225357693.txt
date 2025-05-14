@@ -1,0 +1,105 @@
+## Add a Featured Articles Section (With Manual Control)
+
+### 🎯 Goal
+
+Add a **visually distinct Featured Articles section** to `/articles`:
+
+* 1 large feature article
+* 3 stacked side-by-side features
+* Easy-to-update manually each month
+* No reliance on tags or dynamic logic unless desired
+
+---
+
+### ✳️ Step 1: Manually Define Featured Article Slugs
+
+Right after `const ArticlesPage = () => {`, define an array of slugs like this:
+
+```tsx
+const featuredSlugs = [
+  "not-if-i-can-help-it-memoir-calls-for-justice",
+  "how-our-emotions-contribute-to-heart-disease",
+  "cozy-cupid-valentines-day-dates",
+  "stage-united-hosts-a-night"
+];
+```
+
+➡️ Update this array once a month to control what shows in the featured section.
+
+---
+
+### ✳️ Step 2: Extract the Matching Articles
+
+After you've fetched and sorted the articles (where you already have `setArticles(sorted)`), add:
+
+```tsx
+const featuredArticles = featuredSlugs
+  .map(slug => sorted.find(article => article.slug === slug))
+  .filter(Boolean); // Removes nulls if slug doesn't match
+```
+
+---
+
+### ✳️ Step 3: Add Featured Section Above the Article Grid
+
+Place this **just above** your main grid:
+
+```tsx
+<div className="mb-12">
+  <h2 className="text-3xl font-playfair font-bold text-charcoal-gray mb-6">Featured Articles</h2>
+  <div className="grid md:grid-cols-2 gap-6">
+    {/* Large feature on left */}
+    {featuredArticles[0] && (
+      <Link
+        to={`/articles/${featuredArticles[0].slug}`}
+        className="col-span-1 bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-lg transition-shadow"
+      >
+        <img
+          src={featuredArticles[0].image}
+          alt={featuredArticles[0].title}
+          className="w-full h-64 object-cover"
+        />
+        <div className="p-6">
+          <div className="text-cardinal-red mb-2">{featuredArticles[0].category}</div>
+          <h3 className="text-2xl font-playfair font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-2">
+            {featuredArticles[0].title}
+          </h3>
+          <p className="text-charcoal-gray/80 line-clamp-3">{featuredArticles[0].excerpt}</p>
+        </div>
+      </Link>
+    )}
+
+    {/* Right column with 3 smaller features */}
+    <div className="space-y-4">
+      {featuredArticles.slice(1).map((article) => (
+        <Link
+          key={article.id}
+          to={`/articles/${article.slug}`}
+          className="flex items-start gap-4 bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <img
+            src={article.image}
+            alt={article.title}
+            className="w-24 h-24 object-cover rounded-md flex-shrink-0"
+          />
+          <div>
+            <div className="text-cardinal-red text-xs mb-1">{article.category}</div>
+            <h4 className="text-md font-semibold text-charcoal-gray group-hover:text-cardinal-red mb-1">
+              {article.title}
+            </h4>
+            <p className="text-sm text-charcoal-gray/80 line-clamp-2">{article.excerpt}</p>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </div>
+</div>
+```
+
+---
+
+### ✅ Result
+
+* 🔥 Stylish Featured layout with 1 large + 3 small articles
+* 🔁 Update featured articles by editing the `featuredSlugs` list
+* 💾 No tags or CMS integration required
