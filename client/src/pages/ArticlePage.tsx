@@ -61,13 +61,10 @@ const ArticlePage = () => {
         // Get same-category articles excluding current one
         const related = allArticles
           .filter((a: Article) => 
-            a.category?.toLowerCase() === data.category?.toLowerCase() && 
+            a.category === data.category && 
             a.slug !== slug
           )
-          .slice(0, 3);
-
-        console.log("Article category:", data.category);
-        console.log("Related found:", related.map(r => r.slug));
+          .slice(0, 3); // Limit to 3
 
         setRelatedArticles(related);
       } catch (err) {
