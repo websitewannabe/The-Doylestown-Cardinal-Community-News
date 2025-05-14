@@ -111,11 +111,13 @@ const ArticlePage = () => {
         </Link>
 
         <article className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img
-            src={article.image}
-            alt={article.title}
-            className="w-full h-96 object-cover"
-          />
+          <div className="aspect-[4/3] md:aspect-[16/9] relative overflow-hidden">
+            <img
+              src={article.image || '/images/article-placeholder.jpg'}
+              alt={article.title}
+              className="w-full h-full object-cover rounded-t-lg"
+            />
+          </div>
           <div className="p-8">
             <h1 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
               {article.title}
