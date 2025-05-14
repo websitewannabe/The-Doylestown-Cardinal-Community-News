@@ -114,7 +114,7 @@ const ArticlePage = () => {
           <img
             src={article.image || '/images/article-placeholder.jpg'}
             alt={article.title}
-            className="max-w-4xl w-full h-auto"
+            className="max-w-4xl w-full h-auto rounded-lg"
           />
         </div>
 
