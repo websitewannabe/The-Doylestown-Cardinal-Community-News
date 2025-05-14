@@ -182,6 +182,7 @@ const ArticlePage = () => {
             </div>
           )}
         </div>
+        </div>
       </div>
     </div>
   );
