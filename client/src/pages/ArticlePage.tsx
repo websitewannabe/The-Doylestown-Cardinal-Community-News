@@ -110,7 +110,7 @@ const ArticlePage = () => {
           Back to Articles
         </Link>
 
-        <div className="w-full bg-white flex justify-center py-6 mb-8">
+        <div className="w-full flex justify-center mb-8">
           <img
             src={article.image || '/images/article-placeholder.jpg'}
             alt={article.title}
