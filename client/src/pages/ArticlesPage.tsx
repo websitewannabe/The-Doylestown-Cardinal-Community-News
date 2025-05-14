@@ -123,7 +123,7 @@ const ArticlesPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F2F0EF]">
-      <div className="relative h-[55vh]">
+      <div className="relative h-[45vh]">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
           <img
             src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
