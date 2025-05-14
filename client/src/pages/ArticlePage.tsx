@@ -16,6 +16,7 @@ const ArticlePage = () => {
   const [article, setArticle] = useState<Article | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [relatedArticles, setRelatedArticles] = useState<Article[]>([]);
   const { slug } = useParams();
 
   useEffect(() => {
@@ -47,7 +48,23 @@ const ArticlePage = () => {
           date: new Date(data.date).toLocaleDateString(),
           author: resolvedAuthor,
           image: data.thumbnail || '/images/article-placeholder.jpg',
+          category: data.category,
+          slug: data.slug,
         });
+
+        // Load all articles to find related ones
+        const allRes = await fetch('/data/articles.json');
+        const allArticles = await allRes.json();
+
+        // Get same-category articles excluding current one
+        const related = allArticles
+          .filter((a: Article) => 
+            a.category === data.category && 
+            a.slug !== slug
+          )
+          .slice(0, 3); // Limit to 3
+
+        setRelatedArticles(related);
       } catch (err) {
         setError("Failed to load article. Please try again later.");
         console.error("Error loading local article:", err);
@@ -126,6 +143,38 @@ const ArticlePage = () => {
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
           </div>
+
+          {relatedArticles.length > 0 && (
+            <div className="mt-16">
+              <h2 className="text-2xl font-playfair font-bold text-charcoal-gray mb-6">
+                Related Articles
+              </h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                {relatedArticles.map((article) => (
+                  <Link
+                    key={article.id}
+                    to={`/articles/${article.slug}`}
+                    className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                  >
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-40 object-cover"
+                    />
+                    <div className="p-4">
+                      <div className="text-cardinal-red text-sm mb-1">{article.category}</div>
+                      <h3 className="font-semibold text-charcoal-gray text-lg mb-1">
+                        {article.title}
+                      </h3>
+                      <p className="text-sm text-charcoal-gray/70 line-clamp-2">
+                        {article.excerpt}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </article>
       </div>
     </div>
