@@ -1,4 +1,3 @@
-
 // fetchArticles.mjs
 import fs from 'fs';
 import fetch from 'node-fetch';
@@ -43,6 +42,18 @@ async function fetchAllArticles() {
       content: post.content.rendered,
       thumbnail: featuredMedia
     };
+
+    // Match both absolute and relative WordPress image URLs in src and srcset
+    function rewriteImageUrls(content) {
+      const allImageUrlsRegex = /(https:\/\/doylestowncardinal\.com\/wp-content\/uploads\/[^\s"]+|\/wp-content\/uploads\/[^\s"]+)/g;
+
+      return content.replace(allImageUrlsRegex, (url) => {
+        const filename = path.basename(url);
+        return `/data/media/${filename}`;
+      });
+    }
+
+    data.content = rewriteImageUrls(data.content);
 
     const filePath = `${OUTPUT_DIR}/${post.slug}.json`;
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
