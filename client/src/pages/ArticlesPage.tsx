@@ -149,7 +149,7 @@ const ArticlesPage = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 -mt-8">
         <h2 className="text-3xl font-playfair font-bold text-charcoal-gray mb-6">Featured Articles</h2>
         <div className="grid md:grid-cols-2 gap-6 mb-16">
           {/* Left: main feature */}
