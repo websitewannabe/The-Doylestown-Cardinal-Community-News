@@ -142,25 +142,9 @@ const ArticlesPage = () => {
             <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
               Latest Articles
             </h1>
-            <p className="text-xl text-off-white/90 max-w-2xl mb-8">
+            <p className="text-xl text-off-white/90 max-w-2xl">
               Stay informed with the latest news, features, and stories from Doylestown and beyond.
             </p>
-            <div className="hidden md:flex flex-wrap gap-4">
-              <Link
-                to="/"
-                className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors inline-flex items-center gap-2"
-              >
-                Get Started
-                <ChevronRight size={20} />
-              </Link>
-              <Link
-                to="/subscribe"
-                className="bg-white text-cardinal-red px-8 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors items-center gap-2"
-              >
-                Subscribe
-                <ChevronRight size={20} />
-              </Link>
-            </div>
           </div>
         </div>
       </div>
