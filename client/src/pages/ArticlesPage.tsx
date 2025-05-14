@@ -134,7 +134,7 @@ const ArticlesPage = () => {
         </div>
         <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
           <div>
-            <div className="flex items-center gap-2 text-sm text-off-white/90 mb-4">
+            <div className="hidden md:flex items-center gap-2 text-sm text-off-white/90 mb-4">
               <Link to="/" className="hover:text-forest-green transition-colors">Home</Link>
               <span>/</span>
               <span>Articles</span>
