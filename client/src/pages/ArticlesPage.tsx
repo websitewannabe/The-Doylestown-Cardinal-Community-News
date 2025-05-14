@@ -87,9 +87,11 @@ const ArticlesPage = () => {
 
   const featuredSlugs = [
     "not-if-i-can-help-it",
-    "how-our-emotions-contribute-to-heart-disease",
+    "how-our-emotions-contribute-to-heart-disease", 
     "cozy-cupid-valentines-day-dates",
-    "stage-united-hosts-a-night"
+    "stage-united-hosts-a-night",
+    "longwood-gardens-vintage-holiday-lights",
+    "organizational-wisdoms-from-wingmoms"
   ];
 
   const featuredArticles = articles.filter(article => featuredSlugs.includes(article.slug));
