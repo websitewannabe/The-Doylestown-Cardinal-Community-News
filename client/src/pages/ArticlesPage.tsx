@@ -85,6 +85,54 @@ const monthOptions = [
     return matchesSearch && matchesCategory && matchesMonth;
   });
 
+  // Mock featured articles data
+  const featuredArticles = [
+    {
+      id: 101,
+      slug: 'featured-article-1',
+      title: 'The Ultimate Guide to Doylestown',
+      excerpt: 'Explore the best of Doylestown with our comprehensive guide.',
+      category: 'Travel',
+      author: 'Jane Doe',
+      date: '2024-01-20',
+      image: 'https://images.unsplash.com/photo-1682685797527-491f58316770?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      tags: ['travel', 'doylestown']
+    },
+    {
+      id: 102,
+      slug: 'featured-article-2',
+      title: 'Top 5 Restaurants in Town',
+      excerpt: 'Discover the culinary delights of our town with these top-rated restaurants.',
+      category: 'Food',
+      author: 'John Smith',
+      date: '2024-02-15',
+      image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      tags: ['food', 'restaurants']
+    },
+    {
+      id: 103,
+      slug: 'featured-article-3',
+      title: 'The Art Scene in Our Community',
+      excerpt: 'A look into the vibrant art scene and local artists in our community.',
+      category: 'Art',
+      author: 'Emily White',
+      date: '2024-03-01',
+      image: 'https://images.unsplash.com/photo-1544510999-14209e54674a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      tags: ['art', 'community']
+    },
+    {
+        id: 104,
+        slug: 'featured-article-4',
+        title: 'Best Hiking Trails',
+        excerpt: 'Explore the best hiking trails with our comprehensive guide.',
+        category: 'Fitness',
+        author: 'Will Trent',
+        date: '2024-04-20',
+        image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80',
+        tags: ['travel', 'doylestown']
+      }
+  ];
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#F2F0EF] pt-32">
@@ -155,7 +203,55 @@ const monthOptions = [
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex flex-col lg:flex-row gap-8 mb-12">
+        <h2 className="text-3xl font-playfair font-bold text-charcoal-gray mb-8">Featured Articles</h2>
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          {/* Left: main feature */}
+          {featuredArticles[0] && (
+            <Link
+              to={`/articles/${featuredArticles[0].slug}`}
+              className="col-span-1 bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-lg transition-shadow"
+            >
+              <img
+                src={featuredArticles[0].image}
+                alt={featuredArticles[0].title}
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-6">
+                <div className="text-cardinal-red mb-2">{featuredArticles[0].category}</div>
+                <h3 className="text-2xl font-playfair font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-2">
+                  {featuredArticles[0].title}
+                </h3>
+                <p className="text-charcoal-gray/80 line-clamp-3">{featuredArticles[0].excerpt}</p>
+              </div>
+            </Link>
+          )}
+
+          {/* Right: 3 smaller features */}
+          <div className="space-y-4">
+            {featuredArticles.slice(1).map(article => (
+              <Link
+                key={article.id}
+                to={`/articles/${article.slug}`}
+                className="flex items-start gap-4 bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  className="w-24 h-24 object-cover rounded-md flex-shrink-0"
+                />
+                <div>
+                  <div className="text-cardinal-red text-xs mb-1">{article.category}</div>
+                  <h4 className="text-md font-semibold text-charcoal-gray group-hover:text-cardinal-red mb-1">
+                    {article.title}
+                  </h4>
+                  <p className="text-sm text-charcoal-gray/80 line-clamp-2">{article.excerpt}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-8">
           <div className="lg:w-64 shrink-0">
             <div className="bg-white rounded-lg p-4 shadow-sm">
               <h2 className="font-playfair text-xl font-bold text-charcoal-gray mb-4">Categories</h2>
