@@ -142,7 +142,7 @@ const ArticlePage = () => {
         </article>
 
         {recentArticles.length > 0 && (
-          <div className="mt-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mt-16 pb-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-playfair font-bold text-charcoal-gray mb-6">Recent Articles</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {recentArticles.map((a) => (
