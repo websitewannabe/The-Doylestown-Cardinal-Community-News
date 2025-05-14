@@ -138,7 +138,7 @@ const ArticlePage = () => {
               <span>{article.date}</span>
             </div>
             <div 
-              className="prose prose-lg max-w-none prose-headings:font-playfair prose-headings:text-charcoal-gray prose-p:text-charcoal-gray/80"
+              className="prose prose-lg max-w-none prose-headings:font-playfair prose-headings:text-charcoal-gray prose-p:text-charcoal-gray/80 prose-img:mx-auto prose-img:rounded-lg prose-img:my-6 prose-img:max-w-full prose-img:h-auto"
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
           </div>
