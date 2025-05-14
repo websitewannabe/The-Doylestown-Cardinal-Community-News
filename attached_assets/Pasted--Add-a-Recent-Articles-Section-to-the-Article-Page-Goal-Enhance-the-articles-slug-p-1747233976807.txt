@@ -1,0 +1,86 @@
+## Add a "Recent Articles" Section to the Article Page
+
+### 🎯 Goal
+
+Enhance the `/articles/:slug` page to show a **“Recent Articles”** section beneath the current article content. This should:
+
+* Display the 3 most recent articles (excluding the one currently being viewed)
+* Show thumbnail, title, and excerpt
+* Link to the full article
+* Be styled consistently with the rest of the site
+
+---
+
+### 🔧 Implementation Instructions
+
+1. **Update the ********`Article`******** interface** to include:
+
+```ts
+slug: string;
+```
+
+(If it's not already there)
+
+---
+
+2. **Add state to store recent articles**:
+
+```tsx
+const [recentArticles, setRecentArticles] = useState<Article[]>([]);
+```
+
+---
+
+3. **Fetch and filter recent articles** inside the `fetchLocalArticle` function, after setting `article`:
+
+```tsx
+const allRes = await fetch('/data/articles.json');
+const allArticles = await allRes.json();
+
+const recent = allArticles
+  .filter((a: Article) => a.slug !== slug)
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 3);
+
+setRecentArticles(recent);
+```
+
+---
+
+4. **Render the recent articles** section below the main article display (outside the `<article>` block):
+
+```tsx
+{recentArticles.length > 0 && (
+  <div className="mt-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="text-2xl font-playfair font-bold text-charcoal-gray mb-6">Recent Articles</h2>
+    <div className="grid md:grid-cols-3 gap-6">
+      {recentArticles.map((a) => (
+        <Link
+          key={a.slug}
+          to={`/articles/${a.slug}`}
+          className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+        >
+          <img
+            src={a.image}
+            alt={a.title}
+            className="w-full h-40 object-cover"
+          />
+          <div className="p-4">
+            <div className="text-cardinal-red text-sm mb-1">{new Date(a.date).toLocaleDateString()}</div>
+            <h3 className="font-semibold text-charcoal-gray text-lg mb-1">{a.title}</h3>
+            <p className="text-sm text-charcoal-gray/70 line-clamp-2">{a.excerpt}</p>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </div>
+)}
+```
+
+---
+
+### ✅ What to Expect
+
+* This section will now show 3 fresh articles for additional engagement
+* The current article will be excluded
+* No tag or category matching required — just latest content
