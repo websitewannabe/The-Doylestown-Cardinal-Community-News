@@ -10,6 +10,9 @@ interface Article {
   author: string;
   image: string;
   excerpt: string;
+  slug: string;
+  category: string;
+  id: string;
 }
 
 const ArticlePage = () => {
@@ -17,6 +20,7 @@ const ArticlePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { slug } = useParams();
+  const [relatedArticles, setRelatedArticles] = useState<Article[]>([]);
 
   useEffect(() => {
     const fetchLocalArticle = async () => {
@@ -47,7 +51,25 @@ const ArticlePage = () => {
           date: new Date(data.date).toLocaleDateString(),
           author: resolvedAuthor,
           image: data.thumbnail || '/images/article-placeholder.jpg',
+          slug: data.slug,
+          category: data.category,
+          id: data.id
         });
+
+        // Load all articles to find related ones
+        const allRes = await fetch('/data/articles.json');
+        const allArticles = await allRes.json();
+
+        // Get same-category articles excluding current one
+        const related = allArticles
+          .filter((a: Article) =>
+            a.category === data.category &&
+            a.slug !== slug
+          )
+          .slice(0, 3); // Limit to 3
+
+        setRelatedArticles(related);
+        setIsLoading(false);
       } catch (err) {
         setError("Failed to load article. Please try again later.");
         console.error("Error loading local article:", err);
@@ -127,6 +149,39 @@ const ArticlePage = () => {
             />
           </div>
         </article>
+
+          {relatedArticles.length > 0 && (
+            <div className="mt-16">
+              <h2 className="text-2xl font-playfair font-bold text-charcoal-gray mb-6">
+                Related Articles
+              </h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                {relatedArticles.map((item) => (
+                  <Link
+                    key={item.id}
+                    to={`/articles/${item.slug}`}
+                    className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-40 object-cover"
+                    />
+                    <div className="p-4">
+                      <div className="text-cardinal-red text-sm mb-1">{item.category}</div>
+                      <h3 className="font-semibold text-charcoal-gray text-lg mb-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-charcoal-gray/70 line-clamp-2">
+                        {item.excerpt}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
