@@ -54,7 +54,7 @@ const SupportUsPage = () => {
               Unlimited articles, mobile access, digital archive
             </p>
             <Link
-              to="/digital-subscriptions"
+              to="/subscriptions"
               className="inline-block px-6 py-2 border border-[#8B0000] text-[#8B0000] rounded-lg hover:bg-[#8B0000] hover:text-white transition-colors"
             >
               View Plans
@@ -70,7 +70,7 @@ const SupportUsPage = () => {
               Weekly print delivery with full digital access
             </p>
             <Link
-              to="/print-subscriptions"
+              to="/subscriptions"
               className="inline-block px-6 py-2 border border-[#8B0000] text-[#8B0000] rounded-lg hover:bg-[#8B0000] hover:text-white transition-colors"
             >
               Subscribe

@@ -76,9 +76,11 @@ const AppContent = () => {
           <Route path="/current-issue" element={<IssuePage />} />
           <Route path="/archive" element={<ArchivePage />} />
           <Route path="/advertise" element={<AdvertisePage />} />
-          <Route path="/print-subscriptions" element={<PrintSubscriptionsPage />} />
-          <Route path="/digital-subscriptions" element={<DigitalSubscriptionsPage />} />
+          <Route path="/subscriptions" element={<SubscriptionsPage />} />
           <Route path="/support-us" element={<SupportUsPage />} />
+          {/* Redirect old subscription URLs */}
+          <Route path="/print-subscriptions" element={<Navigate to="/subscriptions" replace />} />
+          <Route path="/digital-subscriptions" element={<Navigate to="/subscriptions" replace />} />
           <Route path="/annual-fundraiser" element={<AnnualFundraiserPage />} />
           <Route path="/writer/:writerId" element={<WriterPage />} />
           <Route path="/locations" element={<LocationsPage />} />
