@@ -15,6 +15,7 @@ import {
   CalendarCheck,
 } from "lucide-react";
 import { useNewsletterContext } from "../context/NewsletterContext";
+import InstagramFeed from "../components/InstagramFeed";
 
 // Mock data for upcoming events
 const upcomingEvents = [
