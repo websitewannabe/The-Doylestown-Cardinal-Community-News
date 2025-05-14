@@ -587,34 +587,8 @@ const HomePage = () => {
           </div>
 
           {/* Instagram Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {instagramPosts.map((post) => (
-              <div
-                key={post.id}
-                className="group relative bg-white rounded-lg overflow-hidden"
-              >
-                <div className="relative aspect-square">
-                  <img
-                    src={post.image}
-                    alt="Instagram post"
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
-                    <div className="text-white text-sm">
-                      <p className="line-clamp-3">{post.caption}</p>
-                    </div>
-                    <div className="flex items-center justify-between text-white/90 text-sm">
-                      <div className="flex items-center gap-4">
-                        <span>{post.likes} likes</span>
-                        <span>{post.comments} comments</span>
-                      </div>
-                      <span>{post.date}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <InstagramFeed username="doylestown_cardinal" />
+        </div>
 
           {/* API Integration Note */}
           <div className="mt-8 p-6 bg-[#F2F0EF] rounded-lg">
