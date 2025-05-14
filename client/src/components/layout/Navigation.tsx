@@ -87,7 +87,7 @@ const Navigation = () => {
     },
     {
       name: "Support Us",
-      path: "/donate",
+      path: "/support-us",
       hasDropdown: false,
     },
     {

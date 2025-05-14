@@ -31,7 +31,7 @@ import ThingsToDoPage from './pages/ThingsToDoPage';
 import BestOfDoylestownPage from './pages/BestOfDoylestownPage';
 import PrintSubscriptionsPage from './pages/PrintSubscriptionsPage';
 import DigitalSubscriptionsPage from './pages/DigitalSubscriptionsPage';
-import DonatePage from './pages/DonatePage';
+import SupportUsPage from "./pages/SupportUsPage";
 import LocationsPage from './pages/LocationsPage';
 import AnnualFundraiserPage from './pages/AnnualFundraiserPage';
 import ContactPage from './pages/ContactPage';
@@ -78,7 +78,7 @@ const AppContent = () => {
           <Route path="/advertise" element={<AdvertisePage />} />
           <Route path="/print-subscriptions" element={<PrintSubscriptionsPage />} />
           <Route path="/digital-subscriptions" element={<DigitalSubscriptionsPage />} />
-          <Route path="/donate" element={<DonatePage />} />
+          <Route path="/support-us" element={<SupportUsPage />} />
           <Route path="/annual-fundraiser" element={<AnnualFundraiserPage />} />
           <Route path="/writer/:writerId" element={<WriterPage />} />
           <Route path="/locations" element={<LocationsPage />} />
