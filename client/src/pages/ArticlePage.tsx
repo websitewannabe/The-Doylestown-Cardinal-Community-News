@@ -10,6 +10,8 @@ interface Article {
   author: string;
   image: string;
   excerpt: string;
+  category: string;
+  slug: string;
 }
 
 const ArticlePage = () => {
