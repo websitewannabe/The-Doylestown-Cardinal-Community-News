@@ -154,7 +154,7 @@ const ArticlePage = () => {
               <div className="grid md:grid-cols-3 gap-6">
                 {relatedArticles.map((article) => (
                   <Link
-                    key={article.id}
+                    key={article.slug}
                     to={`/articles/${article.slug}`}
                     className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
                   >
