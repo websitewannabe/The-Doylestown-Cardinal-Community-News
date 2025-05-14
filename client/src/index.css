@@ -22,6 +22,15 @@
   body {
     @apply font-open-sans text-charcoal-gray;
   }
+
+  .prose img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    object-fit: contain !important;
+  }
 }
 
 @layer utilities {
