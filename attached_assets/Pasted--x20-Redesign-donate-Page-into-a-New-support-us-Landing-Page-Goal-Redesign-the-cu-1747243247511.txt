@@ -1,0 +1,80 @@
+## &#x20;Redesign `/donate` Page into a New `/support-us` Landing Page
+
+### 🎯 Goal
+
+Redesign the current `/donate` page into a focused and visually streamlined **Support Us** landing page, and **update the routing** so the page lives at:
+
+```
+/support-us
+```
+
+---
+
+### 🧩 Page Structure
+
+#### 1. **Hero Section**
+
+* Title: `Support The Cardinal`
+* Subtitle: *“Help us continue delivering meaningful, independent journalism to the Doylestown community.”*
+* Primary CTA buttons:
+
+  * “Donate Now” → `/donate-options`
+  * “Subscribe” → `/digital-subscriptions`
+
+#### 2. **Support Options Grid (3 cards or columns)**
+
+Each with a short description and button:
+
+* ✅ **Digital Access**
+
+  * “Unlimited articles, mobile access, digital archive”
+  * Button: “View Plans” → `/digital-subscriptions`
+
+* ✅ **Print Subscription**
+
+  * “Weekly print delivery with full digital access”
+  * Button: “Subscribe” → `/print-subscriptions`
+
+* ✅ **Make a Donation**
+
+  * “One-time or monthly gifts to support our mission”
+  * Button: “Donate” → `/donate-options`
+
+#### 3. **Corporate Sponsorship Section (Optional)**
+
+* One-paragraph overview:
+  *“Are you a local business looking to support independent journalism while connecting with our readers? Explore corporate sponsorship opportunities.”*
+* Button: “Learn More” → `/donate-options#corporate`
+
+#### 4. **(Optional) Reader Impact Metrics**
+
+* Add an optional block showing:
+
+  * Monthly readers
+  * Articles published
+  * Years in operation
+  * Community partnerships
+
+---
+
+### 🔧 Technical Requirements
+
+1. **Create a new route and component**:
+
+   * Route: `/support-us`
+   * Component: `SupportUsPage.tsx` (or `SupportLandingPage.tsx`)
+
+2. **Remove or deprecate ****`/donate`**** route**
+
+   * Redirect `/donate` to `/support-us`
+   * OR update the router to point to the new component
+
+3. **Ensure buttons and navigation links across the site point to ****`/support-us`**** going forward**
+
+---
+
+### ✅ Outcome
+
+* A modern, clean `/support-us` landing page
+* Consolidates all support pathways into one clear user experience
+* Replaces `/donate` with a more intuitive, action-oriented route
