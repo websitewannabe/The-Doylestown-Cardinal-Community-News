@@ -21,7 +21,6 @@ const ArticlesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
-const [featuredSlugs, setFeaturedSlugs] = useState(['article-1', 'article-2', 'article-3', 'article-4']); // Example slugs
 
 const monthOptions = [
   ...new Set(
@@ -223,65 +222,6 @@ const monthOptions = [
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full p-3 border border-gray-300 rounded-lg"
               />
-            </div>
-
-            <div className="mb-12">
-              <h2 className="text-3xl font-playfair font-bold text-charcoal-gray mb-6">Featured Articles</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* Large feature on left */}
-                {articles.find(article => article.slug === featuredSlugs[0]) && (
-                  <Link
-                    to={`/articles/${featuredSlugs[0]}`}
-                    className="col-span-1 bg-white rounded-lg shadow-md overflow-hidden group hover:shadow-lg transition-shadow"
-                  >
-                    <img
-                      src={articles.find(article => article.slug === featuredSlugs[0])?.image}
-                      alt={articles.find(article => article.slug === featuredSlugs[0])?.title}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="p-6">
-                      <div className="text-cardinal-red mb-2">
-                        {articles.find(article => article.slug === featuredSlugs[0])?.category}
-                      </div>
-                      <h3 className="text-2xl font-playfair font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-2">
-                        {articles.find(article => article.slug === featuredSlugs[0])?.title}
-                      </h3>
-                      <p className="text-charcoal-gray/80 line-clamp-3">
-                        {articles.find(article => article.slug === featuredSlugs[0])?.excerpt}
-                      </p>
-                    </div>
-                  </Link>
-                )}
-
-                {/* Right column with 3 smaller features */}
-                <div className="space-y-4">
-                  {featuredSlugs.slice(1).map((slug) => {
-                    const article = articles.find(a => a.slug === slug);
-                    if (!article) return null;
-
-                    return (
-                      <Link
-                        key={article.id}
-                        to={`/articles/${article.slug}`}
-                        className="flex items-start gap-4 bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow"
-                      >
-                        <img
-                          src={article.image}
-                          alt={article.title}
-                          className="w-24 h-24 object-cover rounded-md flex-shrink-0"
-                        />
-                        <div>
-                          <div className="text-cardinal-red text-xs mb-1">{article.category}</div>
-                          <h4 className="text-md font-semibold text-charcoal-gray group-hover:text-cardinal-red mb-1">
-                            {article.title}
-                          </h4>
-                          <p className="text-sm text-charcoal-gray/80 line-clamp-2">{article.excerpt}</p>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
