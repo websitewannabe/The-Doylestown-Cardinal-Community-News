@@ -142,7 +142,7 @@ const ArticlesPage = () => {
             <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
               Latest Articles
             </h1>
-            <p className="text-xl text-off-white/90 max-w-2xl">
+            <p className="hidden md:block text-xl text-off-white/90 max-w-2xl">
               Stay informed with the latest news, features, and stories from Doylestown and beyond.
             </p>
           </div>
