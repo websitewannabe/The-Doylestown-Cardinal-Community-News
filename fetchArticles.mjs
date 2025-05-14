@@ -1,6 +1,7 @@
 // fetchArticles.mjs
 import fs from 'fs';
 import fetch from 'node-fetch';
+import path from 'path';
 
 const API_URL = 'https://doylestowncardinal.com/wp-json/wp/v2/posts';
 const OUTPUT_DIR = './public/data/articles';
