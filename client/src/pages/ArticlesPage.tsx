@@ -20,16 +20,16 @@ const ArticlesPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+  const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
 
-const monthOptions = [
-  ...new Set(
-    articles.map(article => {
-      const date = new Date(article.date);
-      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-    })
-  )
-].sort((a, b) => b.localeCompare(a));
+  const monthOptions = [
+    ...new Set(
+      articles.map(article => {
+        const date = new Date(article.date);
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+      })
+    )
+  ].sort((a, b) => b.localeCompare(a));
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const monthOptions = [
         const response = await fetch('/data/articles.json');
         if (!response.ok) throw new Error("Failed to load article list");
         const data = await response.json();
-        const sorted = data.sort((a: Article, b: Article) => 
+        const sorted = data.sort((a: Article, b: Article) =>
           new Date(b.date).getTime() - new Date(a.date).getTime()
         );
         setArticles(sorted);
@@ -85,53 +85,14 @@ const monthOptions = [
     return matchesSearch && matchesCategory && matchesMonth;
   });
 
-  // Mock featured articles data
-  const featuredArticles = [
-    {
-      id: 101,
-      slug: 'featured-article-1',
-      title: 'The Ultimate Guide to Doylestown',
-      excerpt: 'Explore the best of Doylestown with our comprehensive guide.',
-      category: 'Travel',
-      author: 'Jane Doe',
-      date: '2024-01-20',
-      image: 'https://images.unsplash.com/photo-1682685797527-491f58316770?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      tags: ['travel', 'doylestown']
-    },
-    {
-      id: 102,
-      slug: 'featured-article-2',
-      title: 'Top 5 Restaurants in Town',
-      excerpt: 'Discover the culinary delights of our town with these top-rated restaurants.',
-      category: 'Food',
-      author: 'John Smith',
-      date: '2024-02-15',
-      image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      tags: ['food', 'restaurants']
-    },
-    {
-      id: 103,
-      slug: 'featured-article-3',
-      title: 'The Art Scene in Our Community',
-      excerpt: 'A look into the vibrant art scene and local artists in our community.',
-      category: 'Art',
-      author: 'Emily White',
-      date: '2024-03-01',
-      image: 'https://images.unsplash.com/photo-1544510999-14209e54674a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      tags: ['art', 'community']
-    },
-    {
-        id: 104,
-        slug: 'featured-article-4',
-        title: 'Best Hiking Trails',
-        excerpt: 'Explore the best hiking trails with our comprehensive guide.',
-        category: 'Fitness',
-        author: 'Will Trent',
-        date: '2024-04-20',
-        image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80',
-        tags: ['travel', 'doylestown']
-      }
+  const featuredSlugs = [
+    "not-if-i-can-help-it",
+    "how-our-emotions-contribute-to-heart-disease",
+    "cozy-cupid-valentines-day-dates",
+    "stage-united-hosts-a-night"
   ];
+
+  const featuredArticles = articles.filter(article => featuredSlugs.includes(article.slug));
 
   if (isLoading) {
     return (
@@ -140,14 +101,14 @@ const monthOptions = [
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {[...Array(6)].map((_, i) => (
               <div key={i} className="bg-white rounded-lg overflow-hidden animate-pulse">
-                <div className="h-48 bg-gray-200"/>
+                <div className="h-48 bg-gray-200" />
                 <div className="p-6">
-                  <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"/>
-                  <div className="h-6 bg-gray-200 rounded mb-2"/>
-                  <div className="h-4 bg-gray-200 rounded mb-4"/>
+                  <div className="h-4 bg-gray-200 rounded w-1/4 mb-2" />
+                  <div className="h-6 bg-gray-200 rounded mb-2" />
+                  <div className="h-4 bg-gray-200 rounded mb-4" />
                   <div className="flex justify-between">
-                    <div className="h-3 bg-gray-200 rounded w-1/4"/>
-                    <div className="h-3 bg-gray-200 rounded w-1/4"/>
+                    <div className="h-3 bg-gray-200 rounded w-1/4" />
+                    <div className="h-3 bg-gray-200 rounded w-1/4" />
                   </div>
                 </div>
               </div>
