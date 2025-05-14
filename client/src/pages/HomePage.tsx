@@ -196,7 +196,7 @@ const HomePage = () => {
         const response = await fetch('/data/articles.json');
         if (!response.ok) throw new Error("Failed to load featured articles");
         const data = await response.json();
-        
+
         // Get latest 4 articles
         const featured = data
           .sort((a: Article, b: Article) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -368,10 +368,8 @@ const HomePage = () => {
                 </div>
 
                 {/* Current Issue Preview */}
-                <a
-                  href="https://online.fliphtml5.com/onuot/wqtv/#p=1"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/current-issue"
                   className="block h-36 rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
                 >
                   <img
@@ -379,7 +377,7 @@ const HomePage = () => {
                     alt="Current Issue - The Cardinal"
                     className="w-full h-full object-contain"
                   />
-                </a>
+                </Link>
               </div>
 
               {/* Previous Edition Box */}
