@@ -10,9 +10,11 @@ interface Article {
   author: string;
   image: string;
   excerpt: string;
+  slug: string;
 }
 
 const ArticlePage = () => {
+  const [recentArticles, setRecentArticles] = useState<Article[]>([]);
   const [article, setArticle] = useState<Article | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -48,6 +50,17 @@ const ArticlePage = () => {
           author: resolvedAuthor,
           image: data.thumbnail || '/images/article-placeholder.jpg',
         });
+
+        // Load recent articles
+        const allRes = await fetch('/data/articles.json');
+        const allArticles = await allRes.json();
+
+        const recent = allArticles
+          .filter((a: Article) => a.slug !== slug)
+          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+          .slice(0, 3);
+
+        setRecentArticles(recent);
       } catch (err) {
         setError("Failed to load article. Please try again later.");
         console.error("Error loading local article:", err);
@@ -127,6 +140,32 @@ const ArticlePage = () => {
             />
           </div>
         </article>
+
+        {recentArticles.length > 0 && (
+          <div className="mt-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-playfair font-bold text-charcoal-gray mb-6">Recent Articles</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {recentArticles.map((a) => (
+                <Link
+                  key={a.slug}
+                  to={`/articles/${a.slug}`}
+                  className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <img
+                    src={a.image}
+                    alt={a.title}
+                    className="w-full h-40 object-cover"
+                  />
+                  <div className="p-4">
+                    <div className="text-cardinal-red text-sm mb-1">{new Date(a.date).toLocaleDateString()}</div>
+                    <h3 className="font-semibold text-charcoal-gray text-lg mb-1">{a.title}</h3>
+                    <p className="text-sm text-charcoal-gray/70 line-clamp-2">{a.excerpt}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
