@@ -13,6 +13,8 @@ interface Article {
   slug: string;
 }
 
+import ArticleSEO from '../components/SEO/ArticleSEO';
+
 const ArticlePage = () => {
   const [recentArticles, setRecentArticles] = useState<Article[]>([]);
   const [article, setArticle] = useState<Article | null>(null);
@@ -100,7 +102,16 @@ const ArticlePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F0EF] pt-32">
+    <>
+      {article && (
+        <ArticleSEO
+          title={article.title}
+          excerpt={article.excerpt}
+          slug={slug || ''}
+          image={article.image}
+        />
+      )}
+      <div className="min-h-screen bg-[#F2F0EF] pt-32">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           to="/articles"
@@ -171,6 +182,7 @@ const ArticlePage = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 
