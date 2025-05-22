@@ -280,9 +280,18 @@ const ArticlesPage = () => {
                       alt={article.title}
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                     />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-white font-medium flex items-center">
+                        Read More <ChevronRight className="w-4 h-4 ml-1" />
+                      </span>
+                    </div>
                   </div>
                   <div className="p-6">
-                    <div className="text-cardinal-red mb-2">{article.category}</div>
+                    {/* Category badge */}
+                    <div className="inline-block px-3 py-1 bg-cardinal-red/10 text-cardinal-red text-sm rounded-full mb-3">
+                      {article.category}
+                    </div>
                     <h2 className="font-playfair text-xl font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-2">
                       {article.title}
                     </h2>
@@ -290,7 +299,11 @@ const ArticlesPage = () => {
                       {article.excerpt}
                     </p>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-charcoal-gray/60">{article.author}</span>
+                      <div className="flex items-center gap-3">
+                        <span className="text-charcoal-gray/60">{article.author}</span>
+                        <span className="text-charcoal-gray/60">•</span>
+                        <span className="text-charcoal-gray/60">3 min read</span>
+                      </div>
                       <span className="text-charcoal-gray/60">{new Date(article.date).toLocaleDateString()}</span>
                     </div>
                   </div>
