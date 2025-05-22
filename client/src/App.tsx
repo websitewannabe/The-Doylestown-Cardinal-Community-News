@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
 import { ProtectedRoute } from './components/ProtectedRoute';
@@ -121,7 +122,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <NewsletterProvider>
+       <HelmetProvider>
         <AppContent />
+        </HelmetProvider>
       </NewsletterProvider>
     </QueryClientProvider>
   );
