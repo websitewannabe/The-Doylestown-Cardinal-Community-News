@@ -268,63 +268,34 @@ const ArticlesPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-              {filteredArticles.map((article) => {
-                // Calculate reading time (200 words per minute)
-                const wordCount = (article.content || article.excerpt).split(/\s+/).length;
-                const readingTime = Math.max(1, Math.ceil(wordCount / 200));
-                
-                return (
-                  <Link
-                    key={article.id}
-                    to={`/articles/${article.slug}`}
-                    className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
-                  >
-                    {/* Image container with hover overlay */}
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={article.image}
-                        alt={article.title}
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                      />
-                      {/* Hover overlay */}
-                      <div className="absolute inset-0 bg-charcoal-gray/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-white font-medium flex items-center">
-                          Read More <ChevronRight className="w-4 h-4 ml-1" />
-                        </span>
-                      </div>
+              {filteredArticles.map((article) => (
+                <Link
+                  key={article.id}
+                  to={`/articles/${article.slug}`}
+                  className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="text-cardinal-red mb-2">{article.category}</div>
+                    <h2 className="font-playfair text-xl font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-2">
+                      {article.title}
+                    </h2>
+                    <p className="text-charcoal-gray/80 mb-4 line-clamp-3">
+                      {article.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-charcoal-gray/60">{article.author}</span>
+                      <span className="text-charcoal-gray/60">{new Date(article.date).toLocaleDateString()}</span>
                     </div>
-                    <div className="p-6">
-                      {/* Category and tags */}
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <span className="px-2 py-1 bg-cardinal-red/10 text-cardinal-red text-xs rounded-full">
-                          {article.category}
-                        </span>
-                        {article.tags?.map((tag, index) => (
-                          <span 
-                            key={index}
-                            className="px-2 py-1 bg-charcoal-gray/5 text-charcoal-gray/70 text-xs rounded-full"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <h2 className="font-playfair text-xl font-bold text-charcoal-gray group-hover:text-cardinal-red transition-colors mb-2">
-                        {article.title}
-                      </h2>
-                      <p className="text-charcoal-gray/80 mb-4 line-clamp-3">
-                        {article.excerpt}
-                      </p>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-charcoal-gray/60">{article.author}</span>
-                        <div className="flex items-center gap-3 text-charcoal-gray/60">
-                          <span>{readingTime} min read</span>
-                          <span>{new Date(article.date).toLocaleDateString()}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              }))}
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
