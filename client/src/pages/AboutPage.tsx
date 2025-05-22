@@ -225,60 +225,86 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-6">
-                Our Mission
-              </h2>
-              <p className="text-lg text-charcoal-gray/80 mb-8">
-                The Cardinal exists to serve the greater Doylestown community
-                through authentic, impactful journalism that informs, connects,
-                and empowers our readers. We believe in the power of local news
-                to strengthen community bonds and foster positive change.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-cardinal-red/10 rounded-lg">
-                    <BookOpen className="w-6 h-6 text-cardinal-red" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold mb-2">Truth & Accuracy</h3>
-                    <p className="text-charcoal-gray/70">
-                      We uphold the highest standards of journalistic integrity.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-cardinal-red/10 rounded-lg">
-                    <Users className="w-6 h-6 text-cardinal-red" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold mb-2">Community First</h3>
-                    <p className="text-charcoal-gray/70">
-                      Local perspectives and needs guide our coverage.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-cardinal-red/10 rounded-lg">
-                    <Heart className="w-6 h-6 text-cardinal-red" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold mb-2">Inclusive Voice</h3>
-                    <p className="text-charcoal-gray/70">
-                      We represent and amplify diverse community voices.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-cardinal-red/10 rounded-lg">
-                    <Award className="w-6 h-6 text-cardinal-red" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold mb-2">Excellence</h3>
-                    <p className="text-charcoal-gray/70">
-                      We strive for excellence in every story we tell.
-                    </p>
-                  </div>
-                </div>
+            Our Mission
+          </h2>
+          <p className="text-xl text-charcoal-gray/80 italic mb-4">
+            "Go! See! Do! Doylestown."
+          </p>
+          <p className="text-lg text-charcoal-gray/80 mb-8">
+            Founded in 2021, The Cardinal is a family-owned local newspaper dedicated to 
+            celebrating Doylestown through positive, community-focused stories. Our team of local 
+            writers, editors, and photographers works tirelessly to showcase the vibrant spirit 
+            of our beloved town and its residents.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-cardinal-red/10 rounded-lg">
+                <BookOpen className="w-6 h-6 text-cardinal-red" />
               </div>
+              <div>
+                <h3 className="font-bold mb-2">Community-Focused</h3>
+                <p className="text-charcoal-gray/70">
+                  We tell the stories that bring our community together and celebrate local life.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-cardinal-red/10 rounded-lg">
+                <Users className="w-6 h-6 text-cardinal-red" />
+              </div>
+              <div>
+                <h3 className="font-bold mb-2">Local Expertise</h3>
+                <p className="text-charcoal-gray/70">
+                  Our team of local writers and photographers captures Doylestown's authentic spirit.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-cardinal-red/10 rounded-lg">
+                <Heart className="w-6 h-6 text-cardinal-red" />
+              </div>
+              <div>
+                <h3 className="font-bold mb-2">Positive Impact</h3>
+                <p className="text-charcoal-gray/70">
+                  We highlight the good in our community and inspire local engagement.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-cardinal-red/10 rounded-lg">
+                <Award className="w-6 h-6 text-cardinal-red" />
+              </div>
+              <div>
+                <h3 className="font-bold mb-2">Your Voice Matters</h3>
+                <p className="text-charcoal-gray/70">
+                  Share your stories, events, and perspectives with our community.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-12 p-6 bg-cardinal-red/5 rounded-lg text-center">
+            <h3 className="font-playfair text-2xl font-bold text-charcoal-gray mb-4">
+              Be Part of Our Story
+            </h3>
+            <p className="text-charcoal-gray/80 mb-6">
+              Whether you have a story to share, an event to promote, or a business to advertise, 
+              we'd love to hear from you. Join us in celebrating everything that makes Doylestown special.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                to="/editorial-submissions"
+                className="px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors"
+              >
+                Submit Your Story
+              </Link>
+              <Link
+                to="/advertise"
+                className="px-6 py-3 border border-cardinal-red text-cardinal-red rounded-lg hover:bg-cardinal-red/5 transition-colors"
+              >
+                Advertise With Us
+              </Link>
+            </div>
+          </div>
             </div>
             <div className="relative">
               <img
