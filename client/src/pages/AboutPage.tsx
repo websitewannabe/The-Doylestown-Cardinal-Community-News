@@ -312,12 +312,7 @@ const AboutPage = () => {
                 alt="The Cardinal newsroom in action"
                 className="rounded-lg shadow-xl"
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-lg">
-                <p className="font-playfair text-3xl font-bold text-cardinal-red">
-                  50+
-                </p>
-                <p className="text-charcoal-gray">Years of Service</p>
-              </div>
+              
             </div>
           </div>
         </div>
