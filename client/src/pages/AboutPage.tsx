@@ -282,29 +282,7 @@ const AboutPage = () => {
               </div>
             </div>
           </div>
-          <div className="mt-12 p-6 bg-cardinal-red/5 rounded-lg text-center">
-            <h3 className="font-playfair text-2xl font-bold text-charcoal-gray mb-4">
-              Be Part of Our Story
-            </h3>
-            <p className="text-charcoal-gray/80 mb-6">
-              Whether you have a story to share, an event to promote, or a business to advertise, 
-              we'd love to hear from you. Join us in celebrating everything that makes Doylestown special.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                to="/editorial-submissions"
-                className="px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors"
-              >
-                Submit Your Story
-              </Link>
-              <Link
-                to="/advertise"
-                className="px-6 py-3 border border-cardinal-red text-cardinal-red rounded-lg hover:bg-cardinal-red/5 transition-colors"
-              >
-                Advertise With Us
-              </Link>
-            </div>
-          </div>
+          
             </div>
             <div className="relative">
               <img
