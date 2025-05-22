@@ -324,8 +324,7 @@ const ArticlesPage = () => {
                     </div>
                   </Link>
                 );
-              })}
-              ))}
+              }))}
             </div>
           </div>
         </div>
