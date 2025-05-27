@@ -19,17 +19,7 @@ import ArchivePage from './pages/ArchivePage';
 import AdvertisePage from './pages/AdvertisePage';
 import WriterPage from './pages/WriterPage';
 import MeetTheWritersPage from './pages/MeetTheWritersPage';
-import CommunityPage from './pages/CommunityPage';
-import CommunitySpotlightPage from './pages/CommunitySpotlightPage';
-import BusinessSpotlightPage from './pages/BusinessSpotlightPage';
-import PersonSpotlightPage from './pages/PersonSpotlightPage';
-import EventSpotlightPage from './pages/EventSpotlightPage';
-import BuildingSpotlightPage from './pages/BuildingSpotlightPage';
-import AdvertiserOfTheMonthPage from './pages/AdvertiserOfTheMonthPage';
-import BusinessDirectoryPage from './pages/BusinessDirectoryPage';
-import TownGuidesPage from './pages/TownGuidesPage';
-import ThingsToDoPage from './pages/ThingsToDoPage';
-import BestOfDoylestownPage from './pages/BestOfDoylestownPage';
+
 import PrintSubscriptionsPage from './pages/PrintSubscriptionsPage';
 import DigitalSubscriptionsPage from './pages/DigitalSubscriptionsPage';
 import SupportUsPage from "./pages/SupportUsPage";
@@ -60,17 +50,6 @@ const AppContent = () => {
           <Route path="/writer/:writerId" element={<WriterPage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/events/:category" element={<EventsPage />} />
-          <Route path="/community" element={<CommunityPage />} />
-          <Route path="/community/spotlight" element={<CommunitySpotlightPage />} />
-          <Route path="/community/spotlight/business" element={<BusinessSpotlightPage />} />
-          <Route path="/community/spotlight/person" element={<PersonSpotlightPage />} />
-          <Route path="/community/spotlight/event" element={<EventSpotlightPage />} />
-          <Route path="/community/spotlight/building" element={<BuildingSpotlightPage />} />
-          <Route path="/community/spotlight/advertiser" element={<AdvertiserOfTheMonthPage />} />
-          <Route path="/community/directory" element={<BusinessDirectoryPage />} />
-          <Route path="/community/directory/guides" element={<TownGuidesPage />} />
-          <Route path="/community/directory/things-to-do" element={<ThingsToDoPage />} />
-          <Route path="/community/best-of" element={<BestOfDoylestownPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/editorial-submissions" element={<EditorialSubmissionsPage />} />
