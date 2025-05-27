@@ -1,0 +1,48 @@
+You're absolutely right — the Replit diff in the screenshot only removes one unused route (`/writer/:writerId`) but leaves many others in place. Here's how you can **split the full cleanup into two Replit prompts**, ensuring all unnecessary routes are removed in manageable steps.
+
+---
+
+### 🧹 **Prompt 1: Remove Non-Visible Community and Directory Routes**
+
+> ✅ Please remove the following `<Route>` components from `App.tsx`, as these pages are not part of the launch navigation:
+>
+> ```tsx
+> <Route path="/community" element={<CommunityPage />} />
+> <Route path="/community/spotlight" element={<CommunitySpotlightPage />} />
+> <Route path="/community/spotlight/business" element={<BusinessSpotlightPage />} />
+> <Route path="/community/spotlight/person" element={<PersonSpotlightPage />} />
+> <Route path="/community/spotlight/event" element={<EventSpotlightPage />} />
+> <Route path="/community/spotlight/building" element={<BuildingSpotlightPage />} />
+> <Route path="/community/spotlight/advertiser" element={<AdvertiserOfTheMonthPage />} />
+> <Route path="/community/directory" element={<BusinessDirectoryPage />} />
+> <Route path="/community/directory/guides" element={<TownGuidesPage />} />
+> <Route path="/community/directory/things-to-do" element={<ThingsToDoPage />} />
+> <Route path="/community/best-of" element={<BestOfDoylestownPage />} />
+> ```
+
+---
+
+### 🧹 **Prompt 2: Remove Events, Admin, Auth, and Other Deferred Routes**
+
+> ✅ Please also remove these additional `<Route>` entries from `App.tsx`, which are not needed at launch:
+>
+> ```tsx
+> <Route path="/writer/:writerId" element={<WriterPage />} />
+> <Route path="/events" element={<EventsPage />} />
+> <Route path="/events/:category" element={<EventsPage />} />
+> <Route path="/archive" element={<ArchivePage />} />
+> <Route path="/advertise" element={<AdvertisePage />} />
+> <Route path="/print-subscriptions" element={<PrintSubscriptionsPage />} />
+> <Route path="/digital-subscriptions" element={<DigitalSubscriptionsPage />} />
+> <Route path="/annual-fundraiser" element={<AnnualFundraiserPage />} />
+> <Route path="/login" element={<LoginPage />} />
+>
+> {/* Protected Admin Routes */}
+> <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
+> <Route path="/admin/articles/new" element={<ProtectedRoute><ArticleEditorPage /></ProtectedRoute>} />
+> <Route path="/admin/articles/:id/edit" element={<ProtectedRoute><ArticleEditorPage /></ProtectedRoute>} />
+> ```
+
+---
+
+Apply each prompt separately in Replit to help break the change set into more digestible updates for review. Let me know if you'd like a fully cleaned version of the file with these routes already removed.
