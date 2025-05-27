@@ -1,0 +1,29 @@
+> Remove the following `<Route>` components from `App.tsx` as they are not part of the initial launch navigation:
+>
+> ```tsx
+> <Route path="/writer/:writerId" element={<WriterPage />} />
+> <Route path="/events" element={<EventsPage />} />
+> <Route path="/events/:category" element={<EventsPage />} />
+> <Route path="/community" element={<CommunityPage />} />
+> <Route path="/community/spotlight" element={<CommunitySpotlightPage />} />
+> <Route path="/community/spotlight/business" element={<BusinessSpotlightPage />} />
+> <Route path="/community/spotlight/person" element={<PersonSpotlightPage />} />
+> <Route path="/community/spotlight/event" element={<EventSpotlightPage />} />
+> <Route path="/community/spotlight/building" element={<BuildingSpotlightPage />} />
+> <Route path="/community/spotlight/advertiser" element={<AdvertiserOfTheMonthPage />} />
+> <Route path="/community/directory" element={<BusinessDirectoryPage />} />
+> <Route path="/community/directory/guides" element={<TownGuidesPage />} />
+> <Route path="/community/directory/things-to-do" element={<ThingsToDoPage />} />
+> <Route path="/community/best-of" element={<BestOfDoylestownPage />} />
+> <Route path="/archive" element={<ArchivePage />} />
+> <Route path="/advertise" element={<AdvertisePage />} />
+> <Route path="/print-subscriptions" element={<PrintSubscriptionsPage />} />
+> <Route path="/digital-subscriptions" element={<DigitalSubscriptionsPage />} />
+> <Route path="/annual-fundraiser" element={<AnnualFundraiserPage />} />
+> <Route path="/login" element={<LoginPage />} />
+> <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
+> <Route path="/admin/articles/new" element={<ProtectedRoute><ArticleEditorPage /></ProtectedRoute>} />
+> <Route path="/admin/articles/:id/edit" element={<ProtectedRoute><ArticleEditorPage /></ProtectedRoute>} />
+> ```
+>
+> ✅ Only keep the routes that match current navigation: homepage, current issue, articles, support us, about, editorial submissions, locations, contact, and meet the writers.
