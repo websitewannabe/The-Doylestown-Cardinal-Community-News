@@ -47,48 +47,12 @@ const AppContent = () => {
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/articles/:slug" element={<ArticlePage />} />
           <Route path="/writers" element={<MeetTheWritersPage />} />
-          <Route path="/writer/:writerId" element={<WriterPage />} />
-          <Route path="/events" element={<EventsPage />} />
-          <Route path="/events/:category" element={<EventsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/editorial-submissions" element={<EditorialSubmissionsPage />} />
           <Route path="/current-issue" element={<IssuePage />} />
-          <Route path="/archive" element={<ArchivePage />} />
-          <Route path="/advertise" element={<AdvertisePage />} />
-          <Route path="/print-subscriptions" element={<PrintSubscriptionsPage />} />
-          <Route path="/digital-subscriptions" element={<DigitalSubscriptionsPage />} />
           <Route path="/support-us" element={<SupportUsPage />} />
-          <Route path="/annual-fundraiser" element={<AnnualFundraiserPage />} />
-          <Route path="/writer/:writerId" element={<WriterPage />} />
           <Route path="/locations" element={<LocationsPage />} />
-          <Route path="/login" element={<LoginPage />} />
-
-          {/* Protected Admin Routes */}
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/articles/new"
-            element={
-              <ProtectedRoute>
-                <ArticleEditorPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/articles/:id/edit"
-            element={
-              <ProtectedRoute>
-                <ArticleEditorPage />
-              </ProtectedRoute>
-            }
-          />
         </Routes>
         <Footer />
         {showPopup && <NewsletterPopup show={showPopup} onClose={handleClose} />}
