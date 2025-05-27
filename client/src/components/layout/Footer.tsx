@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NewsletterPopup from "../ui/NewsletterPopup";
@@ -95,145 +96,175 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation Links - Articles */}
           <div>
             <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-6">
-              Quick Links
+              Articles
             </h3>
             <ul className="space-y-3">
               <li>
                 <Link
+                  to="/articles"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  All Articles
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/current-issue"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
                   Current Issue
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/events"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
+                <a
+                  href="https://issuu.com/doylestowncardinal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  Events Calendar
+                  Past Issues
+                </a>
+              </li>
+              <li>
+                <Link
+                  to="/articles?category=play"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  Things To Do
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/advertise"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
+                  to="/articles?category=stay"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  Advertise With Us
+                  Hotels
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/digital-subscriptions"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
+                  to="/articles?category=taste"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  Digital Subscriptions
+                  Restaurants
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Navigation Links - More Articles */}
+          <div>
+            <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-6">
+              Categories
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  to="/articles?category=art-music"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  Art/Music
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/print-subscriptions"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
+                  to="/articles?category=style"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  Print Subscriptions
+                  Style
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/articles?category=fit"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  Fitness
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/articles?category=life"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  Life
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/articles?category=business"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  Business
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/articles?category=technology"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  Technology
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/articles?category=real-estate"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  Real Estate
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* More Section */}
+          <div>
+            <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-6">
+              More
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  to="/about"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/writers"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  Meet the Writers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/editorial-submissions"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  Editorial Submissions
                 </Link>
               </li>
               <li>
                 <Link
                   to="/locations"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
                   Find The Cardinal
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* Helpful Resources */}
-          <div>
-            <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-6">
-              Helpful Resources
-            </h3>
-            <ul className="space-y-3">
               <li>
                 <Link
-                  to="/community/spotlight"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
+                  to="/contact"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  Community Spotlight
+                  Contact Us
                 </Link>
-              </li>
-              <li>
-                <Link
-                  to="/news"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
-                >
-                  Latest News
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/events-landing"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
-                >
-                  Local Events
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/flavors-and-spirits"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
-                >
-                  Flavors & Spirits
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/town-guides"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
-                >
-                  Town Guides
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Information */}
-          <div>
-            <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-6">
-              Contact Us
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin
-                  size={20}
-                  className="text-cardinal-red flex-shrink-0 mt-1"
-                />
-                <span className="text-charcoal-gray/80">
-                  123 Main Street
-                  <br />
-                  Doylestown, PA 18901
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone size={20} className="text-cardinal-red flex-shrink-0" />
-                <span className="text-charcoal-gray/80">(215) 555-0123</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={20} className="text-cardinal-red flex-shrink-0" />
-                <a
-                  href="mailto:info@thecardinal.com"
-                  className="text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
-                >
-                  info@thecardinal.com
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Globe size={20} className="text-cardinal-red flex-shrink-0" />
-                <span className="text-charcoal-gray/80">Mon-Fri: 9am-5pm</span>
               </li>
             </ul>
           </div>
@@ -241,44 +272,52 @@ const Footer = () => {
           {/* Support Section */}
           <div>
             <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-6">
-              Support Local Journalism
+              Support
             </h3>
             <ul className="space-y-4">
               <li>
                 <Link
-                  to="/donate"
-                  className="flex items-center gap-3 text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
+                  to="/support-us"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  <Heart size={20} className="text-cardinal-red" />
-                  Make a Donation
+                  Support Us
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/annual-fundraiser"
-                  className="flex items-center gap-3 text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
+                  to="/advertise"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  <Calendar size={20} className="text-cardinal-red" />
-                  Annual Fundraiser
+                  Advertise With Us
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/about"
-                  className="flex items-center gap-3 text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
-                >
-                  <Award size={20} className="text-cardinal-red" />
-                  Our Mission
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/writers"
-                  className="flex items-center gap-3 text-charcoal-gray/80 hover:text-cardinal-red transition-colors"
-                >
-                  <Users size={20} className="text-cardinal-red" />
-                  Meet Our Team
-                </Link>
+                <div className="space-y-4 text-charcoal-gray/80 text-sm">
+                  <div className="flex items-start gap-3">
+                    <MapPin
+                      size={16}
+                      className="text-cardinal-red flex-shrink-0 mt-1"
+                    />
+                    <span>
+                      123 Main Street
+                      <br />
+                      Doylestown, PA 18901
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone size={16} className="text-cardinal-red flex-shrink-0" />
+                    <span>(215) 555-0123</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail size={16} className="text-cardinal-red flex-shrink-0" />
+                    <a
+                      href="mailto:info@thecardinal.com"
+                      className="hover:text-[#8B0000] transition-colors"
+                    >
+                      info@thecardinal.com
+                    </a>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
@@ -294,32 +333,20 @@ const Footer = () => {
             </div>
             <div className="flex flex-wrap items-center gap-6 text-sm">
               <Link
-                to="/privacy-policy"
-                className="text-charcoal-gray/60 hover:text-cardinal-red transition-colors"
+                to="/"
+                className="text-charcoal-gray/60 hover:text-[#8B0000] transition-colors"
               >
-                Privacy Policy
+                Home
               </Link>
               <Link
-                to="/terms-of-service"
-                className="text-charcoal-gray/60 hover:text-cardinal-red transition-colors"
+                to="/about"
+                className="text-charcoal-gray/60 hover:text-[#8B0000] transition-colors"
               >
-                Terms of Service
-              </Link>
-              <Link
-                to="/accessibility"
-                className="text-charcoal-gray/60 hover:text-cardinal-red transition-colors"
-              >
-                Accessibility
-              </Link>
-              <Link
-                to="/editorial-submissions"
-                className="text-charcoal-gray/60 hover:text-cardinal-red transition-colors"
-              >
-                Submit Content
+                About
               </Link>
               <Link
                 to="/contact"
-                className="text-charcoal-gray/60 hover:text-cardinal-red transition-colors"
+                className="text-charcoal-gray/60 hover:text-[#8B0000] transition-colors"
               >
                 Contact
               </Link>
