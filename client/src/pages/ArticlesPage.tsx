@@ -56,26 +56,16 @@ const ArticlesPage = () => {
   useEffect(() => {
     const categoryFromURL = searchParams.get("category");
     if (categoryFromURL) {
-      // Direct mapping for new categories, plus backward compatibility
       const categoryMap: { [key: string]: string } = {
-        'News': 'News',
-        'Events': 'Events',
-        'Community Spotlights': 'Community Spotlights',
-        'Student Spotlights': 'Student Spotlights',
-        'Fit': 'Fit',
-        'Taste': 'Taste',
-        'Play': 'Play',
-        'Live': 'Live',
-        // Backward compatibility for old URLs
-        'fit': 'Fit',
+        'fit': 'Fitness',
         'style': 'Style',
         'business': 'Business',
         'technology': 'Technology',
         'life': 'Life',
         'art-music': 'Art/Music',
         'stay': 'Hotels',
-        'taste': 'Taste',
-        'play': 'Play',
+        'taste': 'Restaurants',
+        'play': 'Things To Do',
         'real-estate': 'Real Estate'
       };
       setSelectedCategory(categoryMap[categoryFromURL] || categoryFromURL);

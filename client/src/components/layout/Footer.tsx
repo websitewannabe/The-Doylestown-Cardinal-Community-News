@@ -130,23 +130,15 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/articles?category=News"
+                  to="/articles?category=play"
                   className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  News
+                  Things To Do
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/articles?category=Events"
-                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
-                >
-                  Events
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/articles?category=Community Spotlights"
+                  to="/articles?category=stay"
                   className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
                   Hotels
@@ -163,7 +155,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Navigation Links - More Categories */}
+          {/* Navigation Links - More Articles */}
           <div>
             <h3 className="font-playfair text-xl font-bold text-charcoal-gray mb-6">
               Categories
@@ -171,50 +163,58 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  to="/articles?category=Community Spotlights"
+                  to="/articles?category=art-music"
                   className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  Community Spotlights
+                  Art/Music
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/articles?category=Student Spotlights"
+                  to="/articles?category=style"
                   className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  Student Spotlights
+                  Style
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/articles?category=Fit"
+                  to="/articles?category=fit"
                   className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  Fit
+                  Fitness
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/articles?category=Taste"
+                  to="/articles?category=life"
                   className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  Taste
+                  Life
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/articles?category=Play"
+                  to="/articles?category=business"
                   className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  Play
+                  Business
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/articles?category=Live"
+                  to="/articles?category=technology"
                   className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >
-                  Live
+                  Technology
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/articles?category=real-estate"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  Real Estate
                 </Link>
               </li>
             </ul>
