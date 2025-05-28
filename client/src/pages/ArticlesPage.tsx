@@ -57,16 +57,14 @@ const ArticlesPage = () => {
     const categoryFromURL = searchParams.get("category");
     if (categoryFromURL) {
       const categoryMap: { [key: string]: string } = {
-        'fit': 'Fitness',
+        'arts-music': 'Arts/Music',
+        'fit': 'Fit',
+        'live': 'Live',
+        'play': 'Play',
+        'stay': 'Stay',
         'style': 'Style',
-        'business': 'Business',
-        'technology': 'Technology',
-        'life': 'Life',
-        'art-music': 'Art/Music',
-        'stay': 'Hotels',
-        'taste': 'Restaurants',
-        'play': 'Things To Do',
-        'real-estate': 'Real Estate'
+        'taste': 'Taste',
+        'uncategorized': 'Uncategorized',
       };
       setSelectedCategory(categoryMap[categoryFromURL] || categoryFromURL);
     }
