@@ -156,15 +156,92 @@ const WriterPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F0EF] pt-32 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link
-          to="/writers"
-          className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors mb-6"
-        >
-          <ChevronRight size={20} className="mr-1 rotate-180" />
-          Back to Writers
-        </Link>
+    <div className="min-h-screen bg-[#F2F0EF]">
+      {/* Hero Section */}
+      <div className="relative h-[55vh]">
+        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
+          <img
+            src="https://images.unsplash.com/photo-1524813686514-a57563d77965?auto=format&fit=crop&q=80"
+            alt="Writer profile background"
+            className="w-full h-[105%] object-cover blur-[1px] scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
+        </div>
+        <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
+          <div>
+            <nav className="mb-4">
+              <Link
+                to="/"
+                className="text-off-white/80 hover:text-off-white transition-colors"
+              >
+                Home
+              </Link>
+              <span className="text-off-white/60 mx-2">/</span>
+              <Link
+                to="/writers"
+                className="text-off-white/80 hover:text-off-white transition-colors"
+              >
+                Writers
+              </Link>
+              <span className="text-off-white/60 mx-2">/</span>
+              <span className="text-off-white">{writer.name}</span>
+            </nav>
+            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
+              {writer.name}
+            </h1>
+            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
+              {writer.role} • The Cardinal
+            </p>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg
+            viewBox="0 0 1440 120"
+            className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="currentColor"
+              d="M0,120 
+                 C180,90 360,120 540,100 
+                 C720,80 900,110 1080,105 
+                 C1260,100 1350,85 1440,95 
+                 L1440,120 L0,120 Z"
+              className="transition-all duration-300"
+            />
+            <path
+              fill="currentColor"
+              fillOpacity="0.4"
+              d="M0,120 
+                 C160,110 320,85 480,95 
+                 C640,105 800,90 960,100 
+                 C1120,110 1280,95 1440,105 
+                 L1440,120 L0,120 Z"
+              className="transition-all duration-300"
+            />
+            <path
+              fill="currentColor"
+              fillOpacity="0.2"
+              d="M0,120 
+                 C240,115 480,90 720,100 
+                 C960,110 1200,90 1440,100 
+                 L1440,120 L0,120 Z"
+              className="transition-all duration-300"
+            />
+          </svg>
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="pt-8 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            to="/writers"
+            className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors mb-6"
+          >
+            <ChevronRight size={20} className="mr-1 rotate-180" />
+            Back to Writers
+          </Link>
         <div className="bg-white rounded-xl shadow-md overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 p-8">
             {/* Image Column */}
@@ -257,6 +334,7 @@ const WriterPage = () => {
             </div>
           )}
         </div>
+      </div>
       </div>
     </div>
   );
