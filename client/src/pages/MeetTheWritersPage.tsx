@@ -148,103 +148,171 @@ const writers = [
 
 const MeetTheWritersPage = () => {
   return (
-    <div className="min-h-screen bg-[#F2F0EF] pt-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <div className="text-center mb-16">
-          <h1 className="font-playfair text-5xl font-bold text-charcoal-gray mb-6">
-            Meet Our Writers
-          </h1>
-          <p className="text-xl text-charcoal-gray/80 max-w-3xl mx-auto">
-            Get to know the talented journalists bringing you Doylestown's
-            stories. Our writers are dedicated to delivering authentic,
-            impactful journalism that matters to our community.
-          </p>
+    <div className="min-h-screen bg-[#F2F0EF]">
+      {/* Hero Section */}
+      <div className="relative h-[55vh]">
+        <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
+          <img
+            src="https://images.unsplash.com/photo-1524813686514-a57563d77965?auto=format&fit=crop&q=80"
+            alt="Meet our writers"
+            className="w-full h-[105%] object-cover blur-[1px] scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B6B]/80 to-charcoal-gray/50" />
         </div>
+        <div className="relative max-w-7xl mx-auto pl-8 pr-4 sm:pl-12 sm:px-6 lg:pl-16 lg:px-8 h-full flex items-center">
+          <div>
+            <nav className="mb-4">
+              <Link
+                to="/"
+                className="text-off-white/80 hover:text-off-white transition-colors"
+              >
+                Home
+              </Link>
+              <span className="text-off-white/60 mx-2">/</span>
+              <span className="text-off-white">Writers</span>
+            </nav>
+            <h1 className="font-playfair text-5xl md:text-6xl font-bold text-off-white mb-4">
+              Meet Our Writers
+            </h1>
+            <p className="text-2xl text-off-white mb-8 font-playfair italic max-w-2xl">
+              The talented voices behind The Cardinal's stories
+            </p>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg
+            viewBox="0 0 1440 120"
+            className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="currentColor"
+              d="M0,120 
+                 C180,90 360,120 540,100 
+                 C720,80 900,110 1080,105 
+                 C1260,100 1350,85 1440,95 
+                 L1440,120 L0,120 Z"
+              className="transition-all duration-300"
+            />
+            <path
+              fill="currentColor"
+              fillOpacity="0.4"
+              d="M0,120 
+                 C160,110 320,85 480,95 
+                 C640,105 800,90 960,100 
+                 C1120,110 1280,95 1440,105 
+                 L1440,120 L0,120 Z"
+              className="transition-all duration-300"
+            />
+            <path
+              fill="currentColor"
+              fillOpacity="0.2"
+              d="M0,120 
+                 C240,115 480,90 720,100 
+                 C960,110 1200,90 1440,100 
+                 L1440,120 L0,120 Z"
+              className="transition-all duration-300"
+            />
+          </svg>
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="pt-8 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header Section */}
+          <div className="text-center mb-16">
+            <p className="text-xl text-charcoal-gray/80 max-w-3xl mx-auto">
+              Get to know the talented journalists bringing you Doylestown's
+              stories. Our writers are dedicated to delivering authentic,
+              impactful journalism that matters to our community.
+            </p>
+          </div>
 
         {/* Writers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {writers.map((writer) => (
-            <div
-              key={writer.id}
-              className="flex flex-col h-full border border-[#333333] rounded-lg overflow-hidden bg-white"
-            >
-              <div className="flex-grow">
-                <div className="relative">
-                  <img
-                    src={writer.image}
-                    alt={writer.name}
-                    className="w-full h-96 object-cover object-top"
-                  />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex gap-2">
-                      <a
-                        href={`mailto:${writer.email}`}
-                        className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
-                        title="Email"
-                      >
-                        <Mail size={16} />
-                      </a>
-                      <a
-                        href={writer.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
-                        title="Twitter"
-                      >
-                        <Twitter size={16} />
-                      </a>
-                      <a
-                        href={writer.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
-                        title="LinkedIn"
-                      >
-                        <Linkedin size={16} />
-                      </a>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+            {writers.map((writer) => (
+              <div
+                key={writer.id}
+                className="flex flex-col h-full border border-[#333333] rounded-lg overflow-hidden bg-white"
+              >
+                <div className="flex-grow">
+                  <div className="relative">
+                    <img
+                      src={writer.image}
+                      alt={writer.name}
+                      className="w-full h-96 object-cover object-top"
+                    />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex gap-2">
+                        <a
+                          href={`mailto:${writer.email}`}
+                          className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
+                          title="Email"
+                        >
+                          <Mail size={16} />
+                        </a>
+                        <a
+                          href={writer.twitter}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
+                          title="Twitter"
+                        >
+                          <Twitter size={16} />
+                        </a>
+                        <a
+                          href={writer.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-white/90 rounded-full hover:bg-cardinal-red hover:text-white transition-colors"
+                          title="LinkedIn"
+                        >
+                          <Linkedin size={16} />
+                        </a>
+                      </div>
                     </div>
                   </div>
+
+                  <div className="p-6">
+                    <Link to={`/writer/${writer.id}`}>
+                      <h2 className="font-playfair text-2xl font-bold text-charcoal-gray hover:text-cardinal-red transition-colors mb-1 cursor-pointer">
+                        {writer.name}
+                      </h2>
+                    </Link>
+                    <div className="text-cardinal-red font-medium mb-3">
+                      {writer.role}
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {writer.expertise.map((skill, index) => (
+                        <span
+                          key={index}
+                          className="px-2 py-1 bg-cardinal-red/10 text-cardinal-red rounded-full text-sm"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+
+                    <p className="text-charcoal-gray/80 mb-6 line-clamp-4">
+                      {writer.bio}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="p-6">
-                  <Link to={`/writer/${writer.id}`}>
-                    <h2 className="font-playfair text-2xl font-bold text-charcoal-gray hover:text-cardinal-red transition-colors mb-1 cursor-pointer">
-                      {writer.name}
-                    </h2>
+                <div className="mt-auto p-6 border-t border-[#333333]/10 bg-[#F8F8F8]">
+                  <Link
+                    to={`/writer/${writer.id}`}
+                    className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
+                  >
+                    View Full Profile
+                    <ChevronRight size={16} className="ml-1" />
                   </Link>
-                  <div className="text-cardinal-red font-medium mb-3">
-                    {writer.role}
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {writer.expertise.map((skill, index) => (
-                      <span
-                        key={index}
-                        className="px-2 py-1 bg-cardinal-red/10 text-cardinal-red rounded-full text-sm"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-
-                  <p className="text-charcoal-gray/80 mb-6 line-clamp-4">
-                    {writer.bio}
-                  </p>
                 </div>
               </div>
-
-              <div className="mt-auto p-6 border-t border-[#333333]/10 bg-[#F8F8F8]">
-                <Link
-                  to={`/writer/${writer.id}`}
-                  className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
-                >
-                  View Full Profile
-                  <ChevronRight size={16} className="ml-1" />
-                </Link>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
