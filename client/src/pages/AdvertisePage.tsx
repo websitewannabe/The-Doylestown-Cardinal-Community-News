@@ -799,6 +799,94 @@ const AdvertisePage = () => {
         </div>
       </section>
 
+      {/* Digital Sponsorship Tiers Section */}
+      <section className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-charcoal-gray font-playfair mb-12">
+            Digital Sponsorship Tiers
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {/* Top Tier */}
+            <div className="border rounded-xl shadow-lg p-8 bg-gradient-to-br from-[#ffe2e2] to-[#ffffff]">
+              <h3 className="text-2xl font-bold text-cardinal-red mb-2">Top Tier – $2500</h3>
+              <p className="text-gray-700 mb-4 italic">Only 1 Spot Available</p>
+              <ul className="list-disc ml-5 text-gray-700 space-y-2 text-sm">
+                <li>Banner ads across all pages</li>
+                <li>Pop-up ads in Community <strong>and</strong> Events sections</li>
+                <li>Community menu placement with 6 photos + article links</li>
+                <li>Top listing in Community Section</li>
+                <li>Business of the Month spotlight for <strong>3 months</strong></li>
+              </ul>
+            </div>
+
+            {/* Middle Tier */}
+            <div className="border rounded-xl shadow-lg p-8 bg-gradient-to-br from-[#fdf5db] to-[#ffffff]">
+              <h3 className="text-2xl font-bold text-[#b95c00] mb-2">Middle Tier – $1000</h3>
+              <p className="text-gray-700 mb-4 italic">Only 5 Spots Available</p>
+              <ul className="list-disc ml-5 text-gray-700 space-y-2 text-sm">
+                <li>Pop-up ad in Community <strong>or</strong> Events section</li>
+                <li>Community menu placement with 6 photos + article links</li>
+                <li>Top 3 listing in Community Section</li>
+                <li>Business of the Month spotlight for <strong>1 month</strong></li>
+              </ul>
+            </div>
+
+            {/* Bottom Tier */}
+            <div className="border rounded-xl shadow-lg p-8 bg-gradient-to-br from-[#e0f7fa] to-[#ffffff]">
+              <h3 className="text-2xl font-bold text-[#007a99] mb-2">Bottom Tier – $500</h3>
+              <p className="text-gray-700 mb-4 italic">Only 10 Spots Available</p>
+              <ul className="list-disc ml-5 text-gray-700 space-y-2 text-sm">
+                <li>Community menu placement with 6 photos + article links</li>
+                <li>Brand recognition throughout Community Section</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="bg-charcoal-gray text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="font-playfair text-4xl font-bold mb-4">
+              Ready to Get Started?
+            </h2>
+            <p className="text-lg mb-8">
+              Contact our advertising team today to discuss your specific needs
+              and goals.
+            </p>
+            <button
+              onClick={() => setShowContactForm(true)}
+              className="bg-forest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-cardinal-red transition-colors inline-flex items-center gap-2"
+            >
+              Contact Us
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-forest-green text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="mb-4 md:mb-0">
+              &copy; {new Date().getFullYear()} The Doylestown Cardinal. All
+              rights reserved.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="hover:text-cardinal-red transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-cardinal-red transition-colors">
+                Terms of Service
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
       {/* Contact Form Modal */}
       {showContactForm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
