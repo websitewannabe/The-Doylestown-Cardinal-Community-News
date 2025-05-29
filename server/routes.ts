@@ -146,31 +146,31 @@ export function registerRoutes(app: Express): Server {
         ? articleBody.substring(0, maxContentLength) + '...[content truncated]'
         : articleBody;
 
-      const prompt = `Please check this article for grammar and spelling errors. Suggest corrections and return a side-by-side comparison of the original and edited versions. Also provide a list of specific suggestions for improvement.
+      const prompt = `Please edit the following article for grammar, spelling, and clarity. Provide a cleaned-up version and a few improvement notes in JSON format like:
+
+{
+  "revisedText": "...",
+  "suggestions": ["Fix passive voice", "Correct spelling of 'definitely'"]
+}
 
 Title: ${articleTitle || 'Untitled'}
 Author: ${authorName || 'Anonymous'}
 
-Article Content:
-${truncatedBody}
-
-Please respond with a JSON object containing:
-1. "revisedText" - the corrected version of the article
-2. "suggestions" - an array of specific improvement suggestions`;
+${truncatedBody}`;
 
       const completion = await openai.chat.completions.create({
         model: 'gpt-3.5-turbo', // Use cheaper model to reduce costs/quota usage
         messages: [
           {
             role: 'system',
-            content: 'You are a professional editor and grammar checker. Provide detailed, helpful feedback on written content. Always respond with valid JSON format.'
+            content: 'You are a helpful grammar assistant.'
           },
           {
             role: 'user',
             content: prompt
           }
         ],
-        max_tokens: 2000, // Reduced token limit
+        max_tokens: 1000, // Further reduced token limit for cost efficiency
         temperature: 0.3
       });
 
@@ -190,7 +190,7 @@ Please respond with a JSON object containing:
           // Fallback: treat the entire response as revised text
           res.json({
             revisedText: content,
-            suggestions: ['Please review the AI suggestions provided above.']
+            suggestions: ['AI response was not JSON-formatted. Raw output returned.']
           });
         }
       } catch (parseError) {
