@@ -11,7 +11,7 @@ import { db } from './db';
 import { users, articles, events } from '../shared/schema';
 import { eq } from 'drizzle-orm';
 import { authenticateToken } from './auth';
-
+import { Configuration, OpenAIApi } from 'openai';
 export function registerRoutes(app: Express): Server {
   // Article routes
   app.get('/api/articles', async (req: Request, res: Response) => {
@@ -23,7 +23,9 @@ export function registerRoutes(app: Express): Server {
       res.status(500).json({ error: 'Failed to fetch articles' });
     }
   });
-
+  const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
   app.get('/api/articles/:slug', async (req: Request, res: Response) => {
     try {
       const article = await storage.getArticleBySlug(req.params.slug);

@@ -1,0 +1,120 @@
+Sure! Here's a **copy-paste ready Replit prompt** to correctly configure and test OpenAI's ChatGPT API (v4 SDK) in your project, using Express or REST setup:
+
+---
+
+### ✅ Replit Prompt (for Node.js + Express + OpenAI SDK v4)
+
+> 🧠 **Purpose:** This sets up an Express route (`/api/grammar-check`) that uses OpenAI's `gpt-4` to revise submitted articles.
+
+```bash
+# Install dependencies
+npm install express cors dotenv openai
+```
+
+Then create these files:
+
+---
+
+### 📁 `.env`
+
+```env
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+---
+
+### 📁 `server/index.ts`
+
+```ts
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import grammarCheckRoute from './routes';
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.json());
+app.use('/api/grammar-check', grammarCheckRoute);
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+});
+```
+
+---
+
+### 📁 `server/routes.ts`
+
+```ts
+import { Router } from 'express';
+import OpenAI from 'openai';
+
+const router = Router();
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+router.post('/', async (req, res) => {
+  const { articleBody, authorName, articleTitle } = req.body;
+
+  if (!articleBody || !authorName || !articleTitle) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  try {
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4',
+      messages: [
+        {
+          role: 'system',
+          content: 'You are a professional editor. Improve grammar, clarity, and style.',
+        },
+        {
+          role: 'user',
+          content: `Article Title: ${articleTitle}\nAuthor: ${authorName}\n\n${articleBody}`,
+        },
+      ],
+      temperature: 0.7,
+    });
+
+    const revisedText = completion.choices[0].message?.content || '';
+
+    res.json({
+      revisedText,
+      suggestions: [], // Optional: Add NLP suggestions later
+    });
+  } catch (error: any) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to call OpenAI API' });
+  }
+});
+
+export default router;
+```
+
+---
+
+### ✅ Then Run:
+
+```bash
+npx tsx server/index.ts
+```
+
+You can now `POST` to `http://localhost:3000/api/grammar-check` with a JSON body like:
+
+```json
+{
+  "articleBody": "Ths is my articel.",
+  "authorName": "John Doe",
+  "articleTitle": "Test Submission"
+}
+```
+
+---
+
+Let me know if you want to integrate this into Replit's web UI or deploy it as a Replit Web Server project.
