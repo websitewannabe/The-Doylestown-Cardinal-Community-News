@@ -1,0 +1,100 @@
+```bash
+# 1. Install OpenAI SDK v4 (skip if already installed)
+npm install openai
+
+# 2. Ensure dotenv is installed
+npm install dotenv
+
+# 3. Replace your `routes.ts` with this:
+```
+
+### 📁 `server/routes.ts`
+
+```ts
+import express from 'express';
+import OpenAI from 'openai';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const router = express.Router();
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+router.post('/', async (req, res) => {
+  const { articleBody, authorName, articleTitle } = req.body;
+
+  if (!articleBody) {
+    return res.status(400).json({ error: 'Article body is required' });
+  }
+
+  try {
+    const prompt = `You are a professional editor. Please check the following article for grammar, spelling, and clarity. Return the revised version and list of suggestions in JSON format like this:
+
+{
+  "revisedText": "Rewritten version of the article here...",
+  "suggestions": ["Fix passive voice in paragraph 2", "Correct spelling of 'definately'"]
+}
+
+Article Title: ${articleTitle}
+Author: ${authorName}
+
+${articleBody}`;
+
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o',
+      messages: [
+        { role: 'system', content: 'You are a helpful grammar assistant.' },
+        { role: 'user', content: prompt }
+      ],
+      max_tokens: 4000,
+      temperature: 0.3
+    });
+
+    const content = completion?.choices?.[0]?.message?.content;
+
+    if (!content) {
+      throw new Error('OpenAI returned an empty response.');
+    }
+
+    // Attempt to extract JSON block
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      const parsed = JSON.parse(jsonMatch[0]);
+      return res.json(parsed);
+    } else {
+      return res.json({
+        revisedText: content,
+        suggestions: ['AI response was not formatted as structured JSON.']
+      });
+    }
+  } catch (error: any) {
+    console.error('Grammar check error:', error);
+    return res.status(500).json({
+      error: 'Failed to process grammar check',
+      details: error.message || 'Unknown error'
+    });
+  }
+});
+
+export default router;
+```
+
+---
+
+## 🧪 Test It
+
+Use Replit's Web Preview or a tool like Postman to test `POST /api/grammar-check` with a JSON body like:
+
+```json
+{
+  "articleBody": "Ths is an articel with bad grammer.",
+  "authorName": "Jane Doe",
+  "articleTitle": "Test Draft"
+}
+```
+
+---
+
+Let me know if you want to extend this to handle file uploads, stream the AI response, or integrate moderation checks.

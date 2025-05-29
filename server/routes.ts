@@ -11,7 +11,7 @@ import { db } from './db';
 import { users, articles, events } from '../shared/schema';
 import { eq } from 'drizzle-orm';
 import { authenticateToken } from './auth';
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 export function registerRoutes(app: Express): Server {
   // Article routes
   app.get('/api/articles', async (req: Request, res: Response) => {
@@ -23,7 +23,8 @@ export function registerRoutes(app: Express): Server {
       res.status(500).json({ error: 'Failed to fetch articles' });
     }
   });
-  const configuration = new Configuration({
+  
+  const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
   });
   app.get('/api/articles/:slug', async (req: Request, res: Response) => {
@@ -132,35 +133,23 @@ Please respond with a JSON object containing:
 1. "revisedText" - the corrected version of the article
 2. "suggestions" - an array of specific improvement suggestions`;
 
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o',
-          messages: [
-            {
-              role: 'system',
-              content: 'You are a professional editor and grammar checker. Provide detailed, helpful feedback on written content. Always respond with valid JSON format.'
-            },
-            {
-              role: 'user',
-              content: prompt
-            }
-          ],
-          max_tokens: 4000,
-          temperature: 0.3
-        })
+      const completion = await openai.chat.completions.create({
+        model: 'gpt-4o',
+        messages: [
+          {
+            role: 'system',
+            content: 'You are a professional editor and grammar checker. Provide detailed, helpful feedback on written content. Always respond with valid JSON format.'
+          },
+          {
+            role: 'user',
+            content: prompt
+          }
+        ],
+        max_tokens: 4000,
+        temperature: 0.3
       });
 
-      if (!response.ok) {
-        throw new Error(`OpenAI API error: ${response.status}`);
-      }
-
-      const data = await response.json();
-      const content = data.choices[0]?.message?.content;
+      const content = completion.choices[0]?.message?.content;
 
       if (!content) {
         throw new Error('No response from OpenAI');
