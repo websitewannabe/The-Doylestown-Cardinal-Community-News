@@ -15,6 +15,7 @@ import {
   CalendarCheck,
 } from "lucide-react";
 import { useNewsletterContext } from "../context/NewsletterContext";
+import { Helmet } from 'react-helmet-async';
 
 // Mock data for upcoming events
 const upcomingEvents = [
@@ -245,7 +246,42 @@ const HomePage = () => {
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-[#F2F0EF]">
+      <Helmet>
+        <title>The Doylestown Cardinal – Local News, Events & Stories</title>
+        <meta
+          name="description"
+          content="Stay informed with The Doylestown Cardinal – your trusted source for community news, upcoming events, business spotlights, and more in the Greater Doylestown area."
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://cardinalcommunitynews.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="The Doylestown Cardinal" />
+        <meta
+          property="og:description"
+          content="Your local source for Doylestown news, culture, and community events."
+        />
+        <meta property="og:image" content="https://cardinalcommunitynews.com/cardinal-cover.jpg" />
+        <meta property="og:url" content="https://cardinalcommunitynews.com/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="The Doylestown Cardinal" />
+        <meta
+          name="twitter:description"
+          content="Discover what's happening in Doylestown – from arts to local business highlights."
+        />
+        <meta name="twitter:image" content="https://cardinalcommunitynews.com/cardinal-cover.jpg" />
+      </Helmet>
+
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "NewsMediaOrganization",
+          "name": "The Doylestown Cardinal",
+          "url": "https://cardinalcommunitynews.com/",
+          "logo": "https://cardinalcommunitynews.com/logo.png",
+          "sameAs": ["https://www.facebook.com/doylestowncardinal"]
+        })}
+      </script>
       {/* Hero Section */}
       <section className="relative h-screen">
         <div className="absolute inset-0 bottom-24 overflow-hidden rounded-2xl shadow-lg mx-auto w-[95%] mt-2">
@@ -693,7 +729,7 @@ const HomePage = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
