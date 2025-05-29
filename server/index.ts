@@ -1,4 +1,8 @@
 
+// Load environment variables from .env file
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
@@ -7,6 +11,9 @@ import { setupAuth } from "./auth";
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Verify OpenAI API key is loaded (remove this after testing)
+console.log('🔑 OPENAI_API_KEY loaded:', process.env.OPENAI_API_KEY ? 'Yes' : 'No');
 
 // Request logging middleware
 app.use((req, res, next) => {
