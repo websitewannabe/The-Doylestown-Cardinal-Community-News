@@ -58,6 +58,7 @@ const AppContent = () => {
           <Route path="/digital-subscriptions" element={<DigitalSubscriptionsPage />} />
           <Route path="/print-subscriptions" element={<PrintSubscriptionsPage />} />
           <Route path="/donate-options" element={<DonatePage />} />
+          <Route path="/advertise" element={<AdvertisePage />} />
           <Route path="/locations" element={<LocationsPage />} />
         </Routes>
         <Footer />
