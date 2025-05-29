@@ -1,0 +1,79 @@
+## Add SEO to the Home Page with Canonical URL
+
+### 1. 🔧 Add `react-helmet-async` if not installed
+
+```bash
+npm install react-helmet-async
+```
+
+---
+
+### 2. ✅ Wrap your app in a `HelmetProvider`
+
+In `App.tsx` or `_app.tsx`:
+
+```tsx
+import { HelmetProvider } from 'react-helmet-async';
+
+<HelmetProvider>
+  <App />
+</HelmetProvider>
+```
+
+---
+
+### 3. 🧠 Paste this into `HomePage.tsx` (or your main landing component)
+
+Right inside your JSX return block:
+
+```tsx
+import { Helmet } from 'react-helmet-async';
+
+<Helmet>
+  <title>The Doylestown Cardinal – Local News, Events & Stories</title>
+  <meta
+    name="description"
+    content="Stay informed with The Doylestown Cardinal – your trusted source for community news, upcoming events, business spotlights, and more in the Greater Doylestown area."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://cardinalcommunitynews.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="The Doylestown Cardinal" />
+  <meta
+    property="og:description"
+    content="Your local source for Doylestown news, culture, and community events."
+  />
+  <meta property="og:image" content="https://cardinalcommunitynews.com/cardinal-cover.jpg" />
+  <meta property="og:url" content="https://cardinalcommunitynews.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Doylestown Cardinal" />
+  <meta
+    name="twitter:description"
+    content="Discover what’s happening in Doylestown – from arts to local business highlights."
+  />
+  <meta name="twitter:image" content="https://cardinalcommunitynews.com/cardinal-cover.jpg" />
+</Helmet>
+```
+
+---
+
+## 💡 Bonus: Add Structured Data (optional)
+
+Add this below the Helmet block for rich Google results:
+
+```tsx
+<script type="application/ld+json">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    "name": "The Doylestown Cardinal",
+    "url": "https://cardinalcommunitynews.com/",
+    "logo": "https://cardinalcommunitynews.com/logo.png",
+    "sameAs": ["https://www.facebook.com/doylestowncardinal"]
+  })}
+</script>
+```
+
+---
+
+Would you like me to generate similar SEO blocks for `/events`, `/advertise`, or article detail pages?
