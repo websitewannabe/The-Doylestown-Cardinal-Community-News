@@ -1,0 +1,78 @@
+## Use `gpt-3.5-turbo` in Grammar Checker
+
+### Step 1: Update your `routes.ts` (or `routes/index.ts`) route handler
+
+```ts
+import express from 'express';
+import OpenAI from 'openai';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const router = express.Router();
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+router.post('/', async (req, res) => {
+  const { articleBody, authorName, articleTitle } = req.body;
+
+  if (!articleBody) {
+    return res.status(400).json({ error: 'Article body is required' });
+  }
+
+  try {
+    const prompt = `Please edit the following article for grammar, spelling, and clarity. Provide a cleaned-up version and a few improvement notes in JSON format like:
+
+{
+  "revisedText": "...",
+  "suggestions": ["Fix passive voice", "Correct spelling of 'definately'"]
+}
+
+Title: ${articleTitle}
+Author: ${authorName}
+
+${articleBody}`;
+
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo', // 🟢 Low-cost model
+      messages: [
+        { role: 'system', content: 'You are a helpful grammar assistant.' },
+        { role: 'user', content: prompt }
+      ],
+      max_tokens: 1000, // 🟢 Optional: reduce to control cost
+      temperature: 0.3
+    });
+
+    const content = completion?.choices?.[0]?.message?.content;
+
+    if (!content) {
+      throw new Error('OpenAI returned an empty response.');
+    }
+
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      const parsed = JSON.parse(jsonMatch[0]);
+      return res.json(parsed);
+    } else {
+      return res.json({
+        revisedText: content,
+        suggestions: ['AI response was not JSON-formatted. Raw output returned.']
+      });
+    }
+  } catch (error: any) {
+    console.error('OpenAI Error:', error);
+    return res.status(500).json({ error: 'Grammar check failed', details: error.message });
+  }
+});
+
+export default router;
+```
+
+---
+
+## ✅ Why this works
+
+* \*\*Uses \*\***`gpt-3.5-turbo`** — lowest cost per token.
+* **`max_tokens: 1000`** keeps responses compact and budget-friendly.
+* Gracefully handles OpenAI errors and fallback when JSON isn't returned.
