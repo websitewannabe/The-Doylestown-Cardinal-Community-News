@@ -107,6 +107,10 @@ export function registerRoutes(app: Express): Server {
     }
   });
 
+  // Rate limiting for grammar check
+  const grammarCheckQueue = new Map();
+  const RATE_LIMIT_DELAY = 60000; // 1 minute delay between requests
+
   // Grammar check endpoint
   app.post('/api/grammar-check', async (req, res) => {
     try {
@@ -116,10 +120,31 @@ export function registerRoutes(app: Express): Server {
         return res.status(400).json({ error: 'Article body is required' });
       }
 
+      // Rate limiting check
+      const clientIP = req.ip || req.connection.remoteAddress;
+      const now = Date.now();
+      const lastRequest = grammarCheckQueue.get(clientIP);
+      
+      if (lastRequest && (now - lastRequest) < RATE_LIMIT_DELAY) {
+        const waitTime = Math.ceil((RATE_LIMIT_DELAY - (now - lastRequest)) / 1000);
+        return res.status(429).json({ 
+          error: `Please wait ${waitTime} seconds before making another grammar check request`,
+          waitTime: waitTime
+        });
+      }
+
+      grammarCheckQueue.set(clientIP, now);
+
       const apiKey = process.env.OPENAI_API_KEY;
       if (!apiKey) {
         return res.status(500).json({ error: 'OpenAI API key not configured' });
       }
+
+      // Truncate content if too long to reduce token usage
+      const maxContentLength = 8000; // Limit content to reduce token usage
+      const truncatedBody = articleBody.length > maxContentLength 
+        ? articleBody.substring(0, maxContentLength) + '...[content truncated]'
+        : articleBody;
 
       const prompt = `Please check this article for grammar and spelling errors. Suggest corrections and return a side-by-side comparison of the original and edited versions. Also provide a list of specific suggestions for improvement.
 
@@ -127,14 +152,14 @@ Title: ${articleTitle || 'Untitled'}
 Author: ${authorName || 'Anonymous'}
 
 Article Content:
-${articleBody}
+${truncatedBody}
 
 Please respond with a JSON object containing:
 1. "revisedText" - the corrected version of the article
 2. "suggestions" - an array of specific improvement suggestions`;
 
       const completion = await openai.chat.completions.create({
-        model: 'gpt-4o',
+        model: 'gpt-3.5-turbo', // Use cheaper model to reduce costs/quota usage
         messages: [
           {
             role: 'system',
@@ -145,7 +170,7 @@ Please respond with a JSON object containing:
             content: prompt
           }
         ],
-        max_tokens: 4000,
+        max_tokens: 2000, // Reduced token limit
         temperature: 0.3
       });
 
@@ -178,6 +203,25 @@ Please respond with a JSON object containing:
 
     } catch (error) {
       console.error('Grammar check error:', error);
+      
+      // Handle specific OpenAI errors
+      if (error.status === 429) {
+        return res.status(429).json({ 
+          error: 'OpenAI API rate limit exceeded. Please try again in a few minutes.',
+          details: 'Too many requests - please wait before making another grammar check request'
+        });
+      } else if (error.status === 401) {
+        return res.status(500).json({ 
+          error: 'OpenAI API authentication failed. Please check your API key.',
+          details: 'Invalid API key or insufficient permissions'
+        });
+      } else if (error.code === 'insufficient_quota') {
+        return res.status(429).json({ 
+          error: 'OpenAI API quota exceeded. Please check your billing details.',
+          details: 'Your OpenAI account has exceeded its usage quota'
+        });
+      }
+      
       res.status(500).json({ 
         error: 'Failed to process grammar check',
         details: error instanceof Error ? error.message : 'Unknown error'
