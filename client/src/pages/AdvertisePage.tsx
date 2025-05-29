@@ -716,85 +716,53 @@ const AdvertisePage = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20">
+      {/* Updated Advertising Packages – Digital Sponsorship Tiers */}
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
-              Advertising Packages
-            </h2>
-            <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
-              Choose the perfect package to reach your target audience and
-              achieve your marketing goals.
-            </p>
-          </div>
+          <h2 className="text-4xl font-bold text-center text-charcoal-gray font-playfair mb-12">
+            Digital Advertising Packages
+          </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pricingPackages.map((pkg, index) => (
-              <div
-                key={index}
-                className={`relative bg-white rounded-lg flex flex-col h-full ${
-                  pkg.popular
-                    ? "ring-2 ring-cardinal-red"
-                    : "border border-[#333333]"
-                }`}
-              >
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-cardinal-red text-white px-4 py-1 rounded-full text-sm">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                <div className="p-8 flex-grow flex flex-col">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-cardinal-red/10 rounded-lg">
-                      <pkg.icon className="w-6 h-6 text-cardinal-red" />
-                    </div>
-                    <h3 className="font-playfair text-xl font-bold">
-                      {pkg.name}
-                    </h3>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-                  <div className="mb-4">
-                    <div className="font-playfair text-3xl font-bold text-cardinal-red">
-                      {pkg.price}
-                      {pkg.price !== "Custom" && (
-                        <span className="text-lg font-normal">/month</span>
-                      )}
-                    </div>
-                    <p className="text-charcoal-gray/70 mt-2">
-                      {pkg.description}
-                    </p>
-                  </div>
+            {/* Top Tier */}
+            <div className="border-2 border-cardinal-red rounded-xl shadow-lg p-8 bg-gradient-to-br from-red-50 to-white">
+              <h3 className="text-2xl font-bold text-cardinal-red mb-2">Top Tier</h3>
+              <p className="text-lg font-semibold text-gray-800 mb-2">$2500<span className="text-sm font-normal text-gray-600"> / spot</span></p>
+              <p className="italic text-sm text-gray-500 mb-4">Only 1 Spot Available</p>
+              <ul className="list-disc ml-6 text-gray-700 text-sm space-y-2">
+                <li>Banner ad across all site pages</li>
+                <li>Pop-up ad in both Community <strong>and</strong> Events sections</li>
+                <li>Featured in community menu with 6 photos + links to stories</li>
+                <li>Top listing in Community Section</li>
+                <li>Business of the Month spotlight <strong>for 3 months</strong></li>
+              </ul>
+            </div>
 
-                  <ul className="space-y-3 mb-8">
-                    {pkg.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0 mt-0.5" />
-                        <span className="text-charcoal-gray/80">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+            {/* Middle Tier */}
+            <div className="border-2 border-yellow-600 rounded-xl shadow-lg p-8 bg-gradient-to-br from-yellow-50 to-white">
+              <h3 className="text-2xl font-bold text-yellow-800 mb-2">Middle Tier</h3>
+              <p className="text-lg font-semibold text-gray-800 mb-2">$1000<span className="text-sm font-normal text-gray-600"> / spot</span></p>
+              <p className="italic text-sm text-gray-500 mb-4">Only 5 Spots Available</p>
+              <ul className="list-disc ml-6 text-gray-700 text-sm space-y-2">
+                <li>Pop-up ad in Community <strong>or</strong> Events section</li>
+                <li>Featured in community menu with 6 photos + links</li>
+                <li>Top 3 listing in Community Section</li>
+                <li>Business of the Month spotlight <strong>for 1 month</strong></li>
+              </ul>
+            </div>
 
-                  <div className="mt-auto pt-8">
-                    <button
-                      onClick={() => {
-                        setSelectedPackage(pkg.name);
-                        setShowContactForm(true);
-                      }}
-                      className={`w-full px-6 py-3 rounded-lg font-semibold transition-colors ${
-                        pkg.popular
-                          ? "bg-cardinal-red text-white hover:bg-cardinal-red/90"
-                          : "border border-[#333333] hover:bg-cardinal-red hover:text-white hover:border-cardinal-red"
-                      }`}
-                    >
-                      Get Started
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
+            {/* Bottom Tier */}
+            <div className="border-2 border-sky-600 rounded-xl shadow-lg p-8 bg-gradient-to-br from-blue-50 to-white">
+              <h3 className="text-2xl font-bold text-sky-700 mb-2">Bottom Tier</h3>
+              <p className="text-lg font-semibold text-gray-800 mb-2">$500<span className="text-sm font-normal text-gray-600"> / spot</span></p>
+              <p className="italic text-sm text-gray-500 mb-4">Only 10 Spots Available</p>
+              <ul className="list-disc ml-6 text-gray-700 text-sm space-y-2">
+                <li>Community page menu placement with 6 photos + links</li>
+                <li>Ongoing article promotion across Community Section</li>
+              </ul>
+            </div>
+
           </div>
         </div>
       </section>
