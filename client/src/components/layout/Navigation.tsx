@@ -95,7 +95,6 @@ const Navigation = () => {
       dropdownItems: [
         { name: "About Us", path: "/about" },
         { name: "Meet the Writers", path: "/writers" },
-        { name: "Editorial Submissions", path: "/editorial-submissions" },
         { name: "Find The Cardinal", path: "/locations" },
         { name: "Contact Us", path: "/contact" },
       ],
