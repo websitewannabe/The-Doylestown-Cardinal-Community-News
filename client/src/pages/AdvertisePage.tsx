@@ -716,51 +716,57 @@ const AdvertisePage = () => {
         </div>
       </section>
 
-      {/* Updated Advertising Packages – Digital Sponsorship Tiers */}
-      <section className="py-20">
+      {/* Digital Advertising Packages – Reordered and Redesigned */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center text-charcoal-gray font-playfair mb-12">
             Digital Advertising Packages
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-            {/* Top Tier */}
-            <div className="border-2 border-cardinal-red rounded-xl shadow-lg p-8 bg-gradient-to-br from-red-50 to-white">
-              <h3 className="text-2xl font-bold text-cardinal-red mb-2">Top Tier</h3>
-              <p className="text-lg font-semibold text-gray-800 mb-2">$2500<span className="text-sm font-normal text-gray-600"> / spot</span></p>
-              <p className="italic text-sm text-gray-500 mb-4">Only 1 Spot Available</p>
-              <ul className="list-disc ml-6 text-gray-700 text-sm space-y-2">
-                <li>Banner ad across all site pages</li>
-                <li>Pop-up ad in both Community <strong>and</strong> Events sections</li>
-                <li>Featured in community menu with 6 photos + links to stories</li>
-                <li>Top listing in Community Section</li>
-                <li>Business of the Month spotlight <strong>for 3 months</strong></li>
-              </ul>
+            {/* Bottom Tier - now first */}
+            <div className="flex flex-col justify-between border-2 border-sky-600 rounded-xl p-6 bg-blue-50 shadow-md">
+              <div>
+                <h3 className="text-xl font-bold text-sky-700 mb-1">Bottom Tier</h3>
+                <p className="text-lg font-semibold text-gray-800 mb-1">$500 <span className="text-sm text-gray-600">/ spot</span></p>
+                <p className="text-sm italic text-gray-500 mb-4">Only 10 Spots Available</p>
+                <ul className="list-disc ml-5 text-gray-700 text-sm space-y-2">
+                  <li>Community page menu placement with 6 photos + links</li>
+                  <li>Ongoing article promotion in Community Section</li>
+                </ul>
+              </div>
             </div>
 
             {/* Middle Tier */}
-            <div className="border-2 border-yellow-600 rounded-xl shadow-lg p-8 bg-gradient-to-br from-yellow-50 to-white">
-              <h3 className="text-2xl font-bold text-yellow-800 mb-2">Middle Tier</h3>
-              <p className="text-lg font-semibold text-gray-800 mb-2">$1000<span className="text-sm font-normal text-gray-600"> / spot</span></p>
-              <p className="italic text-sm text-gray-500 mb-4">Only 5 Spots Available</p>
-              <ul className="list-disc ml-6 text-gray-700 text-sm space-y-2">
-                <li>Pop-up ad in Community <strong>or</strong> Events section</li>
-                <li>Featured in community menu with 6 photos + links</li>
-                <li>Top 3 listing in Community Section</li>
-                <li>Business of the Month spotlight <strong>for 1 month</strong></li>
-              </ul>
+            <div className="flex flex-col justify-between border-2 border-yellow-700 rounded-xl p-6 bg-yellow-50 shadow-md">
+              <div>
+                <h3 className="text-xl font-bold text-yellow-800 mb-1">Middle Tier</h3>
+                <p className="text-lg font-semibold text-gray-800 mb-1">$1000 <span className="text-sm text-gray-600">/ spot</span></p>
+                <p className="text-sm italic text-gray-500 mb-4">Only 5 Spots Available</p>
+                <ul className="list-disc ml-5 text-gray-700 text-sm space-y-2">
+                  <li>Pop-up ad in Community <strong>or</strong> Events section</li>
+                  <li>Placement in Community Page Menu (6 photos + links)</li>
+                  <li>Top 3 listing in Community Section</li>
+                  <li>Business of the Month spotlight <strong>for 1 month</strong></li>
+                </ul>
+              </div>
             </div>
 
-            {/* Bottom Tier */}
-            <div className="border-2 border-sky-600 rounded-xl shadow-lg p-8 bg-gradient-to-br from-blue-50 to-white">
-              <h3 className="text-2xl font-bold text-sky-700 mb-2">Bottom Tier</h3>
-              <p className="text-lg font-semibold text-gray-800 mb-2">$500<span className="text-sm font-normal text-gray-600"> / spot</span></p>
-              <p className="italic text-sm text-gray-500 mb-4">Only 10 Spots Available</p>
-              <ul className="list-disc ml-6 text-gray-700 text-sm space-y-2">
-                <li>Community page menu placement with 6 photos + links</li>
-                <li>Ongoing article promotion across Community Section</li>
-              </ul>
+            {/* Top Tier - now last */}
+            <div className="flex flex-col justify-between border-2 border-red-700 rounded-xl p-6 bg-red-50 shadow-md">
+              <div>
+                <h3 className="text-xl font-bold text-cardinal-red mb-1">Top Tier</h3>
+                <p className="text-lg font-semibold text-gray-800 mb-1">$2500 <span className="text-sm text-gray-600">/ spot</span></p>
+                <p className="text-sm italic text-gray-500 mb-4">Only 1 Spot Available</p>
+                <ul className="list-disc ml-5 text-gray-700 text-sm space-y-2">
+                  <li>Banner ad across all site pages</li>
+                  <li>Pop-up ads in both Community <strong>and</strong> Events sections</li>
+                  <li>Top placement in Community Page Menu (6 photos + links)</li>
+                  <li>Top listing in Community Section</li>
+                  <li>Business of the Month spotlight <strong>for 3 months</strong></li>
+                </ul>
+              </div>
             </div>
 
           </div>
