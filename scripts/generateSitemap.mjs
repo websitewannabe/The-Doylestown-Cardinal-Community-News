@@ -15,6 +15,7 @@ const staticRoutes = [
   '/about',
   '/contact',
   '/editorial-submissions',
+  '/writer-submissions',
   '/current-issue',
   '/support-us',
   '/locations'

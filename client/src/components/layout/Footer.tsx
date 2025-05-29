@@ -252,6 +252,14 @@ const Footer = () => {
               </li>
               <li>
                 <Link
+                  to="/writer-submissions"
+                  className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
+                >
+                  Writer Submissions
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/locations"
                   className="text-charcoal-gray/80 hover:text-[#8B0000] transition-colors"
                 >

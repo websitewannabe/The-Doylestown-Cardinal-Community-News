@@ -27,6 +27,7 @@ import LocationsPage from './pages/LocationsPage';
 import AnnualFundraiserPage from './pages/AnnualFundraiserPage';
 import ContactPage from './pages/ContactPage';
 import EditorialSubmissionsPage from './pages/EditorialSubmissionsPage';
+import WriterSubmissionsPage from './pages/WriterSubmissionsPage';
 import { NewsletterProvider, useNewsletterContext } from './context/NewsletterContext';
 import NewsletterPopup from './components/ui/NewsletterPopup';
 import ScrollToTop from './components/ScrollToTop';
@@ -51,6 +52,7 @@ const AppContent = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/editorial-submissions" element={<EditorialSubmissionsPage />} />
+          <Route path="/writer-submissions" element={<WriterSubmissionsPage />} />
           <Route path="/current-issue" element={<IssuePage />} />
           <Route path="/support-us" element={<SupportUsPage />} />
           <Route path="/digital-subscriptions" element={<DigitalSubscriptionsPage />} />

@@ -1,2 +1,5 @@
+# Writer submissions page
+/writer-submissions    /index.html   200
 
+# SPA fallback - must be last
 /*    /index.html   200
