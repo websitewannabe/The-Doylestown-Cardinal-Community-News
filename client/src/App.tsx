@@ -19,9 +19,9 @@ import ArchivePage from './pages/ArchivePage';
 import AdvertisePage from './pages/AdvertisePage';
 import WriterPage from './pages/WriterPage';
 import MeetTheWritersPage from './pages/MeetTheWritersPage';
-
 import PrintSubscriptionsPage from './pages/PrintSubscriptionsPage';
 import DigitalSubscriptionsPage from './pages/DigitalSubscriptionsPage';
+import DonatePage from './pages/DonatePage';
 import SupportUsPage from "./pages/SupportUsPage";
 import LocationsPage from './pages/LocationsPage';
 import AnnualFundraiserPage from './pages/AnnualFundraiserPage';
@@ -53,6 +53,9 @@ const AppContent = () => {
           <Route path="/editorial-submissions" element={<EditorialSubmissionsPage />} />
           <Route path="/current-issue" element={<IssuePage />} />
           <Route path="/support-us" element={<SupportUsPage />} />
+          <Route path="/digital-subscriptions" element={<DigitalSubscriptionsPage />} />
+          <Route path="/print-subscriptions" element={<PrintSubscriptionsPage />} />
+          <Route path="/donate-options" element={<DonatePage />} />
           <Route path="/locations" element={<LocationsPage />} />
         </Routes>
         <Footer />
